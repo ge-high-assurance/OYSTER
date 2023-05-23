@@ -1,0 +1,43 @@
+package Agree_Consts
+public	
+	annex agree {**		
+		const schedule_major_frame: int = 100; --lcm of periods
+		const schedule_minor_frame: int = 1; -- default value
+
+		const APP_FUEL_SYSTEM_CONTROL_priority: int = 1;
+		const APP_FUEL_SYSTEM_CONTROL_start_time: int = 3;
+		const APP_FUEL_SYSTEM_CONTROL_repeat_period: int = 50;
+		const APP_FUEL_SYSTEM_CONTROL_computetime: int = 1;
+		const APP_FUEL_SYSTEM_CONTROL_totaltime: int = APP_FUEL_SYSTEM_CONTROL_computetime;
+
+		const APP_FIDO_priority: int = 2;
+		const APP_FIDO_start_time: int = 10;
+		const APP_FIDO_repeat_period: int = 50;
+		const APP_FIDO_computetime: int = 1;
+		const APP_FIDO_totaltime: int = APP_FIDO_computetime;
+
+		const APP_FILE_SYSTEM_priority: int = 3;
+		const APP_FILE_SYSTEM_start_time: int = 15;
+		const APP_FILE_SYSTEM_repeat_period: int = 50;
+		const APP_FILE_SYSTEM_computetime: int = 2;
+		const APP_FILE_SYSTEM_totaltime: int = APP_FILE_SYSTEM_computetime;
+
+		const APP_SUPPORT_MAIN_priority: int = 3;
+		const APP_SUPPORT_MAIN_start_time: int = 14;
+		const APP_SUPPORT_MAIN_repeat_period: int = 100;
+		const APP_SUPPORT_MAIN_computetime: int = 2;
+		const APP_SUPPORT_MAIN_totaltime: int = APP_SUPPORT_MAIN_computetime;
+
+		const APP_CDN_TIME_MANAGER_priority: int = 4;
+		const APP_CDN_TIME_MANAGER_start_time: int = 30;
+		const APP_CDN_TIME_MANAGER_repeat_period: int = 100;
+		const APP_CDN_TIME_MANAGER_computetime: int = 2; 
+		const APP_CDN_TIME_MANAGER_totaltime: int = APP_CDN_TIME_MANAGER_computetime;
+
+		const APP_HEALTH_MANAGER_priority: int = 0;
+		const APP_HEALTH_MANAGER_start_time: int = 8;
+		const APP_HEALTH_MANAGER_repeat_period: int = 100;
+		const APP_HEALTH_MANAGER_computetime: int = 6;
+		const APP_HEALTH_MANAGER_totaltime: int = APP_HEALTH_MANAGER_computetime;
+	**};
+end Agree_Consts;

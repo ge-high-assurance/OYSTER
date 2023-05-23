@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.ge.verdict</groupId>
+    <artifactId>verdict-bundle</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <!-- Verdict STEM Runner -->
+  <artifactId>verdict-stem-runner</artifactId>
+  <packaging>jar</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.ge.research.sadl</groupId>
+      <artifactId>reasoner-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.ge.research.sadl</groupId>
+      <artifactId>reasoner-impl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.ge.research.sadl</groupId>
+      <artifactId>sadlserver-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.ge.research.sadl</groupId>
+      <artifactId>sadlserver-impl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <!-- Dependencies needed only by tests or capsule jar -->
+    <dependency>
+      <groupId>com.sun.activation</groupId>
+      <artifactId>jakarta.activation</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.opencsv</groupId>
+      <artifactId>opencsv</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <!-- Use STEM project directly, no need to copy it to src/test/resources -->
+    <testResources>
+      <testResource>
+        <directory>${basedir}/../..</directory>
+        <includes>
+          <include>STEM/</include>
+        </includes>
+      </testResource>
+    </testResources>
+    <plugins>
+      <!-- Build capsule jar -->
+      <plugin>
+        <groupId>com.github.chrisdchristo</groupId>
+        <artifactId>capsule-maven-plugin</artifactId>
+        <configuration>
+          <appClass>com.ge.verdict.stem.App</appClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- This microrepository has our SADL dependencies -->
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <id>sadl-snapshot-repository</id>
+      <url>https://raw.github.com/ge-high-assurance/sadl-snapshot-repository/master/repository</url>
+    </repository>
+  </repositories>
+
+</project>

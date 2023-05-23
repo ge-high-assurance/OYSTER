@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: com.ge.research.osate.oyster.dsl.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: com.ge.research.osate.oyster.dsl.tests
+Bundle-Vendor: GE Research
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: com.ge.research.osate.oyster.dsl.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: com.ge.research.osate.oyster.dsl,
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing
+Bundle-RequiredExecutionEnvironment: JavaSE-11

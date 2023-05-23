@@ -1,0 +1,207 @@
+package FuelControlSystem_Behavior
+public
+with Base_Types;
+with Agree_Consts;
+with OYSTER_properties;
+
+	system APP_FUEL_SYSTEM_CONTROL
+		features
+			app_status: out data port Base_Types::Boolean;
+		properties
+			OYSTER_properties::componentType => A653_Application;
+			OYSTER_properties::priorityGroup => 1;
+		-- Scheduling behavior
+		annex agree {**	
+			eq schedule_counter : int = 0 -> (pre(schedule_counter) + 1) mod Agree_Consts::schedule_major_frame;		
+	
+			eq execute_now : int = (schedule_counter - Agree_Consts::APP_FUEL_SYSTEM_CONTROL_start_time) 
+									mod Agree_Consts::APP_FUEL_SYSTEM_CONTROL_repeat_period;
+	
+		    eq start_count : int = (if (execute_now = 0) then 1 else 0) -> 
+		    							if (execute_now = 0) then pre(start_count) + 1
+		                     			else if (pre(start_count) <> 0) and 
+		                     				(pre(start_count) < Agree_Consts::APP_FUEL_SYSTEM_CONTROL_computetime)
+		                     				then pre(start_count) + 1
+		                     			else 0;		
+	
+			guarantee G1 "APP_FUEL_SYSTEM_CONTROL Status": app_status = (start_count <> 0); 
+		**};
+	end APP_FUEL_SYSTEM_CONTROL;
+
+
+
+
+system APP_FIDO
+	features
+		app_status: out data port Base_Types::Boolean;
+	properties
+		OYSTER_properties::componentType => A653_Application;
+		OYSTER_properties::priorityGroup => 2;
+	-- Scheduling behavior
+	annex agree {**	
+		eq schedule_counter : int = 0 -> (pre(schedule_counter) + 1) mod Agree_Consts::schedule_major_frame;			
+
+		eq execute_now : int = (schedule_counter - Agree_Consts::APP_FIDO_start_time) mod Agree_Consts::APP_FIDO_repeat_period;
+
+	    eq start_count : int = (if (execute_now = 0) then 1 else 0) -> 
+	    							if (execute_now = 0) then pre(start_count) + 1
+	                     			else if (pre(start_count) <> 0) and (pre(start_count) < Agree_Consts::APP_FIDO_computetime)
+	                     				then pre(start_count) + 1
+	                     			else 0;		
+
+		guarantee G2 "APP_FIDO Status": app_status = (start_count <> 0); 
+	**};
+end APP_FIDO;
+
+system APP_FILE_SYSTEM
+	features
+		app_status: out data port Base_Types::Boolean;
+	properties
+		OYSTER_properties::componentType => A653_Application;
+		OYSTER_properties::priorityGroup => 1;
+	-- Scheduling behavior
+	annex agree {**	
+		eq schedule_counter : int = 0 -> (pre(schedule_counter) + 1) mod Agree_Consts::schedule_major_frame;			
+
+		eq execute_now : int = (schedule_counter - Agree_Consts::APP_FILE_SYSTEM_start_time) mod Agree_Consts::APP_FILE_SYSTEM_repeat_period;
+
+	    eq start_count : int = (if (execute_now = 0) then 1 else 0) -> 
+	    							if (execute_now = 0) then pre(start_count) + 1
+	                     			else if (pre(start_count) <> 0) and (pre(start_count) < Agree_Consts::APP_FILE_SYSTEM_computetime)
+	                     				then pre(start_count) + 1
+	                     			else 0;		
+
+		guarantee G3 "APP_FILE_SYSTEM Status": app_status = (start_count <> 0); 	
+	**};
+end APP_FILE_SYSTEM;
+
+system APP_SUPPORT_MAIN
+	features
+		app_status: out data port Base_Types::Boolean;
+	properties
+		OYSTER_properties::componentType => A653_Application;
+		OYSTER_properties::priorityGroup => 2;
+	-- Scheduling behavior
+	annex agree {**
+		eq schedule_counter : int = 0 -> (pre(schedule_counter) + 1) mod Agree_Consts::schedule_major_frame;			
+
+		eq execute_now : int = (schedule_counter - Agree_Consts::APP_SUPPORT_MAIN_start_time) mod Agree_Consts::APP_SUPPORT_MAIN_repeat_period;
+
+	    eq start_count : int = (if (execute_now = 0) then 1 else 0) -> 
+	    							if (execute_now = 0) then pre(start_count) + 1
+	                     			else if (pre(start_count) <> 0) and (pre(start_count) < Agree_Consts::APP_SUPPORT_MAIN_computetime)
+	                     				then pre(start_count) + 1
+	                     			else 0;		
+
+		guarantee G4 "APP_SUPPORT_MAIN Status": app_status = (start_count <> 0); 	
+	**};
+end APP_SUPPORT_MAIN;
+
+system APP_CDN_TIME_MANAGER
+	features
+		app_status: out data port Base_Types::Boolean;
+	properties
+		OYSTER_properties::componentType => A653_Application;
+		OYSTER_properties::priorityGroup => 1;
+	-- Scheduling behavior
+	annex agree {**
+		eq schedule_counter : int = 0 -> (pre(schedule_counter) + 1) mod Agree_Consts::schedule_major_frame;			
+
+		eq execute_now : int = (schedule_counter - Agree_Consts::APP_CDN_TIME_MANAGER_start_time) mod Agree_Consts::APP_CDN_TIME_MANAGER_repeat_period;
+
+	    eq start_count : int = (if (execute_now = 0) then 1 else 0) -> 
+	    							if (execute_now = 0) then pre(start_count) + 1
+	                     			else if (pre(start_count) <> 0) and (pre(start_count) < Agree_Consts::APP_CDN_TIME_MANAGER_computetime)
+	                     				then pre(start_count) + 1
+	                     			else 0;		
+
+		guarantee G6 "APP_CDN_TIME_MANAGER Status": app_status = (start_count <> 0); 	
+	**};
+end APP_CDN_TIME_MANAGER;
+
+system APP_HEALTH_MANAGER
+	features
+		app_status: out data port Base_Types::Boolean;
+	properties
+		OYSTER_properties::componentType => A653_Application;
+		OYSTER_properties::priorityGroup => 2;
+	-- Scheduling behavior
+	annex agree {**
+		eq schedule_counter : int = 0 -> (pre(schedule_counter) + 1) mod Agree_Consts::schedule_major_frame;			
+
+		eq execute_now : int = (schedule_counter - Agree_Consts::APP_HEALTH_MANAGER_start_time) mod Agree_Consts::APP_HEALTH_MANAGER_repeat_period;
+
+	    eq start_count : int = (if (execute_now = 0) then 1 else 0) -> 
+	    							if (execute_now = 0) then pre(start_count) + 1
+	                     			else if (pre(start_count) <> 0) and (pre(start_count) < Agree_Consts::APP_HEALTH_MANAGER_computetime)
+	                     				then pre(start_count) + 1
+	                     			else 0;		
+
+		guarantee G7 "APP_HEALTH_MANAGER Status": app_status = (start_count <> 0); 	
+	**};
+end APP_HEALTH_MANAGER;
+
+system GPM
+	features
+		APP_FUEL_SYSTEM_CONTROL_status: out data port Base_Types::Boolean;
+		APP_FIDO_status: out data port Base_Types::Boolean;
+		APP_FILE_SYSTEM_status: out data port Base_Types::Boolean;
+		APP_SUPPORT_MAIN_status: out data port Base_Types::Boolean;
+		APP_CDN_TIME_MANAGER_status: out data port Base_Types::Boolean;
+		APP_HEALTH_MANAGER_status: out data port Base_Types::Boolean;
+	properties
+		OYSTER_properties::componentType => General_Processing_Module;
+	annex agree {**
+		guarantee P1 "P1: Apps FUEL_SYSTEM_CONTROL and FIDO have no scheduling conflict": 
+			not (APP_FUEL_SYSTEM_CONTROL_status and APP_FIDO_status);
+		guarantee P2 "P2: Apps FUEL_SYSTEM_CONTROL and FILE_SYSTEM have no scheduling conflict": 
+			not (APP_FUEL_SYSTEM_CONTROL_status and APP_FILE_SYSTEM_status);
+		guarantee P3 "P3: Apps FUEL_SYSTEM_CONTROL and SUPPORT_MAIN have no scheduling conflict": 
+			not (APP_FUEL_SYSTEM_CONTROL_status and APP_SUPPORT_MAIN_status);
+		guarantee P4 "P4: Apps FUEL_SYSTEM_CONTROL and CDN_TIME_MANAGER have no scheduling conflict": 
+			not (APP_FUEL_SYSTEM_CONTROL_status and APP_CDN_TIME_MANAGER_status);
+		guarantee P5 "P5: Apps FUEL_SYSTEM_CONTROL and HEALTH_TH_MANAGER have no scheduling conflict": 
+			not (APP_FUEL_SYSTEM_CONTROL_status and APP_HEALTH_MANAGER_status);		
+		guarantee P6 "P6: Apps FIDO and FILE_SYSTEM have no scheduling conflict": 
+			not (APP_FIDO_status and APP_FILE_SYSTEM_status);
+		guarantee P7 "P7: Apps FIDO and SUPPORT_MAIN have no scheduling conflict": 
+			not (APP_FIDO_status and APP_SUPPORT_MAIN_status);
+		guarantee P8 "P8: Apps FIDO and CDN_TIME_MANAGER have no scheduling conflict": 
+			not (APP_FIDO_status and APP_CDN_TIME_MANAGER_status);
+		guarantee P9 "P9: Apps FIDO and HEALTH_MANAGER have no scheduling conflict": 
+			not (APP_FIDO_status and APP_HEALTH_MANAGER_status);
+		guarantee P10 "P10: Apps FILE_SYSTEM and SUPPORT_MAIN have no scheduling conflict": 
+			not (APP_FILE_SYSTEM_status and APP_SUPPORT_MAIN_status);
+		guarantee P11 "P11: Apps FILE_SYSTEM and CDN_TIME_MANAGER have no scheduling conflict": 
+			not (APP_FILE_SYSTEM_status and APP_CDN_TIME_MANAGER_status);
+		guarantee P12 "P12: Apps FILE_SYSTEM and HEALTH_MANAGER have no scheduling conflict": 
+			not (APP_FILE_SYSTEM_status and APP_HEALTH_MANAGER_status);	
+		guarantee P13 "P13: Apps SUPPORT_MAIN and CDN_TIME_MANAGER have no scheduling conflict": 
+			not (APP_SUPPORT_MAIN_status and APP_CDN_TIME_MANAGER_status);
+		guarantee P14 "P14: Apps SUPPORT_MAIN and HEALTH_MANAGER have no scheduling conflict": 
+			not (APP_SUPPORT_MAIN_status and APP_HEALTH_MANAGER_status);
+				
+		guarantee P15 "P15: Apps CDN_TIME_MANAGER and HEALTH_MANAGER have no scheduling conflict": 
+			not (APP_CDN_TIME_MANAGER_status and APP_HEALTH_MANAGER_status);
+	**};
+
+end GPM;
+
+system implementation GPM.Impl
+	subcomponents		
+		APP_FUEL_SYSTEM_CONTROL: system APP_FUEL_SYSTEM_CONTROL;
+		APP_FIDO: system APP_FIDO;
+		APP_FILE_SYSTEM: system APP_FILE_SYSTEM;
+		APP_SUPPORT_MAIN: system APP_SUPPORT_MAIN;
+		APP_CDN_TIME_MANAGER: system APP_CDN_TIME_MANAGER;
+		APP_HEALTH_MANAGER: system APP_HEALTH_MANAGER;
+	connections
+		c1: port APP_FUEL_SYSTEM_CONTROL.app_status -> APP_FUEL_SYSTEM_CONTROL_status;
+		c2: port APP_FIDO.app_status -> APP_FIDO_status;
+		c3: port APP_FILE_SYSTEM.app_status -> APP_FILE_SYSTEM_status;
+		c4: port APP_SUPPORT_MAIN.app_status -> APP_SUPPORT_MAIN_status;
+		c5: port APP_CDN_TIME_MANAGER.app_status -> APP_CDN_TIME_MANAGER_status;
+		c6: port APP_HEALTH_MANAGER.app_status -> APP_HEALTH_MANAGER_status;
+end GPM.Impl;
+
+end FuelControlSystem_Behavior;

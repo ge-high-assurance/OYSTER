@@ -1,0 +1,140 @@
+grammar com.ge.research.osate.oyster.dsl.Oyster with org.osate.xtext.aadl2.properties.Properties
+
+generate oyster "http://www.ge.com/research/osate/oyster/dsl/Oyster"
+
+import "http://aadl.info/AADL/2.0" as aadl2
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+// NOTE: And has a higher precedence than Or. This is a limitation of LL(*) parsers.
+
+// The syntactic predicate ('=>') resolves the ambiguity in the case of an empty annex
+// Note that this rule is not used directly, but it is necessary
+
+// Connect to AADL
+Element returns aadl2::Element:
+	Statements
+;
+
+// This is glue for AADL annexes
+
+AnnexLibrary returns aadl2::AnnexLibrary:
+	OysterLibrary;
+
+AnnexSubclause returns aadl2::AnnexSubclause:
+	OysterSubclause;
+
+OysterLibrary:
+	{OysterContractLibrary} contract=Oyster;
+
+OysterSubclause:
+	{OysterContractSubclause} contract=Oyster;
+
+Oyster returns Contract:
+	{Oyster} element=Statements;
+
+
+//This is necessary to avoid an "EOF" error for .oyster files.
+Statements: 
+	{Statements} (elements+=Statement)*
+;
+
+Statement: (Constraints) DELIMETER_OPT;
+
+Constraints: 'Constraints' '{' (constraints+=ConstraintBlock)+ '}';
+
+ConstraintBlock returns Constraint:
+	(FLC flcConstraint=FLCConstraint DELIMETER_OPT) |
+	(SC scConstraint=SCConstraint DELIMETER_OPT) |
+	(CLC clcConstraint=CLCConstraint DELIMETER_OPT) |
+	(PCC portConConstraint=PortConnectionConstraint DELIMETER_OPT) |
+	(VLC vlConstraint=VLConstraint DELIMETER_OPT) |
+	(UC ucConstraint=UCConstraint DELIMETER_OPT)
+	;
+
+FLCConstraint:
+	conName=ID DESCRIPTION? ':' '(' item=ID  '->' location=ID ')'
+;
+
+SCConstraint:
+	conName=ID DESCRIPTION? ':' '(' itemsType=ID items=IDList ')' '->' 'distinct' locationType=ID
+;
+
+CLCConstraint:
+	conName=ID DESCRIPTION? ':' '(' itemsType1=ID items1=IDList ')' 'and' '(' itemsType2=ID items2=IDList ')' '->' locationType=ID
+;
+
+PortConnectionConstraint:
+	conName=ID DESCRIPTION? ':' '(' src=ID'.'srcPort=ID '<->' dest=ID'.'destPort=ID ')' (bandwidth=INTEGER_LIT)?
+;
+
+VLConstraint:
+	conName=ID DESCRIPTION? ':' '(' src=ID '~>' dest=IDList ')' msgs=MSGS
+;
+
+UCConstraint:
+	conName=ID '[' resType=RESTYPE ']' DESCRIPTION? ':' '(' srcType=ID src=ID ':' srcProp=ID ')' compOp=COMPOP '(' sinkType=ID sink=ID ':' sinkProp=ID ')' otherSinks=OTHERSINKS
+;
+
+RESTYPE:
+	"CPU" | "RAM" | "ROM" | "MEM"
+;
+
+FLC:
+	"Fixed-Location-Constraint" | "FLC"
+;
+
+SC:
+	"Separation-Constraint" | "SC"
+;
+
+CLC:
+	"Co-Location-Constraint" | "CLC"
+;
+
+PCC:
+	"Port-Connection-Constraint" | "PCC"
+;
+
+VLC:
+	"Virtual-Link-Constraint" | "VLC"
+;
+
+UC:
+	"Utilization-Constraint" | "UC"
+;	
+		
+COMPOP:
+	'==' | '!=' | '<' | '>' | '<=' | '>='
+;
+
+AROP:
+	'+' | '-' | '*' | '/'
+;
+
+OTHERSINKS:
+	(arOps+=AROP '(' sinkTypes+=ID sinks+=ID ':' sinkProps+=ID ')')* 
+;
+
+DESCRIPTION: 
+	STRING
+;
+
+IDList:
+	(ID ',')* ID
+;
+
+MSGS:
+	(MSGSET '#')* MSGSET
+;
+
+MSGSET:
+	'{' (MSGPair ',')* MSGPair '}'
+;
+
+MSGPair:
+	INTEGER_LIT '@' INTEGER_LIT
+;	
+	
+DELIMETER_OPT:
+	';'?
+;

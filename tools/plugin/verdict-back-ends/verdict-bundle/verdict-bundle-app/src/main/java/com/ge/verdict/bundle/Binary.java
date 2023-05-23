@@ -1,0 +1,289 @@
+/*
+ * BSD 3-Clause License
+ * 
+ * Copyright (c) 2023, General Electric Company.
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ * 
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ * 
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from
+ *    this software without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+package com.ge.verdict.bundle;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import org.apache.tools.ant.taskdefs.Execute;
+import org.apache.tools.ant.taskdefs.ExecuteStreamHandler;
+import org.apache.tools.ant.taskdefs.PumpStreamHandler;
+
+/** Unpack and invoke binaries from the resources directory. Used for kind2, etc. */
+public class Binary {
+    /** Thrown upon errors during unpacking/invocation of a binary. */
+    public static class ExecutionException extends Exception {
+        private static final long serialVersionUID = 1L;
+
+        private Optional<Integer> code;
+
+        public ExecutionException(Exception child) {
+            super(child);
+            code = Optional.empty();
+        }
+
+        public ExecutionException(String msg) {
+            super(msg);
+            code = Optional.empty();
+        }
+
+        public ExecutionException(int code) {
+            super("Process failed with error code: " + code);
+            this.code = Optional.of(code);
+        }
+
+        /**
+         * If the invocation of the binary fails with an error code, then this will return that
+         * error code. Otherwise, empty.
+         *
+         * @return the error code
+         */
+        public Optional<Integer> getCode() {
+            return code;
+        }
+    }
+
+    private String name;
+
+    public Binary(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the directory where unpacked binaries are stored
+     */
+    private static File getBinaryDir() {
+        // /tmp/ on Unix
+        return new File(System.getProperty("java.io.tmpdir"));
+    }
+
+    /**
+     * Get the extension for the current operating system, used for unpacking the correct binary.
+     *
+     * <p>One of: "nix", "mac", "win"
+     *
+     * @return the extension corresponding to the current OS
+     */
+    private static String getOsExtension() {
+        String os = System.getProperty("os.name", "generic").toLowerCase(Locale.US);
+        System.out.flush();
+        if (os.indexOf("mac") != -1 || os.indexOf("darwin") != -1) {
+            // macOS
+            return "mac";
+        } else if (os.indexOf("win") != -1) {
+            // Windows
+            return "win";
+        } else if (os.indexOf("nux") != -1) {
+            // Linux
+            return "nix";
+        } else {
+            System.err.println("Unable to detect OS: " + os + " , defaulting to *nix");
+            return "nix";
+        }
+    }
+
+    /**
+     * @return the file that the binary is unpacked to
+     */
+    private File getFile() {
+        return new File(getBinaryDir(), name);
+    }
+
+    /**
+     * Extract a resource file.
+     *
+     * @param resPath path in resources
+     * @param dest destination file
+     * @throws ExecutionException
+     */
+    public static void copyResource(String resPath, File dest, boolean executable)
+            throws ExecutionException {
+        URL url = null;
+
+        /*
+         * Search for the file in the classpath.
+         *
+         * The capsule maven plugin makes classpaths really screwy, but this approach
+         * should be resilient to that screwiness.
+         */
+        try {
+            Enumeration<URL> urls = Binary.class.getClassLoader().getResources(resPath);
+
+            if (urls.hasMoreElements()) {
+                url = urls.nextElement();
+            } else {
+                throw new ExecutionException("Could not find " + resPath + " on classpath");
+            }
+        } catch (IOException e) {
+            throw new ExecutionException(e);
+        }
+
+        /*
+         * Copy the file to the destination.
+         */
+        try (BufferedInputStream in = new BufferedInputStream(url.openStream());
+                BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(dest))) {
+
+            byte[] buffer = new byte[1024];
+            int read;
+            while (in.available() > 0) {
+                read = in.read(buffer);
+                out.write(buffer, 0, read);
+            }
+
+            if (executable) {
+                dest.setExecutable(true);
+            }
+        } catch (IOException e) {
+            throw new ExecutionException(e);
+        }
+    }
+
+    /**
+     * Unpack the binary from resources to dest.
+     *
+     * @param dest
+     * @throws ExecutionException
+     */
+    private void unpack(File dest) throws ExecutionException {
+        String resName = getOsExtension() + "/" + name;
+        copyResource(resName, dest, true);
+    }
+
+    /**
+     * Invoke the binary at the specified path with the given arguments.
+     *
+     * <p>Waits for the spawned process to terminate.
+     *
+     * @param binPath the path to the binary to invoke
+     * @param wd working directory, may be null
+     * @param streamHandler stream redirect targets (Apache)
+     * @param args
+     * @throws ExecutionException
+     */
+    public static void invokeBin(
+            String binPath, String wd, ExecuteStreamHandler streamHandler, String... args)
+            throws ExecutionException {
+        List<String> argsList = new ArrayList<>();
+        argsList.add(binPath);
+        argsList.addAll(Arrays.asList(args));
+
+        String[] env = null;
+        String os = getOsExtension();
+        switch (os) {
+            case "nix":
+                break;
+            case "mac":
+                env = new String[] {"PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"};
+                break;
+            default:
+                throw new ExecutionException(
+                        "We don't have binaries for OS "
+                                + os
+                                + ", please run our Docker image instead");
+        }
+
+        Execute executor = new Execute(streamHandler);
+        if (wd != null) {
+            executor.setWorkingDirectory(new File(wd));
+        }
+        executor.setCommandline(argsList.toArray(new String[argsList.size()]));
+        if (env != null) {
+            executor.setEnvironment(env);
+        }
+
+        try {
+            int resultCode = executor.execute();
+
+            if (resultCode != 0) {
+                throw new ExecutionException(resultCode);
+            }
+        } catch (IOException e) {
+            throw new ExecutionException(e);
+        }
+    }
+
+    /**
+     * Invoke the binary at the specified path with the given arguments.
+     *
+     * <p>Waits for the spawned process to terminate.
+     *
+     * @param binPath the path to the binary to invoke
+     * @param args
+     * @throws ExecutionException
+     */
+    public static void invokeBin(String binPath, String... args) throws ExecutionException {
+        invokeBin(binPath, null, new PumpStreamHandler(), args);
+    }
+
+    /**
+     * Invoke the binary with the given arguments, first unpacking from resources if necessary.
+     *
+     * <p>Waits for the spawned process to terminate.
+     *
+     * @param wd working directory, may be null
+     * @param streamHandler stream redirect targets (Apache)
+     * @param args
+     * @throws ExecutionException
+     */
+    public void invoke(String wd, ExecuteStreamHandler streamHandler, String... args)
+            throws ExecutionException {
+        File file = getFile();
+
+        // We can just unpack every time
+        // This way we don't have to worry if we update the binary
+        unpack(file);
+
+        invokeBin(file.getAbsolutePath(), wd, streamHandler, args);
+    }
+
+    /**
+     * Invoke the binary with the given arguments, first unpacking from resources if necessary.
+     *
+     * <p>Waits for the spawned process to terminate.
+     *
+     * @param args
+     * @throws ExecutionException
+     */
+    public void invoke(String... args) throws ExecutionException {
+        invoke(null, new PumpStreamHandler(), args);
+    }
+}

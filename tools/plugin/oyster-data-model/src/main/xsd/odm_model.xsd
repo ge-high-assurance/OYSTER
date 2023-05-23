@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified"
+  elementFormDefault="unqualified"
+  targetNamespace="oyster::odm::odm_model"
+  xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" jaxb:version="3.0"
+  xmlns:odm_data="oyster::odm::odm_data"
+  xmlns:odm_model="oyster::odm::odm_model"
+  xmlns="http://www.w3.org/2001/XMLSchema">
+
+  <import schemaLocation="odm_data.xsd"
+    namespace="oyster::odm::odm_data"></import>
+
+  <element name="model" type="odm_model:Model"></element>
+
+  <complexType name="Model">
+    <sequence>
+      <element name="name" type="odm_data:Identifier"></element>
+      <element name="componentType" type="odm_model:ComponentType"
+        maxOccurs="unbounded" minOccurs="0">
+      </element>
+      <element name="componentImpl" type="odm_model:ComponentImpl"
+        maxOccurs="unbounded" minOccurs="0">
+      </element>
+    </sequence>
+  </complexType>
+
+  <complexType name="Constraint">
+    <sequence>
+      <element name="specification" type="odm_model:Specification"
+        minOccurs="0" maxOccurs="1">
+      </element>
+    </sequence>
+    <!-- <attribute name="package" type="odm_data:Identifier" use="required"></attribute> -->
+    <attribute name="id" type="ID" use="required"></attribute>
+    <attribute name="name" type="odm_data:Identifier"></attribute>
+    <attribute name="type" type="odm_model:ConstraintType"></attribute>
+  </complexType>
+
+  <complexType name="ArOpList">
+    <sequence>
+      <element name="sign" type="odm_model:ArithmaticOperator"
+        maxOccurs="unbounded" minOccurs="0">
+      </element>
+    </sequence>
+  </complexType>
+
+  <complexType name="Specification">
+    <sequence>
+      <element name="srcEntities" type="odm_model:EntityList"
+        maxOccurs="1" minOccurs="0">
+      </element>
+      <element name="destEntities" type="odm_model:EntityList"
+        minOccurs="0" maxOccurs="1">
+      </element>
+      <element name="srcEntitiesCompOp"
+        type="odm_model:ComparisonOperator" minOccurs="0" maxOccurs="1">
+      </element>
+      <element name="destEntitiesSigns" type="odm_model:ArOpList"
+        minOccurs="0" maxOccurs="1">
+      </element>
+    </sequence>
+    <attribute name="isDistinctSrc" type="boolean"></attribute>
+    <attribute name="isDistinctDest" type="boolean"></attribute>
+    <attribute name="characteristicProperty" type="string"></attribute>
+    <attribute name="componentProperty" type="string"></attribute>
+    <attribute name="fromComponent" type="string"></attribute>
+    <attribute name="toComponent" type="string"></attribute>
+    <attribute name="bandwidth" type="int"></attribute>
+    <attribute name="mtu" type="int"></attribute>
+    <attribute name="priority" type="string"></attribute>
+    <attribute name="linkspeed" type="int"></attribute>
+    <attribute name="connectionName" type="string"></attribute>
+    <attribute name="constraintName" type="string"></attribute>
+    <attribute name="msgSize" type="int"></attribute>
+    <attribute name="refreshPeriod" type="int"></attribute>
+  </complexType>
+
+  <complexType name="EntityList">
+    <sequence>
+      <element name="entities" type="odm_model:ComponentInstance"
+        maxOccurs="unbounded" minOccurs="0">
+      </element>
+    </sequence>
+    <attribute name="op" type="odm_model:Operator"></attribute>
+  </complexType>
+
+  <simpleType name="Operator">
+    <restriction base="string">
+      <enumeration value="sum"></enumeration>
+    </restriction>
+  </simpleType>
+
+
+  <simpleType name="ComparisonOperator">
+    <restriction base="string">
+      <enumeration value="lt"></enumeration>
+      <enumeration value="gt"></enumeration>
+      <enumeration value="lte"></enumeration>
+      <enumeration value="gte"></enumeration>
+      <enumeration value="eq"></enumeration>
+      <enumeration value="neq"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="ArithmaticOperator">
+    <restriction base="string">
+      <enumeration value="plus"></enumeration>
+      <enumeration value="minus"></enumeration>
+      <enumeration value="mul"></enumeration>
+      <enumeration value="div"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <complexType name="ComponentType">
+    <sequence>
+      <element name="port" type="odm_model:Port"
+        maxOccurs="unbounded" minOccurs="1">
+      </element>
+      <element name="attribute" type="odm_data:Attribute"
+        minOccurs="0" maxOccurs="unbounded">
+      </element>
+    </sequence>
+    <attribute name="package" type="odm_data:Identifier"
+      use="required"></attribute>
+    <attribute name="id" type="ID" use="required"></attribute>
+    <attribute name="name" type="odm_data:Identifier"></attribute>
+  </complexType>
+
+  <complexType name="ComponentImpl">
+    <sequence>
+      <element name="subcomponents"
+        type="odm_model:ComponentInstance" maxOccurs="unbounded"
+        minOccurs="0">
+      </element>
+      <element name="connections" type="odm_model:Connection"
+        maxOccurs="unbounded" minOccurs="0">
+      </element>
+      <element name="attribute" type="odm_data:Attribute"
+        minOccurs="0" maxOccurs="unbounded">
+      </element>
+      <element name="oysterConstraint" type="odm_model:Constraint"
+        maxOccurs="unbounded" minOccurs="0"></element>
+    </sequence>
+    <attribute name="package" type="odm_data:Identifier"
+      use="required"></attribute>
+    <attribute name="id" type="ID" use="required"></attribute>
+    <attribute name="name" type="odm_data:Identifier"></attribute>
+    <attribute name="type" type="IDREF" use="required">
+      <annotation>
+        <appinfo>
+          <jaxb:property>
+            <jaxb:baseType
+              name="oyster.odm.odm_model.ComponentType" />
+          </jaxb:property>
+        </appinfo>
+      </annotation>
+    </attribute>
+  </complexType>
+
+  <complexType name="Port">
+    <sequence>
+      <element name="name" type="odm_data:Identifier" maxOccurs="1"
+        minOccurs="1">
+      </element>
+      <element name="mode" type="odm_model:PortType" maxOccurs="1"
+        minOccurs="1">
+      </element>
+      <element name="type" type="odm_data:DataType" maxOccurs="1"
+        minOccurs="0">
+      </element>
+    </sequence>
+    <attribute name="id" type="ID" use="required"></attribute>
+    <attribute name="probe" type="boolean" use="required"></attribute>
+    <attribute name="event" type="boolean"></attribute>
+  </complexType>
+
+  <simpleType name="PortType">
+    <restriction base="string">
+      <enumeration value="in"></enumeration>
+      <enumeration value="out"></enumeration>
+      <enumeration value="inOut"></enumeration>
+      <enumeration value="requiresDataAccess"></enumeration>
+      <enumeration value="providesDataAccess"></enumeration>
+      <enumeration value="requiresBusAccess"></enumeration>
+      <enumeration value="providesBusAccess"></enumeration>
+      <enumeration value="data"></enumeration>
+      <enumeration value="bus"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="ConstraintType">
+    <restriction base="string">
+      <enumeration value="Fixed-Location-Constraint"></enumeration>
+      <enumeration value="Utilization-Constraint"></enumeration>
+      <enumeration value="Separation-Constraint"></enumeration>
+      <enumeration value="Co-Location-Constraint"></enumeration>
+      <enumeration value="Read-only-Constraint"></enumeration>
+      <enumeration value="Location-Constraint"></enumeration>
+      <enumeration value="Port-Connection-Constraint"></enumeration>
+      <enumeration value="Virtual-Link-Constraint"></enumeration>
+    </restriction>
+  </simpleType>
+
+
+  <simpleType name="ConnectionKind">
+    <restriction base="string">
+      <enumeration value="port"></enumeration>
+      <enumeration value="busAccess"></enumeration>
+      <enumeration value="dataAccess"></enumeration>
+      <enumeration value="parameter"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="Direction">
+    <restriction base="string">
+      <enumeration value="unidirectional"></enumeration>
+      <enumeration value="bidirectional"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <complexType name="ComponentInstance">
+    <choice>
+      <element name="type" type="IDREF">
+        <annotation>
+          <appinfo>
+            <jaxb:property>
+              <jaxb:baseType
+                name="oyster.odm.odm_model.ComponentType" />
+            </jaxb:property>
+          </appinfo>
+        </annotation>
+      </element>
+      <element name="implementation" type="IDREF">
+        <annotation>
+          <appinfo>
+            <jaxb:property>
+              <jaxb:baseType
+                name="oyster.odm.odm_model.ComponentImpl" />
+            </jaxb:property>
+          </appinfo>
+        </annotation>
+      </element>
+      <element name="attribute" type="odm_data:Attribute"
+        minOccurs="0" maxOccurs="unbounded">
+      </element>
+    </choice>
+    <attribute name="id" type="ID"></attribute>
+    <attribute name="name" type="odm_data:Identifier"></attribute>
+  </complexType>
+
+  <complexType name="Connection">
+    <sequence>
+      <element name="connectionKind"
+        type="odm_model:ConnectionKind" minOccurs="0" maxOccurs="1">
+      </element>
+      <element name="direction" type="odm_model:Direction"
+        minOccurs="0" maxOccurs="1">
+      </element>
+      <element name="source" type="odm_model:ConnectionEnd"></element>
+      <element name="destination" type="odm_model:ConnectionEnd"></element>
+      <element name="attribute" type="odm_data:Attribute"
+        minOccurs="0" maxOccurs="unbounded">
+      </element>
+    </sequence>
+    <attribute name="name" type="odm_data:Identifier"
+      use="required">
+    </attribute>
+    <attribute name="actual_connection_binding" type="string"
+      use="optional">
+    </attribute>
+    <attribute name="qualifiedName" type="string" use="optional"></attribute>
+    <attribute name="bandwidth" type="int" use="optional"></attribute>
+  </complexType>
+
+
+
+  <complexType name="ConnectionEnd">
+    <choice>
+      <element name="componentPort" type="IDREF">
+        <annotation>
+          <appinfo>
+            <jaxb:property>
+              <jaxb:baseType name="oyster.odm.odm_model.Port" />
+            </jaxb:property>
+          </appinfo>
+        </annotation>
+      </element>
+      <element name="subcomponentPort"
+        type="odm_model:CompInstancePort"></element>
+    </choice>
+  </complexType>
+
+  <complexType name="CompInstancePort">
+    <sequence>
+      <element name="subcomponent" type="IDREF" maxOccurs="1"
+        minOccurs="1">
+        <annotation>
+          <appinfo>
+            <jaxb:property>
+              <jaxb:baseType
+                name="oyster.odm.odm_model.ComponentInstance" />
+            </jaxb:property>
+          </appinfo>
+        </annotation>
+      </element>
+      <element name="port" type="IDREF" maxOccurs="1" minOccurs="1">
+        <annotation>
+          <appinfo>
+            <jaxb:property>
+              <jaxb:baseType name="oyster.odm.odm_model.Port" />
+            </jaxb:property>
+          </appinfo>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+
+  <complexType name="CIAPort">
+    <sequence>
+      <element name="name" type="string" minOccurs="1"
+        maxOccurs="1"></element>
+      <element name="cia" type="odm_model:CIA" minOccurs="1"
+        maxOccurs="1"></element>
+    </sequence>
+  </complexType>
+
+  <simpleType name="CIA">
+    <restriction base="string">
+      <enumeration value="Confidentiality"></enumeration>
+      <enumeration value="Integrity"></enumeration>
+      <enumeration value="Availability"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="CyberExprKind">
+    <restriction base="string">
+      <enumeration value="Port"></enumeration>
+      <enumeration value="And"></enumeration>
+      <enumeration value="Or"></enumeration>
+      <enumeration value="Not"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <complexType name="CyberExpr">
+    <choice>
+      <element name="kind" type="odm_model:CyberExprKind"></element>
+      <element name="port" type="odm_model:CIAPort"></element>
+      <element name="and" type="odm_model:CyberExprList"></element>
+      <element name="or" type="odm_model:CyberExprList"></element>
+      <element name="not" type="odm_model:CyberExpr"></element>
+    </choice>
+  </complexType>
+
+  <complexType name="CyberExprList">
+    <sequence>
+      <element name="expr" type="odm_model:CyberExpr" minOccurs="1"
+        maxOccurs="unbounded"></element>
+    </sequence>
+  </complexType>
+
+  <complexType name="CyberReq">
+    <sequence>
+      <element name="id" type="string" minOccurs="1" maxOccurs="1"></element>
+      <element name="cia" type="odm_model:CIA" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="severity" type="odm_model:Severity"
+        minOccurs="1" maxOccurs="1"></element>
+      <element name="condition" type="odm_model:CyberExpr"
+        minOccurs="1" maxOccurs="1"></element>
+      <element name="comment" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="description" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="justification" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="assumption" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="strategy" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="phases" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="extern" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="compType" type="string" minOccurs="1"
+        maxOccurs="1"></element>
+    </sequence>
+    <attribute name="name" type="odm_data:Identifier"></attribute>
+  </complexType>
+
+  <simpleType name="Severity">
+    <restriction base="string">
+      <enumeration value="None"></enumeration>
+      <enumeration value="Minor"></enumeration>
+      <enumeration value="Major"></enumeration>
+      <enumeration value="Hazardous"></enumeration>
+      <enumeration value="Catastrophic"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <complexType name="CyberRel">
+    <sequence>
+      <element name="id" type="string" minOccurs="1" maxOccurs="1"></element>
+      <element name="output" type="odm_model:CIAPort" minOccurs="1"
+        maxOccurs="1"></element>
+      <element name="inputs" type="odm_model:CyberExpr"
+        minOccurs="0" maxOccurs="1"></element>
+      <element name="comment" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="description" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="phases" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="extern" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+    </sequence>
+    <attribute name="name" type="odm_data:Identifier"></attribute>
+  </complexType>
+
+
+  <!-- Safety related stuff -->
+
+
+  <!-- Safety relation expression -->
+  <complexType name="IAPort">
+    <sequence>
+      <element name="name" type="string" minOccurs="1"
+        maxOccurs="1"></element>
+      <element name="ia" type="odm_model:IA" minOccurs="1"
+        maxOccurs="1"></element>
+    </sequence>
+  </complexType>
+
+  <complexType name="EventHappens">
+    <sequence>
+      <element name="happens"></element>
+      <element name="eventName" type="string" minOccurs="1"
+        maxOccurs="1"></element>
+    </sequence>
+  </complexType>
+
+  <simpleType name="IA">
+    <restriction base="string">
+      <enumeration value="Integrity"></enumeration>
+      <enumeration value="Availability"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <complexType name="SafetyRelExpr">
+    <choice>
+      <element name="kind" type="odm_model:SafetyRelExprKind"></element>
+      <element name="port" type="odm_model:IAPort"></element>
+      <element name="fault" type="odm_model:EventHappens"></element>
+      <element name="and" type="odm_model:SafetyRelExprList"></element>
+      <element name="or" type="odm_model:SafetyRelExprList"></element>
+      <element name="not" type="odm_model:SafetyRelExpr"></element>
+    </choice>
+  </complexType>
+
+  <complexType name="SafetyRelExprList">
+    <sequence>
+      <element name="expr" type="odm_model:SafetyRelExpr"
+        minOccurs="1" maxOccurs="unbounded"></element>
+    </sequence>
+  </complexType>
+
+  <simpleType name="SafetyRelExprKind">
+    <restriction base="string">
+      <enumeration value="Port"></enumeration>
+      <enumeration value="Fault"></enumeration>
+      <enumeration value="And"></enumeration>
+      <enumeration value="Or"></enumeration>
+      <enumeration value="Not"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <!-- Safety requirements expression -->
+
+  <simpleType name="SafetyReqExprKind">
+    <restriction base="string">
+      <enumeration value="Port"></enumeration>
+      <enumeration value="And"></enumeration>
+      <enumeration value="Or"></enumeration>
+      <enumeration value="Not"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <complexType name="SafetyReqExpr">
+    <choice>
+      <element name="kind" type="odm_model:SafetyReqExprKind"></element>
+      <element name="port" type="odm_model:IAPort"></element>
+      <element name="and" type="odm_model:SafetyReqExprList"></element>
+      <element name="or" type="odm_model:SafetyReqExprList"></element>
+      <element name="not" type="odm_model:SafetyReqExpr"></element>
+    </choice>
+  </complexType>
+
+  <complexType name="SafetyReqExprList">
+    <sequence>
+      <element name="expr" type="odm_model:SafetyReqExpr"
+        minOccurs="1" maxOccurs="unbounded"></element>
+    </sequence>
+  </complexType>
+
+
+  <complexType name="SafetyRel">
+    <sequence>
+      <element name="id" type="string" minOccurs="1" maxOccurs="1"></element>
+      <element name="output" type="odm_model:IAPort" minOccurs="1"
+        maxOccurs="1"></element>
+      <element name="faultSrc" type="odm_model:SafetyRelExpr"
+        minOccurs="0" maxOccurs="1"></element>
+      <element name="comment" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="description" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="phases" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="extern" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+    </sequence>
+    <attribute name="name" type="odm_data:Identifier"></attribute>
+  </complexType>
+
+  <complexType name="SafetyReq">
+    <sequence>
+      <element name="id" type="string" minOccurs="1" maxOccurs="1"></element>
+      <element name="condition" type="odm_model:SafetyReqExpr"
+        minOccurs="1" maxOccurs="1"></element>
+      <element name="targetProbability" type="string" minOccurs="1"
+        maxOccurs="1"></element>
+      <element name="comment" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="description" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="justification" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="assumption" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="strategy" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="phases" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="extern" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="compType" type="string" minOccurs="1"
+        maxOccurs="1"></element>
+    </sequence>
+    <attribute name="name" type="odm_data:Identifier"></attribute>
+  </complexType>
+
+  <complexType name="Event">
+    <sequence>
+      <element name="id" type="string" minOccurs="1" maxOccurs="1"></element>
+      <element name="probability" type="odm_model:Prop"
+        minOccurs="1" maxOccurs="1"></element>
+      <element name="comment" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="description" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+    </sequence>
+    <attribute name="name" type="odm_data:Identifier"></attribute>
+  </complexType>
+
+  <simpleType name="Prop">
+    <restriction base="string">
+      <pattern value="[0-9]+[.]?[0-9]+e[-][0-9]+"></pattern>
+    </restriction>
+  </simpleType>
+
+  <complexType name="Mission">
+    <sequence>
+      <element name="id" type="string" minOccurs="1" maxOccurs="1"></element>
+      <element name="cyberReqs" type="string" minOccurs="0"
+        maxOccurs="unbounded"></element>
+      <element name="description" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="justification" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="assumption" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="strategy" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+      <element name="comment" type="string" minOccurs="0"
+        maxOccurs="1"></element>
+    </sequence>
+    <attribute name="name" type="odm_data:Identifier"></attribute>
+  </complexType>
+
+</schema>

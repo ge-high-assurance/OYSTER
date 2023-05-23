@@ -1,0 +1,1556 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:model xmlns:ns2="oyster::odm::odm_data" xmlns:ns3="oyster::odm::odm_model">
+    <name>FuelControlSystem_Arch PI</name>
+    <componentType package="IMASystem" id="IMASystem::CCR" name="CCR">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Common_Compute_Resource</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="IMASystem" id="IMASystem::ACS" name="ACS">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Avionics_Cabinet_Switch</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="IMASystem" id="IMASystem::GPM" name="GPM">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">General_Processing_Module</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="IMASystem" id="IMASystem::GPMApp" name="GPMApp">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="IMASystem" id="IMASystem::Actuator" name="Actuator">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Actuator</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="IMASystem" id="IMASystem::Sensor" name="Sensor">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Sensor</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="IMASystem" id="IMASystem::SensorApp" name="SensorApp">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Sensor</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="IMASystem" id="IMASystem::ActuatorApp" name="ActuatorApp">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Hosted_Function</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="IMASystem" id="IMASystem::IMA" name="IMA">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Integrated_Modular_Avionics</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>totalBandwidth</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">6000000000</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>maxBandwidthPercentage</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">70</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="IMASystem" id="IMASystem::RDC" name="RDC">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Remote_Data_Concentrator</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="IMASystem" id="IMASystem::ProcessorGPM" name="ProcessorGPM">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">CPU</ns2:value>
+        </attribute>
+    </componentType>
+    <componentImpl package="IMASystem" id="IMASystem::IMA.Impl" name="IMA.Impl" type="IMASystem::IMA">
+        <subcomponents id="IMASystem::IMA.Impl.CCR_L1" name="CCR_L1">
+            <type>IMASystem::CCR</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.CCR_L2" name="CCR_L2">
+            <type>IMASystem::CCR</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.CCR_L3" name="CCR_L3">
+            <type>IMASystem::CCR</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.CCR_R1" name="CCR_R1">
+            <type>IMASystem::CCR</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.CCR_R2" name="CCR_R2">
+            <type>IMASystem::CCR</type>
+            <attribute>
+                <ns2:name>cpuProvided</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">500</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.CCR_R3" name="CCR_R3">
+            <type>IMASystem::CCR</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.GPM_L1" name="GPM_L1">
+            <type>IMASystem::GPM</type>
+            <attribute>
+                <ns2:name>ramUsed</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.GPM_L2" name="GPM_L2">
+            <type>IMASystem::GPM</type>
+            <attribute>
+                <ns2:name>ramUsed</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.GPM_L3" name="GPM_L3">
+            <type>IMASystem::GPM</type>
+            <attribute>
+                <ns2:name>ramUsed</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.GPM_R1" name="GPM_R1">
+            <type>IMASystem::GPM</type>
+            <attribute>
+                <ns2:name>ramUsed</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.GPM_R2" name="GPM_R2">
+            <type>IMASystem::GPM</type>
+            <attribute>
+                <ns2:name>ramUsed</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.GPM_R3" name="GPM_R3">
+            <type>IMASystem::GPM</type>
+            <attribute>
+                <ns2:name>ramUsed</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.APP_FUEL_SYSTEM_CONTROL" name="APP_FUEL_SYSTEM_CONTROL">
+            <type>IMASystem::GPMApp</type>
+            <attribute>
+                <ns2:name>rate</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">10</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>duration</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">100</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>priority</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>cpuUsed</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">100</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.APP_FIDO" name="APP_FIDO">
+            <type>IMASystem::GPMApp</type>
+            <attribute>
+                <ns2:name>rate</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">10</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>duration</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">1</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>priority</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>cpuUsed</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">100</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.APP_FILE_SYSTEM" name="APP_FILE_SYSTEM">
+            <type>IMASystem::GPMApp</type>
+            <attribute>
+                <ns2:name>rate</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">10</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>duration</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">2</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>priority</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.APP_SUPPORT_MAIN" name="APP_SUPPORT_MAIN">
+            <type>IMASystem::GPMApp</type>
+            <attribute>
+                <ns2:name>rate</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">10</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>duration</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">2</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>priority</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.APP_CDN_TIME_MANAGER" name="APP_CDN_TIME_MANAGER">
+            <type>IMASystem::GPMApp</type>
+            <attribute>
+                <ns2:name>rate</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">5</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>duration</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">2</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>priority</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.APP_HEALTH_MANAGER" name="APP_HEALTH_MANAGER">
+            <type>IMASystem::GPMApp</type>
+            <attribute>
+                <ns2:name>rate</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">5</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>duration</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">6</ns2:value>
+            </attribute>
+            <attribute>
+                <ns2:name>priority</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.P1" name="P1">
+            <type>IMASystem::ProcessorGPM</type>
+            <attribute>
+                <ns2:name>slots_per_cycle</ns2:name>
+                <ns2:type>Int</ns2:type>
+                <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">500</ns2:value>
+            </attribute>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.ACS_L1" name="ACS_L1">
+            <type>IMASystem::ACS</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.ACS_L2" name="ACS_L2">
+            <type>IMASystem::ACS</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.ACS_L3" name="ACS_L3">
+            <type>IMASystem::ACS</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.ACS_R1" name="ACS_R1">
+            <type>IMASystem::ACS</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.ACS_R2" name="ACS_R2">
+            <type>IMASystem::ACS</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.ACS_R3" name="ACS_R3">
+            <type>IMASystem::ACS</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.RDC_L1" name="RDC_L1">
+            <type>IMASystem::RDC</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.RDC_R1" name="RDC_R1">
+            <type>IMASystem::RDC</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.RDC_L2" name="RDC_L2">
+            <type>IMASystem::RDC</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.RDC_R2" name="RDC_R2">
+            <type>IMASystem::RDC</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.L_Eng_SO_Valve" name="L_Eng_SO_Valve">
+            <type>IMASystem::Actuator</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.APU_SO_Valve" name="APU_SO_Valve">
+            <type>IMASystem::Actuator</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.L_XFER_Pump" name="L_XFER_Pump">
+            <type>IMASystem::Actuator</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.LR_XFER_Valve" name="LR_XFER_Valve">
+            <type>IMASystem::Actuator</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.R_Eng_SO_Valve" name="R_Eng_SO_Valve">
+            <type>IMASystem::Actuator</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.CTR_Fuel_Temp" name="CTR_Fuel_Temp">
+            <type>IMASystem::Sensor</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.R_XFER_Pump" name="R_XFER_Pump">
+            <type>IMASystem::Actuator</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.CTR_Fuel_Qty" name="CTR_Fuel_Qty">
+            <type>IMASystem::Sensor</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.LW_Fuel_Qty" name="LW_Fuel_Qty">
+            <type>IMASystem::Sensor</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.LW_Fuel_Temp" name="LW_Fuel_Temp">
+            <type>IMASystem::Sensor</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.L_Eng_Press" name="L_Eng_Press">
+            <type>IMASystem::Sensor</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.L_XFER_Press" name="L_XFER_Press">
+            <type>IMASystem::Sensor</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.Fuel_CF_Valve" name="Fuel_CF_Valve">
+            <type>IMASystem::Actuator</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.LW_Pmp_Mn" name="LW_Pmp_Mn">
+            <type>IMASystem::Actuator</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.LW_Pmp_STBY" name="LW_Pmp_STBY">
+            <type>IMASystem::Actuator</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.RW_Pmp_Mn" name="RW_Pmp_Mn">
+            <type>IMASystem::Actuator</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.RW_Pmp_STBY" name="RW_Pmp_STBY">
+            <type>IMASystem::Actuator</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.RW_Fuel_Qty" name="RW_Fuel_Qty">
+            <type>IMASystem::Sensor</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.RW_Fuel_Temp" name="RW_Fuel_Temp">
+            <type>IMASystem::Sensor</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.R_Eng_Press" name="R_Eng_Press">
+            <type>IMASystem::Sensor</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.R_XFER_Press" name="R_XFER_Press">
+            <type>IMASystem::Sensor</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.APP_RW_Pmp_Mn" name="APP_RW_Pmp_Mn">
+            <type>IMASystem::ActuatorApp</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.APP_R_Eng_SO_Valve" name="APP_R_Eng_SO_Valve">
+            <type>IMASystem::ActuatorApp</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.APP_L_Eng_SO_Valve" name="APP_L_Eng_SO_Valve">
+            <type>IMASystem::ActuatorApp</type>
+        </subcomponents>
+        <subcomponents id="IMASystem::IMA.Impl.APP_LW_Fuel_Qty" name="APP_LW_Fuel_Qty">
+            <type>IMASystem::SensorApp</type>
+        </subcomponents>
+        <connections name="c1" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>GPM_L1.portA</componentPort>
+            </source>
+            <destination>
+                <componentPort>ACS_L1.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c2" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>GPM_L2.portA</componentPort>
+            </source>
+            <destination>
+                <componentPort>ACS_L2.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c3" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>GPM_L3.portA</componentPort>
+            </source>
+            <destination>
+                <componentPort>ACS_L3.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c4" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_L1.port24</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_L1.portA</componentPort>
+            </destination>
+        </connections>
+        <connections name="c5" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>CCR_L1.portA</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_L2.portA</componentPort>
+            </destination>
+        </connections>
+        <connections name="c6" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_L2.port24</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_L2.portA</componentPort>
+            </destination>
+        </connections>
+        <connections name="c7" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>GPM_R1.portA</componentPort>
+            </source>
+            <destination>
+                <componentPort>ACS_R1.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c8" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>GPM_R2.portA</componentPort>
+            </source>
+            <destination>
+                <componentPort>ACS_R2.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c9" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>GPM_R3.portA</componentPort>
+            </source>
+            <destination>
+                <componentPort>ACS_R3.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c10" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_R1.port24</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R1.portA</componentPort>
+            </destination>
+        </connections>
+        <connections name="c11" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>CCR_R1.portA</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R2.portA</componentPort>
+            </destination>
+        </connections>
+        <connections name="c12" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>CCR_R2.portA</componentPort>
+            </source>
+            <destination>
+                <componentPort>ACS_R2.port24</componentPort>
+            </destination>
+        </connections>
+        <connections name="c13" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>CCR_L1.portB</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R1.portB</componentPort>
+            </destination>
+        </connections>
+        <connections name="c14" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>CCR_L2.portB</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R2.portB</componentPort>
+            </destination>
+        </connections>
+        <connections name="c15" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L1.port7</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_L2.portC</componentPort>
+            </destination>
+        </connections>
+        <connections name="c16" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_L2.port9</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_L2.portC</componentPort>
+            </destination>
+        </connections>
+        <connections name="c17" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_R1.port7</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R2.portC</componentPort>
+            </destination>
+        </connections>
+        <connections name="c18" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_R2.port9</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R2.portC</componentPort>
+            </destination>
+        </connections>
+        <connections name="c19" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L1.port1</componentPort>
+            </source>
+            <destination>
+                <componentPort>L_Eng_SO_Valve.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c20" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L1.port2</componentPort>
+            </source>
+            <destination>
+                <componentPort>APU_SO_Valve.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c21" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L1.port3</componentPort>
+            </source>
+            <destination>
+                <componentPort>L_XFER_Pump.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c22" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L1.port4</componentPort>
+            </source>
+            <destination>
+                <componentPort>LR_XFER_Valve.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c23" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_R1.port1</componentPort>
+            </source>
+            <destination>
+                <componentPort>R_Eng_SO_Valve.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c24" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_R1.port2</componentPort>
+            </source>
+            <destination>
+                <componentPort>CTR_Fuel_Temp.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c25" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_R1.port3</componentPort>
+            </source>
+            <destination>
+                <componentPort>R_XFER_Pump.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c26" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_R1.port4</componentPort>
+            </source>
+            <destination>
+                <componentPort>CTR_Fuel_Qty.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c27" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_L2.port10</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_L2.port10</componentPort>
+            </destination>
+        </connections>
+        <connections name="c28" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>CCR_L2.port10</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_L3.port10</componentPort>
+            </destination>
+        </connections>
+        <connections name="c29" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>CCR_L3.port10</componentPort>
+            </source>
+            <destination>
+                <componentPort>ACS_L3.port10</componentPort>
+            </destination>
+        </connections>
+        <connections name="c30" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_R2.port22</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R2.port22</componentPort>
+            </destination>
+        </connections>
+        <connections name="c31" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>CCR_R2.port22</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R3.port22</componentPort>
+            </destination>
+        </connections>
+        <connections name="c32" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>CCR_R3.port22</componentPort>
+            </source>
+            <destination>
+                <componentPort>ACS_R3.port22</componentPort>
+            </destination>
+        </connections>
+        <connections name="c33" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_L3.port24</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_L3.portA</componentPort>
+            </destination>
+        </connections>
+        <connections name="c34" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>CCR_L3.portA</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R3.portA</componentPort>
+            </destination>
+        </connections>
+        <connections name="c35" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>CCR_R3.portA</componentPort>
+            </source>
+            <destination>
+                <componentPort>ACS_R3.port24</componentPort>
+            </destination>
+        </connections>
+        <connections name="c36" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L2.port8</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_L3.portD</componentPort>
+            </destination>
+        </connections>
+        <connections name="c37" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_L3.port9</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_L3.portD</componentPort>
+            </destination>
+        </connections>
+        <connections name="c38" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_R2.port7</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R3.portD</componentPort>
+            </destination>
+        </connections>
+        <connections name="c39" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_R3.port9</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R3.portD</componentPort>
+            </destination>
+        </connections>
+        <connections name="c40" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L2.port1</componentPort>
+            </source>
+            <destination>
+                <componentPort>LW_Fuel_Qty.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c41" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L2.port2</componentPort>
+            </source>
+            <destination>
+                <componentPort>LW_Fuel_Temp.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c42" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L2.port3</componentPort>
+            </source>
+            <destination>
+                <componentPort>L_Eng_Press.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c43" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L2.port4</componentPort>
+            </source>
+            <destination>
+                <componentPort>L_XFER_Press.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c44" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L2.port5</componentPort>
+            </source>
+            <destination>
+                <componentPort>Fuel_CF_Valve.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c45" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L2.port6</componentPort>
+            </source>
+            <destination>
+                <componentPort>LW_Pmp_Mn.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c46" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_L2.port7</componentPort>
+            </source>
+            <destination>
+                <componentPort>LW_Pmp_STBY.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c47" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_R2.port1</componentPort>
+            </source>
+            <destination>
+                <componentPort>RW_Pmp_Mn.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c48" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_R2.port2</componentPort>
+            </source>
+            <destination>
+                <componentPort>RW_Pmp_STBY.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c49" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_R2.port3</componentPort>
+            </source>
+            <destination>
+                <componentPort>RW_Fuel_Qty.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c50" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_R2.port4</componentPort>
+            </source>
+            <destination>
+                <componentPort>RW_Fuel_Temp.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c51" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_R2.port5</componentPort>
+            </source>
+            <destination>
+                <componentPort>R_Eng_Press.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c52" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>RDC_R2.port6</componentPort>
+            </source>
+            <destination>
+                <componentPort>R_XFER_Press.port1</componentPort>
+            </destination>
+        </connections>
+        <connections name="c53" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_R1.port22</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R1.portB</componentPort>
+            </destination>
+        </connections>
+        <connections name="c54" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_L1.port22</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_L1.portB</componentPort>
+            </destination>
+        </connections>
+        <connections name="c55" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_L2.port22</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_L2.portB</componentPort>
+            </destination>
+        </connections>
+        <connections name="c56" bandwidth="1000000000">
+            <connectionKind>port</connectionKind>
+            <direction>bidirectional</direction>
+            <source>
+                <componentPort>ACS_R2.port24</componentPort>
+            </source>
+            <destination>
+                <componentPort>CCR_R2.portB</componentPort>
+            </destination>
+        </connections>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC1">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_L1" name="GPM_L1">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_L1" name="CCR_L1">
+                        <type>IMASystem::CCR</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC2">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_L2" name="GPM_L2">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_L2" name="CCR_L2">
+                        <type>IMASystem::CCR</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC3">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.ACS_L1" name="ACS_L1">
+                        <type>IMASystem::ACS</type>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_L1" name="CCR_L1">
+                        <type>IMASystem::CCR</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC4">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.ACS_L2" name="ACS_L2">
+                        <type>IMASystem::ACS</type>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_L2" name="CCR_L2">
+                        <type>IMASystem::CCR</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC5">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_R1" name="GPM_R1">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_R1" name="CCR_R1">
+                        <type>IMASystem::CCR</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC6">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_R2" name="GPM_R2">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_R2" name="CCR_R2">
+                        <type>IMASystem::CCR</type>
+                        <attribute>
+                            <ns2:name>cpuProvided</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">500</ns2:value>
+                        </attribute>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC7">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.ACS_R1" name="ACS_R1">
+                        <type>IMASystem::ACS</type>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_R1" name="CCR_R1">
+                        <type>IMASystem::CCR</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC8">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.ACS_R2" name="ACS_R2">
+                        <type>IMASystem::ACS</type>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_R2" name="CCR_R2">
+                        <type>IMASystem::CCR</type>
+                        <attribute>
+                            <ns2:name>cpuProvided</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">500</ns2:value>
+                        </attribute>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC9">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_L3" name="GPM_L3">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_L3" name="CCR_L3">
+                        <type>IMASystem::CCR</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC10">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_R3" name="GPM_R3">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_R3" name="CCR_R3">
+                        <type>IMASystem::CCR</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC11">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.ACS_L3" name="ACS_L3">
+                        <type>IMASystem::ACS</type>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_L3" name="CCR_L3">
+                        <type>IMASystem::CCR</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC12">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.ACS_R3" name="ACS_R3">
+                        <type>IMASystem::ACS</type>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_R3" name="CCR_R3">
+                        <type>IMASystem::CCR</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC71">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.APP_FUEL_SYSTEM_CONTROL" name="APP_FUEL_SYSTEM_CONTROL">
+                        <type>IMASystem::GPMApp</type>
+                        <attribute>
+                            <ns2:name>rate</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">10</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>duration</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">100</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>priority</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>cpuUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">100</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_R2" name="GPM_R2">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC72">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.APP_FIDO" name="APP_FIDO">
+                        <type>IMASystem::GPMApp</type>
+                        <attribute>
+                            <ns2:name>rate</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">10</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>duration</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">1</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>priority</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>cpuUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">100</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_R2" name="GPM_R2">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC73">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.APP_FILE_SYSTEM" name="APP_FILE_SYSTEM">
+                        <type>IMASystem::GPMApp</type>
+                        <attribute>
+                            <ns2:name>rate</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">10</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>duration</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">2</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>priority</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_R2" name="GPM_R2">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC74">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.APP_SUPPORT_MAIN" name="APP_SUPPORT_MAIN">
+                        <type>IMASystem::GPMApp</type>
+                        <attribute>
+                            <ns2:name>rate</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">10</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>duration</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">2</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>priority</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_R2" name="GPM_R2">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC75">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.APP_CDN_TIME_MANAGER" name="APP_CDN_TIME_MANAGER">
+                        <type>IMASystem::GPMApp</type>
+                        <attribute>
+                            <ns2:name>rate</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">5</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>duration</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">2</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>priority</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_R2" name="GPM_R2">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC76">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.APP_HEALTH_MANAGER" name="APP_HEALTH_MANAGER">
+                        <type>IMASystem::GPMApp</type>
+                        <attribute>
+                            <ns2:name>rate</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">5</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>duration</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">6</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>priority</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_R2" name="GPM_R2">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC105">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.P1" name="P1">
+                        <type>IMASystem::ProcessorGPM</type>
+                        <attribute>
+                            <ns2:name>slots_per_cycle</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">500</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.GPM_R2" name="GPM_R2">
+                        <type>IMASystem::GPM</type>
+                        <attribute>
+                            <ns2:name>ramUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">128</ns2:value>
+                        </attribute>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC14">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.APP_RW_Pmp_Mn" name="APP_RW_Pmp_Mn">
+                        <type>IMASystem::ActuatorApp</type>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.RW_Pmp_Mn" name="RW_Pmp_Mn">
+                        <type>IMASystem::Actuator</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC15">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.APP_R_Eng_SO_Valve" name="APP_R_Eng_SO_Valve">
+                        <type>IMASystem::ActuatorApp</type>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.R_Eng_SO_Valve" name="R_Eng_SO_Valve">
+                        <type>IMASystem::Actuator</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC16">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.APP_L_Eng_SO_Valve" name="APP_L_Eng_SO_Valve">
+                        <type>IMASystem::ActuatorApp</type>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.L_Eng_SO_Valve" name="L_Eng_SO_Valve">
+                        <type>IMASystem::Actuator</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Fixed-Location-Constraint">
+            <specification constraintName="FLC17">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.APP_LW_Fuel_Qty" name="APP_LW_Fuel_Qty">
+                        <type>IMASystem::SensorApp</type>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.LW_Fuel_Qty" name="LW_Fuel_Qty">
+                        <type>IMASystem::Sensor</type>
+                    </entities>
+                </destEntities>
+            </specification>
+        </oysterConstraint>
+        <oysterConstraint type="Virtual-Link-Constraint">
+            <specification fromComponent="APP_FUEL_SYSTEM_CONTROL" toComponent="APP_L_Eng_SO_Valve" constraintName="VL01025.flow0@m0" msgSize="12" refreshPeriod="1000"/>
+        </oysterConstraint>
+        <oysterConstraint type="Virtual-Link-Constraint">
+            <specification fromComponent="APP_FUEL_SYSTEM_CONTROL" toComponent="APP_L_Eng_SO_Valve" constraintName="VL01025.flow0@m1" msgSize="12" refreshPeriod="1000"/>
+        </oysterConstraint>
+        <oysterConstraint type="Virtual-Link-Constraint">
+            <specification fromComponent="APP_FUEL_SYSTEM_CONTROL" toComponent="APP_L_Eng_SO_Valve" constraintName="VL01025.flow0@m2" msgSize="12" refreshPeriod="1000"/>
+        </oysterConstraint>
+        <oysterConstraint type="Virtual-Link-Constraint">
+            <specification fromComponent="APP_FUEL_SYSTEM_CONTROL" toComponent="APP_L_Eng_SO_Valve" constraintName="VL01025.flow0@m3" msgSize="12" refreshPeriod="1000"/>
+        </oysterConstraint>
+        <oysterConstraint type="Virtual-Link-Constraint">
+            <specification fromComponent="APP_FUEL_SYSTEM_CONTROL" toComponent="APP_R_Eng_SO_Valve" constraintName="VL01025.flow1@m0" msgSize="12" refreshPeriod="1000"/>
+        </oysterConstraint>
+        <oysterConstraint type="Virtual-Link-Constraint">
+            <specification fromComponent="APP_FUEL_SYSTEM_CONTROL" toComponent="APP_R_Eng_SO_Valve" constraintName="VL01025.flow1@m1" msgSize="12" refreshPeriod="1000"/>
+        </oysterConstraint>
+        <oysterConstraint type="Virtual-Link-Constraint">
+            <specification fromComponent="APP_FUEL_SYSTEM_CONTROL" toComponent="APP_R_Eng_SO_Valve" constraintName="VL01025.flow1@m2" msgSize="12" refreshPeriod="1000"/>
+        </oysterConstraint>
+        <oysterConstraint type="Virtual-Link-Constraint">
+            <specification fromComponent="APP_FUEL_SYSTEM_CONTROL" toComponent="APP_LW_Fuel_Qty" constraintName="VL01025.flow2@m0" msgSize="12" refreshPeriod="1000"/>
+        </oysterConstraint>
+        <oysterConstraint type="Virtual-Link-Constraint">
+            <specification fromComponent="APP_FUEL_SYSTEM_CONTROL" toComponent="APP_LW_Fuel_Qty" constraintName="VL01025.flow2@m1" msgSize="12" refreshPeriod="1000"/>
+        </oysterConstraint>
+        <oysterConstraint type="Virtual-Link-Constraint">
+            <specification fromComponent="APP_FUEL_SYSTEM_CONTROL" toComponent="APP_RW_Pmp_Mn" constraintName="VL01025.flow3@m0" msgSize="12" refreshPeriod="1000"/>
+        </oysterConstraint>
+        <oysterConstraint type="Virtual-Link-Constraint">
+            <specification fromComponent="APP_FUEL_SYSTEM_CONTROL" toComponent="APP_RW_Pmp_Mn" constraintName="VL01025.flow3@m1" msgSize="12" refreshPeriod="1000"/>
+        </oysterConstraint>
+        <oysterConstraint type="Utilization-Constraint">
+            <specification characteristicProperty="CPU" constraintName="UC2">
+                <srcEntities>
+                    <entities id="IMASystem::IMA.Impl.CCR_R2" name="CCR_R2">
+                        <type>IMASystem::CCR</type>
+                        <attribute>
+                            <ns2:name>cpuProvided</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">500</ns2:value>
+                        </attribute>
+                    </entities>
+                </srcEntities>
+                <destEntities>
+                    <entities id="IMASystem::IMA.Impl.APP_FUEL_SYSTEM_CONTROL" name="APP_FUEL_SYSTEM_CONTROL">
+                        <type>IMASystem::GPMApp</type>
+                        <attribute>
+                            <ns2:name>rate</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">10</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>duration</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">100</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>priority</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>cpuUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">100</ns2:value>
+                        </attribute>
+                    </entities>
+                    <entities id="IMASystem::IMA.Impl.APP_FIDO" name="APP_FIDO">
+                        <type>IMASystem::GPMApp</type>
+                        <attribute>
+                            <ns2:name>rate</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">10</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>duration</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">1</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>priority</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+                        </attribute>
+                        <attribute>
+                            <ns2:name>cpuUsed</ns2:name>
+                            <ns2:type>Int</ns2:type>
+                            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">100</ns2:value>
+                        </attribute>
+                    </entities>
+                </destEntities>
+                <srcEntitiesCompOp>gt</srcEntitiesCompOp>
+                <destEntitiesSigns>
+                    <sign>plus</sign>
+                </destEntitiesSigns>
+            </specification>
+        </oysterConstraint>
+    </componentImpl>
+</ns3:model>

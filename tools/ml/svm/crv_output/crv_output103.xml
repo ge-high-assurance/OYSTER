@@ -1,0 +1,456 @@
+<?xml version="1.0"?>
+<Results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" enabled="" timeout="0.000000" bmc_max="0" compositional="false" modular="false">
+
+
+<Log class="info" source="parse">kind2 v1.6.0</Log>
+
+
+<AnalysisStart top="GPM_dot_Impl" concrete="" abstract="APP_SUPPORT_MAIN,APP_HEALTH_MANAGER,APP_FUEL_SYSTEM_CONTROL,APP_FILE_SYSTEM,APP_FIDO,APP_CDN_TIME_MANAGER" assumptions=""/>
+
+<Property name="P15: Apps CDN_TIME_MANAGER and HEALTH_MANAGER have no scheduling conflict" line="147" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus">
+  <Runtime unit="sec" timeout="false">8.390</Runtime>
+  <K>30</K>
+  <Answer source="bmc">falsifiable</Answer>
+   <CounterExample>
+    <Node name="GPM_dot_Impl">
+      <Stream name="APP_CDN_TIME_MANAGER_status" type="bool" class="output">
+        <Value instant="0">false</Value>
+        <Value instant="1">false</Value>
+        <Value instant="2">false</Value>
+        <Value instant="3">false</Value>
+        <Value instant="4">false</Value>
+        <Value instant="5">false</Value>
+        <Value instant="6">false</Value>
+        <Value instant="7">false</Value>
+        <Value instant="8">false</Value>
+        <Value instant="9">false</Value>
+        <Value instant="10">false</Value>
+        <Value instant="11">false</Value>
+        <Value instant="12">false</Value>
+        <Value instant="13">false</Value>
+        <Value instant="14">false</Value>
+        <Value instant="15">false</Value>
+        <Value instant="16">false</Value>
+        <Value instant="17">false</Value>
+        <Value instant="18">false</Value>
+        <Value instant="19">false</Value>
+        <Value instant="20">false</Value>
+        <Value instant="21">false</Value>
+        <Value instant="22">false</Value>
+        <Value instant="23">false</Value>
+        <Value instant="24">false</Value>
+        <Value instant="25">false</Value>
+        <Value instant="26">false</Value>
+        <Value instant="27">false</Value>
+        <Value instant="28">false</Value>
+        <Value instant="29">false</Value>
+        <Value instant="30">true</Value>
+      </Stream>
+      <Stream name="APP_HEALTH_MANAGER_status" type="bool" class="output">
+        <Value instant="0">false</Value>
+        <Value instant="1">false</Value>
+        <Value instant="2">false</Value>
+        <Value instant="3">false</Value>
+        <Value instant="4">false</Value>
+        <Value instant="5">false</Value>
+        <Value instant="6">false</Value>
+        <Value instant="7">false</Value>
+        <Value instant="8">false</Value>
+        <Value instant="9">false</Value>
+        <Value instant="10">false</Value>
+        <Value instant="11">false</Value>
+        <Value instant="12">false</Value>
+        <Value instant="13">false</Value>
+        <Value instant="14">false</Value>
+        <Value instant="15">false</Value>
+        <Value instant="16">false</Value>
+        <Value instant="17">false</Value>
+        <Value instant="18">false</Value>
+        <Value instant="19">false</Value>
+        <Value instant="20">false</Value>
+        <Value instant="21">false</Value>
+        <Value instant="22">false</Value>
+        <Value instant="23">false</Value>
+        <Value instant="24">false</Value>
+        <Value instant="25">false</Value>
+        <Value instant="26">false</Value>
+        <Value instant="27">true</Value>
+        <Value instant="28">true</Value>
+        <Value instant="29">true</Value>
+        <Value instant="30">true</Value>
+      </Stream>
+      <Stream name="FuelControlSystem_Behavior_double_colon_GPM_dot_Impl_dot_APP_CDN_TIME_MANAGER_port_app_status" type="bool" class="local">
+        <Value instant="0">false</Value>
+        <Value instant="1">false</Value>
+        <Value instant="2">false</Value>
+        <Value instant="3">false</Value>
+        <Value instant="4">false</Value>
+        <Value instant="5">false</Value>
+        <Value instant="6">false</Value>
+        <Value instant="7">false</Value>
+        <Value instant="8">false</Value>
+        <Value instant="9">false</Value>
+        <Value instant="10">false</Value>
+        <Value instant="11">false</Value>
+        <Value instant="12">false</Value>
+        <Value instant="13">false</Value>
+        <Value instant="14">false</Value>
+        <Value instant="15">false</Value>
+        <Value instant="16">false</Value>
+        <Value instant="17">false</Value>
+        <Value instant="18">false</Value>
+        <Value instant="19">false</Value>
+        <Value instant="20">false</Value>
+        <Value instant="21">false</Value>
+        <Value instant="22">false</Value>
+        <Value instant="23">false</Value>
+        <Value instant="24">false</Value>
+        <Value instant="25">false</Value>
+        <Value instant="26">false</Value>
+        <Value instant="27">false</Value>
+        <Value instant="28">false</Value>
+        <Value instant="29">false</Value>
+        <Value instant="30">true</Value>
+      </Stream>
+      <Stream name="FuelControlSystem_Behavior_double_colon_GPM_dot_Impl_dot_APP_HEALTH_MANAGER_port_app_status" type="bool" class="local">
+        <Value instant="0">false</Value>
+        <Value instant="1">false</Value>
+        <Value instant="2">false</Value>
+        <Value instant="3">false</Value>
+        <Value instant="4">false</Value>
+        <Value instant="5">false</Value>
+        <Value instant="6">false</Value>
+        <Value instant="7">false</Value>
+        <Value instant="8">false</Value>
+        <Value instant="9">false</Value>
+        <Value instant="10">false</Value>
+        <Value instant="11">false</Value>
+        <Value instant="12">false</Value>
+        <Value instant="13">false</Value>
+        <Value instant="14">false</Value>
+        <Value instant="15">false</Value>
+        <Value instant="16">false</Value>
+        <Value instant="17">false</Value>
+        <Value instant="18">false</Value>
+        <Value instant="19">false</Value>
+        <Value instant="20">false</Value>
+        <Value instant="21">false</Value>
+        <Value instant="22">false</Value>
+        <Value instant="23">false</Value>
+        <Value instant="24">false</Value>
+        <Value instant="25">false</Value>
+        <Value instant="26">false</Value>
+        <Value instant="27">true</Value>
+        <Value instant="28">true</Value>
+        <Value instant="29">true</Value>
+        <Value instant="30">true</Value>
+      </Stream>
+      <Node name="APP_HEALTH_MANAGER" file="/tmp/VERDICT_output.lus" line="162" column="97">
+        <Stream name="app_status" type="bool" class="output">
+          <Value instant="0">false</Value>
+          <Value instant="1">false</Value>
+          <Value instant="2">false</Value>
+          <Value instant="3">false</Value>
+          <Value instant="4">false</Value>
+          <Value instant="5">false</Value>
+          <Value instant="6">false</Value>
+          <Value instant="7">false</Value>
+          <Value instant="8">false</Value>
+          <Value instant="9">false</Value>
+          <Value instant="10">false</Value>
+          <Value instant="11">false</Value>
+          <Value instant="12">false</Value>
+          <Value instant="13">false</Value>
+          <Value instant="14">false</Value>
+          <Value instant="15">false</Value>
+          <Value instant="16">false</Value>
+          <Value instant="17">false</Value>
+          <Value instant="18">false</Value>
+          <Value instant="19">false</Value>
+          <Value instant="20">false</Value>
+          <Value instant="21">false</Value>
+          <Value instant="22">false</Value>
+          <Value instant="23">false</Value>
+          <Value instant="24">false</Value>
+          <Value instant="25">false</Value>
+          <Value instant="26">false</Value>
+          <Value instant="27">true</Value>
+          <Value instant="28">true</Value>
+          <Value instant="29">true</Value>
+          <Value instant="30">true</Value>
+        </Stream>
+        <Stream name="start_count" type="int" class="ghost">
+          <Value instant="0">0</Value>
+          <Value instant="1">0</Value>
+          <Value instant="2">0</Value>
+          <Value instant="3">0</Value>
+          <Value instant="4">0</Value>
+          <Value instant="5">0</Value>
+          <Value instant="6">0</Value>
+          <Value instant="7">0</Value>
+          <Value instant="8">0</Value>
+          <Value instant="9">0</Value>
+          <Value instant="10">0</Value>
+          <Value instant="11">0</Value>
+          <Value instant="12">0</Value>
+          <Value instant="13">0</Value>
+          <Value instant="14">0</Value>
+          <Value instant="15">0</Value>
+          <Value instant="16">0</Value>
+          <Value instant="17">0</Value>
+          <Value instant="18">0</Value>
+          <Value instant="19">0</Value>
+          <Value instant="20">0</Value>
+          <Value instant="21">0</Value>
+          <Value instant="22">0</Value>
+          <Value instant="23">0</Value>
+          <Value instant="24">0</Value>
+          <Value instant="25">0</Value>
+          <Value instant="26">0</Value>
+          <Value instant="27">1</Value>
+          <Value instant="28">2</Value>
+          <Value instant="29">3</Value>
+          <Value instant="30">4</Value>
+        </Stream>
+        <Stream name="execute_now" type="int" class="ghost">
+          <Value instant="0">73</Value>
+          <Value instant="1">74</Value>
+          <Value instant="2">75</Value>
+          <Value instant="3">76</Value>
+          <Value instant="4">77</Value>
+          <Value instant="5">78</Value>
+          <Value instant="6">79</Value>
+          <Value instant="7">80</Value>
+          <Value instant="8">81</Value>
+          <Value instant="9">82</Value>
+          <Value instant="10">83</Value>
+          <Value instant="11">84</Value>
+          <Value instant="12">85</Value>
+          <Value instant="13">86</Value>
+          <Value instant="14">87</Value>
+          <Value instant="15">88</Value>
+          <Value instant="16">89</Value>
+          <Value instant="17">90</Value>
+          <Value instant="18">91</Value>
+          <Value instant="19">92</Value>
+          <Value instant="20">93</Value>
+          <Value instant="21">94</Value>
+          <Value instant="22">95</Value>
+          <Value instant="23">96</Value>
+          <Value instant="24">97</Value>
+          <Value instant="25">98</Value>
+          <Value instant="26">99</Value>
+          <Value instant="27">0</Value>
+          <Value instant="28">1</Value>
+          <Value instant="29">2</Value>
+          <Value instant="30">3</Value>
+        </Stream>
+        <Stream name="schedule_counter" type="int" class="ghost">
+          <Value instant="0">0</Value>
+          <Value instant="1">1</Value>
+          <Value instant="2">2</Value>
+          <Value instant="3">3</Value>
+          <Value instant="4">4</Value>
+          <Value instant="5">5</Value>
+          <Value instant="6">6</Value>
+          <Value instant="7">7</Value>
+          <Value instant="8">8</Value>
+          <Value instant="9">9</Value>
+          <Value instant="10">10</Value>
+          <Value instant="11">11</Value>
+          <Value instant="12">12</Value>
+          <Value instant="13">13</Value>
+          <Value instant="14">14</Value>
+          <Value instant="15">15</Value>
+          <Value instant="16">16</Value>
+          <Value instant="17">17</Value>
+          <Value instant="18">18</Value>
+          <Value instant="19">19</Value>
+          <Value instant="20">20</Value>
+          <Value instant="21">21</Value>
+          <Value instant="22">22</Value>
+          <Value instant="23">23</Value>
+          <Value instant="24">24</Value>
+          <Value instant="25">25</Value>
+          <Value instant="26">26</Value>
+          <Value instant="27">27</Value>
+          <Value instant="28">28</Value>
+          <Value instant="29">29</Value>
+          <Value instant="30">30</Value>
+        </Stream>
+      </Node>
+      <Node name="APP_CDN_TIME_MANAGER" file="/tmp/VERDICT_output.lus" line="161" column="99">
+        <Stream name="app_status" type="bool" class="output">
+          <Value instant="0">false</Value>
+          <Value instant="1">false</Value>
+          <Value instant="2">false</Value>
+          <Value instant="3">false</Value>
+          <Value instant="4">false</Value>
+          <Value instant="5">false</Value>
+          <Value instant="6">false</Value>
+          <Value instant="7">false</Value>
+          <Value instant="8">false</Value>
+          <Value instant="9">false</Value>
+          <Value instant="10">false</Value>
+          <Value instant="11">false</Value>
+          <Value instant="12">false</Value>
+          <Value instant="13">false</Value>
+          <Value instant="14">false</Value>
+          <Value instant="15">false</Value>
+          <Value instant="16">false</Value>
+          <Value instant="17">false</Value>
+          <Value instant="18">false</Value>
+          <Value instant="19">false</Value>
+          <Value instant="20">false</Value>
+          <Value instant="21">false</Value>
+          <Value instant="22">false</Value>
+          <Value instant="23">false</Value>
+          <Value instant="24">false</Value>
+          <Value instant="25">false</Value>
+          <Value instant="26">false</Value>
+          <Value instant="27">false</Value>
+          <Value instant="28">false</Value>
+          <Value instant="29">false</Value>
+          <Value instant="30">true</Value>
+        </Stream>
+        <Stream name="start_count" type="int" class="ghost">
+          <Value instant="0">0</Value>
+          <Value instant="1">0</Value>
+          <Value instant="2">0</Value>
+          <Value instant="3">0</Value>
+          <Value instant="4">0</Value>
+          <Value instant="5">0</Value>
+          <Value instant="6">0</Value>
+          <Value instant="7">0</Value>
+          <Value instant="8">0</Value>
+          <Value instant="9">0</Value>
+          <Value instant="10">0</Value>
+          <Value instant="11">0</Value>
+          <Value instant="12">0</Value>
+          <Value instant="13">0</Value>
+          <Value instant="14">0</Value>
+          <Value instant="15">0</Value>
+          <Value instant="16">0</Value>
+          <Value instant="17">0</Value>
+          <Value instant="18">0</Value>
+          <Value instant="19">0</Value>
+          <Value instant="20">0</Value>
+          <Value instant="21">0</Value>
+          <Value instant="22">0</Value>
+          <Value instant="23">0</Value>
+          <Value instant="24">0</Value>
+          <Value instant="25">0</Value>
+          <Value instant="26">0</Value>
+          <Value instant="27">0</Value>
+          <Value instant="28">0</Value>
+          <Value instant="29">0</Value>
+          <Value instant="30">1</Value>
+        </Stream>
+        <Stream name="execute_now" type="int" class="ghost">
+          <Value instant="0">70</Value>
+          <Value instant="1">71</Value>
+          <Value instant="2">72</Value>
+          <Value instant="3">73</Value>
+          <Value instant="4">74</Value>
+          <Value instant="5">75</Value>
+          <Value instant="6">76</Value>
+          <Value instant="7">77</Value>
+          <Value instant="8">78</Value>
+          <Value instant="9">79</Value>
+          <Value instant="10">80</Value>
+          <Value instant="11">81</Value>
+          <Value instant="12">82</Value>
+          <Value instant="13">83</Value>
+          <Value instant="14">84</Value>
+          <Value instant="15">85</Value>
+          <Value instant="16">86</Value>
+          <Value instant="17">87</Value>
+          <Value instant="18">88</Value>
+          <Value instant="19">89</Value>
+          <Value instant="20">90</Value>
+          <Value instant="21">91</Value>
+          <Value instant="22">92</Value>
+          <Value instant="23">93</Value>
+          <Value instant="24">94</Value>
+          <Value instant="25">95</Value>
+          <Value instant="26">96</Value>
+          <Value instant="27">97</Value>
+          <Value instant="28">98</Value>
+          <Value instant="29">99</Value>
+          <Value instant="30">0</Value>
+        </Stream>
+        <Stream name="schedule_counter" type="int" class="ghost">
+          <Value instant="0">0</Value>
+          <Value instant="1">1</Value>
+          <Value instant="2">2</Value>
+          <Value instant="3">3</Value>
+          <Value instant="4">4</Value>
+          <Value instant="5">5</Value>
+          <Value instant="6">6</Value>
+          <Value instant="7">7</Value>
+          <Value instant="8">8</Value>
+          <Value instant="9">9</Value>
+          <Value instant="10">10</Value>
+          <Value instant="11">11</Value>
+          <Value instant="12">12</Value>
+          <Value instant="13">13</Value>
+          <Value instant="14">14</Value>
+          <Value instant="15">15</Value>
+          <Value instant="16">16</Value>
+          <Value instant="17">17</Value>
+          <Value instant="18">18</Value>
+          <Value instant="19">19</Value>
+          <Value instant="20">20</Value>
+          <Value instant="21">21</Value>
+          <Value instant="22">22</Value>
+          <Value instant="23">23</Value>
+          <Value instant="24">24</Value>
+          <Value instant="25">25</Value>
+          <Value instant="26">26</Value>
+          <Value instant="27">27</Value>
+          <Value instant="28">28</Value>
+          <Value instant="29">29</Value>
+          <Value instant="30">30</Value>
+        </Stream>
+      </Node>
+    </Node>
+  </CounterExample>
+</Property>
+<Property name="P1: Apps FUEL_SYSTEM_CONTROL and FIDO have no scheduling conflict" line="133" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus"><Runtime unit="sec" timeout="false">22.735</Runtime><Answer source="ind2">valid</Answer></Property>
+<Property name="P2: Apps FUEL_SYSTEM_CONTROL and FILE_SYSTEM have no scheduling conflict" line="134" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus">
+  <Runtime unit="sec" timeout="false">22.735</Runtime>
+  <Answer source="ind2">valid</Answer>
+</Property>
+<Property name="P3: Apps FUEL_SYSTEM_CONTROL and SUPPORT_MAIN have no scheduling conflict" line="135" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus">
+  <Runtime unit="sec" timeout="false">22.735</Runtime>
+  <Answer source="ind2">valid</Answer>
+</Property>
+<Property name="P4: Apps FUEL_SYSTEM_CONTROL and CDN_TIME_MANAGER have no scheduling conflict" line="136" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus">
+  <Runtime unit="sec" timeout="false">22.735</Runtime>
+  <Answer source="ind2">valid</Answer>
+</Property>
+<Property name="P6: Apps FIDO and FILE_SYSTEM have no scheduling conflict" line="138" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus"><Runtime unit="sec" timeout="false">22.735</Runtime><Answer source="ind2">valid</Answer></Property>
+<Property name="P7: Apps FIDO and SUPPORT_MAIN have no scheduling conflict" line="139" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus"><Runtime unit="sec" timeout="false">22.735</Runtime><Answer source="ind2">valid</Answer></Property>
+<Property name="P8: Apps FIDO and CDN_TIME_MANAGER have no scheduling conflict" line="140" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus"><Runtime unit="sec" timeout="false">22.735</Runtime><Answer source="ind2">valid</Answer></Property>
+<Property name="P10: Apps FILE_SYSTEM and SUPPORT_MAIN have no scheduling conflict" line="142" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus"><Runtime unit="sec" timeout="false">22.735</Runtime><Answer source="ind2">valid</Answer></Property>
+<Property name="P11: Apps FILE_SYSTEM and CDN_TIME_MANAGER have no scheduling conflict" line="143" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus">
+  <Runtime unit="sec" timeout="false">22.735</Runtime>
+  <Answer source="ind2">valid</Answer>
+</Property>
+<Property name="P13: Apps SUPPORT_MAIN and CDN_TIME_MANAGER have no scheduling conflict" line="145" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus">
+  <Runtime unit="sec" timeout="false">22.735</Runtime>
+  <Answer source="ind2">valid</Answer>
+</Property>
+<Property name="P12: Apps FILE_SYSTEM and HEALTH_MANAGER have no scheduling conflict" line="144" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus"><Runtime unit="sec" timeout="false">27.038</Runtime><Answer source="ind">valid</Answer></Property>
+<Property name="P9: Apps FIDO and HEALTH_MANAGER have no scheduling conflict" line="141" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus"><Runtime unit="sec" timeout="false">27.038</Runtime><Answer source="ind">valid</Answer></Property>
+<Property name="P5: Apps FUEL_SYSTEM_CONTROL and HEALTH_TH_MANAGER have no scheduling conflict" line="137" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus">
+  <Runtime unit="sec" timeout="false">27.038</Runtime>
+  <Answer source="ind">valid</Answer>
+</Property>
+<Property name="P14: Apps SUPPORT_MAIN and HEALTH_MANAGER have no scheduling conflict" line="146" column="3" scope="GPM_dot_Impl" source="Guarantee" file="/tmp/VERDICT_output.lus"><Runtime unit="sec" timeout="false">27.038</Runtime><Answer source="ind">valid</Answer></Property>
+
+<AnalysisStop/>
+
+
+
+</Results>

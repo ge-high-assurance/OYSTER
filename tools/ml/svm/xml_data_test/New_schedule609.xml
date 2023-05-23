@@ -1,0 +1,1711 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns4:model xmlns:ns2="verdict::vdm::vdm_data" xmlns:ns3="verdict::vdm::vdm_lustre" xmlns:ns4="verdict::vdm::vdm_model">
+    <componentType id="New_schedule::APP_FUEL_SYSTEM_CONTROL" name="APP_FUEL_SYSTEM_CONTROL" compCateg="system">
+        <port id="New_schedule::APP_FUEL_SYSTEM_CONTROL.app_status" probe="false">
+            <name>app_status</name>
+            <mode>out</mode>
+            <type>
+                <ns2:plainType>bool</ns2:plainType>
+            </type>
+        </port>
+        <contract>
+            <ns3:symbol>
+                <ns3:name>schedule_counter</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:arrow>
+                        <ns3:lhsOperand>
+                            <ns3:intLiteral>0</ns3:intLiteral>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:mod>
+<ns3:lhsOperand>
+    <ns3:plus>
+        <ns3:lhsOperand>
+            <ns3:pre>
+                <ns3:identifier>schedule_counter</ns3:identifier>
+            </ns3:pre>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>1</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:plus>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:identifier>schedule_major_frame</ns3:identifier>
+</ns3:rhsOperand>
+                            </ns3:mod>
+                        </ns3:rhsOperand>
+                    </ns3:arrow>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:symbol>
+                <ns3:name>execute_now</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:mod>
+                        <ns3:lhsOperand>
+                            <ns3:minus>
+<ns3:lhsOperand>
+    <ns3:identifier>schedule_counter</ns3:identifier>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:identifier>APP_FUEL_SYSTEM_CONTROL_start_time</ns3:identifier>
+</ns3:rhsOperand>
+                            </ns3:minus>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:identifier>APP_FUEL_SYSTEM_CONTROL_repeat_period</ns3:identifier>
+                        </ns3:rhsOperand>
+                    </ns3:mod>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:symbol>
+                <ns3:name>start_count</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:arrow>
+                        <ns3:lhsOperand>
+                            <ns3:conditionalExpression>
+<ns3:condition>
+    <ns3:equal>
+        <ns3:lhsOperand>
+            <ns3:identifier>execute_now</ns3:identifier>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:equal>
+</ns3:condition>
+<ns3:thenBranch>
+    <ns3:intLiteral>1</ns3:intLiteral>
+</ns3:thenBranch>
+<ns3:elseBranch>
+    <ns3:intLiteral>0</ns3:intLiteral>
+</ns3:elseBranch>
+                            </ns3:conditionalExpression>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:conditionalExpression>
+<ns3:condition>
+    <ns3:equal>
+        <ns3:lhsOperand>
+            <ns3:identifier>execute_now</ns3:identifier>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:equal>
+</ns3:condition>
+<ns3:thenBranch>
+    <ns3:plus>
+        <ns3:lhsOperand>
+            <ns3:pre>
+                <ns3:identifier>start_count</ns3:identifier>
+            </ns3:pre>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>1</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:plus>
+</ns3:thenBranch>
+<ns3:elseBranch>
+    <ns3:conditionalExpression>
+        <ns3:condition>
+            <ns3:and>
+                <ns3:lhsOperand>
+                    <ns3:notEqual>
+                        <ns3:lhsOperand>
+                            <ns3:pre>
+<ns3:identifier>start_count</ns3:identifier>
+                            </ns3:pre>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:intLiteral>0</ns3:intLiteral>
+                        </ns3:rhsOperand>
+                    </ns3:notEqual>
+                </ns3:lhsOperand>
+                <ns3:rhsOperand>
+                    <ns3:lessThan>
+                        <ns3:lhsOperand>
+                            <ns3:pre>
+<ns3:identifier>start_count</ns3:identifier>
+                            </ns3:pre>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:identifier>APP_FUEL_SYSTEM_CONTROL_computetime</ns3:identifier>
+                        </ns3:rhsOperand>
+                    </ns3:lessThan>
+                </ns3:rhsOperand>
+            </ns3:and>
+        </ns3:condition>
+        <ns3:thenBranch>
+            <ns3:plus>
+                <ns3:lhsOperand>
+                    <ns3:pre>
+                        <ns3:identifier>start_count</ns3:identifier>
+                    </ns3:pre>
+                </ns3:lhsOperand>
+                <ns3:rhsOperand>
+                    <ns3:intLiteral>1</ns3:intLiteral>
+                </ns3:rhsOperand>
+            </ns3:plus>
+        </ns3:thenBranch>
+        <ns3:elseBranch>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:elseBranch>
+    </ns3:conditionalExpression>
+</ns3:elseBranch>
+                            </ns3:conditionalExpression>
+                        </ns3:rhsOperand>
+                    </ns3:arrow>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:guarantee>
+                <ns3:name>APP_FUEL_SYSTEM_CONTROL Status</ns3:name>
+                <ns3:expression>
+                    <ns3:equal>
+                        <ns3:lhsOperand>
+                            <ns3:identifier>app_status</ns3:identifier>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:notEqual>
+<ns3:lhsOperand>
+    <ns3:identifier>start_count</ns3:identifier>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:intLiteral>0</ns3:intLiteral>
+</ns3:rhsOperand>
+                            </ns3:notEqual>
+                        </ns3:rhsOperand>
+                    </ns3:equal>
+                </ns3:expression>
+            </ns3:guarantee>
+        </contract>
+    </componentType>
+    <componentType id="New_schedule::APP_FIDO" name="APP_FIDO" compCateg="system">
+        <port id="New_schedule::APP_FIDO.app_status" probe="false">
+            <name>app_status</name>
+            <mode>out</mode>
+            <type>
+                <ns2:plainType>bool</ns2:plainType>
+            </type>
+        </port>
+        <contract>
+            <ns3:symbol>
+                <ns3:name>schedule_counter</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:arrow>
+                        <ns3:lhsOperand>
+                            <ns3:intLiteral>0</ns3:intLiteral>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:mod>
+<ns3:lhsOperand>
+    <ns3:plus>
+        <ns3:lhsOperand>
+            <ns3:pre>
+                <ns3:identifier>schedule_counter</ns3:identifier>
+            </ns3:pre>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>1</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:plus>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:identifier>schedule_major_frame</ns3:identifier>
+</ns3:rhsOperand>
+                            </ns3:mod>
+                        </ns3:rhsOperand>
+                    </ns3:arrow>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:symbol>
+                <ns3:name>execute_now</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:mod>
+                        <ns3:lhsOperand>
+                            <ns3:minus>
+<ns3:lhsOperand>
+    <ns3:identifier>schedule_counter</ns3:identifier>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:identifier>APP_FIDO_start_time</ns3:identifier>
+</ns3:rhsOperand>
+                            </ns3:minus>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:identifier>APP_FIDO_repeat_period</ns3:identifier>
+                        </ns3:rhsOperand>
+                    </ns3:mod>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:symbol>
+                <ns3:name>start_count</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:arrow>
+                        <ns3:lhsOperand>
+                            <ns3:conditionalExpression>
+<ns3:condition>
+    <ns3:equal>
+        <ns3:lhsOperand>
+            <ns3:identifier>execute_now</ns3:identifier>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:equal>
+</ns3:condition>
+<ns3:thenBranch>
+    <ns3:intLiteral>1</ns3:intLiteral>
+</ns3:thenBranch>
+<ns3:elseBranch>
+    <ns3:intLiteral>0</ns3:intLiteral>
+</ns3:elseBranch>
+                            </ns3:conditionalExpression>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:conditionalExpression>
+<ns3:condition>
+    <ns3:equal>
+        <ns3:lhsOperand>
+            <ns3:identifier>execute_now</ns3:identifier>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:equal>
+</ns3:condition>
+<ns3:thenBranch>
+    <ns3:plus>
+        <ns3:lhsOperand>
+            <ns3:pre>
+                <ns3:identifier>start_count</ns3:identifier>
+            </ns3:pre>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>1</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:plus>
+</ns3:thenBranch>
+<ns3:elseBranch>
+    <ns3:conditionalExpression>
+        <ns3:condition>
+            <ns3:and>
+                <ns3:lhsOperand>
+                    <ns3:notEqual>
+                        <ns3:lhsOperand>
+                            <ns3:pre>
+<ns3:identifier>start_count</ns3:identifier>
+                            </ns3:pre>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:intLiteral>0</ns3:intLiteral>
+                        </ns3:rhsOperand>
+                    </ns3:notEqual>
+                </ns3:lhsOperand>
+                <ns3:rhsOperand>
+                    <ns3:lessThan>
+                        <ns3:lhsOperand>
+                            <ns3:pre>
+<ns3:identifier>start_count</ns3:identifier>
+                            </ns3:pre>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:identifier>APP_FIDO_computetime</ns3:identifier>
+                        </ns3:rhsOperand>
+                    </ns3:lessThan>
+                </ns3:rhsOperand>
+            </ns3:and>
+        </ns3:condition>
+        <ns3:thenBranch>
+            <ns3:plus>
+                <ns3:lhsOperand>
+                    <ns3:pre>
+                        <ns3:identifier>start_count</ns3:identifier>
+                    </ns3:pre>
+                </ns3:lhsOperand>
+                <ns3:rhsOperand>
+                    <ns3:intLiteral>1</ns3:intLiteral>
+                </ns3:rhsOperand>
+            </ns3:plus>
+        </ns3:thenBranch>
+        <ns3:elseBranch>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:elseBranch>
+    </ns3:conditionalExpression>
+</ns3:elseBranch>
+                            </ns3:conditionalExpression>
+                        </ns3:rhsOperand>
+                    </ns3:arrow>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:guarantee>
+                <ns3:name>APP_FIDO Status</ns3:name>
+                <ns3:expression>
+                    <ns3:equal>
+                        <ns3:lhsOperand>
+                            <ns3:identifier>app_status</ns3:identifier>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:notEqual>
+<ns3:lhsOperand>
+    <ns3:identifier>start_count</ns3:identifier>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:intLiteral>0</ns3:intLiteral>
+</ns3:rhsOperand>
+                            </ns3:notEqual>
+                        </ns3:rhsOperand>
+                    </ns3:equal>
+                </ns3:expression>
+            </ns3:guarantee>
+        </contract>
+    </componentType>
+    <componentType id="New_schedule::APP_FILE_SYSTEM" name="APP_FILE_SYSTEM" compCateg="system">
+        <port id="New_schedule::APP_FILE_SYSTEM.app_status" probe="false">
+            <name>app_status</name>
+            <mode>out</mode>
+            <type>
+                <ns2:plainType>bool</ns2:plainType>
+            </type>
+        </port>
+        <contract>
+            <ns3:symbol>
+                <ns3:name>schedule_counter</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:arrow>
+                        <ns3:lhsOperand>
+                            <ns3:intLiteral>0</ns3:intLiteral>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:mod>
+<ns3:lhsOperand>
+    <ns3:plus>
+        <ns3:lhsOperand>
+            <ns3:pre>
+                <ns3:identifier>schedule_counter</ns3:identifier>
+            </ns3:pre>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>1</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:plus>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:identifier>schedule_major_frame</ns3:identifier>
+</ns3:rhsOperand>
+                            </ns3:mod>
+                        </ns3:rhsOperand>
+                    </ns3:arrow>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:symbol>
+                <ns3:name>execute_now</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:mod>
+                        <ns3:lhsOperand>
+                            <ns3:minus>
+<ns3:lhsOperand>
+    <ns3:identifier>schedule_counter</ns3:identifier>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:identifier>APP_FILE_SYSTEM_start_time</ns3:identifier>
+</ns3:rhsOperand>
+                            </ns3:minus>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:identifier>APP_FILE_SYSTEM_repeat_period</ns3:identifier>
+                        </ns3:rhsOperand>
+                    </ns3:mod>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:symbol>
+                <ns3:name>start_count</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:arrow>
+                        <ns3:lhsOperand>
+                            <ns3:conditionalExpression>
+<ns3:condition>
+    <ns3:equal>
+        <ns3:lhsOperand>
+            <ns3:identifier>execute_now</ns3:identifier>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:equal>
+</ns3:condition>
+<ns3:thenBranch>
+    <ns3:intLiteral>1</ns3:intLiteral>
+</ns3:thenBranch>
+<ns3:elseBranch>
+    <ns3:intLiteral>0</ns3:intLiteral>
+</ns3:elseBranch>
+                            </ns3:conditionalExpression>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:conditionalExpression>
+<ns3:condition>
+    <ns3:equal>
+        <ns3:lhsOperand>
+            <ns3:identifier>execute_now</ns3:identifier>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:equal>
+</ns3:condition>
+<ns3:thenBranch>
+    <ns3:plus>
+        <ns3:lhsOperand>
+            <ns3:pre>
+                <ns3:identifier>start_count</ns3:identifier>
+            </ns3:pre>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>1</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:plus>
+</ns3:thenBranch>
+<ns3:elseBranch>
+    <ns3:conditionalExpression>
+        <ns3:condition>
+            <ns3:and>
+                <ns3:lhsOperand>
+                    <ns3:notEqual>
+                        <ns3:lhsOperand>
+                            <ns3:pre>
+<ns3:identifier>start_count</ns3:identifier>
+                            </ns3:pre>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:intLiteral>0</ns3:intLiteral>
+                        </ns3:rhsOperand>
+                    </ns3:notEqual>
+                </ns3:lhsOperand>
+                <ns3:rhsOperand>
+                    <ns3:lessThan>
+                        <ns3:lhsOperand>
+                            <ns3:pre>
+<ns3:identifier>start_count</ns3:identifier>
+                            </ns3:pre>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:identifier>APP_FILE_SYSTEM_computetime</ns3:identifier>
+                        </ns3:rhsOperand>
+                    </ns3:lessThan>
+                </ns3:rhsOperand>
+            </ns3:and>
+        </ns3:condition>
+        <ns3:thenBranch>
+            <ns3:plus>
+                <ns3:lhsOperand>
+                    <ns3:pre>
+                        <ns3:identifier>start_count</ns3:identifier>
+                    </ns3:pre>
+                </ns3:lhsOperand>
+                <ns3:rhsOperand>
+                    <ns3:intLiteral>1</ns3:intLiteral>
+                </ns3:rhsOperand>
+            </ns3:plus>
+        </ns3:thenBranch>
+        <ns3:elseBranch>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:elseBranch>
+    </ns3:conditionalExpression>
+</ns3:elseBranch>
+                            </ns3:conditionalExpression>
+                        </ns3:rhsOperand>
+                    </ns3:arrow>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:guarantee>
+                <ns3:name>APP_FILE_SYSTEM Status</ns3:name>
+                <ns3:expression>
+                    <ns3:equal>
+                        <ns3:lhsOperand>
+                            <ns3:identifier>app_status</ns3:identifier>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:notEqual>
+<ns3:lhsOperand>
+    <ns3:identifier>start_count</ns3:identifier>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:intLiteral>0</ns3:intLiteral>
+</ns3:rhsOperand>
+                            </ns3:notEqual>
+                        </ns3:rhsOperand>
+                    </ns3:equal>
+                </ns3:expression>
+            </ns3:guarantee>
+        </contract>
+    </componentType>
+    <componentType id="New_schedule::APP_SUPPORT_MAIN" name="APP_SUPPORT_MAIN" compCateg="system">
+        <port id="New_schedule::APP_SUPPORT_MAIN.app_status" probe="false">
+            <name>app_status</name>
+            <mode>out</mode>
+            <type>
+                <ns2:plainType>bool</ns2:plainType>
+            </type>
+        </port>
+        <contract>
+            <ns3:symbol>
+                <ns3:name>schedule_counter</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:arrow>
+                        <ns3:lhsOperand>
+                            <ns3:intLiteral>0</ns3:intLiteral>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:mod>
+<ns3:lhsOperand>
+    <ns3:plus>
+        <ns3:lhsOperand>
+            <ns3:pre>
+                <ns3:identifier>schedule_counter</ns3:identifier>
+            </ns3:pre>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>1</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:plus>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:identifier>schedule_major_frame</ns3:identifier>
+</ns3:rhsOperand>
+                            </ns3:mod>
+                        </ns3:rhsOperand>
+                    </ns3:arrow>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:symbol>
+                <ns3:name>execute_now</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:mod>
+                        <ns3:lhsOperand>
+                            <ns3:minus>
+<ns3:lhsOperand>
+    <ns3:identifier>schedule_counter</ns3:identifier>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:identifier>APP_SUPPORT_MAIN_start_time</ns3:identifier>
+</ns3:rhsOperand>
+                            </ns3:minus>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:identifier>APP_SUPPORT_MAIN_repeat_period</ns3:identifier>
+                        </ns3:rhsOperand>
+                    </ns3:mod>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:symbol>
+                <ns3:name>start_count</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:arrow>
+                        <ns3:lhsOperand>
+                            <ns3:conditionalExpression>
+<ns3:condition>
+    <ns3:equal>
+        <ns3:lhsOperand>
+            <ns3:identifier>execute_now</ns3:identifier>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:equal>
+</ns3:condition>
+<ns3:thenBranch>
+    <ns3:intLiteral>1</ns3:intLiteral>
+</ns3:thenBranch>
+<ns3:elseBranch>
+    <ns3:intLiteral>0</ns3:intLiteral>
+</ns3:elseBranch>
+                            </ns3:conditionalExpression>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:conditionalExpression>
+<ns3:condition>
+    <ns3:equal>
+        <ns3:lhsOperand>
+            <ns3:identifier>execute_now</ns3:identifier>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:equal>
+</ns3:condition>
+<ns3:thenBranch>
+    <ns3:plus>
+        <ns3:lhsOperand>
+            <ns3:pre>
+                <ns3:identifier>start_count</ns3:identifier>
+            </ns3:pre>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>1</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:plus>
+</ns3:thenBranch>
+<ns3:elseBranch>
+    <ns3:conditionalExpression>
+        <ns3:condition>
+            <ns3:and>
+                <ns3:lhsOperand>
+                    <ns3:notEqual>
+                        <ns3:lhsOperand>
+                            <ns3:pre>
+<ns3:identifier>start_count</ns3:identifier>
+                            </ns3:pre>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:intLiteral>0</ns3:intLiteral>
+                        </ns3:rhsOperand>
+                    </ns3:notEqual>
+                </ns3:lhsOperand>
+                <ns3:rhsOperand>
+                    <ns3:lessThan>
+                        <ns3:lhsOperand>
+                            <ns3:pre>
+<ns3:identifier>start_count</ns3:identifier>
+                            </ns3:pre>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:identifier>APP_SUPPORT_MAIN_computetime</ns3:identifier>
+                        </ns3:rhsOperand>
+                    </ns3:lessThan>
+                </ns3:rhsOperand>
+            </ns3:and>
+        </ns3:condition>
+        <ns3:thenBranch>
+            <ns3:plus>
+                <ns3:lhsOperand>
+                    <ns3:pre>
+                        <ns3:identifier>start_count</ns3:identifier>
+                    </ns3:pre>
+                </ns3:lhsOperand>
+                <ns3:rhsOperand>
+                    <ns3:intLiteral>1</ns3:intLiteral>
+                </ns3:rhsOperand>
+            </ns3:plus>
+        </ns3:thenBranch>
+        <ns3:elseBranch>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:elseBranch>
+    </ns3:conditionalExpression>
+</ns3:elseBranch>
+                            </ns3:conditionalExpression>
+                        </ns3:rhsOperand>
+                    </ns3:arrow>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:guarantee>
+                <ns3:name>APP_SUPPORT_MAIN Status</ns3:name>
+                <ns3:expression>
+                    <ns3:equal>
+                        <ns3:lhsOperand>
+                            <ns3:identifier>app_status</ns3:identifier>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:notEqual>
+<ns3:lhsOperand>
+    <ns3:identifier>start_count</ns3:identifier>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:intLiteral>0</ns3:intLiteral>
+</ns3:rhsOperand>
+                            </ns3:notEqual>
+                        </ns3:rhsOperand>
+                    </ns3:equal>
+                </ns3:expression>
+            </ns3:guarantee>
+        </contract>
+    </componentType>
+    <componentType id="New_schedule::APP_CDN_TIME_MANAGER" name="APP_CDN_TIME_MANAGER" compCateg="system">
+        <port id="New_schedule::APP_CDN_TIME_MANAGER.app_status" probe="false">
+            <name>app_status</name>
+            <mode>out</mode>
+            <type>
+                <ns2:plainType>bool</ns2:plainType>
+            </type>
+        </port>
+        <contract>
+            <ns3:symbol>
+                <ns3:name>schedule_counter</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:arrow>
+                        <ns3:lhsOperand>
+                            <ns3:intLiteral>0</ns3:intLiteral>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:mod>
+<ns3:lhsOperand>
+    <ns3:plus>
+        <ns3:lhsOperand>
+            <ns3:pre>
+                <ns3:identifier>schedule_counter</ns3:identifier>
+            </ns3:pre>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>1</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:plus>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:identifier>schedule_major_frame</ns3:identifier>
+</ns3:rhsOperand>
+                            </ns3:mod>
+                        </ns3:rhsOperand>
+                    </ns3:arrow>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:symbol>
+                <ns3:name>execute_now</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:mod>
+                        <ns3:lhsOperand>
+                            <ns3:minus>
+<ns3:lhsOperand>
+    <ns3:identifier>schedule_counter</ns3:identifier>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:identifier>APP_CDN_TIME_MANAGER_start_time</ns3:identifier>
+</ns3:rhsOperand>
+                            </ns3:minus>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:identifier>APP_CDN_TIME_MANAGER_repeat_period</ns3:identifier>
+                        </ns3:rhsOperand>
+                    </ns3:mod>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:symbol>
+                <ns3:name>start_count</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:arrow>
+                        <ns3:lhsOperand>
+                            <ns3:conditionalExpression>
+<ns3:condition>
+    <ns3:equal>
+        <ns3:lhsOperand>
+            <ns3:identifier>execute_now</ns3:identifier>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:equal>
+</ns3:condition>
+<ns3:thenBranch>
+    <ns3:intLiteral>1</ns3:intLiteral>
+</ns3:thenBranch>
+<ns3:elseBranch>
+    <ns3:intLiteral>0</ns3:intLiteral>
+</ns3:elseBranch>
+                            </ns3:conditionalExpression>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:conditionalExpression>
+<ns3:condition>
+    <ns3:equal>
+        <ns3:lhsOperand>
+            <ns3:identifier>execute_now</ns3:identifier>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:equal>
+</ns3:condition>
+<ns3:thenBranch>
+    <ns3:plus>
+        <ns3:lhsOperand>
+            <ns3:pre>
+                <ns3:identifier>start_count</ns3:identifier>
+            </ns3:pre>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>1</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:plus>
+</ns3:thenBranch>
+<ns3:elseBranch>
+    <ns3:conditionalExpression>
+        <ns3:condition>
+            <ns3:and>
+                <ns3:lhsOperand>
+                    <ns3:notEqual>
+                        <ns3:lhsOperand>
+                            <ns3:pre>
+<ns3:identifier>start_count</ns3:identifier>
+                            </ns3:pre>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:intLiteral>0</ns3:intLiteral>
+                        </ns3:rhsOperand>
+                    </ns3:notEqual>
+                </ns3:lhsOperand>
+                <ns3:rhsOperand>
+                    <ns3:lessThan>
+                        <ns3:lhsOperand>
+                            <ns3:pre>
+<ns3:identifier>start_count</ns3:identifier>
+                            </ns3:pre>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:identifier>APP_CDN_TIME_MANAGER_computetime</ns3:identifier>
+                        </ns3:rhsOperand>
+                    </ns3:lessThan>
+                </ns3:rhsOperand>
+            </ns3:and>
+        </ns3:condition>
+        <ns3:thenBranch>
+            <ns3:plus>
+                <ns3:lhsOperand>
+                    <ns3:pre>
+                        <ns3:identifier>start_count</ns3:identifier>
+                    </ns3:pre>
+                </ns3:lhsOperand>
+                <ns3:rhsOperand>
+                    <ns3:intLiteral>1</ns3:intLiteral>
+                </ns3:rhsOperand>
+            </ns3:plus>
+        </ns3:thenBranch>
+        <ns3:elseBranch>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:elseBranch>
+    </ns3:conditionalExpression>
+</ns3:elseBranch>
+                            </ns3:conditionalExpression>
+                        </ns3:rhsOperand>
+                    </ns3:arrow>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:guarantee>
+                <ns3:name>APP_CDN_TIME_MANAGER Status</ns3:name>
+                <ns3:expression>
+                    <ns3:equal>
+                        <ns3:lhsOperand>
+                            <ns3:identifier>app_status</ns3:identifier>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:notEqual>
+<ns3:lhsOperand>
+    <ns3:identifier>start_count</ns3:identifier>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:intLiteral>0</ns3:intLiteral>
+</ns3:rhsOperand>
+                            </ns3:notEqual>
+                        </ns3:rhsOperand>
+                    </ns3:equal>
+                </ns3:expression>
+            </ns3:guarantee>
+        </contract>
+    </componentType>
+    <componentType id="New_schedule::APP_HEALTH_MANAGER" name="APP_HEALTH_MANAGER" compCateg="system">
+        <port id="New_schedule::APP_HEALTH_MANAGER.app_status" probe="false">
+            <name>app_status</name>
+            <mode>out</mode>
+            <type>
+                <ns2:plainType>bool</ns2:plainType>
+            </type>
+        </port>
+        <contract>
+            <ns3:symbol>
+                <ns3:name>schedule_counter</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:arrow>
+                        <ns3:lhsOperand>
+                            <ns3:intLiteral>0</ns3:intLiteral>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:mod>
+<ns3:lhsOperand>
+    <ns3:plus>
+        <ns3:lhsOperand>
+            <ns3:pre>
+                <ns3:identifier>schedule_counter</ns3:identifier>
+            </ns3:pre>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>1</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:plus>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:identifier>schedule_major_frame</ns3:identifier>
+</ns3:rhsOperand>
+                            </ns3:mod>
+                        </ns3:rhsOperand>
+                    </ns3:arrow>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:symbol>
+                <ns3:name>execute_now</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:mod>
+                        <ns3:lhsOperand>
+                            <ns3:minus>
+<ns3:lhsOperand>
+    <ns3:identifier>schedule_counter</ns3:identifier>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:identifier>APP_HEALTH_MANAGER_start_time</ns3:identifier>
+</ns3:rhsOperand>
+                            </ns3:minus>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:identifier>APP_HEALTH_MANAGER_repeat_period</ns3:identifier>
+                        </ns3:rhsOperand>
+                    </ns3:mod>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:symbol>
+                <ns3:name>start_count</ns3:name>
+                <ns3:dataType>
+                    <ns2:plainType>int</ns2:plainType>
+                </ns3:dataType>
+                <ns3:definition>
+                    <ns3:arrow>
+                        <ns3:lhsOperand>
+                            <ns3:conditionalExpression>
+<ns3:condition>
+    <ns3:equal>
+        <ns3:lhsOperand>
+            <ns3:identifier>execute_now</ns3:identifier>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:equal>
+</ns3:condition>
+<ns3:thenBranch>
+    <ns3:intLiteral>1</ns3:intLiteral>
+</ns3:thenBranch>
+<ns3:elseBranch>
+    <ns3:intLiteral>0</ns3:intLiteral>
+</ns3:elseBranch>
+                            </ns3:conditionalExpression>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:conditionalExpression>
+<ns3:condition>
+    <ns3:equal>
+        <ns3:lhsOperand>
+            <ns3:identifier>execute_now</ns3:identifier>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:equal>
+</ns3:condition>
+<ns3:thenBranch>
+    <ns3:plus>
+        <ns3:lhsOperand>
+            <ns3:pre>
+                <ns3:identifier>start_count</ns3:identifier>
+            </ns3:pre>
+        </ns3:lhsOperand>
+        <ns3:rhsOperand>
+            <ns3:intLiteral>1</ns3:intLiteral>
+        </ns3:rhsOperand>
+    </ns3:plus>
+</ns3:thenBranch>
+<ns3:elseBranch>
+    <ns3:conditionalExpression>
+        <ns3:condition>
+            <ns3:and>
+                <ns3:lhsOperand>
+                    <ns3:notEqual>
+                        <ns3:lhsOperand>
+                            <ns3:pre>
+<ns3:identifier>start_count</ns3:identifier>
+                            </ns3:pre>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:intLiteral>0</ns3:intLiteral>
+                        </ns3:rhsOperand>
+                    </ns3:notEqual>
+                </ns3:lhsOperand>
+                <ns3:rhsOperand>
+                    <ns3:lessThan>
+                        <ns3:lhsOperand>
+                            <ns3:pre>
+<ns3:identifier>start_count</ns3:identifier>
+                            </ns3:pre>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:identifier>APP_HEALTH_MANAGER_computetime</ns3:identifier>
+                        </ns3:rhsOperand>
+                    </ns3:lessThan>
+                </ns3:rhsOperand>
+            </ns3:and>
+        </ns3:condition>
+        <ns3:thenBranch>
+            <ns3:plus>
+                <ns3:lhsOperand>
+                    <ns3:pre>
+                        <ns3:identifier>start_count</ns3:identifier>
+                    </ns3:pre>
+                </ns3:lhsOperand>
+                <ns3:rhsOperand>
+                    <ns3:intLiteral>1</ns3:intLiteral>
+                </ns3:rhsOperand>
+            </ns3:plus>
+        </ns3:thenBranch>
+        <ns3:elseBranch>
+            <ns3:intLiteral>0</ns3:intLiteral>
+        </ns3:elseBranch>
+    </ns3:conditionalExpression>
+</ns3:elseBranch>
+                            </ns3:conditionalExpression>
+                        </ns3:rhsOperand>
+                    </ns3:arrow>
+                </ns3:definition>
+            </ns3:symbol>
+            <ns3:guarantee>
+                <ns3:name>APP_HEALTH_MANAGER Status</ns3:name>
+                <ns3:expression>
+                    <ns3:equal>
+                        <ns3:lhsOperand>
+                            <ns3:identifier>app_status</ns3:identifier>
+                        </ns3:lhsOperand>
+                        <ns3:rhsOperand>
+                            <ns3:notEqual>
+<ns3:lhsOperand>
+    <ns3:identifier>start_count</ns3:identifier>
+</ns3:lhsOperand>
+<ns3:rhsOperand>
+    <ns3:intLiteral>0</ns3:intLiteral>
+</ns3:rhsOperand>
+                            </ns3:notEqual>
+                        </ns3:rhsOperand>
+                    </ns3:equal>
+                </ns3:expression>
+            </ns3:guarantee>
+        </contract>
+    </componentType>
+    <componentType id="New_schedule::GPM" name="GPM" compCateg="system">
+        <port id="New_schedule::GPM.APP_FUEL_SYSTEM_CONTROL_status" probe="false">
+            <name>APP_FUEL_SYSTEM_CONTROL_status</name>
+            <mode>out</mode>
+            <type>
+                <ns2:plainType>bool</ns2:plainType>
+            </type>
+        </port>
+        <port id="New_schedule::GPM.APP_FIDO_status" probe="false">
+            <name>APP_FIDO_status</name>
+            <mode>out</mode>
+            <type>
+                <ns2:plainType>bool</ns2:plainType>
+            </type>
+        </port>
+        <port id="New_schedule::GPM.APP_FILE_SYSTEM_status" probe="false">
+            <name>APP_FILE_SYSTEM_status</name>
+            <mode>out</mode>
+            <type>
+                <ns2:plainType>bool</ns2:plainType>
+            </type>
+        </port>
+        <port id="New_schedule::GPM.APP_SUPPORT_MAIN_status" probe="false">
+            <name>APP_SUPPORT_MAIN_status</name>
+            <mode>out</mode>
+            <type>
+                <ns2:plainType>bool</ns2:plainType>
+            </type>
+        </port>
+        <port id="New_schedule::GPM.APP_CDN_TIME_MANAGER_status" probe="false">
+            <name>APP_CDN_TIME_MANAGER_status</name>
+            <mode>out</mode>
+            <type>
+                <ns2:plainType>bool</ns2:plainType>
+            </type>
+        </port>
+        <port id="New_schedule::GPM.APP_HEALTH_MANAGER_status" probe="false">
+            <name>APP_HEALTH_MANAGER_status</name>
+            <mode>out</mode>
+            <type>
+                <ns2:plainType>bool</ns2:plainType>
+            </type>
+        </port>
+        <contract>
+            <ns3:guarantee>
+                <ns3:name>P1: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_FUEL_SYSTEM_CONTROL_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_FIDO_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P2: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_FUEL_SYSTEM_CONTROL_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_FILE_SYSTEM_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P3: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_FUEL_SYSTEM_CONTROL_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_SUPPORT_MAIN_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P4: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_FUEL_SYSTEM_CONTROL_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_CDN_TIME_MANAGER_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P5: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_FUEL_SYSTEM_CONTROL_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_HEALTH_MANAGER_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P6: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_FIDO_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_FILE_SYSTEM_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P7: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_FIDO_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_SUPPORT_MAIN_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P8: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_FIDO_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_CDN_TIME_MANAGER_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P9: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_FIDO_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_HEALTH_MANAGER_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P10: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_FILE_SYSTEM_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_SUPPORT_MAIN_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P11: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_FILE_SYSTEM_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_CDN_TIME_MANAGER_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P12: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_FILE_SYSTEM_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_HEALTH_MANAGER_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P13: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_SUPPORT_MAIN_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_CDN_TIME_MANAGER_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P14: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_SUPPORT_MAIN_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_HEALTH_MANAGER_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+            <ns3:guarantee>
+                <ns3:name>P15: Apps have no scheduling conflict</ns3:name>
+                <ns3:expression>
+                    <ns3:not>
+                        <ns3:and>
+                            <ns3:lhsOperand>
+<ns3:identifier>APP_CDN_TIME_MANAGER_status</ns3:identifier>
+                            </ns3:lhsOperand>
+                            <ns3:rhsOperand>
+<ns3:identifier>APP_HEALTH_MANAGER_status</ns3:identifier>
+                            </ns3:rhsOperand>
+                        </ns3:and>
+                    </ns3:not>
+                </ns3:expression>
+            </ns3:guarantee>
+        </contract>
+    </componentType>
+    <componentImpl id="New_schedule::GPM.Impl" type="New_schedule::GPM" name="GPM.Impl">
+        <blockImpl>
+            <subcomponent id="New_schedule::GPM.Impl.APP_FUEL_SYSTEM_CONTROL" name="APP_FUEL_SYSTEM_CONTROL">
+                <specification>New_schedule::APP_FUEL_SYSTEM_CONTROL</specification>
+                <attribute>
+                    <ns2:name>componentType</ns2:name>
+                    <ns2:type>String</ns2:type>
+                    <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+                </attribute>
+            </subcomponent>
+            <subcomponent id="New_schedule::GPM.Impl.APP_FIDO" name="APP_FIDO">
+                <specification>New_schedule::APP_FIDO</specification>
+                <attribute>
+                    <ns2:name>componentType</ns2:name>
+                    <ns2:type>String</ns2:type>
+                    <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+                </attribute>
+            </subcomponent>
+            <subcomponent id="New_schedule::GPM.Impl.APP_FILE_SYSTEM" name="APP_FILE_SYSTEM">
+                <specification>New_schedule::APP_FILE_SYSTEM</specification>
+                <attribute>
+                    <ns2:name>componentType</ns2:name>
+                    <ns2:type>String</ns2:type>
+                    <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+                </attribute>
+            </subcomponent>
+            <subcomponent id="New_schedule::GPM.Impl.APP_SUPPORT_MAIN" name="APP_SUPPORT_MAIN">
+                <specification>New_schedule::APP_SUPPORT_MAIN</specification>
+                <attribute>
+                    <ns2:name>componentType</ns2:name>
+                    <ns2:type>String</ns2:type>
+                    <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+                </attribute>
+            </subcomponent>
+            <subcomponent id="New_schedule::GPM.Impl.APP_CDN_TIME_MANAGER" name="APP_CDN_TIME_MANAGER">
+                <specification>New_schedule::APP_CDN_TIME_MANAGER</specification>
+                <attribute>
+                    <ns2:name>componentType</ns2:name>
+                    <ns2:type>String</ns2:type>
+                    <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+                </attribute>
+            </subcomponent>
+            <subcomponent id="New_schedule::GPM.Impl.APP_HEALTH_MANAGER" name="APP_HEALTH_MANAGER">
+                <specification>New_schedule::APP_HEALTH_MANAGER</specification>
+                <attribute>
+                    <ns2:name>componentType</ns2:name>
+                    <ns2:type>String</ns2:type>
+                    <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+                </attribute>
+            </subcomponent>
+            <connection name="c1" qualifiedName="New_schedule::GPM.Impl.c1">
+                <connectionKind>port</connectionKind>
+                <direction>unidirectional</direction>
+                <source>
+                    <subcomponentPort>
+                        <subcomponent>New_schedule::GPM.Impl.APP_FUEL_SYSTEM_CONTROL</subcomponent>
+                        <port>New_schedule::APP_FUEL_SYSTEM_CONTROL.app_status</port>
+                    </subcomponentPort>
+                </source>
+                <destination>
+                    <componentPort>New_schedule::GPM.APP_FUEL_SYSTEM_CONTROL_status</componentPort>
+                </destination>
+            </connection>
+            <connection name="c2" qualifiedName="New_schedule::GPM.Impl.c2">
+                <connectionKind>port</connectionKind>
+                <direction>unidirectional</direction>
+                <source>
+                    <subcomponentPort>
+                        <subcomponent>New_schedule::GPM.Impl.APP_FIDO</subcomponent>
+                        <port>New_schedule::APP_FIDO.app_status</port>
+                    </subcomponentPort>
+                </source>
+                <destination>
+                    <componentPort>New_schedule::GPM.APP_FIDO_status</componentPort>
+                </destination>
+            </connection>
+            <connection name="c3" qualifiedName="New_schedule::GPM.Impl.c3">
+                <connectionKind>port</connectionKind>
+                <direction>unidirectional</direction>
+                <source>
+                    <subcomponentPort>
+                        <subcomponent>New_schedule::GPM.Impl.APP_FILE_SYSTEM</subcomponent>
+                        <port>New_schedule::APP_FILE_SYSTEM.app_status</port>
+                    </subcomponentPort>
+                </source>
+                <destination>
+                    <componentPort>New_schedule::GPM.APP_FILE_SYSTEM_status</componentPort>
+                </destination>
+            </connection>
+            <connection name="c4" qualifiedName="New_schedule::GPM.Impl.c4">
+                <connectionKind>port</connectionKind>
+                <direction>unidirectional</direction>
+                <source>
+                    <subcomponentPort>
+                        <subcomponent>New_schedule::GPM.Impl.APP_SUPPORT_MAIN</subcomponent>
+                        <port>New_schedule::APP_SUPPORT_MAIN.app_status</port>
+                    </subcomponentPort>
+                </source>
+                <destination>
+                    <componentPort>New_schedule::GPM.APP_SUPPORT_MAIN_status</componentPort>
+                </destination>
+            </connection>
+            <connection name="c5" qualifiedName="New_schedule::GPM.Impl.c5">
+                <connectionKind>port</connectionKind>
+                <direction>unidirectional</direction>
+                <source>
+                    <subcomponentPort>
+                        <subcomponent>New_schedule::GPM.Impl.APP_CDN_TIME_MANAGER</subcomponent>
+                        <port>New_schedule::APP_CDN_TIME_MANAGER.app_status</port>
+                    </subcomponentPort>
+                </source>
+                <destination>
+                    <componentPort>New_schedule::GPM.APP_CDN_TIME_MANAGER_status</componentPort>
+                </destination>
+            </connection>
+            <connection name="c6" qualifiedName="New_schedule::GPM.Impl.c6">
+                <connectionKind>port</connectionKind>
+                <direction>unidirectional</direction>
+                <source>
+                    <subcomponentPort>
+                        <subcomponent>New_schedule::GPM.Impl.APP_HEALTH_MANAGER</subcomponent>
+                        <port>New_schedule::APP_HEALTH_MANAGER.app_status</port>
+                    </subcomponentPort>
+                </source>
+                <destination>
+                    <componentPort>New_schedule::GPM.APP_HEALTH_MANAGER_status</componentPort>
+                </destination>
+            </connection>
+        </blockImpl>
+    </componentImpl>
+    <dataflowCode>
+        <ns3:constantDeclaration>
+            <ns3:name>schedule_major_frame</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>100</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_FUEL_SYSTEM_CONTROL_start_time</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>18</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_FUEL_SYSTEM_CONTROL_repeat_period</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>50</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_FUEL_SYSTEM_CONTROL_computetime</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>1</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_FIDO_start_time</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>74</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_FIDO_repeat_period</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>50</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_FIDO_computetime</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>1</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_FILE_SYSTEM_start_time</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>35</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_FILE_SYSTEM_repeat_period</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>50</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_FILE_SYSTEM_computetime</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>2</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_SUPPORT_MAIN_start_time</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>6</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_SUPPORT_MAIN_repeat_period</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>100</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_SUPPORT_MAIN_computetime</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>2</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_CDN_TIME_MANAGER_start_time</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>84</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_CDN_TIME_MANAGER_repeat_period</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>100</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_CDN_TIME_MANAGER_computetime</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>2</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_HEALTH_MANAGER_start_time</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>32</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_HEALTH_MANAGER_repeat_period</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>100</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+        <ns3:constantDeclaration>
+            <ns3:name>APP_HEALTH_MANAGER_computetime</ns3:name>
+            <ns3:dataType>
+                <ns2:plainType>int</ns2:plainType>
+            </ns3:dataType>
+            <ns3:definition>
+                <ns3:intLiteral>6</ns3:intLiteral>
+            </ns3:definition>
+        </ns3:constantDeclaration>
+    </dataflowCode>
+</ns4:model>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.ge.verdict</groupId>
+    <artifactId>tools</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>verdict</artifactId>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>com.ge.research.osate.oyster.dsl</module>
+    <module>com.ge.research.osate.oyster.dsl.ide</module>
+    <module>com.ge.research.osate.oyster.dsl.tests</module>
+    <module>com.ge.research.osate.oyster.dsl.ui</module>
+    <module>com.ge.research.osate.oyster.dsl.ui.tests</module>
+    <module>com.ge.research.osate.verdict</module>
+    <module>com.ge.research.osate.verdict.dsl</module>
+    <module>com.ge.research.osate.verdict.dsl.ide</module>
+    <module>com.ge.research.osate.verdict.dsl.ui</module>
+    <module>com.ge.research.osate.verdict.feature</module>
+    <module>com.ge.research.osate.verdict.targetplatform</module>
+    <module>com.ge.research.osate.verdict.updatesite</module>
+  </modules>
+
+  <build>
+    <plugins>
+      <!-- Define our Eclipse target platform -->
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+      </plugin>
+      <!-- Build Eclipse bundles with Tycho -->
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
