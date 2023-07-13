@@ -1,0 +1,24 @@
+<Stream-Level-ICD>
+  <Application Name="TSNApp1">
+    <DeployedDevice DeviceName="Sensor1"/>
+    <Port Name="eth0">
+      <Stream Name="Stream1-1" ID="1" FramesPerPeriod="1" MaxFrameSize="65" RefreshPeriod="10">
+        <DP Name="DP0" ParameterSize="1" transmissionIntervalMinimum="40"/>
+        <DP Name="DP1" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP2" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP3" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP4" ParameterSize="4" transmissionIntervalMinimum="40"/>
+      </Stream>
+      <Stream Name="Stream1-2" ID="2" FramesPerPeriod="1" MaxFrameSize="61" RefreshPeriod="10">
+        <DP Name="DP5" ParameterSize="1" transmissionIntervalMinimum="20"/>
+        <DP Name="DP6" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP7" ParameterSize="4" transmissionIntervalMinimum="10"/>
+        <DP Name="DP8" ParameterSize="2" transmissionIntervalMinimum="40"/>
+        <DP Name="DP9" ParameterSize="2" transmissionIntervalMinimum="10"/>
+      </Stream>
+      <Stream Name="Stream1-3" ID="2" FramesPerPeriod="1" MaxFrameSize="61" RefreshPeriod="10">
+        <DP Name="DP10" ParameterSize="2" transmissionIntervalMinimum="20"/>
+      </Stream>
+    </Port>
+  </Application>
+</Stream-Level-ICD>
