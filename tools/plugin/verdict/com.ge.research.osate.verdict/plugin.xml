@@ -127,6 +127,15 @@
         </reference>
       </enabledWhen>
     </handler>
+    <handler
+      class="com.ge.research.osate.verdict.handlers.ValidateTSNScheduleHandler"
+      commandId="com.ge.research.osate.verdict.commands.validateTSNSchedule">
+      <enabledWhen>
+        <reference
+          definitionId="com.ge.research.osate.verdict.expressions.eObjectSelected">
+        </reference>
+      </enabledWhen>
+    </handler>
   </extension>
 
   <extension point="org.eclipse.ui.menus">
@@ -183,7 +192,11 @@
           label="&amp;Proof Validation Settings" style="push"
           tooltip="Click to change Proof Validation Settings">
         </command>
-
+        <command
+          commandId="com.ge.research.osate.verdict.commands.validateTSNSchedule"
+          label="&amp;Validate TSN Schedule" style="push"
+          tooltip="Validate TSN schedules for TSN streams">
+        </command>
       </menu>
     </menuContribution>
     <!--<menuContribution allPopups="false" locationURI="popup:org.eclipse.ui.popup.any?after=additions">
@@ -263,6 +276,10 @@
     <command categoryId="com.ge.research.osate.verdict.commands"
       id="com.ge.research.osate.verdict.commands.assuranceCaseSettings"
       name="Assurance Case Settings">
+    </command>
+    <command categoryId="com.ge.research.osate.verdict.commands"
+      id="com.ge.research.osate.verdict.commands.validateTSNSchedule"
+      name="Validate TSN Schedules">
     </command>
   </extension>
 
@@ -371,6 +388,10 @@
     <view id="com.ge.research.osate.verdict.gui.praResultsView"
       name="PRA Result"
       class="com.ge.research.osate.verdict.gui.PRAResultsView"
+      icon="icons/search.png" />
+    <view id="com.ge.research.osate.verdict.gui.tsnView"
+      name="TSN Validation"
+      class="com.ge.research.osate.verdict.gui.TSNView"
       icon="icons/search.png" />
   </extension>
 
