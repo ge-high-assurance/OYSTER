@@ -47,6 +47,7 @@ public class TSNView extends ViewPart {
     private Composite composite;
     private Table table;
     public static HashMap<String, Boolean> tsnResults = new HashMap<>();
+    public static HashMap<String, Boolean> tsnLFSCResults = new HashMap<>();
 
     @Override
     public void setFocus() {
@@ -81,6 +82,13 @@ public class TSNView extends ViewPart {
         TableColumn validationHeader = new TableColumn(table, SWT.CENTER);
         validationHeader.setText("TSN Proof Validation");
         validationHeader.pack();
+        
+        if(TSNSchedSettingsPanel.isLFSCCheckEnabled()) {
+        	 TableColumn lfscHeader = new TableColumn(table, SWT.CENTER);
+             lfscHeader.setText("TSN LFSC Proof Validation");
+             lfscHeader.pack();
+             
+        }
 
         // populate the data
 
@@ -89,9 +97,22 @@ public class TSNView extends ViewPart {
             item.setText(0, tsnStream);
             if (tsnResults.get(tsnStream).booleanValue() == true) {
                 item.setImage(1, ViewUtils.getIcon("valid.png"));
+                
             } else {
                 item.setImage(1, ViewUtils.getIcon("false.png"));
             }
+            
+            
+            if(TSNSchedSettingsPanel.isLFSCCheckEnabled()) {
+            	if(tsnLFSCResults.get(tsnStream) != null && tsnLFSCResults.get(tsnStream).booleanValue() == true) {
+            		item.setImage(2, ViewUtils.getIcon("valid.png"));
+            	}
+            	else {
+            		item.setImage(2, ViewUtils.getIcon("false.png"));
+            	}
+            }
+            
+            
         }
 
         table.pack();
