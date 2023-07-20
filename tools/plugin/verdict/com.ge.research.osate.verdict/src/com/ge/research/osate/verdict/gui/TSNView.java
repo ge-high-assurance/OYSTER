@@ -41,81 +41,94 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.part.ViewPart;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class TSNView extends ViewPart {
-    public static final String ID = "com.ge.research.osate.verdict.gui.tsnView";
-    private Composite composite;
-    private Table table;
-    public static HashMap<String, Boolean> tsnResults = new HashMap<>();
-    public static HashMap<String, Boolean> tsnLFSCResults = new HashMap<>();
+	public static final String ID = "com.ge.research.osate.verdict.gui.tsnView";
+	private Composite composite;
+	private Table table;
+	public static HashMap<String, Boolean> tsnResults = new HashMap<>();
+	public static HashMap<String, Boolean> tsnLFSCResults = new HashMap<>();
+	public static Map<String, Map<String, Integer>> tsnProps = new HashMap<>();
 
-    @Override
-    public void setFocus() {
-        if (composite != null) {
-            composite.setFocus();
-        }
-    }
+	@Override
+	public void setFocus() {
+		if (composite != null) {
+			composite.setFocus();
+		}
+	}
 
-    @Override
-    public void createPartControl(Composite parent) {
-        Composite composite = new Composite(parent, SWT.NONE);
-        Display display = Display.getCurrent();
-        // composite.setSize(parent.getSize());
-        composite.setLayout(new FillLayout());
-        composite.setSize(1130 / 2, 600);
-        // Table table2 = new Table(composite, SWT.NONE);
-        table = new Table(composite, SWT.H_SCROLL | SWT.V_SCROLL);
+	@Override
+	public void createPartControl(Composite parent) {
+		Composite composite = new Composite(parent, SWT.NONE);
+		Display display = Display.getCurrent();
+		// composite.setSize(parent.getSize());
+		composite.setLayout(new FillLayout());
+		composite.setSize(1130 / 2, 600);
+		// Table table2 = new Table(composite, SWT.NONE);
+		table = new Table(composite, SWT.H_SCROLL | SWT.V_SCROLL);
 
-        table.setSize(1130, 600);
-        table.setHeaderVisible(true);
-        table.setLinesVisible(true);
-        table.setFocus();
+		table.setSize(1130, 600);
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
+		table.setFocus();
 
-        table.setHeaderBackground(display.getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
-        table.setHeaderForeground(display.getSystemColor(SWT.COLOR_TITLE_FOREGROUND));
+		table.setHeaderBackground(display.getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT));
+		table.setHeaderForeground(display.getSystemColor(SWT.COLOR_TITLE_FOREGROUND));
 
-        TableColumn propertyColHeader = new TableColumn(table, SWT.CENTER);
-        propertyColHeader.setText("TSN Stream");
-        propertyColHeader.setWidth(500);
-        propertyColHeader.pack();
+		TableColumn propertyColHeader = new TableColumn(table, SWT.CENTER);
+		propertyColHeader.setText("TSN Stream");
+		propertyColHeader.setWidth(500);
+		propertyColHeader.pack();
 
-        TableColumn validationHeader = new TableColumn(table, SWT.CENTER);
-        validationHeader.setText("TSN Proof Validation");
-        validationHeader.pack();
-        
-        if(TSNSchedSettingsPanel.isLFSCCheckEnabled()) {
-        	 TableColumn lfscHeader = new TableColumn(table, SWT.CENTER);
-             lfscHeader.setText("TSN LFSC Proof Validation");
-             lfscHeader.pack();
-             
-        }
+		TableColumn arrivalTimeHeader = new TableColumn(table, SWT.CENTER);
+		arrivalTimeHeader.setText("Arrival time");
+		arrivalTimeHeader.pack();
 
-        // populate the data
+		TableColumn arrivalLimitHeader = new TableColumn(table, SWT.CENTER);
+		arrivalLimitHeader.setText("Max Arrival Limit");
+		arrivalLimitHeader.pack();
 
-        for (String tsnStream : tsnResults.keySet()) {
-            TableItem item = new TableItem(table, SWT.CENTER);
-            item.setText(0, tsnStream);
-            if (tsnResults.get(tsnStream).booleanValue() == true) {
-                item.setImage(1, ViewUtils.getIcon("valid.png"));
-                
-            } else {
-                item.setImage(1, ViewUtils.getIcon("false.png"));
-            }
-            
-            
-            if(TSNSchedSettingsPanel.isLFSCCheckEnabled()) {
-            	if(tsnLFSCResults.get(tsnStream) != null && tsnLFSCResults.get(tsnStream).booleanValue() == true) {
-            		item.setImage(2, ViewUtils.getIcon("valid.png"));
-            	}
-            	else {
-            		item.setImage(2, ViewUtils.getIcon("false.png"));
-            	}
-            }
-            
-            
-        }
+		TableColumn validationHeader = new TableColumn(table, SWT.CENTER);
+		validationHeader.setText("TSN Proof Validation");
+		validationHeader.pack();
 
-        table.pack();
-        composite.pack();
-    }
+		if (TSNSchedSettingsPanel.isLFSCCheckEnabled()) {
+			TableColumn lfscHeader = new TableColumn(table, SWT.CENTER);
+			lfscHeader.setText("TSN LFSC Proof Validation");
+			lfscHeader.pack();
+
+		}
+
+		// populate the data
+
+		for (String tsnStream : tsnResults.keySet()) {
+			TableItem item = new TableItem(table, SWT.CENTER);
+			item.setText(0, tsnStream);
+			int arrivalTime = tsnProps.get(tsnStream).get("tsn_sched_arrival_time");
+			int maxArrivalTime = tsnProps.get(tsnStream).get("tsn_sched_arrival_limit")
+					+ tsnProps.get(tsnStream).get("tsn_sched_threshold");
+			item.setText(1, Integer.toString(arrivalTime));
+			item.setText(2, Integer.toString(maxArrivalTime));
+
+			if (tsnResults.get(tsnStream).booleanValue() == true) {
+				item.setImage(3, ViewUtils.getIcon("valid.png"));
+
+			} else {
+				item.setImage(3, ViewUtils.getIcon("false.png"));
+			}
+
+			if (TSNSchedSettingsPanel.isLFSCCheckEnabled()) {
+				if (tsnLFSCResults.get(tsnStream) != null && tsnLFSCResults.get(tsnStream).booleanValue() == true) {
+					item.setImage(4, ViewUtils.getIcon("valid.png"));
+				} else {
+					item.setImage(4, ViewUtils.getIcon("false.png"));
+				}
+			}
+
+		}
+
+		table.pack();
+		composite.pack();
+	}
 }

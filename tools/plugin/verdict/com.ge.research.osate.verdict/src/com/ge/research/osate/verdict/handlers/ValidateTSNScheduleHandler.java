@@ -184,6 +184,7 @@ public class ValidateTSNScheduleHandler extends AbstractHandler {
 									// generate smt delay calculations
 
 									for (String key : vlPaths.keySet()) {
+										String lemma = "(assert (>= arrival_time (+ arrival_limit threshold)))\n";
 										String smtPreamble = "(set-logic ALL)\n" + "(declare-fun latency () Int)\n"
 												+ "(declare-fun threshold () Int)\n"
 												+ "(declare-fun start_time () Int)\n" + "(declare-fun formula () Int)\n"
@@ -192,9 +193,10 @@ public class ValidateTSNScheduleHandler extends AbstractHandler {
 												+ tsnProps.get(key).get("tsn_sched_start_time") + "))\n"
 												+ "(assert (= threshold " + tsnProps.get(key).get("tsn_sched_threshold")
 												+ "))\n" + "(assert (= arrival_limit "
-												+ tsnProps.get(key).get("tsn_sched_arrival_limit") + "))\n"
-												+ "(assert (>= arrival_time (+ arrival_limit threshold)))\n";
-
+												+ tsnProps.get(key).get("tsn_sched_arrival_limit") + "))\n";
+										
+										
+												
 										String smtDelay = "";
 										Set<String> visited = new HashSet<>();
 										List<String> flowElements = vlPaths.get(key);
@@ -252,11 +254,20 @@ public class ValidateTSNScheduleHandler extends AbstractHandler {
 										smtDelay += "(check-sat)\n";
 										String proofOutput = BundlePreferences.getCertificatePath();
 
-										String smtText = smtPreamble + "\n" + smtDelay;
+										String smtText = smtPreamble +  lemma + "\n" + smtDelay;
+										String smtModelText = smtPreamble 
+												              + "\n" + smtDelay 
+												             // + "\n" + "(set-option :produce-models true)"
+												              + "\n" + "(get-model)";
+										
 										String smtFile = proofOutput + "/" + key + ".smt2";
+										String smtModelFile = proofOutput + "/" + key + "_model.smt2";
 										File file = new File(smtFile);
+										File modelFile = new File(smtModelFile);
+										
 										FileWriteMode[] modes = {};
 										Files.asCharSink(file, Charset.defaultCharset(), modes).write(smtText);
+										Files.asCharSink(modelFile, Charset.defaultCharset(), modes).write(smtModelText);
 
 										Set<String> proofFormats = TSNSchedSettingsPanel.getProofFormats();
 										for (String proofFormat : proofFormats) {
@@ -309,6 +320,24 @@ public class ValidateTSNScheduleHandler extends AbstractHandler {
 												
 											}
 										}
+										
+										//produce models too!
+										ProcessExecutor executor4 = new ProcessExecutor();
+										ArrayList<String> args3 = new ArrayList<String>(Arrays.asList(
+												BundlePreferences.getCVC5Path(), "--produce-models", smtModelFile));
+										executor4.command(args3);
+										executor4.destroyOnExit();
+										executor4.redirectError(System.err);
+										String output4 = executor4.readOutput(true).execute().outputUTF8();
+										String [] lines = output4.split("\n");
+										for(String line : lines) {
+											if(line.contains("define-fun arrival_time")) {
+												String [] tokens = line.replace(")", "").split(" ");
+												int arrival_time2 = Integer.parseInt(tokens[tokens.length-1]);
+											    tsnProps.get(key).put("tsn_sched_arrival_time", arrival_time2);
+											}
+										}
+										
 									}
 								}
 							}
@@ -318,6 +347,7 @@ public class ValidateTSNScheduleHandler extends AbstractHandler {
 						Display.getDefault().asyncExec(() -> {
 							TSNView.tsnResults = tsnValidation;
 							TSNView.tsnLFSCResults = tsnLFSCValidation;
+							TSNView.tsnProps = tsnProps;
 							org.apache.commons.lang3.tuple.Pair<IWorkbenchPage, IViewPart> pair = ViewUtils
 									.getPageAndViewByViewId(TSNView.ID);
 							if (pair != null && pair.getLeft() != null && pair.getRight() != null) {
