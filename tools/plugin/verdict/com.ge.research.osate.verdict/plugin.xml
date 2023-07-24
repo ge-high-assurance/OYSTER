@@ -251,7 +251,7 @@
       id="com.ge.research.osate.verdict.commands.proofValidationSettings"
       name="Proof Validation Settings">
     </command>
-	<command categoryId="com.ge.research.osate.verdict.commands"
+    <command categoryId="com.ge.research.osate.verdict.commands"
       id="com.ge.research.osate.verdict.commands.TSNSchedValidationSettings"
       name="TSN Sched Proof Validation Settings">
     </command>
@@ -407,6 +407,10 @@
       name="TSN Validation"
       class="com.ge.research.osate.verdict.gui.TSNView"
       icon="icons/search.png" />
+     <view id="com.ge.research.osate.verdict.gui.unsatCoreView"
+      name="UNSAT Core"
+      class="com.ge.research.osate.verdict.gui.UnsatCoreView"
+      icon="icons/search.png" />  
   </extension>
 
   <extension point="org.eclipse.ui.preferencePages">

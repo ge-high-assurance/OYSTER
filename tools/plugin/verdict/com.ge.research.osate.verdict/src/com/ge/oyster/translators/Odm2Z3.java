@@ -32,6 +32,9 @@
 package com.ge.oyster.translators;
 
 import com.ge.research.osate.verdict.gui.IMASynthesisSettingsPanel;
+import com.ge.research.osate.verdict.gui.UnsatCoreView;
+import com.ge.research.osate.verdict.gui.ViewUtils;
+import com.ge.research.osate.verdict.handlers.VerdictLogger;
 import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Constructor;
 import com.microsoft.z3.Context;
@@ -43,6 +46,10 @@ import com.microsoft.z3.Status;
 
 import org.apache.commons.math3.util.Pair;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
 import org.osate.aadl2.AbstractNamedValue;
 import org.osate.aadl2.ModalPropertyValue;
 import org.osate.aadl2.PropertyAssociation;
@@ -71,6 +78,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 public class Odm2Z3 {
@@ -94,6 +102,7 @@ public class Odm2Z3 {
     Map<String, List<Expr>> vlNamesToMsgPeriods = new HashMap<String, List<Expr>>();
     List<String> vlNames = new ArrayList<String>();
     Map<String, String> softwareToHardwareMap = new HashMap<String, String>();
+    
 
     Map<String, Integer> app_periods = new HashMap<String, Integer>();
     Map<String, Integer> app_durations = new HashMap<String, Integer>();
@@ -103,7 +112,9 @@ public class Odm2Z3 {
     Map<String, Integer> app_rates = new HashMap<String, Integer>();
     Map<String, Integer> proc_slots = new HashMap<String, Integer>();
     List<String> proc_ids = new ArrayList<String>();
-
+    
+    private static Map<String, ConstraintType> constraintType = new HashMap<>();
+    private static List<String> unsatCore = new ArrayList<> ();
     boolean optBandwidthYes = IMASynthesisSettingsPanel.optBandwidthYes;
     boolean opte2eFlowYes = IMASynthesisSettingsPanel.opte2eFlowYes;
     boolean fsbBandwidthYes = IMASynthesisSettingsPanel.fsbBandwidthYes;
@@ -253,8 +264,10 @@ public class Odm2Z3 {
         // translates Oyster constraints to smtlib
         for (ComponentImpl odmImpl : odm.getComponentImpl()) {
             for (Constraint ci : odmImpl.getOysterConstraint()) {
+            	
                 ConstraintType constType = ci.getType();
-
+                String constraintName = ci.getSpecification().getConstraintName();
+                constraintType.put(constraintName, constType);
                 if (constType.equals(
                         oyster.odm.odm_model.ConstraintType.FIXED_LOCATION_CONSTRAINT)) {
                     sol = handleFLC(sol, ctx, ci);
@@ -372,18 +385,51 @@ public class Odm2Z3 {
 
         } else {
             // System.out.println(sol);
-            System.out.println("Info: The input architecture model is UNSAT!");
+            VerdictLogger.info("The input architecture model is UNSAT!");
             if (useUnsatCore) {
-                System.out.println("UNSAT Core: ");
+            	unsatCore.clear();
+                VerdictLogger.info("UNSAT CORE:");
                 BoolExpr[] assertions = sol.getAssertions();
                 for (Expr c : sol.getUnsatCore()) {
                     for (BoolExpr assertion : assertions) {
                         if (assertion.getArgs()[0].toString().equals(c.toString())) {
-                            System.out.println(assertion.getArgs()[1].toString());
+                            String assertionName =  assertion.getArgs()[1].toString();
+                            String oysterConstraint = assertionName.split("_xyz_")[0];
+                            unsatCore.add(oysterConstraint);
+                            VerdictLogger.info(oysterConstraint);
                         }
                     }
                     // System.out.println(c.getBoolValue().toString());
                 }
+                
+                
+                //show the unsat core
+                Display.getDefault()
+                .asyncExec(
+                        () -> {
+                            UnsatCoreView.unsatCore = unsatCore;
+                            UnsatCoreView.constraintType = constraintType;
+                            org.apache.commons.lang3.tuple.Pair<
+                                            IWorkbenchPage, IViewPart>
+                                    pair =
+                                            ViewUtils
+                                                    .getPageAndViewByViewId(
+                                                            UnsatCoreView.ID);
+                            if (pair != null
+                                    && pair.getLeft() != null
+                                    && pair.getRight() != null) {
+                                pair.getLeft().hideView(pair.getRight());
+                                try {
+                                    pair.getLeft().showView(UnsatCoreView.ID);
+                                } catch (PartInitException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+
+                
+                
             }
             ctx.close();
             return null;
@@ -603,6 +649,7 @@ public class Odm2Z3 {
     // based on the fixed-location constraint
     protected Optimize handleFLC(Optimize sol, Context ctx, Constraint ci) {
         Specification spec = ci.getSpecification();
+        String constraintName = spec.getConstraintName();
         ComponentInstance from = spec.getSrcEntities().getEntities().get(0);
         ComponentInstance to = spec.getDestEntities().getEntities().get(0);
         String funcName = from.getType().getName() + "_to_" + to.getType().getName();
@@ -614,8 +661,9 @@ public class Odm2Z3 {
 
         Expr fromExpr = ctx.mkConst(from.getName(), typeToSort.get(from.getType().getName()));
         Expr toExpr = ctx.mkConst(to.getName(), typeToSort.get(to.getType().getName()));
-
-        Expr flcTrack = ctx.mkBoolConst("FLC_ " + from.getName() + "_to_" + to.getName());
+        
+        Random random = new Random();
+        Expr flcTrack = ctx.mkBoolConst(constraintName + "_xyz_" + random.nextInt());
         addConstraint(flcTrack, ctx.mkEq(ctx.mkApp(funcDecl, fromExpr), toExpr), sol);
 
         // TODO : softwareToHardwareMap needs to be more strict
@@ -633,6 +681,7 @@ public class Odm2Z3 {
     // to different types
     protected Optimize handleSC(Optimize sol, Context ctx, Constraint sc) {
         Specification spec = sc.getSpecification();
+        String constraintName = spec.getConstraintName();
         List<ComponentInstance> items = spec.getSrcEntities().getEntities();
         String to = spec.getToComponent();
         String funcName = items.get(0).getType().getName() + "_to_" + to;
@@ -654,7 +703,8 @@ public class Odm2Z3 {
         int n = exprs.size();
         Expr exprArr[] = new Expr[n];
         System.arraycopy(exprs.toArray(), 0, exprArr, 0, n);
-        Expr scTrack = ctx.mkBoolConst("separation_constraints");
+        Random random = new Random();
+        Expr scTrack = ctx.mkBoolConst(constraintName + "_xyz_" + random.nextInt());
         addConstraint(scTrack, ctx.mkDistinct(exprArr), sol);
         return sol;
     }
@@ -663,6 +713,7 @@ public class Odm2Z3 {
     // to same type
     protected Optimize handleCLC(Optimize sol, Context ctx, Constraint sc) {
         Specification spec = sc.getSpecification();
+        String constraintName = spec.getConstraintName();
         List<ComponentInstance> items = spec.getSrcEntities().getEntities();
         String to = spec.getToComponent();
 
@@ -678,7 +729,9 @@ public class Odm2Z3 {
                             funcDecl,
                             ctx.mkConst(item.getName(), typeToSort.get(item.getType().getName())));
             exprs.add(exp);
-            Expr clcTrack = ctx.mkBoolConst("Colocate_" + item.getType().getName() + "_and_" + to);
+            Random random = new Random();
+            
+            Expr clcTrack = ctx.mkBoolConst(constraintName + "_xyz_" + random.nextInt());
             clcTrackList.add(clcTrack);
         }
 
@@ -733,8 +786,10 @@ public class Odm2Z3 {
         int n = dstExpsVar.size();
         Expr destexprArr[] = new Expr[n];
         System.arraycopy(dstExpsVar.toArray(), 0, destexprArr, 0, n);
+        Random random = new Random();
+        
         Expr ciTrack =
-                ctx.mkBoolConst("UC_constraint_" + ci.getSpecification().getConstraintName());
+                ctx.mkBoolConst(ci.getSpecification().getConstraintName() + "_xyz_" + random.nextInt());
         if (destexprArr.length == 1) {
             if (compOp.equals(oyster.odm.odm_model.ComparisonOperator.EQ)) {
                 addConstraint(ciTrack, ctx.mkEq(srcExpVar, destexprArr[0]), sol);
@@ -773,6 +828,8 @@ public class Odm2Z3 {
     // one source, can have multiple destination for a VL (leads to multiple flow)
     protected Optimize handleVLC(Optimize sol, Context ctx, Constraint fc) {
         Specification spec = fc.getSpecification();
+        String constraintName = spec.getConstraintName();
+        Random random = new Random();
         String src = softwareToHardwareMap.get(spec.getFromComponent());
         String dest = softwareToHardwareMap.get(spec.getToComponent());
 
@@ -795,7 +852,8 @@ public class Odm2Z3 {
                 Expr exp2 = ctx.mkEq(exp2Temp, ctx.mkReal(refPeriod));
 
                 Expr vlBwConstraint = ctx.mkAnd(exp1, exp2);
-                Expr vlBwConstraintTrack = ctx.mkBoolConst("Bandwidth_constraint_for_VL_" + vlName);
+                
+                Expr vlBwConstraintTrack = ctx.mkBoolConst(constraintName + "_xyz_" + random.nextInt());
                 addConstraint(vlBwConstraintTrack, vlBwConstraint, sol);
 
                 if (vlNamesToMsgSizes.get(vlName) != null) {
@@ -1326,7 +1384,7 @@ public class Odm2Z3 {
     protected long getTotalNetBandwidth() {
         // default values
         long totalBandwidth = 5000000000L;
-        int maxBandwidthPercentage = 80;
+    	int maxBandwidthPercentage = 80;
 
         // checks if user has provided the bandwidth information as OYSTER property
         for (ComponentType odmType : odm.getComponentType()) {
@@ -1858,4 +1916,5 @@ public class Odm2Z3 {
         }
         return sol;
     }
+    
 }
