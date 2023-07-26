@@ -31,10 +31,6 @@
  */
 package com.ge.research.osate.verdict.gui;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.preference.DirectoryFieldEditor;
 import org.eclipse.jface.preference.FieldEditor;
@@ -45,6 +41,11 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class BundlePreferences extends FieldEditorPreferencePage
         implements IWorkbenchPreferencePage {
@@ -62,7 +63,11 @@ public class BundlePreferences extends FieldEditorPreferencePage
     private static final String PRA_BIN = "proof_repair_assistant_bin";
     private static final String PRA_OUTPUT = "proof_repair_assistant_output";
     private static final String PROOF_VALIDATION_IMAGE = "proof_validation_image";
-
+    private static final String CVC5_PATH = "cvc5_path";
+    private static final String LFSC_CHECKER_PATH = "lfsc_checker";
+    private static final String VERIT_PATH = "verit_path";
+    private static final String ALETHE_CHECKER_PATH = "alethe_checker";
+    
     private static final ArrayList<String> NECESSARY_WITH_DOCKER =
             new ArrayList<>(
                     Arrays.asList(DOCKER_IMAGE, PRA_BIN, PRA_OUTPUT, PROOF_VALIDATION_IMAGE));
@@ -124,6 +129,22 @@ public class BundlePreferences extends FieldEditorPreferencePage
 
     public static String getProofValidationImage() {
         return preferenceStore.getString(PROOF_VALIDATION_IMAGE);
+    }
+
+    public static String getCVC5Path() {
+        return preferenceStore.getString(CVC5_PATH);
+    }
+
+    public static String getLFSCCheckerPath() {
+        return preferenceStore.getString(LFSC_CHECKER_PATH);
+    }
+    
+    public static String getVeritPath() {
+        return preferenceStore.getString(VERIT_PATH);
+    }
+
+    public static String getAletheCheckerPath() {
+        return preferenceStore.getString(ALETHE_CHECKER_PATH);
     }
 
     @Override
@@ -229,6 +250,35 @@ public class BundlePreferences extends FieldEditorPreferencePage
                         PROOF_VALIDATION_IMAGE, "Proof Validation Docker:", getFieldEditorParent());
 
         addField(proofValidatorDocker);
+
+        final LabelFieldEditor TSNProofSeparator =
+                new LabelFieldEditor(
+                        "   --- Remaining fields only needed if TSN schedule proof validation desired ---   ",
+                        getFieldEditorParent());
+
+        addField(TSNProofSeparator);
+
+        final FileFieldEditor cvc5 =
+                new FileFieldEditor(CVC5_PATH, "CVC5 Path:", getFieldEditorParent());
+
+        addField(cvc5);
+
+        final FileFieldEditor LFSCChecker =
+                new FileFieldEditor(
+                        LFSC_CHECKER_PATH, "LFSC Checker Path:", getFieldEditorParent());
+
+        addField(LFSCChecker);
+        
+        final FileFieldEditor verit =
+                new FileFieldEditor(VERIT_PATH, "veriT Path:", getFieldEditorParent());
+
+        addField(verit);
+
+        final FileFieldEditor AletheChecker =
+                new FileFieldEditor(
+                        ALETHE_CHECKER_PATH, "Alethe Checker Path:", getFieldEditorParent());
+
+        addField(AletheChecker);
     }
 
     @Override

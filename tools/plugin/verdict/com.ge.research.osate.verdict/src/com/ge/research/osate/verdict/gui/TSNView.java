@@ -49,6 +49,8 @@ public class TSNView extends ViewPart {
 	private Table table;
 	public static HashMap<String, Boolean> tsnResults = new HashMap<>();
 	public static HashMap<String, Boolean> tsnLFSCResults = new HashMap<>();
+	public static HashMap<String, Boolean> tsnAletheResults = new HashMap<>();
+
 	public static Map<String, Map<String, Integer>> tsnProps = new HashMap<>();
 
 	@Override
@@ -82,22 +84,27 @@ public class TSNView extends ViewPart {
 		propertyColHeader.pack();
 
 		TableColumn arrivalTimeHeader = new TableColumn(table, SWT.CENTER);
-		arrivalTimeHeader.setText("Arrival time");
+		arrivalTimeHeader.setText("Arrival time (microseconds)");
 		arrivalTimeHeader.pack();
 
 		TableColumn arrivalLimitHeader = new TableColumn(table, SWT.CENTER);
-		arrivalLimitHeader.setText("Max Arrival Limit");
+		arrivalLimitHeader.setText("Max Arrival Limit (microseconds)");
 		arrivalLimitHeader.pack();
 
 		TableColumn validationHeader = new TableColumn(table, SWT.CENTER);
-		validationHeader.setText("TSN Proof Validation");
+		validationHeader.setText("Latency Analysis");
 		validationHeader.pack();
 
 		if (TSNSchedSettingsPanel.isLFSCCheckEnabled()) {
 			TableColumn lfscHeader = new TableColumn(table, SWT.CENTER);
-			lfscHeader.setText("TSN LFSC Proof Validation");
+			lfscHeader.setText("LFSC Proof Checking");
 			lfscHeader.pack();
+		}
 
+		if (TSNSchedSettingsPanel.isAletheCheckEnabled()) {
+			TableColumn aletheHeader = new TableColumn(table, SWT.CENTER);
+			aletheHeader.setText("Alethe Proof Checking");
+			aletheHeader.pack();
 		}
 
 		// populate the data
@@ -126,6 +133,15 @@ public class TSNView extends ViewPart {
 				}
 			}
 
+			if (TSNSchedSettingsPanel.isAletheCheckEnabled()) {
+				int index = (TSNSchedSettingsPanel.isLFSCCheckEnabled()) ? 5 : 4;
+				
+				if (tsnAletheResults.get(tsnStream) != null && tsnAletheResults.get(tsnStream).booleanValue() == true) {
+					item.setImage(index, ViewUtils.getIcon("valid.png"));
+				} else {
+					item.setImage(index, ViewUtils.getIcon("false.png"));
+				}
+			}
 		}
 
 		table.pack();

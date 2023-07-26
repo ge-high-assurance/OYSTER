@@ -31,9 +31,6 @@
  */
 package com.ge.research.osate.verdict.gui;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -53,6 +50,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class TSNSchedSettingsPanel extends ApplicationWindow {
 
     private static final String SETTINGS_TITLE = "TSN Schedule Proof Validation Settings";
@@ -62,6 +62,7 @@ public class TSNSchedSettingsPanel extends ApplicationWindow {
     private static boolean lfscEnabled = true;
     private static boolean aletheEnabled = true;
     private static boolean lfscCheckEnabled = true;
+    private static boolean aletheCheckEnabled = true;
 
     private static final Font REG_FONT = new Font(null, "Helvetica", 12, SWT.NORMAL);
 
@@ -105,24 +106,27 @@ public class TSNSchedSettingsPanel extends ApplicationWindow {
     public static boolean isAletheEnabled() {
         return aletheEnabled;
     }
-    
+
     public static boolean isLFSCCheckEnabled() {
-    	return lfscCheckEnabled;
+        return lfscCheckEnabled;
     }
     
-    public static Set<String> getProofFormats(){
-    	Set<String> proofFormats = new HashSet<>();
-    	if(dotEnabled) {
-    		proofFormats.add("dot");
-    	}
-    	if(aletheEnabled) {
-    		proofFormats.add("alethe");
-    		
-    	}
-    	if(lfscEnabled) {
-    		proofFormats.add("lfsc");
-    	}
-    	return proofFormats;
+    public static boolean isAletheCheckEnabled() {
+    	return aletheCheckEnabled;
+    }
+
+    public static Set<String> getProofFormats() {
+        Set<String> proofFormats = new HashSet<>();
+        if (dotEnabled) {
+            proofFormats.add("dot");
+        }
+        if (aletheEnabled) {
+            proofFormats.add("alethe");
+        }
+        if (lfscEnabled) {
+            proofFormats.add("lfsc");
+        }
+        return proofFormats;
     }
 
     @Override
@@ -138,7 +142,7 @@ public class TSNSchedSettingsPanel extends ApplicationWindow {
         final Group validatorGroup1 = new Group(mainComposite, SWT.NONE);
         validatorGroup1.setLayout(new GridLayout(1, false));
         final GridData gridData = new GridData(GridData.VERTICAL_ALIGN_END);
-        //gridData.horizontalIndent = 25;
+        // gridData.horizontalIndent = 25;
 
         final Button dotToggle = new Button(validatorGroup1, SWT.CHECK);
         dotToggle.setText("Dot");
@@ -157,33 +161,63 @@ public class TSNSchedSettingsPanel extends ApplicationWindow {
         aletheToggle.setSelection(aletheEnabled);
         aletheToggle.setLayoutData(gridData);
 
-        
-        
         final Label optLabel3 = new Label(mainComposite, SWT.NONE);
         optLabel3.setText("Proof Checkers");
         optLabel3.setFont(BOLD_FONT);
-        
+
         final Group validatorGroup2 = new Group(mainComposite, SWT.NONE);
         validatorGroup2.setLayout(new GridLayout(1, false));
         final Button lfscCheckToggle = new Button(validatorGroup2, SWT.CHECK);
         lfscCheckToggle.setText("Use LFSC Checker");
         lfscCheckToggle.setFont(REG_FONT);
         lfscCheckToggle.setSelection(lfscCheckEnabled);
+        
+        final Button aletheCheckToggle = new Button(validatorGroup2, SWT.CHECK);
+        aletheCheckToggle.setText("Use Alethe Checker");
+        aletheCheckToggle.setFont(REG_FONT);
+        aletheCheckToggle.setSelection(aletheCheckEnabled);
 
+        lfscToggle.addSelectionListener(
+                new SelectionAdapter() {
+                    @Override
+                    public void widgetSelected(SelectionEvent e) {
+                        if (lfscToggle.getSelection() == false) {
+                            lfscCheckToggle.setSelection(false);
+                        }
+                    }
+                });
+        
         
         lfscCheckToggle.addSelectionListener(
                 new SelectionAdapter() {
                     @Override
                     public void widgetSelected(SelectionEvent e) {
-                    	    if(lfscCheckToggle.getSelection()) {
-                    	    	lfscToggle.setSelection(true);
-                    	    }
+                        if (lfscCheckToggle.getSelection()) {
+                            lfscToggle.setSelection(true);
+                        }
+                    }
+                });
+        
+        aletheCheckToggle.addSelectionListener(
+                new SelectionAdapter() {
+                    @Override
+                    public void widgetSelected(SelectionEvent e) {
+                        if (aletheCheckToggle.getSelection()) {
+                            aletheToggle.setSelection(true);
+                        }
+                    }
+                });
+        
+        aletheToggle.addSelectionListener(
+                new SelectionAdapter() {
+                    @Override
+                    public void widgetSelected(SelectionEvent e) {
+                        if (aletheToggle.getSelection() == false) {
+                            aletheCheckToggle.setSelection(false);
+                        }
                     }
                 });
 
-        
-        
-         
         // save and close buttons
         final Composite closeButtons = new Composite(mainComposite, SWT.NONE);
         closeButtons.setLayout(new RowLayout(SWT.HORIZONTAL));
@@ -216,6 +250,7 @@ public class TSNSchedSettingsPanel extends ApplicationWindow {
                         lfscEnabled = lfscToggle.getSelection();
                         aletheEnabled = aletheToggle.getSelection();
                         lfscCheckEnabled = lfscCheckToggle.getSelection();
+                        aletheCheckEnabled = aletheCheckToggle.getSelection();
                         mainComposite.getShell().close();
                     }
                 });
