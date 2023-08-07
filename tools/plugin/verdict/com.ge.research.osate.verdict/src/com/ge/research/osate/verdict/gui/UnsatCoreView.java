@@ -104,7 +104,7 @@ public class UnsatCoreView extends ViewPart {
             TableItem item = new TableItem(table, SWT.CENTER);
             item.setText(0, formatConstraintName(constraint));
             item.setText(1, formatConstraintType(constraint, constraintType));
-            item.setText(2, formatConstraintComments(constraint));
+            item.setText(2, formatConstraintComments(constraint, constraintType));
         }
 
         table.pack();
@@ -116,6 +116,9 @@ public class UnsatCoreView extends ViewPart {
         ConstraintType type = constraintType.get(constraint);
         if (type == null && constraint.contains("sched")) {
             return "Scheduling Constraint";
+        }
+        if(type == null && constraint.contains("jitter") || constraint.contains("bandwidth")) {
+        	return "Virtual Link Constraint";
         }
 
         if (type != null) {
@@ -141,7 +144,7 @@ public class UnsatCoreView extends ViewPart {
 
         return "";
     }
-    private static String formatConstraintComments(String constraint) {
+    private static String formatConstraintComments(String constraint, Map<String, ConstraintType> constraintType) {
     	if(constraint.contains("sched_")){
     		 if(constraint.contains("_isschedulable") || constraint.contains("hasstarttimescheduled")) {
     			 return "Application cannot be scheduled, please check the schedule parameters";
@@ -150,6 +153,15 @@ public class UnsatCoreView extends ViewPart {
     			 return "Check the schedule parameters for the pair of conflicting applications";
     		 }
     		 
+    	}
+    	 ConstraintType type = constraintType.get(constraint);
+    	 if(type != null && (type.equals(ConstraintType.FIXED_LOCATION_CONSTRAINT)
+    	    || type.equals(ConstraintType.SEPARATION_CONSTRAINT)
+    	    || type.equals(ConstraintType.CO_LOCATION_CONSTRAINT))) {
+    		 return "Check consistency with other Fixed-Location, Separation and Co-location constraints specified";
+    	 }
+    	if(constraint.contains("upper_limit_for_bandwidth")) {
+    		return "Check maximum bandwidth or the number of virtual links to be allocated";
     	}
     	return "";
     }
@@ -169,10 +181,14 @@ public class UnsatCoreView extends ViewPart {
     		  
     		return "";
     	}
+    	
+    	if(constraint.contains("upper_limit_for_bandwidth")) {
+    		 return "Virtual links exceed max bandwidth";
+    	}
     	return constraint;
     }
     private static boolean skipConstraint(String constraint) {
-    	Set<String> blackList = new HashSet<>(Arrays.asList("in_unique_core", "application_"));
+    	Set<String> blackList = new HashSet<>(Arrays.asList("in_unique_core", "application_", "range_of_", "vl_constraint_2"));
     	for(String entry : blackList) {
     		if(constraint.contains(entry)) {
     			return true;
