@@ -43,9 +43,12 @@ import org.eclipse.ui.part.ViewPart;
 import oyster.odm.odm_model.ConstraintType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class UnsatCoreView extends ViewPart {
     public static final String ID = "com.ge.research.osate.verdict.gui.unsatCoreView";
@@ -92,50 +95,89 @@ public class UnsatCoreView extends ViewPart {
         commentsHeader.setText("Comments");
         commentsHeader.pack();
 
-
         // populate the data
 
         for (String constraint : unsatCore) {
-            TableItem item = new TableItem(table, SWT.CENTER);
-            item.setText(0, constraint);
-            item.setText(1, formatConstraintType(constraint, constraintType));
-            item.setText(2, "");
-           
+        	if(skipConstraint(constraint)) {
+        		continue;
         	}
+            TableItem item = new TableItem(table, SWT.CENTER);
+            item.setText(0, formatConstraintName(constraint));
+            item.setText(1, formatConstraintType(constraint, constraintType));
+            item.setText(2, formatConstraintComments(constraint));
+        }
 
         table.pack();
         composite.pack();
     }
-    
-    public static String formatConstraintType(String constraint, Map<String, ConstraintType> constraintType) {
-    	 ConstraintType type = constraintType.get(constraint);
-    	 if(type == null && constraint.contains("sched")) {
-    		 return "Scheduling Constraint";
-    	 }
-    	 
-    	 if(type != null) {
-    		 switch(type) {
-    		 case FIXED_LOCATION_CONSTRAINT :
-    			        return "Fixed Location Constraint";
-    		 case SEPARATION_CONSTRAINT:
-    			        return "Separation Constraint";
-    		 case CO_LOCATION_CONSTRAINT:
-    			        return "Co-location Constraint";
-    		 case UTILIZATION_CONSTRAINT:
-    			        return "Utilization Constraint";
-    		 case VIRTUAL_LINK_CONSTRAINT:
-    			        return "Virtual Link Constraint";
-    		 case PORT_CONNECTION_CONSTRAINT:
-    			        return "Port Connection Constraint";
-    		 case LOCATION_CONSTRAINT:
-    			        return "Location Constraint";
-    		 case READ_ONLY_CONSTRAINT:
-    			        return "Read-only Constraint";
-    			 
+
+    private static String formatConstraintType(
+            String constraint, Map<String, ConstraintType> constraintType) {
+        ConstraintType type = constraintType.get(constraint);
+        if (type == null && constraint.contains("sched")) {
+            return "Scheduling Constraint";
+        }
+
+        if (type != null) {
+            switch (type) {
+                case FIXED_LOCATION_CONSTRAINT:
+                    return "Fixed Location Constraint";
+                case SEPARATION_CONSTRAINT:
+                    return "Separation Constraint";
+                case CO_LOCATION_CONSTRAINT:
+                    return "Co-location Constraint";
+                case UTILIZATION_CONSTRAINT:
+                    return "Utilization Constraint";
+                case VIRTUAL_LINK_CONSTRAINT:
+                    return "Virtual Link Constraint";
+                case PORT_CONNECTION_CONSTRAINT:
+                    return "Port Connection Constraint";
+                case LOCATION_CONSTRAINT:
+                    return "Location Constraint";
+                case READ_ONLY_CONSTRAINT:
+                    return "Read-only Constraint";
+            }
+        }
+
+        return "";
+    }
+    private static String formatConstraintComments(String constraint) {
+    	if(constraint.contains("sched_")){
+    		 if(constraint.contains("_isschedulable") || constraint.contains("hasstarttimescheduled")) {
+    			 return "Application cannot be scheduled, please check the schedule parameters";
     		 }
-    	 }
-    	 
-    	 
-    	 return "";
+    		 if(constraint.contains("_and_")) {
+    			 return "Check the schedule parameters for the pair of conflicting applications";
+    		 }
+    		 
+    	}
+    	return "";
+    }
+    
+    private static String formatConstraintName(String constraint) {
+    	if(constraint.contains("sched_")){
+    		  String transform = constraint.replaceAll("sched_", "");
+    		  if(transform.contains("_and_")) {
+    			  String [] split = transform.split("_and_");
+    			  return "Schedulability conflict for " + split[0] + " and " + split[1];
+    			  
+    		  }
+    		  if(transform.contains("_isschedulable") || constraint.contains("_hasstarttimescheduled")) {
+    			  String app = transform.replaceAll("_isschedulable","").replaceAll("_hasstarttimescheduled","");
+    			  return "Application " + app + " cannot be schedule";
+    		  }
+    		  
+    		return "";
+    	}
+    	return constraint;
+    }
+    private static boolean skipConstraint(String constraint) {
+    	Set<String> blackList = new HashSet<>(Arrays.asList("in_unique_core", "application_"));
+    	for(String entry : blackList) {
+    		if(constraint.contains(entry)) {
+    			return true;
+    		}
+    	}
+    	return false;
     }
 }
