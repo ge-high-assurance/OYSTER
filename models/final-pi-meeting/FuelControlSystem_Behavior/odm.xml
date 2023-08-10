@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:model xmlns:ns2="oyster::odm::odm_data" xmlns:ns3="oyster::odm::odm_model">
+    <name>FuelControlSystem_Behavior</name>
+    <componentType package="FuelControlSystem_Behavior" id="FuelControlSystem_Behavior::APP_FUEL_SYSTEM_CONTROL" name="APP_FUEL_SYSTEM_CONTROL">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>priorityGroup</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">1</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>priority</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>name</ns2:name>
+            <ns2:type>String</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">APP_FUEL_SYSTEM_CONTROL</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="FuelControlSystem_Behavior" id="FuelControlSystem_Behavior::APP_FIDO" name="APP_FIDO">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>priorityGroup</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">2</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>priority</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">2</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>name</ns2:name>
+            <ns2:type>String</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">APP_FIDO</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="FuelControlSystem_Behavior" id="FuelControlSystem_Behavior::APP_FILE_SYSTEM" name="APP_FILE_SYSTEM">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>priorityGroup</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">1</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>priority</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">3</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>name</ns2:name>
+            <ns2:type>String</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">APP_FILE_SYSTEM</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="FuelControlSystem_Behavior" id="FuelControlSystem_Behavior::APP_SUPPORT_MAIN" name="APP_SUPPORT_MAIN">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>priorityGroup</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">2</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>priority</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>name</ns2:name>
+            <ns2:type>String</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">APP_SUPPORT_MAIN</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="FuelControlSystem_Behavior" id="FuelControlSystem_Behavior::APP_CDN_TIME_MANAGER" name="APP_CDN_TIME_MANAGER">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>priorityGroup</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">1</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>priority</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">2</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>name</ns2:name>
+            <ns2:type>String</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">APP_CDN_TIME_MANAGER</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="FuelControlSystem_Behavior" id="FuelControlSystem_Behavior::APP_HEALTH_MANAGER" name="APP_HEALTH_MANAGER">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">A653_Application</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>priorityGroup</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">2</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>priority</ns2:name>
+            <ns2:type>Int</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">0</ns2:value>
+        </attribute>
+        <attribute>
+            <ns2:name>name</ns2:name>
+            <ns2:type>String</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">APP_HEALTH_MANAGER</ns2:value>
+        </attribute>
+    </componentType>
+    <componentType package="FuelControlSystem_Behavior" id="FuelControlSystem_Behavior::GPM" name="GPM">
+        <attribute>
+            <ns2:name>componentType</ns2:name>
+            <ns2:type>Enum</ns2:type>
+            <ns2:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">General_Processing_Module</ns2:value>
+        </attribute>
+    </componentType>
+    <componentImpl package="FuelControlSystem_Behavior" id="FuelControlSystem_Behavior::GPM.Impl" name="GPM.Impl" type="FuelControlSystem_Behavior::GPM">
+        <subcomponents id="FuelControlSystem_Behavior::GPM.Impl.APP_FUEL_SYSTEM_CONTROL" name="APP_FUEL_SYSTEM_CONTROL">
+            <type>FuelControlSystem_Behavior::APP_FUEL_SYSTEM_CONTROL</type>
+        </subcomponents>
+        <subcomponents id="FuelControlSystem_Behavior::GPM.Impl.APP_FIDO" name="APP_FIDO">
+            <type>FuelControlSystem_Behavior::APP_FIDO</type>
+        </subcomponents>
+        <subcomponents id="FuelControlSystem_Behavior::GPM.Impl.APP_FILE_SYSTEM" name="APP_FILE_SYSTEM">
+            <type>FuelControlSystem_Behavior::APP_FILE_SYSTEM</type>
+        </subcomponents>
+        <subcomponents id="FuelControlSystem_Behavior::GPM.Impl.APP_SUPPORT_MAIN" name="APP_SUPPORT_MAIN">
+            <type>FuelControlSystem_Behavior::APP_SUPPORT_MAIN</type>
+        </subcomponents>
+        <subcomponents id="FuelControlSystem_Behavior::GPM.Impl.APP_CDN_TIME_MANAGER" name="APP_CDN_TIME_MANAGER">
+            <type>FuelControlSystem_Behavior::APP_CDN_TIME_MANAGER</type>
+        </subcomponents>
+        <subcomponents id="FuelControlSystem_Behavior::GPM.Impl.APP_HEALTH_MANAGER" name="APP_HEALTH_MANAGER">
+            <type>FuelControlSystem_Behavior::APP_HEALTH_MANAGER</type>
+        </subcomponents>
+    </componentImpl>
+</ns3:model>

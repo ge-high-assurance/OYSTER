@@ -1,0 +1,1158 @@
+package IMASystem
+public
+with OYSTER_Properties;
+
+system implementation CCR.CCR_L1
+	subcomponents
+		GPM_L1: system GPM.GPM_L1;
+		ACS_L1: system ACS.ACS_L1;
+	connections
+		c1: port GPM_L1.portA <-> ACS_L1.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c4: port ACS_L1.port24 <-> portA {OYSTER_properties::bandwidth => 1000000000;};
+		c54: port ACS_L1.port22 <-> portB {OYSTER_properties::bandwidth => 1000000000;};
+end CCR.CCR_L1;
+
+system implementation CCR.CCR_L2
+	subcomponents
+		GPM_L2: system GPM.GPM_L2;
+		ACS_L2: system ACS.ACS_L2;
+	connections
+		c2: port GPM_L2.portA <-> ACS_L2.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c6: port ACS_L2.port24 <-> portA {OYSTER_properties::bandwidth => 1000000000;};
+		c55: port ACS_L2.port22 <-> portB {OYSTER_properties::bandwidth => 1000000000;};
+		c16: port ACS_L2.port9 <-> portC {OYSTER_properties::bandwidth => 1000000000;};
+		c27: port ACS_L2.port10 <-> port10 {OYSTER_properties::bandwidth => 1000000000;};
+end CCR.CCR_L2;
+
+system implementation CCR.CCR_L3
+	subcomponents
+		GPM_L3: system GPM.GPM_L3;
+		ACS_L3: system ACS.ACS_L3;
+	connections
+		c33: port ACS_L3.port24 <-> portA {OYSTER_properties::bandwidth => 1000000000;};
+		c37: port ACS_L3.port9 <-> portD {OYSTER_properties::bandwidth => 1000000000;};
+		c3: port GPM_L3.portA <-> ACS_L3.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c29: port port10 <-> ACS_L3.port10 {OYSTER_properties::bandwidth => 1000000000;};
+end CCR.CCR_L3;
+
+system implementation CCR.CCR_R1
+	subcomponents
+		GPM_R1: system GPM.GPM_R1;
+		ACS_R1: system ACS.ACS_R1;
+	connections
+		c7: port GPM_R1.portA <-> ACS_R1.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c53: port ACS_R1.port22 <-> portB {OYSTER_properties::bandwidth => 1000000000;};
+		c10: port ACS_R1.port24 <-> portA {OYSTER_properties::bandwidth => 1000000000;};
+	flows
+		VL01025_flow3_ccrsource_CCR_R1: flow source GPM_R1.VL01025_flow3_GPM_R1 -> c7 -> ACS_R1.VL01025_flow3_ACS_R1 -> c10 -> portA {
+			OYSTER_properties::mtu => 12; OYSTER_properties::bag => 32;};
+		VL01025_flow2_ccrsource_CCR_R1: flow source GPM_R1.VL01025_flow2_GPM_R1 -> c7 -> ACS_R1.VL01025_flow2_ACS_R1 -> c10 -> portA {
+			OYSTER_properties::mtu => 12; OYSTER_properties::bag => 32;};
+		VL01025_flow1_ccrsource_CCR_R1: flow source GPM_R1.VL01025_flow1_GPM_R1 -> c7 -> ACS_R1.VL01025_flow1_ACS_R1 -> c10 -> portA {
+			OYSTER_properties::mtu => 12; OYSTER_properties::bag => 32;};
+		VL01025_flow0_ccrsource_CCR_R1: flow source GPM_R1.VL01025_flow0_GPM_R1 -> c7 -> ACS_R1.VL01025_flow0_ACS_R1 -> c53 -> portB {
+			OYSTER_properties::mtu => 12; OYSTER_properties::bag => 32;};
+end CCR.CCR_R1;
+
+system implementation CCR.CCR_R2
+	subcomponents
+		GPM_R2: system GPM.GPM_R2;
+		ACS_R2: system ACS.ACS_R2;
+	connections
+		c30: port ACS_R2.port22 <-> port22 {OYSTER_properties::bandwidth => 1000000000;};
+		c8: port GPM_R2.portA <-> ACS_R2.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c12: port portA <-> ACS_R2.port24 {OYSTER_properties::bandwidth => 1000000000;};
+		c56: port ACS_R2.port24 <-> portB {OYSTER_properties::bandwidth => 1000000000;};
+		c18: port ACS_R2.port9 <-> portC {OYSTER_properties::bandwidth => 1000000000;};
+end CCR.CCR_R2;
+
+system implementation CCR.CCR_R3
+	subcomponents
+		GPM_R3: system GPM.GPM_R3;
+		ACS_R3: system ACS.ACS_R3;
+	connections
+		c32: port port22 <-> ACS_R3.port22 {OYSTER_properties::bandwidth => 1000000000;};
+		c35: port portA <-> ACS_R3.port24 {OYSTER_properties::bandwidth => 1000000000;};
+		c39: port ACS_R3.port9 <-> portD {OYSTER_properties::bandwidth => 1000000000;};
+		c9: port GPM_R3.portA <-> ACS_R3.port1 {OYSTER_properties::bandwidth => 1000000000;};
+end CCR.CCR_R3;
+
+system implementation GPM.GPM_L1
+end GPM.GPM_L1;
+
+system implementation GPM.GPM_L2
+end GPM.GPM_L2;
+
+system implementation GPM.GPM_L3
+end GPM.GPM_L3;
+
+system implementation GPM.GPM_R1
+	subcomponents
+		APP_FUEL_SYSTEM_CONTROL: system GPMApp.APP_FUEL_SYSTEM_CONTROL;
+end GPM.GPM_R1;
+
+system implementation GPM.GPM_R2
+	subcomponents
+		APP_HEALTH_MANAGER: system GPMApp.APP_HEALTH_MANAGER {OYSTER_properties::start_time => 7;
+	OYSTER_properties::processor_name => "P1"; OYSTER_properties::period => 100;};
+		APP_CDN_TIME_MANAGER: system GPMApp.APP_CDN_TIME_MANAGER {OYSTER_properties::start_time => 4;
+	OYSTER_properties::processor_name => "P1"; OYSTER_properties::period => 100;};
+		APP_SUPPORT_MAIN: system GPMApp.APP_SUPPORT_MAIN {OYSTER_properties::start_time => 0;
+	OYSTER_properties::processor_name => "P1"; OYSTER_properties::period => 50;};
+		APP_FILE_SYSTEM: system GPMApp.APP_FILE_SYSTEM {OYSTER_properties::start_time => 2;
+	OYSTER_properties::processor_name => "P1"; OYSTER_properties::period => 50;};
+		APP_FIDO: system GPMApp.APP_FIDO {OYSTER_properties::start_time => 6; OYSTER_properties::processor_name => "P1";
+	OYSTER_properties::period => 50;};
+		P1: system ProcessorGPM.P1;
+end GPM.GPM_R2;
+
+system implementation GPM.GPM_R3
+end GPM.GPM_R3;
+
+system implementation GPMApp.APP_FUEL_SYSTEM_CONTROL
+end GPMApp.APP_FUEL_SYSTEM_CONTROL;
+
+system implementation GPMApp.APP_FIDO
+end GPMApp.APP_FIDO;
+
+system implementation GPMApp.APP_FILE_SYSTEM
+end GPMApp.APP_FILE_SYSTEM;
+
+system implementation GPMApp.APP_SUPPORT_MAIN
+end GPMApp.APP_SUPPORT_MAIN;
+
+system implementation GPMApp.APP_CDN_TIME_MANAGER
+end GPMApp.APP_CDN_TIME_MANAGER;
+
+system implementation GPMApp.APP_HEALTH_MANAGER
+end GPMApp.APP_HEALTH_MANAGER;
+
+system implementation ProcessorGPM.P1
+end ProcessorGPM.P1;
+
+system implementation ACS.ACS_L1
+end ACS.ACS_L1;
+
+system implementation ACS.ACS_L2
+end ACS.ACS_L2;
+
+system implementation ACS.ACS_L3
+end ACS.ACS_L3;
+
+system implementation ACS.ACS_R1
+end ACS.ACS_R1;
+
+system implementation ACS.ACS_R2
+end ACS.ACS_R2;
+
+system implementation ACS.ACS_R3
+end ACS.ACS_R3;
+
+system implementation RDC.RDC_L1
+end RDC.RDC_L1;
+
+system implementation RDC.RDC_R1
+end RDC.RDC_R1;
+
+system implementation RDC.RDC_L2
+end RDC.RDC_L2;
+
+system implementation RDC.RDC_R2
+end RDC.RDC_R2;
+
+system implementation Actuator.L_Eng_SO_Valve
+	subcomponents
+		APP_L_Eng_SO_Valve: system ActuatorApp.APP_L_Eng_SO_Valve;
+end Actuator.L_Eng_SO_Valve;
+
+system implementation Actuator.APU_SO_Valve
+end Actuator.APU_SO_Valve;
+
+system implementation Actuator.L_XFER_Pump
+end Actuator.L_XFER_Pump;
+
+system implementation Actuator.LR_XFER_Valve
+end Actuator.LR_XFER_Valve;
+
+system implementation Actuator.R_Eng_SO_Valve
+	subcomponents
+		APP_R_Eng_SO_Valve: system ActuatorApp.APP_R_Eng_SO_Valve;
+end Actuator.R_Eng_SO_Valve;
+
+system implementation Sensor.CTR_Fuel_Temp
+end Sensor.CTR_Fuel_Temp;
+
+system implementation Actuator.R_XFER_Pump
+end Actuator.R_XFER_Pump;
+
+system implementation Sensor.CTR_Fuel_Qty
+end Sensor.CTR_Fuel_Qty;
+
+system implementation Sensor.LW_Fuel_Qty
+	subcomponents
+		APP_LW_Fuel_Qty: system SensorApp.APP_LW_Fuel_Qty;
+end Sensor.LW_Fuel_Qty;
+
+system implementation Sensor.LW_Fuel_Temp
+end Sensor.LW_Fuel_Temp;
+
+system implementation Sensor.L_Eng_Press
+end Sensor.L_Eng_Press;
+
+system implementation Sensor.L_XFER_Press
+end Sensor.L_XFER_Press;
+
+system implementation Actuator.Fuel_CF_Valve
+end Actuator.Fuel_CF_Valve;
+
+system implementation Actuator.LW_Pmp_Mn
+end Actuator.LW_Pmp_Mn;
+
+system implementation Actuator.LW_Pmp_STBY
+end Actuator.LW_Pmp_STBY;
+
+system implementation Actuator.RW_Pmp_Mn
+	subcomponents
+		APP_RW_Pmp_Mn: system ActuatorApp.APP_RW_Pmp_Mn;
+end Actuator.RW_Pmp_Mn;
+
+system implementation Actuator.RW_Pmp_STBY
+end Actuator.RW_Pmp_STBY;
+
+system implementation Sensor.RW_Fuel_Qty
+end Sensor.RW_Fuel_Qty;
+
+system implementation Sensor.RW_Fuel_Temp
+end Sensor.RW_Fuel_Temp;
+
+system implementation Sensor.R_Eng_Press
+end Sensor.R_Eng_Press;
+
+system implementation Sensor.R_XFER_Press
+end Sensor.R_XFER_Press;
+
+system implementation ActuatorApp.APP_RW_Pmp_Mn
+end ActuatorApp.APP_RW_Pmp_Mn;
+
+system implementation ActuatorApp.APP_R_Eng_SO_Valve
+end ActuatorApp.APP_R_Eng_SO_Valve;
+
+system implementation ActuatorApp.APP_L_Eng_SO_Valve
+end ActuatorApp.APP_L_Eng_SO_Valve;
+
+system implementation SensorApp.APP_LW_Fuel_Qty
+end SensorApp.APP_LW_Fuel_Qty;
+
+system implementation IMA.Synthesis
+	subcomponents
+		CCR_L1: system CCR.CCR_L1;
+		CCR_L2: system CCR.CCR_L2;
+		CCR_L3: system CCR.CCR_L3;
+		CCR_R1: system CCR.CCR_R1;
+		CCR_R2: system CCR.CCR_R2 {OYSTER_properties::cpuProvided => 500;};
+		CCR_R3: system CCR.CCR_R3;
+		RDC_L1: system RDC.RDC_L1;
+		RDC_R1: system RDC.RDC_R1;
+		RDC_L2: system RDC.RDC_L2;
+		RDC_R2: system RDC.RDC_R2;
+		L_Eng_SO_Valve: system Actuator.L_Eng_SO_Valve;
+		APU_SO_Valve: system Actuator.APU_SO_Valve;
+		L_XFER_Pump: system Actuator.L_XFER_Pump;
+		LR_XFER_Valve: system Actuator.LR_XFER_Valve;
+		R_Eng_SO_Valve: system Actuator.R_Eng_SO_Valve;
+		CTR_Fuel_Temp: system Sensor.CTR_Fuel_Temp;
+		R_XFER_Pump: system Actuator.R_XFER_Pump;
+		CTR_Fuel_Qty: system Sensor.CTR_Fuel_Qty;
+		LW_Fuel_Qty: system Sensor.LW_Fuel_Qty;
+		LW_Fuel_Temp: system Sensor.LW_Fuel_Temp;
+		L_Eng_Press: system Sensor.L_Eng_Press;
+		L_XFER_Press: system Sensor.L_XFER_Press;
+		Fuel_CF_Valve: system Actuator.Fuel_CF_Valve;
+		LW_Pmp_Mn: system Actuator.LW_Pmp_Mn;
+		LW_Pmp_STBY: system Actuator.LW_Pmp_STBY;
+		RW_Pmp_Mn: system Actuator.RW_Pmp_Mn;
+		RW_Pmp_STBY: system Actuator.RW_Pmp_STBY;
+		RW_Fuel_Qty: system Sensor.RW_Fuel_Qty;
+		RW_Fuel_Temp: system Sensor.RW_Fuel_Temp;
+		R_Eng_Press: system Sensor.R_Eng_Press;
+		R_XFER_Press: system Sensor.R_XFER_Press;
+	connections
+		c31: port CCR_R2.port22 <-> CCR_R3.port22 {OYSTER_properties::bandwidth => 1000000000;};
+		c34: port CCR_L3.portA <-> CCR_R3.portA {OYSTER_properties::bandwidth => 1000000000;};
+		c36: port RDC_L2.port8 <-> CCR_L3.portD {OYSTER_properties::bandwidth => 1000000000;};
+		c38: port RDC_R2.port7 <-> CCR_R3.portD {OYSTER_properties::bandwidth => 1000000000;};
+		c40: port RDC_L2.port1 <-> LW_Fuel_Qty.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c42: port RDC_L2.port3 <-> L_Eng_Press.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c41: port RDC_L2.port2 <-> LW_Fuel_Temp.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c44: port RDC_L2.port5 <-> Fuel_CF_Valve.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c43: port RDC_L2.port4 <-> L_XFER_Press.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c46: port RDC_L2.port7 <-> LW_Pmp_STBY.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c45: port RDC_L2.port6 <-> LW_Pmp_Mn.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c48: port RDC_R2.port2 <-> RW_Pmp_STBY.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c47: port RDC_R2.port1 <-> RW_Pmp_Mn.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c49: port RDC_R2.port3 <-> RW_Fuel_Qty.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c5: port CCR_L1.portA <-> CCR_L2.portA {OYSTER_properties::bandwidth => 1000000000;};
+		c51: port RDC_R2.port5 <-> R_Eng_Press.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c50: port RDC_R2.port4 <-> RW_Fuel_Temp.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c52: port RDC_R2.port6 <-> R_XFER_Press.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c11: port CCR_R1.portA <-> CCR_R2.portA {OYSTER_properties::bandwidth => 1000000000;};
+		c13: port CCR_L1.portB <-> CCR_R1.portB {OYSTER_properties::bandwidth => 1000000000;};
+		c15: port RDC_L1.port7 <-> CCR_L2.portC {OYSTER_properties::bandwidth => 1000000000;};
+		c14: port CCR_L2.portB <-> CCR_R2.portB {OYSTER_properties::bandwidth => 1000000000;};
+		c17: port RDC_R1.port7 <-> CCR_R2.portC {OYSTER_properties::bandwidth => 1000000000;};
+		c19: port RDC_L1.port1 <-> L_Eng_SO_Valve.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c20: port RDC_L1.port2 <-> APU_SO_Valve.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c22: port RDC_L1.port4 <-> LR_XFER_Valve.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c21: port RDC_L1.port3 <-> L_XFER_Pump.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c24: port RDC_R1.port2 <-> CTR_Fuel_Temp.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c23: port RDC_R1.port1 <-> R_Eng_SO_Valve.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c26: port RDC_R1.port4 <-> CTR_Fuel_Qty.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c25: port RDC_R1.port3 <-> R_XFER_Pump.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c28: port CCR_L2.port10 <-> CCR_L3.port10 {OYSTER_properties::bandwidth => 1000000000;};
+end IMA.Synthesis;
+
+system CCR
+	features
+		port22: in out data port;
+		portA: in out data port;
+		portB: in out data port;
+		port10: in out data port;
+		portD: in out data port;
+		portC: in out data port;
+	flows
+		VL01025_flow0_ccre2e_CCR_L1: flow path portB -> portA;
+		VL01025_flow2_ccre2e_CCR_L2: flow path portB -> port10;
+		VL01025_flow0_ccre2e_CCR_L2: flow path portA -> portC;
+		VL32782_flow0_ccre2e_CCR_L2: flow path portC -> portB;
+		VL01025_flow2_ccre2e_CCR_L3: flow path port10 -> portD;
+		VL32783_flow0_ccre2e_CCR_L3: flow path portD -> portA;
+		VL32781_flow0_ccrsink_CCR_R1: flow sink portA;
+		VL01025_flow3_ccrsource_CCR_R1: flow source portA;
+		VL01025_flow2_ccrsource_CCR_R1: flow source portA;
+		VL01025_flow1_ccrsource_CCR_R1: flow source portA;
+		VL01025_flow0_ccrsource_CCR_R1: flow source portB;
+		VL32783_flow0_ccrsink_CCR_R1: flow sink portA;
+		VL32780_flow0_ccrsink_CCR_R1: flow sink portA;
+		VL32782_flow0_ccrsink_CCR_R1: flow sink portA;
+		VL32781_flow0_ccre2e_CCR_R2: flow path portC -> portA;
+		VL01025_flow3_ccre2e_CCR_R2: flow path portA -> port22;
+		VL01025_flow2_ccre2e_CCR_R2: flow path portA -> portB;
+		VL01025_flow1_ccre2e_CCR_R2: flow path portA -> portC;
+		VL32783_flow0_ccre2e_CCR_R2: flow path port22 -> portA;
+		VL32780_flow0_ccre2e_CCR_R2: flow path port22 -> portA;
+		VL32782_flow0_ccre2e_CCR_R2: flow path portB -> portA;
+		VL01025_flow3_ccre2e_CCR_R3: flow path port22 -> portD;
+		VL32783_flow0_ccre2e_CCR_R3: flow path portA -> port22;
+		VL32780_flow0_ccre2e_CCR_R3: flow path portD -> port22;
+	properties
+		OYSTER_properties::componentType => Common_Compute_Resource;
+end CCR;
+
+system ACS
+	features
+		port22: in out data port;
+		port24: in out data port;
+		port9: in out data port;
+		port10: in out data port;
+		port1: in out data port;
+	flows
+		VL01025_flow0_ACS_L1: flow path port22 -> port24;
+		VL01025_flow2_ACS_L2: flow path port22 -> port10;
+		VL01025_flow0_ACS_L2: flow path port24 -> port9;
+		VL32782_flow0_ACS_L2: flow path port9 -> port22;
+		VL01025_flow2_ACS_L3: flow path port10 -> port9;
+		VL32783_flow0_ACS_L3: flow path port9 -> port24;
+		VL32781_flow0_ACS_R1: flow path port24 -> port1;
+		VL01025_flow3_ACS_R1: flow path port1 -> port24;
+		VL01025_flow2_ACS_R1: flow path port1 -> port24;
+		VL01025_flow1_ACS_R1: flow path port1 -> port24;
+		VL32783_flow0_ACS_R1: flow path port24 -> port1;
+		VL01025_flow0_ACS_R1: flow path port1 -> port22;
+		VL32780_flow0_ACS_R1: flow path port24 -> port1;
+		VL32782_flow0_ACS_R1: flow path port24 -> port1;
+		VL32781_flow0_ACS_R2: flow path port9 -> port24;
+		VL01025_flow3_ACS_R2: flow path port24 -> port22;
+		VL01025_flow1_ACS_R2: flow path port24 -> port9;
+		VL32783_flow0_ACS_R2: flow path port22 -> port24;
+		VL32780_flow0_ACS_R2: flow path port22 -> port24;
+		VL01025_flow3_ACS_R3: flow path port22 -> port9;
+		VL32783_flow0_ACS_R3: flow path port24 -> port22;
+		VL32780_flow0_ACS_R3: flow path port9 -> port22;
+	properties
+		OYSTER_properties::componentType => Avionics_Cabinet_Switch;
+end ACS;
+
+system GPM
+	features
+		portA: in out data port;
+	flows
+		VL32781_flow0_GPM_R1: flow sink portA;
+		VL01025_flow3_GPM_R1: flow source portA;
+		VL01025_flow2_GPM_R1: flow source portA;
+		VL01025_flow1_GPM_R1: flow source portA;
+		VL32783_flow0_GPM_R1: flow sink portA;
+		VL01025_flow0_GPM_R1: flow source portA;
+		VL32780_flow0_GPM_R1: flow sink portA;
+		VL32782_flow0_GPM_R1: flow sink portA;
+	properties
+		OYSTER_properties::componentType => General_Processing_Module;
+end GPM;
+
+
+system GPMApp
+	properties
+		OYSTER_properties::componentType => A653_Application;
+end GPMApp;
+
+system Actuator
+	features
+		port1: in out data port;
+	flows
+		VL32781_flow0_R_Eng_SO_Valve: flow source port1;
+		VL01025_flow3_RW_Pmp_Mn: flow sink port1;
+		VL01025_flow1_R_Eng_SO_Valve: flow sink port1;
+		VL01025_flow0_L_Eng_SO_Valve: flow sink port1;
+		VL32780_flow0_RW_Pmp_Mn: flow source port1;
+		VL32782_flow0_L_Eng_SO_Valve: flow source port1;
+	properties
+		OYSTER_properties::componentType => Actuator;
+end Actuator;
+
+system Sensor
+	features
+		port1: in out data port;
+	flows
+		VL01025_flow2_LW_Fuel_Qty: flow sink port1;
+		VL32783_flow0_LW_Fuel_Qty: flow source port1;
+	properties
+		OYSTER_properties::componentType => Sensor;
+end Sensor;
+
+system SensorApp
+	properties
+		OYSTER_properties::componentType => Sensor;
+end SensorApp;
+
+system ActuatorApp
+	properties
+		OYSTER_properties::componentType => Hosted_Function;
+end ActuatorApp;
+
+
+system IMA
+	properties
+		OYSTER_properties::componentType => Integrated_Modular_Avionics;
+		OYSTER_properties::totalBandwidth =>   6000000000; -- 10000;
+		OYSTER_properties::maxBandwidthPercentage => 70;
+end IMA;
+
+system RDC
+	features
+		port8: in out data port;
+		port7: in out data port;
+		port1: in out data port;
+		port3: in out data port;
+		port2: in out data port;
+		port5: in out data port;
+		port4: in out data port;
+		port6: in out data port;
+	flows
+		VL32781_flow0_RDC_R1: flow path port1 -> port7;
+		VL01025_flow3_RDC_R2: flow path port7 -> port1;
+		VL01025_flow2_RDC_L2: flow path port8 -> port1;
+		VL01025_flow1_RDC_R1: flow path port7 -> port1;
+		VL32783_flow0_RDC_L2: flow path port1 -> port8;
+		VL01025_flow0_RDC_L1: flow path port7 -> port1;
+		VL32780_flow0_RDC_R2: flow path port1 -> port7;
+		VL32782_flow0_RDC_L1: flow path port1 -> port7;
+	properties
+		OYSTER_properties::componentType => Remote_Data_Concentrator;
+end RDC;
+
+system ProcessorGPM
+	properties
+		OYSTER_properties::componentType => CPU;
+end ProcessorGPM;
+
+
+system implementation IMA.Impl
+	subcomponents
+		CCR_L1: system CCR;
+		CCR_L2: system CCR;
+		CCR_L3: system CCR;
+		CCR_R1: system CCR;
+		CCR_R2: system CCR {OYSTER_properties::cpuProvided => 500;};
+		CCR_R3: system CCR;
+
+		GPM_L1: system GPM {OYSTER_properties::ramUsed => 128;};
+		GPM_L2: system GPM {OYSTER_properties::ramUsed => 128;};
+		GPM_L3: system GPM {OYSTER_properties::ramUsed => 128;};
+		GPM_R1: system GPM {OYSTER_properties::ramUsed => 128;};
+		GPM_R2: system GPM {OYSTER_properties::ramUsed => 128;};
+		GPM_R3: system GPM {OYSTER_properties::ramUsed => 128;};
+
+		APP_FUEL_SYSTEM_CONTROL: system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 10;
+			OYSTER_properties::priority => 0; OYSTER_properties::cpuUsed => 100;};
+		APP_FIDO: system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 1;
+			OYSTER_properties::priority => 0; OYSTER_properties::cpuUsed => 100; OYSTER_properties::start_time => 6;
+			OYSTER_properties::processor_name => "P1"; OYSTER_properties::period => 50;};
+		APP_FILE_SYSTEM: system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 2;
+			OYSTER_properties::priority => 0; OYSTER_properties::start_time => 2;
+			OYSTER_properties::processor_name => "P1";
+			OYSTER_properties::period => 50;};
+		APP_SUPPORT_MAIN: system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 2;
+			OYSTER_properties::priority => 0; OYSTER_properties::start_time => 0;
+			OYSTER_properties::processor_name => "P1";
+			OYSTER_properties::period => 50;};
+		APP_CDN_TIME_MANAGER: system GPMApp {OYSTER_properties::rate => 5; OYSTER_properties::duration => 2;
+			OYSTER_properties::priority => 0; OYSTER_properties::start_time => 4;
+			OYSTER_properties::processor_name => "P1";
+			OYSTER_properties::period => 100;};
+		APP_HEALTH_MANAGER: system GPMApp {OYSTER_properties::rate => 5; OYSTER_properties::duration => 6;
+			OYSTER_properties::priority => 0; OYSTER_properties::start_time => 7;
+			OYSTER_properties::processor_name => "P1";
+			OYSTER_properties::period => 100;};
+
+		P1: system ProcessorGPM {OYSTER_properties::slots_per_cycle => 500;};
+
+		ACS_L1: system ACS;
+		ACS_L2: system ACS;
+		ACS_L3: system ACS;
+
+		ACS_R1: system ACS;
+		ACS_R2: system ACS;
+		ACS_R3: system ACS;
+
+		RDC_L1: system RDC;
+		RDC_R1: system RDC;
+		RDC_L2: system RDC;
+		RDC_R2: system RDC;
+
+		L_Eng_SO_Valve: system Actuator;
+		APU_SO_Valve: system Actuator;
+		L_XFER_Pump: system Actuator;
+		LR_XFER_Valve: system Actuator;
+
+		R_Eng_SO_Valve: system Actuator;
+		CTR_Fuel_Temp: system Sensor;
+		R_XFER_Pump: system Actuator;
+		CTR_Fuel_Qty: system Sensor;
+
+		LW_Fuel_Qty: system Sensor;
+		LW_Fuel_Temp: system Sensor;
+		L_Eng_Press: system Sensor;
+		L_XFER_Press: system Sensor;
+		Fuel_CF_Valve: system Actuator;
+		LW_Pmp_Mn: system Actuator;
+		LW_Pmp_STBY: system Actuator;
+
+		RW_Pmp_Mn: system Actuator;
+		RW_Pmp_STBY: system Actuator;
+		RW_Fuel_Qty: system Sensor;
+		RW_Fuel_Temp: system Sensor;
+		R_Eng_Press: system Sensor;
+		R_XFER_Press: system Sensor;
+
+		APP_RW_Pmp_Mn: system ActuatorApp;
+		APP_R_Eng_SO_Valve: system ActuatorApp;
+		APP_L_Eng_SO_Valve: system ActuatorApp;
+		APP_LW_Fuel_Qty: system SensorApp;
+	connections
+		c31: port CCR_R2.port22 <-> CCR_R3.port22 {OYSTER_properties::bandwidth => 1000000000;};
+		c30: port ACS_R2.port22 <-> CCR_R2.port22 {OYSTER_properties::bandwidth => 1000000000;};
+		c33: port ACS_L3.port24 <-> CCR_L3.portA {OYSTER_properties::bandwidth => 1000000000;};
+		c32: port CCR_R3.port22 <-> ACS_R3.port22 {OYSTER_properties::bandwidth => 1000000000;};
+		c35: port CCR_R3.portA <-> ACS_R3.port24 {OYSTER_properties::bandwidth => 1000000000;};
+		c34: port CCR_L3.portA <-> CCR_R3.portA {OYSTER_properties::bandwidth => 1000000000;};
+		c37: port ACS_L3.port9 <-> CCR_L3.portD {OYSTER_properties::bandwidth => 1000000000;};
+		c36: port RDC_L2.port8 <-> CCR_L3.portD {OYSTER_properties::bandwidth => 1000000000;};
+		c39: port ACS_R3.port9 <-> CCR_R3.portD {OYSTER_properties::bandwidth => 1000000000;};
+		c38: port RDC_R2.port7 <-> CCR_R3.portD {OYSTER_properties::bandwidth => 1000000000;};
+		c40: port RDC_L2.port1 <-> LW_Fuel_Qty.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c42: port RDC_L2.port3 <-> L_Eng_Press.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c41: port RDC_L2.port2 <-> LW_Fuel_Temp.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c44: port RDC_L2.port5 <-> Fuel_CF_Valve.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c43: port RDC_L2.port4 <-> L_XFER_Press.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c46: port RDC_L2.port7 <-> LW_Pmp_STBY.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c45: port RDC_L2.port6 <-> LW_Pmp_Mn.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c48: port RDC_R2.port2 <-> RW_Pmp_STBY.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c47: port RDC_R2.port1 <-> RW_Pmp_Mn.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c49: port RDC_R2.port3 <-> RW_Fuel_Qty.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c1: port GPM_L1.portA <-> ACS_L1.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c2: port GPM_L2.portA <-> ACS_L2.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c3: port GPM_L3.portA <-> ACS_L3.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c4: port ACS_L1.port24 <-> CCR_L1.portA {OYSTER_properties::bandwidth => 1000000000;};
+		c5: port CCR_L1.portA <-> CCR_L2.portA {OYSTER_properties::bandwidth => 1000000000;};
+		c6: port ACS_L2.port24 <-> CCR_L2.portA {OYSTER_properties::bandwidth => 1000000000;};
+		c7: port GPM_R1.portA <-> ACS_R1.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c8: port GPM_R2.portA <-> ACS_R2.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c9: port GPM_R3.portA <-> ACS_R3.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c51: port RDC_R2.port5 <-> R_Eng_Press.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c50: port RDC_R2.port4 <-> RW_Fuel_Temp.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c53: port ACS_R1.port22 <-> CCR_R1.portB {OYSTER_properties::bandwidth => 1000000000;};
+		c52: port RDC_R2.port6 <-> R_XFER_Press.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c11: port CCR_R1.portA <-> CCR_R2.portA {OYSTER_properties::bandwidth => 1000000000;};
+		c55: port ACS_L2.port22 <-> CCR_L2.portB {OYSTER_properties::bandwidth => 1000000000;};
+		c10: port ACS_R1.port24 <-> CCR_R1.portA {OYSTER_properties::bandwidth => 1000000000;};
+		c54: port ACS_L1.port22 <-> CCR_L1.portB {OYSTER_properties::bandwidth => 1000000000;};
+		c13: port CCR_L1.portB <-> CCR_R1.portB {OYSTER_properties::bandwidth => 1000000000;};
+		c12: port CCR_R2.portA <-> ACS_R2.port24 {OYSTER_properties::bandwidth => 1000000000;};
+		c56: port ACS_R2.port24 <-> CCR_R2.portB {OYSTER_properties::bandwidth => 1000000000;};
+		c15: port RDC_L1.port7 <-> CCR_L2.portC {OYSTER_properties::bandwidth => 1000000000;};
+		c14: port CCR_L2.portB <-> CCR_R2.portB {OYSTER_properties::bandwidth => 1000000000;};
+		c17: port RDC_R1.port7 <-> CCR_R2.portC {OYSTER_properties::bandwidth => 1000000000;};
+		c16: port ACS_L2.port9 <-> CCR_L2.portC {OYSTER_properties::bandwidth => 1000000000;};
+		c19: port RDC_L1.port1 <-> L_Eng_SO_Valve.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c18: port ACS_R2.port9 <-> CCR_R2.portC {OYSTER_properties::bandwidth => 1000000000;};
+		c20: port RDC_L1.port2 <-> APU_SO_Valve.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c22: port RDC_L1.port4 <-> LR_XFER_Valve.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c21: port RDC_L1.port3 <-> L_XFER_Pump.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c24: port RDC_R1.port2 <-> CTR_Fuel_Temp.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c23: port RDC_R1.port1 <-> R_Eng_SO_Valve.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c26: port RDC_R1.port4 <-> CTR_Fuel_Qty.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c25: port RDC_R1.port3 <-> R_XFER_Pump.port1 {OYSTER_properties::bandwidth => 1000000000;};
+		c28: port CCR_L2.port10 <-> CCR_L3.port10 {OYSTER_properties::bandwidth => 1000000000;};
+		c27: port ACS_L2.port10 <-> CCR_L2.port10 {OYSTER_properties::bandwidth => 1000000000;};
+		c29: port CCR_L3.port10 <-> ACS_L3.port10 {OYSTER_properties::bandwidth => 1000000000;};
+
+	annex oyster {**
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+					Constraints {		
+						Fixed-Location-Constraint FLC1: (GPM_L1 -> CCR_L1);
+						Fixed-Location-Constraint FLC2: (GPM_L2 -> CCR_L2);
+						Fixed-Location-Constraint FLC3: (ACS_L1 -> CCR_L1);
+						Fixed-Location-Constraint FLC4: (ACS_L2 -> CCR_L2);
+						
+						Fixed-Location-Constraint FLC5: (GPM_R1 -> CCR_R1);
+						Fixed-Location-Constraint FLC6: (GPM_R2 -> CCR_R2);
+						Fixed-Location-Constraint FLC7: (ACS_R1 -> CCR_R1);
+						Fixed-Location-Constraint FLC8: (ACS_R2 -> CCR_R2);
+						
+						
+						Fixed-Location-Constraint FLC9: (GPM_L3 -> CCR_L3);
+						Fixed-Location-Constraint FLC10: (GPM_R3 -> CCR_R3);
+						Fixed-Location-Constraint FLC11: (ACS_L3 -> CCR_L3);
+						Fixed-Location-Constraint FLC12: (ACS_R3 -> CCR_R3);
+						
+						
+						--Fixed-Location-Constraint FLC18: (HF_R_Eng_SO_Valve -> R_Eng_SO_Valve);
+						Fixed-Location-Constraint FLC71: (APP_FUEL_SYSTEM_CONTROL -> GPM_R1);
+						Fixed-Location-Constraint FLC72: (APP_FIDO -> GPM_R2);
+						Fixed-Location-Constraint FLC73: (APP_FILE_SYSTEM -> GPM_R2);
+						Fixed-Location-Constraint FLC74: (APP_SUPPORT_MAIN -> GPM_R2);
+						Fixed-Location-Constraint FLC75: (APP_CDN_TIME_MANAGER -> GPM_R2);
+						Fixed-Location-Constraint FLC76: (APP_HEALTH_MANAGER -> GPM_R2);
+						
+						Fixed-Location-Constraint FLC105: (P1 -> GPM_R2);
+						--Fixed-Location-Constraint FLC102: (APP_RW_Pmlinp_Mn -> GPM_R2);
+						
+					    Fixed-Location-Constraint FLC14: (APP_RW_Pmp_Mn -> RW_Pmp_Mn);
+						Fixed-Location-Constraint FLC15: (APP_R_Eng_SO_Valve -> R_Eng_SO_Valve);
+						Fixed-Location-Constraint FLC16: (APP_L_Eng_SO_Valve -> L_Eng_SO_Valve);
+						Fixed-Location-Constraint FLC17 : (APP_LW_Fuel_Qty -> LW_Fuel_Qty);
+					
+						--- GPM <=> ACS connections bandwidth unit = byte 
+						Port-Connection-Constraint c1: (GPM_L1.portA <-> ACS_L1.port1) 1000000000; -- 1G
+						Port-Connection-Constraint c2: (GPM_L2.portA <-> ACS_L2.port1) 1000000000;
+						Port-Connection-Constraint c3: (GPM_L3.portA <-> ACS_L3.port1) 1000000000;
+							
+						Port-Connection-Constraint c4: (ACS_L1.port24 <-> CCR_L1.portA) 1000000000; 
+						Port-Connection-Constraint c5: (CCR_L1.portA <-> CCR_L2.portA) 1000000000; 
+						Port-Connection-Constraint c6: (ACS_L2.port24 <-> CCR_L2.portA) 1000000000; 
+						
+						Port-Connection-Constraint c7: (GPM_R1.portA <-> ACS_R1.port1) 1000000000; -- 1G
+						Port-Connection-Constraint c8: (GPM_R2.portA <-> ACS_R2.port1) 1000000000;
+						Port-Connection-Constraint c9: (GPM_R3.portA <-> ACS_R3.port1) 1000000000;
+						
+							
+						Port-Connection-Constraint c10: (ACS_R1.port24 <-> CCR_R1.portA) 1000000000; 
+						Port-Connection-Constraint c11: (CCR_R1.portA <-> CCR_R2.portA) 1000000000; 
+						Port-Connection-Constraint c12: (CCR_R2.portA <-> ACS_R2.port24) 1000000000; 
+						
+						Port-Connection-Constraint c13: (CCR_L1.portB <-> CCR_R1.portB) 1000000000; 
+						Port-Connection-Constraint c14: (CCR_L2.portB <-> CCR_R2.portB) 1000000000; 
+						
+						
+						Port-Connection-Constraint c15: (RDC_L1.port7 <-> CCR_L2.portC) 1000000000;
+						Port-Connection-Constraint c16: (ACS_L2.port9 <-> CCR_L2.portC) 1000000000;
+						
+						Port-Connection-Constraint c17: (RDC_R1.port7 <-> CCR_R2.portC) 1000000000;
+						Port-Connection-Constraint c18: (ACS_R2.port9 <-> CCR_R2.portC) 1000000000;
+						
+						Port-Connection-Constraint c19: (RDC_L1.port1 <-> L_Eng_SO_Valve.port1) 1000000000;
+			  			Port-Connection-Constraint c20: (RDC_L1.port2 <->  APU_SO_Valve.port1) 1000000000;
+					    Port-Connection-Constraint c21: (RDC_L1.port3 <-> L_XFER_Pump.port1) 1000000000;
+						Port-Connection-Constraint c22: (RDC_L1.port4 <-> LR_XFER_Valve.port1) 1000000000;
+						
+						Port-Connection-Constraint c23: (RDC_R1.port1 <-> R_Eng_SO_Valve.port1) 1000000000;
+			  			Port-Connection-Constraint c24: (RDC_R1.port2 <->  CTR_Fuel_Temp.port1) 1000000000;
+					    Port-Connection-Constraint c25: (RDC_R1.port3 <-> R_XFER_Pump.port1) 1000000000;
+						Port-Connection-Constraint c26: (RDC_R1.port4 <-> CTR_Fuel_Qty.port1) 1000000000;
+					
+						
+						Port-Connection-Constraint c27 : (ACS_L2.port10 <-> CCR_L2.port10) 1000000000;
+						Port-Connection-Constraint c28 : (CCR_L2.port10 <-> CCR_L3.port10) 1000000000;
+						Port-Connection-Constraint c29 : (CCR_L3.port10 <-> ACS_L3.port10) 1000000000;
+									
+						Port-Connection-Constraint c30 : (ACS_R2.port22 <-> CCR_R2.port22) 1000000000;
+						Port-Connection-Constraint c31 : (CCR_R2.port22 <-> CCR_R3.port22) 1000000000;
+						Port-Connection-Constraint c32 : (CCR_R3.port22 <-> ACS_R3.port22) 1000000000;
+										
+						Port-Connection-Constraint c33 : (ACS_L3.port24 <-> CCR_L3.portA) 1000000000;
+						Port-Connection-Constraint c34 : (CCR_L3.portA <-> CCR_R3.portA) 1000000000;
+						Port-Connection-Constraint c35 : (CCR_R3.portA <-> ACS_R3.port24) 1000000000;
+							
+						Port-Connection-Constraint c36: (RDC_L2.port8 <-> CCR_L3.portD) 1000000000;
+						Port-Connection-Constraint c37: (ACS_L3.port9 <-> CCR_L3.portD) 1000000000;
+								
+						Port-Connection-Constraint c38: (RDC_R2.port7 <-> CCR_R3.portD) 1000000000;
+						Port-Connection-Constraint c39: (ACS_R3.port9 <-> CCR_R3.portD) 1000000000;
+						
+					
+						Port-Connection-Constraint c40: (RDC_L2.port1 <-> LW_Fuel_Qty.port1) 1000000000;
+						Port-Connection-Constraint c41: (RDC_L2.port2 <-> LW_Fuel_Temp.port1) 1000000000;
+						Port-Connection-Constraint c42: (RDC_L2.port3 <-> L_Eng_Press.port1) 1000000000;
+						Port-Connection-Constraint c43: (RDC_L2.port4 <-> L_XFER_Press.port1) 1000000000;
+						Port-Connection-Constraint c44: (RDC_L2.port5 <->Fuel_CF_Valve.port1) 1000000000;
+						Port-Connection-Constraint c45: (RDC_L2.port6 <-> LW_Pmp_Mn.port1) 1000000000;
+						Port-Connection-Constraint c46: (RDC_L2.port7 <-> LW_Pmp_STBY.port1) 1000000000;
+						
+						Port-Connection-Constraint c47: (RDC_R2.port1 <-> RW_Pmp_Mn.port1) 1000000000;
+						Port-Connection-Constraint c48: (RDC_R2.port2 <-> RW_Pmp_STBY.port1) 1000000000;
+						Port-Connection-Constraint c49: (RDC_R2.port3 <-> RW_Fuel_Qty.port1) 1000000000;
+						Port-Connection-Constraint c50: (RDC_R2.port4 <-> RW_Fuel_Temp.port1) 1000000000;
+						Port-Connection-Constraint c51: (RDC_R2.port5 <-> R_Eng_Press.port1) 1000000000;
+						Port-Connection-Constraint c52: (RDC_R2.port6 <-> R_XFER_Press.port1) 1000000000;
+							
+						Port-Connection-Constraint c53 : (ACS_R1.port22 <-> CCR_R1.portB) 1000000000;
+						Port-Connection-Constraint c54 : (ACS_L1.port22 <-> CCR_L1.portB) 1000000000;
+						Port-Connection-Constraint c55 : (ACS_L2.port22 <-> CCR_L2.portB) 1000000000;
+						Port-Connection-Constraint c56 : (ACS_R2.port24 <-> CCR_R2.portB) 1000000000;
+						
+					    Virtual-Link-Constraint VL01025: (APP_FUEL_SYSTEM_CONTROL ~> APP_L_Eng_SO_Valve, APP_R_Eng_SO_Valve, APP_LW_Fuel_Qty, APP_RW_Pmp_Mn) 
+							{12@1000, 12@1000, 12@1000, 12@1000} # {12@1000, 12@1000, 12@1000} # {12@1000, 12@1000} # {12@1000, 12@1000};
+						 Virtual-Link-Constraint VL32780: (APP_RW_Pmp_Mn ~> APP_FUEL_SYSTEM_CONTROL) {20@80};
+						 Virtual-Link-Constraint VL32781: (APP_R_Eng_SO_Valve ~> APP_FUEL_SYSTEM_CONTROL) {20@80};
+						 Virtual-Link-Constraint VL32782: (APP_L_Eng_SO_Valve ~> APP_FUEL_SYSTEM_CONTROL) {20@80};
+						 Virtual-Link-Constraint VL32783: (APP_LW_Fuel_Qty ~> APP_FUEL_SYSTEM_CONTROL) {20@80};
+						
+						-- add more utilization and separation constraints
+					    Utilization-Constraint UC2 [CPU]: (CCR CCR_R2: cpuProvided) > (GPMApp APP_FIDO:cpuUsed) + (GPMApp APP_FIDO: cpuUsed);
+						--Co-Location-Constraint CLC1: (GPMApp APP_FUEL_SYSTEM_CONTROL, APP_FIDO) and (ActuatorApp APP_RW_Pmp_Mn) -> GPM;
+						 
+					}			
+		**};
+
+end IMA.Impl;
+
+end IMASystem;
