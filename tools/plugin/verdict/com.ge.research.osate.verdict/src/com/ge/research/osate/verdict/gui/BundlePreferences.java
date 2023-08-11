@@ -67,7 +67,7 @@ public class BundlePreferences extends FieldEditorPreferencePage
     private static final String LFSC_CHECKER_PATH = "lfsc_checker";
     private static final String VERIT_PATH = "verit_path";
     private static final String ALETHE_CHECKER_PATH = "alethe_checker";
-    
+
     private static final ArrayList<String> NECESSARY_WITH_DOCKER =
             new ArrayList<>(
                     Arrays.asList(DOCKER_IMAGE, PRA_BIN, PRA_OUTPUT, PROOF_VALIDATION_IMAGE));
@@ -138,7 +138,7 @@ public class BundlePreferences extends FieldEditorPreferencePage
     public static String getLFSCCheckerPath() {
         return preferenceStore.getString(LFSC_CHECKER_PATH);
     }
-    
+
     public static String getVeritPath() {
         return preferenceStore.getString(VERIT_PATH);
     }
@@ -268,17 +268,18 @@ public class BundlePreferences extends FieldEditorPreferencePage
                         LFSC_CHECKER_PATH, "LFSC Checker Path:", getFieldEditorParent());
 
         addField(LFSCChecker);
-        
-        final FileFieldEditor verit =
-                new FileFieldEditor(VERIT_PATH, "veriT Path:", getFieldEditorParent());
 
-        addField(verit);
-
-        final FileFieldEditor AletheChecker =
-                new FileFieldEditor(
-                        ALETHE_CHECKER_PATH, "Alethe Checker Path:", getFieldEditorParent());
-
-        addField(AletheChecker);
+        //        final FileFieldEditor verit =
+        //                new FileFieldEditor(VERIT_PATH, "veriT Path:", getFieldEditorParent());
+        //
+        //        addField(verit);
+        //
+        //        final FileFieldEditor AletheChecker =
+        //                new FileFieldEditor(
+        //                        ALETHE_CHECKER_PATH, "Alethe Checker Path:",
+        // getFieldEditorParent());
+        //
+        //        addField(AletheChecker);
     }
 
     @Override
