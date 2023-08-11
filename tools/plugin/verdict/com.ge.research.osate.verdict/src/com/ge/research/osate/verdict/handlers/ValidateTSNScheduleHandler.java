@@ -118,7 +118,7 @@ public class ValidateTSNScheduleHandler extends AbstractHandler {
                                 HashMap<String, Boolean> tsnValidation = new HashMap<>();
                                 HashMap<String, Boolean> tsnLFSCValidation = new HashMap<>();
                                 HashMap<String, Boolean> tsnAletheValidation = new HashMap<>();
-                                
+
                                 Map<String, Map<String, Integer>> tsnProps = new HashMap<>();
                                 for (Object object : AADL2OdmRes.right) {
                                     if (object instanceof SystemImplementation) {
@@ -179,6 +179,7 @@ public class ValidateTSNScheduleHandler extends AbstractHandler {
                                                         a++;
                                                     }
                                                 }
+
                                                 vlPaths.put(e2eFlow.getName(), components);
                                                 Map<String, Integer> tsnSchedProps =
                                                         new HashMap<>();
@@ -230,6 +231,36 @@ public class ValidateTSNScheduleHandler extends AbstractHandler {
                                                         tsnSchedProps.put(
                                                                 "tsn_sched_threshold", threshold);
                                                     }
+
+                                                    if (propAssoc
+                                                            .getProperty()
+                                                            .getName()
+                                                            .equals("tsn_link_bandwidth")) {
+                                                        int link_bw =
+                                                                Integer.parseInt(
+                                                                        propAssoc
+                                                                                .getOwnedValues()
+                                                                                .get(0)
+                                                                                .getOwnedValue()
+                                                                                .toString());
+                                                        tsnSchedProps.put(
+                                                                "tsn_link_bandwidth", link_bw);
+                                                    }
+
+                                                    if (propAssoc
+                                                            .getProperty()
+                                                            .getName()
+                                                            .equals("tsn_frame_size")) {
+                                                        int frame_size =
+                                                                Integer.parseInt(
+                                                                        propAssoc
+                                                                                .getOwnedValues()
+                                                                                .get(0)
+                                                                                .getOwnedValue()
+                                                                                .toString());
+                                                        tsnSchedProps.put(
+                                                                "tsn_frame_size", frame_size);
+                                                    }
                                                 }
 
                                                 tsnProps.put(e2eFlow.getName(), tsnSchedProps);
@@ -270,7 +301,7 @@ public class ValidateTSNScheduleHandler extends AbstractHandler {
                                                         new ArrayList<String>();
                                                 for (String flowElement : flowElements) {
 
-                                                    // component, delay chared component egress and
+                                                    // component, delay charged component egress and
                                                     // ingress, except at source and
                                                     // destination
                                                     String component = flowElement;
@@ -279,65 +310,169 @@ public class ValidateTSNScheduleHandler extends AbstractHandler {
                                                     } else {
                                                         visited.add(component);
                                                     }
-                                                    String comp_sp_delay = component + "_sp_delay";
-                                                    String comp_egress_delay =
-                                                            component + "_egress_delay";
-                                                    String comp_ingress_delay =
-                                                            component + "_ingress_delay";
 
-                                                    String declare_sp_delay =
-                                                            "(declare-fun "
-                                                                    + comp_sp_delay
-                                                                    + "  () Int)";
-                                                    String declare_egress_delay =
-                                                            "(declare-fun "
-                                                                    + comp_egress_delay
-                                                                    + "  () Int)";
-                                                    String declare_ingress_delay =
-                                                            "(declare-fun "
-                                                                    + comp_ingress_delay
-                                                                    + "  () Int)";
+                                                    if (flowElement.contains("CCR")) {
+                                                        continue;
+                                                    }
 
-                                                    int sp_delay = 0;
-                                                    int egress_delay = 100;
-                                                    int ingress_delay = 200;
-                                                    String assert_sp_delay =
-                                                            "(assert (= "
-                                                                    + comp_sp_delay
-                                                                    + " "
-                                                                    + sp_delay
-                                                                    + "))";
-                                                    String assert_egress_delay =
-                                                            "(assert (= "
-                                                                    + comp_egress_delay
-                                                                    + " "
-                                                                    + egress_delay
-                                                                    + "))";
-                                                    String assert_ingress_delay =
-                                                            "(assert (= "
-                                                                    + comp_ingress_delay
-                                                                    + " "
-                                                                    + ingress_delay
-                                                                    + "))";
+                                                    if (flowElement.contains("ACS")) {
+                                                        int ideal_max_ptp = 50;
+                                                        int ideal_max_qbv = 50;
+                                                        int tas_jitter =
+                                                                ideal_max_ptp + ideal_max_qbv;
+                                                        int ingress_delay = 9;
+                                                        int egress_delay = 9;
+                                                        int sw_fabric_delay = 1008;
+                                                        String comp_egress_delay =
+                                                                component + "_egress_delay";
+                                                        String comp_fabric_delay =
+                                                                component + "_fabric_delay";
+                                                        String comp_ingress_delay =
+                                                                component + "_ingress_delay";
 
-                                                    delayVariables.add(comp_sp_delay);
-                                                    delayVariables.add(comp_egress_delay);
-                                                    delayVariables.add(comp_ingress_delay);
-                                                    smtDelay +=
-                                                            declare_sp_delay
-                                                                    + "\n"
-                                                                    + declare_egress_delay
-                                                                    + "\n"
-                                                                    + declare_ingress_delay
-                                                                    + "\n"
-                                                                    + assert_sp_delay
-                                                                    + "\n"
-                                                                    + assert_egress_delay
-                                                                    + "\n"
-                                                                    + assert_ingress_delay
-                                                                    + "\n";
+                                                        String comp_tas_jitter =
+                                                                component + "_tas_jitter";
 
-                                                    ;
+                                                        String declare_egress_delay =
+                                                                "(declare-fun "
+                                                                        + comp_egress_delay
+                                                                        + "  () Int)";
+                                                        String declare_fabric_delay =
+                                                                "(declare-fun "
+                                                                        + comp_fabric_delay
+                                                                        + "  () Int)";
+                                                        String declare_ingress_delay =
+                                                                "(declare-fun "
+                                                                        + comp_ingress_delay
+                                                                        + "  () Int)";
+
+                                                        String declare_comp_tasjitter =
+                                                                "(declare-fun "
+                                                                        + comp_tas_jitter
+                                                                        + "  () Int)";
+
+                                                        String assert_egress_delay =
+                                                                "(assert (= "
+                                                                        + comp_egress_delay
+                                                                        + " "
+                                                                        + egress_delay
+                                                                        + "))";
+                                                        String assert_fabric_delay =
+                                                                "(assert (= "
+                                                                        + comp_fabric_delay
+                                                                        + " "
+                                                                        + sw_fabric_delay
+                                                                        + "))";
+                                                        String assert_ingress_delay =
+                                                                "(assert (= "
+                                                                        + comp_ingress_delay
+                                                                        + " "
+                                                                        + ingress_delay
+                                                                        + "))";
+
+                                                        String assert_tasjitter =
+                                                                "(assert (= "
+                                                                        + comp_tas_jitter
+                                                                        + " "
+                                                                        + tas_jitter
+                                                                        + "))";
+
+                                                        smtDelay +=
+                                                                declare_egress_delay
+                                                                        + "\n"
+                                                                        + declare_fabric_delay
+                                                                        + "\n"
+                                                                        + declare_ingress_delay
+                                                                        + "\n"
+                                                                        + declare_comp_tasjitter
+                                                                        + "\n"
+                                                                        + assert_egress_delay
+                                                                        + "\n"
+                                                                        + assert_fabric_delay
+                                                                        + "\n"
+                                                                        + assert_ingress_delay
+                                                                        + "\n"
+                                                                        + assert_tasjitter
+                                                                        + "\n";
+
+                                                        delayVariables.add(comp_egress_delay);
+                                                        delayVariables.add(comp_fabric_delay);
+                                                        delayVariables.add(comp_ingress_delay);
+                                                        delayVariables.add(comp_tas_jitter);
+
+                                                    } else {
+                                                        int frame_size =
+                                                                tsnProps.get(key)
+                                                                        .get("tsn_frame_size");
+                                                        int link_bw =
+                                                                tsnProps.get(key)
+                                                                        .get("tsn_link_bandwidth");
+                                                        int link_tx_time =
+                                                                (frame_size * 8) / link_bw;
+                                                        int ideal_max_ptp = 100;
+                                                        int ideal_max_qbv = 100;
+                                                        int tas_jitter =
+                                                                ideal_max_ptp + ideal_max_qbv;
+                                                        int propagation =
+                                                                10; // from chronos example
+
+                                                        String link_delay =
+                                                                component + "_link_delay";
+                                                        String prop_delay =
+                                                                component + "_propagation_delay";
+                                                        String comp_tas_jitter =
+                                                                component + "_tas_jitter";
+
+                                                        String declare_link_delay =
+                                                                "(declare-fun "
+                                                                        + link_delay
+                                                                        + "  () Int)";
+
+                                                        String declare_prop_delay =
+                                                                "(declare-fun "
+                                                                        + prop_delay
+                                                                        + "  () Int)";
+                                                        String declare_comp_tasjitter =
+                                                                "(declare-fun "
+                                                                        + comp_tas_jitter
+                                                                        + "  () Int)";
+
+                                                        String assert_link_delay =
+                                                                "(assert (= "
+                                                                        + link_delay
+                                                                        + " "
+                                                                        + link_tx_time
+                                                                        + "))";
+                                                        String assert_prop_delay =
+                                                                "(assert (= "
+                                                                        + prop_delay
+                                                                        + " "
+                                                                        + propagation
+                                                                        + "))";
+                                                        String assert_tasjitter =
+                                                                "(assert (= "
+                                                                        + comp_tas_jitter
+                                                                        + " "
+                                                                        + tas_jitter
+                                                                        + "))";
+
+                                                        delayVariables.add(link_delay);
+                                                        delayVariables.add(prop_delay);
+                                                        delayVariables.add(comp_tas_jitter);
+                                                        smtDelay +=
+                                                                declare_link_delay
+                                                                        + "\n"
+                                                                        + declare_prop_delay
+                                                                        + "\n"
+                                                                        + declare_comp_tasjitter
+                                                                        + "\n"
+                                                                        + assert_link_delay
+                                                                        + "\n"
+                                                                        + assert_prop_delay
+                                                                        + "\n"
+                                                                        + assert_tasjitter
+                                                                        + "\n";
+                                                    }
                                                 }
                                                 String sumDelay = "(+ ";
                                                 for (String delayVar : delayVariables) {
@@ -417,123 +552,125 @@ public class ValidateTSNScheduleHandler extends AbstractHandler {
                                                                         + key);
                                                         tsnValidation.put(key, false);
                                                     } else {
-                                                    	 String proofFile2 =
-                                                                 proofOutput
-                                                                         + "/"
-                                                                         + key
-                                                                         + "."
-                                                                         + "verit";
-                                                    	VerdictLogger.info(
-                                                                "TSN schedule validated succeeded for "
-                                                                        + key);
-                                                        // redirect proofs to Proof output folder
-                                                        
-                                                    	// if proof mode is alethe regenerate using verit
-                                                      if(proofFormat.equals("alethe")) {	
-                                                    	 ProcessExecutor verit =
-                                                                 new ProcessExecutor();
-                                                         ArrayList<String> veritArgs =
-                                                                 new ArrayList<String>(
-                                                                         Arrays.asList(
-                                                                                 BundlePreferences
-                                                                                         .getVeritPath(),
-                                                                                 "--proof="
-                                                                                         + proofFile2 ,
-                                                                                 smtFile));
-                                                         verit.command(veritArgs);
-                                                         verit.destroyOnExit();
-                                                         verit.redirectError(System.err);
-                                                    	 verit.execute();
-                                                    	 
-                                                    	//alethe proof checking
-                                                         if(proofFormat.equals("alethe")
-                                                                 && TSNSchedSettingsPanel
-                                                                 .isAletheCheckEnabled()) {
-                                                         	  ProcessExecutor executor2 =
-                                                                       new ProcessExecutor();
-                                                               ArrayList<String> args2 =
-                                                                       new ArrayList<String>(
-                                                                               Arrays.asList(
-                                                                                       BundlePreferences
-                                                                                               .getAletheCheckerPath(),
-                                                                                       "check",
-                                                                                       proofFile2,
-                                                                                       smtFile));
-                                                               executor2.command(args2);
-                                                               executor2.destroyOnExit();
-                                                               executor2.redirectError(System.err);
-                                                               // executor.redirectOutput(System.out);
-                                                               String output3 =
-                                                                       executor2
-                                                                               .readOutput(true)
-                                                                               .execute()
-                                                                               .outputUTF8();
-                                                               if (output3.contains("valid")) {
-                                                                   // table proof check results
-                                                                   tsnAletheValidation.put(key, true);
-                                                               } else {
-                                                                   tsnAletheValidation.put(key, false);
-                                                               }
-                                                    	 
-                                                         } 
-                                                    	 
-                                                      }
-                                                      
-                                                      else {
-                                                    	
-                                                        String proofFile =
+                                                        String proofFile2 =
                                                                 proofOutput
                                                                         + "/"
                                                                         + key
                                                                         + "."
-                                                                        + proofFormat;
+                                                                        + "verit";
                                                         VerdictLogger.info(
-                                                                "Proof produced at " + proofFile);
-                                                        File dotFile = new File(proofFile);
-                                                        // remove unsat at the beginning of the dot
-                                                        // proof
-                                                        String output2 =
-                                                                output.replaceAll("unsat", "");
-                                                        Files.asCharSink(
-                                                                        dotFile,
-                                                                        Charset.defaultCharset(),
-                                                                        modes)
-                                                                .write(output2);
-                                                        tsnValidation.put(key, true);
+                                                                "TSN schedule validated succeeded for "
+                                                                        + key);
+                                                        // redirect proofs to Proof output folder
 
-                                                        // perform proof checking
-
-                                                        if (proofFormat.equals("lfsc")
-                                                                && TSNSchedSettingsPanel
-                                                                        .isLFSCCheckEnabled()) {
-                                                            ProcessExecutor executor2 =
+                                                        // if proof mode is alethe regenerate using
+                                                        // verit
+                                                        if (proofFormat.equals("alethe")) {
+                                                            ProcessExecutor verit =
                                                                     new ProcessExecutor();
-                                                            ArrayList<String> args2 =
+                                                            ArrayList<String> veritArgs =
                                                                     new ArrayList<String>(
                                                                             Arrays.asList(
                                                                                     BundlePreferences
-                                                                                            .getLFSCCheckerPath(),
-                                                                                    proofFile));
-                                                            executor2.command(args2);
-                                                            executor2.destroyOnExit();
-                                                            executor2.redirectError(System.err);
-                                                            // executor.redirectOutput(System.out);
-                                                            String output3 =
-                                                                    executor2
-                                                                            .readOutput(true)
-                                                                            .execute()
-                                                                            .outputUTF8();
-                                                            if (output3.contains("success")) {
-                                                                // table proof check results
-                                                                tsnLFSCValidation.put(key, true);
-                                                            } else {
-                                                                tsnLFSCValidation.put(key, false);
+                                                                                            .getVeritPath(),
+                                                                                    "--proof="
+                                                                                            + proofFile2,
+                                                                                    smtFile));
+                                                            verit.command(veritArgs);
+                                                            verit.destroyOnExit();
+                                                            verit.redirectError(System.err);
+                                                            verit.execute();
+
+                                                            // alethe proof checking
+                                                            if (proofFormat.equals("alethe")
+                                                                    && TSNSchedSettingsPanel
+                                                                            .isAletheCheckEnabled()) {
+                                                                ProcessExecutor executor2 =
+                                                                        new ProcessExecutor();
+                                                                ArrayList<String> args2 =
+                                                                        new ArrayList<String>(
+                                                                                Arrays.asList(
+                                                                                        BundlePreferences
+                                                                                                .getAletheCheckerPath(),
+                                                                                        "check",
+                                                                                        proofFile2,
+                                                                                        smtFile));
+                                                                executor2.command(args2);
+                                                                executor2.destroyOnExit();
+                                                                executor2.redirectError(System.err);
+                                                                // executor.redirectOutput(System.out);
+                                                                String output3 =
+                                                                        executor2
+                                                                                .readOutput(true)
+                                                                                .execute()
+                                                                                .outputUTF8();
+                                                                if (output3.contains("valid")) {
+                                                                    // table proof check results
+                                                                    tsnAletheValidation.put(
+                                                                            key, true);
+                                                                } else {
+                                                                    tsnAletheValidation.put(
+                                                                            key, false);
+                                                                }
+                                                            }
+
+                                                        } else {
+
+                                                            String proofFile =
+                                                                    proofOutput
+                                                                            + "/"
+                                                                            + key
+                                                                            + "."
+                                                                            + proofFormat;
+                                                            VerdictLogger.info(
+                                                                    "Proof produced at "
+                                                                            + proofFile);
+                                                            File dotFile = new File(proofFile);
+                                                            // remove unsat at the beginning of the
+                                                            // dot
+                                                            // proof
+                                                            String output2 =
+                                                                    output.replaceAll("unsat", "");
+                                                            Files.asCharSink(
+                                                                            dotFile,
+                                                                            Charset
+                                                                                    .defaultCharset(),
+                                                                            modes)
+                                                                    .write(output2);
+                                                            tsnValidation.put(key, true);
+
+                                                            // perform proof checking
+
+                                                            if (proofFormat.equals("lfsc")
+                                                                    && TSNSchedSettingsPanel
+                                                                            .isLFSCCheckEnabled()) {
+                                                                ProcessExecutor executor2 =
+                                                                        new ProcessExecutor();
+                                                                ArrayList<String> args2 =
+                                                                        new ArrayList<String>(
+                                                                                Arrays.asList(
+                                                                                        BundlePreferences
+                                                                                                .getLFSCCheckerPath(),
+                                                                                        proofFile));
+                                                                executor2.command(args2);
+                                                                executor2.destroyOnExit();
+                                                                executor2.redirectError(System.err);
+                                                                // executor.redirectOutput(System.out);
+                                                                String output3 =
+                                                                        executor2
+                                                                                .readOutput(true)
+                                                                                .execute()
+                                                                                .outputUTF8();
+                                                                if (output3.contains("success")) {
+                                                                    // table proof check results
+                                                                    tsnLFSCValidation.put(
+                                                                            key, true);
+                                                                } else {
+                                                                    tsnLFSCValidation.put(
+                                                                            key, false);
+                                                                }
                                                             }
                                                         }
-                                                        
-                                                        }
-                                                        
-                                                    
                                                     }
                                                 }
 

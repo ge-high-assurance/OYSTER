@@ -337,22 +337,87 @@ system implementation IMA.Impl
 		c25: port RDC_R1.port3 <-> R_XFER_Pump.port1 {OYSTER_properties::bandwidth => 1000000000;};
 		c28: port CCR_L2.port10 <-> CCR_L3.port10 {OYSTER_properties::bandwidth => 1000000000;};
 	flows
-		TSNStream1: end to end flow R_Eng_SO_Valve.VL32781_flow0_R_Eng_SO_Valve -> c23 -> RDC_R1.VL32781_flow0_RDC_R1 -> c17 -> CCR_R2.VL32781_flow0_ccrsink_CCR_R2 {
-			OYSTER_properties::mtu => 1; OYSTER_properties::bag => 128; OYSTER_properties::tsn_sched_start_time => 2500000; OYSTER_properties::tsn_sched_arrival_limit => 2600000; OYSTER_properties::tsn_sched_threshold=>200;};
-		TSNStream2: end to end flow CCR_R2.VL01025_flow3_ccrsource_CCR_R2 -> c31 -> CCR_R3.VL01025_flow3_ccre2e_CCR_R3 -> c38 -> RDC_R2.VL01025_flow3_RDC_R2 -> c47 -> RW_Pmp_Mn.VL01025_flow3_RW_Pmp_Mn {
-			OYSTER_properties::mtu => 12; OYSTER_properties::bag => 16; OYSTER_properties::tsn_sched_start_time => 3500000; OYSTER_properties::tsn_sched_arrival_limit => 3000000; OYSTER_properties::tsn_sched_threshold=>200;};
-		TSNStream3: end to end flow CCR_R2.VL01025_flow2_ccrsource_CCR_R2 -> c14 -> CCR_L2.VL01025_flow2_ccre2e_CCR_L2 -> c28 -> CCR_L3.VL01025_flow2_ccre2e_CCR_L3 -> c36 -> RDC_L2.VL01025_flow2_RDC_L2 -> c40 -> LW_Fuel_Qty.VL01025_flow2_LW_Fuel_Qty {
-			OYSTER_properties::mtu => 12; OYSTER_properties::bag => 16; OYSTER_properties::tsn_sched_start_time => 4500000; OYSTER_properties::tsn_sched_arrival_limit => 5000000; OYSTER_properties::tsn_sched_threshold=>200;};
-		TSNStream4: end to end flow CCR_R2.VL01025_flow1_ccrsource_CCR_R2 -> c17 -> RDC_R1.VL01025_flow1_RDC_R1 -> c23 -> R_Eng_SO_Valve.VL01025_flow1_R_Eng_SO_Valve {
-			OYSTER_properties::mtu => 12; OYSTER_properties::bag => 16; OYSTER_properties::tsn_sched_start_time => 5500000; OYSTER_properties::tsn_sched_arrival_limit => 6000000; OYSTER_properties::tsn_sched_threshold=>200;};
-		TSNStream5: end to end flow LW_Fuel_Qty.VL32783_flow0_LW_Fuel_Qty -> c40 -> RDC_L2.VL32783_flow0_RDC_L2 -> c36 -> CCR_L3.VL32783_flow0_ccre2e_CCR_L3 -> c34 -> CCR_R3.VL32783_flow0_ccre2e_CCR_R3 -> c31 -> CCR_R2.VL32783_flow0_ccrsink_CCR_R2 {
-			OYSTER_properties::mtu => 10; OYSTER_properties::bag =>	 64; OYSTER_properties::tsn_sched_start_time => 6500000; OYSTER_properties::tsn_sched_arrival_limit => 7000000; OYSTER_properties::tsn_sched_threshold=>200;};
-		TSNStream6: end to end flow CCR_R2.VL01025_flow0_ccrsource_CCR_R2 -> c14 -> CCR_L2.VL01025_flow0_ccre2e_CCR_L2 -> c15 -> RDC_L1.VL01025_flow0_RDC_L1 -> c19 -> L_Eng_SO_Valve.VL01025_flow0_L_Eng_SO_Valve {
-			OYSTER_properties::mtu => 12; OYSTER_properties::bag => 16; OYSTER_properties::tsn_sched_start_time => 7500000; OYSTER_properties::tsn_sched_arrival_limit => 8000000; OYSTER_properties::tsn_sched_threshold=>200;};
-		TSNStream7: end to end flow RW_Pmp_Mn.VL32780_flow0_RW_Pmp_Mn -> c47 -> RDC_R2.VL32780_flow0_RDC_R2 -> c38 -> CCR_R3.VL32780_flow0_ccre2e_CCR_R3 -> c31 -> CCR_R2.VL32780_flow0_ccrsink_CCR_R2 {
-			OYSTER_properties::mtu => 1; OYSTER_properties::bag => 4;OYSTER_properties::tsn_sched_start_time => 8500000; OYSTER_properties::tsn_sched_arrival_limit => 9000000; OYSTER_properties::tsn_sched_threshold=>200;};
-		TSNStream8: end to end flow L_Eng_SO_Valve.VL32782_flow0_L_Eng_SO_Valve -> c19 -> RDC_L1.VL32782_flow0_RDC_L1 -> c15 -> CCR_L2.VL32782_flow0_ccre2e_CCR_L2 -> c14 -> CCR_R2.VL32782_flow0_ccrsink_CCR_R2 {
-			OYSTER_properties::mtu => 1; OYSTER_properties::bag => 1;OYSTER_properties::tsn_sched_start_time => 9500000; OYSTER_properties::tsn_sched_arrival_limit => 10000000; OYSTER_properties::tsn_sched_threshold=>200;};
+		TSNStream1: end to end flow R_Eng_SO_Valve.VL32781_flow0_R_Eng_SO_Valve -> c23 -> RDC_R1.VL32781_flow0_RDC_R1 -> c17 -> CCR_R2.VL32781_flow0_ccrsink_CCR_R2 
+		   {
+			OYSTER_properties::mtu => 1; 
+			OYSTER_properties::bag => 128; 
+			OYSTER_properties::tsn_sched_start_time => 2500000; 
+			OYSTER_properties::tsn_sched_arrival_limit => 2600000; 
+			OYSTER_properties::tsn_sched_threshold => 200; 
+			OYSTER_properties::tsn_link_bandwidth => 1000; 
+			OYSTER_properties::tsn_frame_size => 1044;
+		  };
+			
+		TSNStream2: end to end flow CCR_R2.VL01025_flow3_ccrsource_CCR_R2 -> c31 -> CCR_R3.VL01025_flow3_ccre2e_CCR_R3 -> c38 -> RDC_R2.VL01025_flow3_RDC_R2 -> c47 -> RW_Pmp_Mn.VL01025_flow3_RW_Pmp_Mn 
+		{
+			OYSTER_properties::mtu => 12;
+			OYSTER_properties::bag => 16; 
+			OYSTER_properties::tsn_sched_start_time => 3500000; 
+			OYSTER_properties::tsn_sched_arrival_limit => 3000000; 
+			OYSTER_properties::tsn_sched_threshold => 200; 
+			OYSTER_properties::tsn_link_bandwidth => 1000; 
+			OYSTER_properties::tsn_frame_size => 1044;
+		};
+		TSNStream3: end to end flow CCR_R2.VL01025_flow2_ccrsource_CCR_R2 -> c14 -> CCR_L2.VL01025_flow2_ccre2e_CCR_L2 -> c28 -> CCR_L3.VL01025_flow2_ccre2e_CCR_L3 -> c36 -> RDC_L2.VL01025_flow2_RDC_L2 -> c40 -> LW_Fuel_Qty.VL01025_flow2_LW_Fuel_Qty 
+		{
+			OYSTER_properties::mtu => 12; 
+			OYSTER_properties::bag => 16; 
+			OYSTER_properties::tsn_sched_start_time => 4500000; 
+			OYSTER_properties::tsn_sched_arrival_limit => 5000000; 
+			OYSTER_properties::tsn_sched_threshold => 200; 
+			OYSTER_properties::tsn_link_bandwidth => 1000; 
+			OYSTER_properties::tsn_frame_size => 1044;
+		};
+		TSNStream4: end to end flow CCR_R2.VL01025_flow1_ccrsource_CCR_R2 -> c17 -> RDC_R1.VL01025_flow1_RDC_R1 -> c23 -> R_Eng_SO_Valve.VL01025_flow1_R_Eng_SO_Valve 
+		{
+			OYSTER_properties::mtu => 12; 
+			OYSTER_properties::bag => 16; 
+			OYSTER_properties::tsn_sched_start_time => 5500000; 
+			OYSTER_properties::tsn_sched_arrival_limit => 6000000; 
+			OYSTER_properties::tsn_sched_threshold => 200;
+			OYSTER_properties::tsn_link_bandwidth =>1000; 
+			OYSTER_properties::tsn_frame_size => 1044;
+		};
+		TSNStream5: end to end flow LW_Fuel_Qty.VL32783_flow0_LW_Fuel_Qty -> c40 -> RDC_L2.VL32783_flow0_RDC_L2 -> c36 -> CCR_L3.VL32783_flow0_ccre2e_CCR_L3 -> c34 -> CCR_R3.VL32783_flow0_ccre2e_CCR_R3 -> c31 -> CCR_R2.VL32783_flow0_ccrsink_CCR_R2 
+		{
+			OYSTER_properties::mtu => 10;
+			OYSTER_properties::bag => 64;
+			OYSTER_properties::tsn_sched_start_time => 6500000;
+			OYSTER_properties::tsn_sched_arrival_limit => 7000000;
+			OYSTER_properties::tsn_sched_threshold => 200;
+			OYSTER_properties::tsn_link_bandwidth => 1000;
+			OYSTER_properties::tsn_frame_size => 1044;
+		};
+		TSNStream6: end to end flow CCR_R2.VL01025_flow0_ccrsource_CCR_R2 -> c14 -> CCR_L2.VL01025_flow0_ccre2e_CCR_L2 -> c15 -> RDC_L1.VL01025_flow0_RDC_L1 -> c19 -> L_Eng_SO_Valve.VL01025_flow0_L_Eng_SO_Valve 
+		{
+			OYSTER_properties::mtu => 12; 
+			OYSTER_properties::bag => 16; 
+			OYSTER_properties::tsn_sched_start_time => 7500000; 
+			OYSTER_properties::tsn_sched_arrival_limit => 8000000; 
+			OYSTER_properties::tsn_sched_threshold => 200; 
+			OYSTER_properties::tsn_link_bandwidth => 1000; 
+			OYSTER_properties::tsn_frame_size => 1044;
+		};
+		TSNStream7: end to end flow RW_Pmp_Mn.VL32780_flow0_RW_Pmp_Mn -> c47 -> RDC_R2.VL32780_flow0_RDC_R2 -> c38 -> CCR_R3.VL32780_flow0_ccre2e_CCR_R3 -> c31 -> CCR_R2.VL32780_flow0_ccrsink_CCR_R2 
+		{
+			OYSTER_properties::mtu => 1; 
+			OYSTER_properties::bag => 4;
+			OYSTER_properties::tsn_sched_start_time => 8500000; 
+			OYSTER_properties::tsn_sched_arrival_limit => 9000000; 
+			OYSTER_properties::tsn_sched_threshold => 200;
+			OYSTER_properties::tsn_link_bandwidth => 1000;
+			OYSTER_properties::tsn_frame_size => 1044;
+		};
+		TSNStream8: end to end flow L_Eng_SO_Valve.VL32782_flow0_L_Eng_SO_Valve -> c19 -> RDC_L1.VL32782_flow0_RDC_L1 -> c15 -> CCR_L2.VL32782_flow0_ccre2e_CCR_L2 -> c14 -> CCR_R2.VL32782_flow0_ccrsink_CCR_R2 
+		{
+			OYSTER_properties::mtu => 1;
+			OYSTER_properties::bag => 1;
+			OYSTER_properties::tsn_sched_start_time => 9500000;
+			OYSTER_properties::tsn_sched_arrival_limit => 10000000;
+			OYSTER_properties::tsn_sched_threshold => 200;
+			OYSTER_properties::tsn_link_bandwidth => 1000;
+			 OYSTER_properties::tsn_frame_size => 1044;
+		};
 end IMA.Impl;
 
 system CCR
