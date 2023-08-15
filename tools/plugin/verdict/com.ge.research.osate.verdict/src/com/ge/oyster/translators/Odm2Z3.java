@@ -102,7 +102,6 @@ public class Odm2Z3 {
     Map<String, List<Expr>> vlNamesToMsgPeriods = new HashMap<String, List<Expr>>();
     List<String> vlNames = new ArrayList<String>();
     Map<String, String> softwareToHardwareMap = new HashMap<String, String>();
-    
 
     Map<String, Integer> app_periods = new HashMap<String, Integer>();
     Map<String, Integer> app_durations = new HashMap<String, Integer>();
@@ -112,9 +111,10 @@ public class Odm2Z3 {
     Map<String, Integer> app_rates = new HashMap<String, Integer>();
     Map<String, Integer> proc_slots = new HashMap<String, Integer>();
     List<String> proc_ids = new ArrayList<String>();
-    
+
     private static Map<String, ConstraintType> constraintType = new HashMap<>();
-    private static List<String> unsatCore = new ArrayList<> ();
+    private static List<String> unsatCore = new ArrayList<>();
+
     boolean optBandwidthYes = IMASynthesisSettingsPanel.optBandwidthYes;
     boolean opte2eFlowYes = IMASynthesisSettingsPanel.opte2eFlowYes;
     boolean fsbBandwidthYes = IMASynthesisSettingsPanel.fsbBandwidthYes;
@@ -264,7 +264,7 @@ public class Odm2Z3 {
         // translates Oyster constraints to smtlib
         for (ComponentImpl odmImpl : odm.getComponentImpl()) {
             for (Constraint ci : odmImpl.getOysterConstraint()) {
-            	
+
                 ConstraintType constType = ci.getType();
                 String constraintName = ci.getSpecification().getConstraintName();
                 constraintType.put(constraintName, constType);
@@ -387,13 +387,13 @@ public class Odm2Z3 {
             // System.out.println(sol);
             VerdictLogger.info("The input architecture model is UNSAT!");
             if (useUnsatCore) {
-            	unsatCore.clear();
+                unsatCore.clear();
                 VerdictLogger.info("UNSAT CORE:");
                 BoolExpr[] assertions = sol.getAssertions();
                 for (Expr c : sol.getUnsatCore()) {
                     for (BoolExpr assertion : assertions) {
                         if (assertion.getArgs()[0].toString().equals(c.toString())) {
-                            String assertionName =  assertion.getArgs()[1].toString();
+                            String assertionName = assertion.getArgs()[1].toString();
                             String oysterConstraint = assertionName.split("_xyz_")[0];
                             unsatCore.add(oysterConstraint);
                             VerdictLogger.info(oysterConstraint);
@@ -401,35 +401,29 @@ public class Odm2Z3 {
                     }
                     // System.out.println(c.getBoolValue().toString());
                 }
-                
-                
-                //show the unsat core
-                Display.getDefault()
-                .asyncExec(
-                        () -> {
-                            UnsatCoreView.unsatCore = unsatCore;
-                            UnsatCoreView.constraintType = constraintType;
-                            org.apache.commons.lang3.tuple.Pair<
-                                            IWorkbenchPage, IViewPart>
-                                    pair =
-                                            ViewUtils
-                                                    .getPageAndViewByViewId(
-                                                            UnsatCoreView.ID);
-                            if (pair != null
-                                    && pair.getLeft() != null
-                                    && pair.getRight() != null) {
-                                pair.getLeft().hideView(pair.getRight());
-                                try {
-                                    pair.getLeft().showView(UnsatCoreView.ID);
-                                } catch (PartInitException e) {
-                                    // TODO Auto-generated catch block
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
 
-                
-                
+                // show the unsat core
+                Display.getDefault()
+                        .asyncExec(
+                                () -> {
+                                    UnsatCoreView.unsatCore = unsatCore;
+                                    UnsatCoreView.constraintType = constraintType;
+                                    org.apache.commons.lang3.tuple.Pair<IWorkbenchPage, IViewPart>
+                                            pair =
+                                                    ViewUtils.getPageAndViewByViewId(
+                                                            UnsatCoreView.ID);
+                                    if (pair != null
+                                            && pair.getLeft() != null
+                                            && pair.getRight() != null) {
+                                        pair.getLeft().hideView(pair.getRight());
+                                        try {
+                                            pair.getLeft().showView(UnsatCoreView.ID);
+                                        } catch (PartInitException e) {
+                                            // TODO Auto-generated catch block
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
             }
             ctx.close();
             return null;
@@ -597,7 +591,7 @@ public class Odm2Z3 {
 
         // bandwidth constraint for all VLs(constraint 2)
         // 8000 * forall(i = 1, n) sum((mtu_i + 67) / bag_i) <= B
-        Expr vlConstraint_2Track = ctx.mkBoolConst("vl_contraint_2");
+        Expr vlConstraint_2Track = ctx.mkBoolConst("vl_constraint_2");
         addConstraint(
                 vlConstraint_2Track,
                 ctx.mkLe(
@@ -661,7 +655,7 @@ public class Odm2Z3 {
 
         Expr fromExpr = ctx.mkConst(from.getName(), typeToSort.get(from.getType().getName()));
         Expr toExpr = ctx.mkConst(to.getName(), typeToSort.get(to.getType().getName()));
-        
+
         Random random = new Random();
         Expr flcTrack = ctx.mkBoolConst(constraintName + "_xyz_" + random.nextInt());
         addConstraint(flcTrack, ctx.mkEq(ctx.mkApp(funcDecl, fromExpr), toExpr), sol);
@@ -730,7 +724,7 @@ public class Odm2Z3 {
                             ctx.mkConst(item.getName(), typeToSort.get(item.getType().getName())));
             exprs.add(exp);
             Random random = new Random();
-            
+
             Expr clcTrack = ctx.mkBoolConst(constraintName + "_xyz_" + random.nextInt());
             clcTrackList.add(clcTrack);
         }
@@ -755,15 +749,39 @@ public class Odm2Z3 {
         List<ArithmaticOperator> arSigns = spec.getDestEntitiesSigns().getSign();
         String releVantSrcAttr = "";
         String releVantDestAttr = "";
-
+        int srcValue = 0;
         if (restType.equals("CPU")) {
             releVantSrcAttr = "cpuProvided";
+            srcValue = getAttributeValue(src, "cpuProvided");
+            if (srcValue != -1) {
+                releVantSrcAttr = "cpuProvided";
+            }
+            srcValue = getAttributeValue(src, "cpuUsed");
+            if (srcValue != -1) {
+                releVantSrcAttr = "cpuUsed";
+            }
             releVantDestAttr = "cpuUsed";
         } else if (restType.equals("RAM")) {
             releVantSrcAttr = "ramProvided";
+            srcValue = getAttributeValue(src, "ramProvided");
+            if (srcValue != -1) {
+                releVantSrcAttr = "ramProvided";
+            }
+            srcValue = getAttributeValue(src, "ramUsed");
+            if (srcValue != -1) {
+                releVantSrcAttr = "ramUsed";
+            }
             releVantDestAttr = "ramUsed";
         } else if (restType.equals("ROM")) {
             releVantSrcAttr = "romProvided";
+            srcValue = getAttributeValue(src, "romProvided");
+            if (srcValue != -1) {
+                releVantSrcAttr = "romProvided";
+            }
+            srcValue = getAttributeValue(src, "romUsed");
+            if (srcValue != -1) {
+                releVantSrcAttr = "romUsed";
+            }
             releVantDestAttr = "romUsed";
         } else if (restType.equals("MEM")) {
             releVantSrcAttr = "memProvided";
@@ -771,14 +789,14 @@ public class Odm2Z3 {
         }
 
         Expr srcExpVar = ctx.mkConst(src.getName() + "_" + releVantSrcAttr, ctx.mkIntSort());
-        Expr srcExp = ctx.mkEq(srcExpVar, ctx.mkInt(getAttriuteValue(src, releVantSrcAttr)));
+        Expr srcExp = ctx.mkEq(srcExpVar, ctx.mkInt(getAttributeValue(src, releVantSrcAttr)));
         sol.Add(srcExp);
 
         List<Expr> dstExpsVar = new ArrayList<Expr>();
         for (ComponentInstance comp : dests) {
             Expr destExpVar = ctx.mkConst(comp.getName() + "_" + releVantDestAttr, ctx.mkIntSort());
             Expr destExp =
-                    ctx.mkEq(destExpVar, ctx.mkInt(getAttriuteValue(comp, releVantDestAttr)));
+                    ctx.mkEq(destExpVar, ctx.mkInt(getAttributeValue(comp, releVantDestAttr)));
             dstExpsVar.add(destExpVar);
             sol.Add(destExp);
         }
@@ -787,9 +805,10 @@ public class Odm2Z3 {
         Expr destexprArr[] = new Expr[n];
         System.arraycopy(dstExpsVar.toArray(), 0, destexprArr, 0, n);
         Random random = new Random();
-        
+
         Expr ciTrack =
-                ctx.mkBoolConst(ci.getSpecification().getConstraintName() + "_xyz_" + random.nextInt());
+                ctx.mkBoolConst(
+                        ci.getSpecification().getConstraintName() + "_xyz_" + random.nextInt());
         if (destexprArr.length == 1) {
             if (compOp.equals(oyster.odm.odm_model.ComparisonOperator.EQ)) {
                 addConstraint(ciTrack, ctx.mkEq(srcExpVar, destexprArr[0]), sol);
@@ -852,8 +871,9 @@ public class Odm2Z3 {
                 Expr exp2 = ctx.mkEq(exp2Temp, ctx.mkReal(refPeriod));
 
                 Expr vlBwConstraint = ctx.mkAnd(exp1, exp2);
-                
-                Expr vlBwConstraintTrack = ctx.mkBoolConst(constraintName + "_xyz_" + random.nextInt());
+
+                Expr vlBwConstraintTrack =
+                        ctx.mkBoolConst(constraintName + "_xyz_" + random.nextInt());
                 addConstraint(vlBwConstraintTrack, vlBwConstraint, sol);
 
                 if (vlNamesToMsgSizes.get(vlName) != null) {
@@ -880,7 +900,7 @@ public class Odm2Z3 {
         return sol;
     }
 
-    protected int getAttriuteValue(ComponentInstance item, String attName) {
+    protected int getAttributeValue(ComponentInstance item, String attName) {
         for (Attribute attr : item.getAttribute()) {
             if (attr.getName().equals(attName)) {
                 return Integer.parseInt(attr.getValue().toString());
@@ -1384,7 +1404,7 @@ public class Odm2Z3 {
     protected long getTotalNetBandwidth() {
         // default values
         long totalBandwidth = 5000000000L;
-    	int maxBandwidthPercentage = 80;
+        int maxBandwidthPercentage = 80;
 
         // checks if user has provided the bandwidth information as OYSTER property
         for (ComponentType odmType : odm.getComponentType()) {
@@ -1404,7 +1424,6 @@ public class Odm2Z3 {
                 }
             }
         }
-
         return ((totalBandwidth * maxBandwidthPercentage) / 100);
     }
 
@@ -1417,7 +1436,7 @@ public class Odm2Z3 {
         String funcName2 = "App_periods_single_core";
         FuncDecl<Sort> funcDecl2 =
                 ctx.mkFuncDecl(funcName2, typeToSort.get("GPMApp"), ctx.mkIntSort());
-
+        Random random = new Random();
         if (app_ids.size() == 1) {
             String app = app_ids.get(0);
             Expr p = ctx.mkIntConst(app + "_period");
@@ -1432,7 +1451,7 @@ public class Odm2Z3 {
             Expr s = ctx.mkIntConst(app + "_start");
             Expr s_min = ctx.mkGe(s, ctx.mkInt(0));
             Expr schedSingleApp = ctx.mkAnd(p_eq, d_eq, pr_eq, p_min, d_min, pr_min, s_min);
-            Expr singleAppTrack = ctx.mkBoolConst("Single_app_schedule");
+            Expr singleAppTrack = ctx.mkBoolConst("sched_singlecore");
             addConstraint(singleAppTrack, schedSingleApp, sol);
         } else {
             // for each pair of apps
@@ -1463,7 +1482,7 @@ public class Odm2Z3 {
                     Expr s_j = ctx.mkIntConst(app2 + "_start");
                     Expr s_j_min = ctx.mkGe(s_j, ctx.mkInt(0));
 
-                    Expr gcd_pi_pj = ctx.mkIntConst("gcd_" + app1 + "_" + app2 + "_periods");
+                    Expr gcd_pi_pj = ctx.mkIntConst("sched" + "_" + app1 + "_" + app2 + "_periods");
                     Expr gcd_pi_pj_eq =
                             ctx.mkEq(
                                     gcd_pi_pj,
@@ -1522,7 +1541,7 @@ public class Odm2Z3 {
                                     d_j_min,
                                     pr_i_min,
                                     pr_j_min);
-                    Expr scheduleIJTrack = ctx.mkBoolConst("schedule_" + app1 + "_and_" + app2);
+                    Expr scheduleIJTrack = ctx.mkBoolConst("sched_" + app1 + "_and_" + app2);
                     addConstraint(scheduleIJTrack, scheduleIJTrack, sol);
                 }
             }
@@ -1537,12 +1556,12 @@ public class Odm2Z3 {
             Expr pred = ctx.mkBoolConst(app + "_is_schedulable");
 
             assumptions.add(ctx.mkNot(pred));
-            Expr predTrack = ctx.mkBoolConst(app + "_is_schedulable");
+            Expr predTrack = ctx.mkBoolConst("sched_" + app + "_is_schedulable");
 
             addConstraint(predTrack, ctx.mkOr(s_i_min, pred), sol);
 
             // fillup the function Single_core_scheduling_map
-            Expr startTimeTrack = ctx.mkBoolConst(app + "_has_starttime_scheduled");
+            Expr startTimeTrack = ctx.mkBoolConst("sched_" + app + "_has_starttime_scheduled");
             addConstraint(
                     startTimeTrack,
                     ctx.mkEq(
@@ -1551,7 +1570,7 @@ public class Odm2Z3 {
                     sol);
 
             // fillup the function App_periods_single_core
-            Expr periodTrack = ctx.mkBoolConst(app + "_has_valid_period_assigned");
+            Expr periodTrack = ctx.mkBoolConst("sched_" + app + "_has_valid_period_assigned");
             sol.Add(
                     periodTrack,
                     ctx.mkEq(
@@ -1736,8 +1755,7 @@ public class Odm2Z3 {
                                         d_j_min,
                                         pr_i_min,
                                         pr_j_min);
-                        Expr schedIJTrack =
-                                ctx.mkBoolConst("schedule_multicore_" + app1 + "_and_" + app2);
+                        Expr schedIJTrack = ctx.mkBoolConst("sched_" + app1 + "_and_" + app2);
                         addConstraint(schedIJTrack, schedIJ, sol);
                     }
                 }
@@ -1916,5 +1934,4 @@ public class Odm2Z3 {
         }
         return sol;
     }
-    
 }

@@ -305,7 +305,7 @@ system implementation IMA.Impl
 			Utilization-Constraint UC1 [CPU]: (CCR CCR_R2: cpuProvided) > (GPMApp APP_FIDO:cpuUsed) + (GPMApp APP_FUEL_SYSTEM_CONTROL: cpuUsed) + (GPMApp APP_HEALTH_MANAGER: cpuUsed) + (GPMApp APP_FILE_SYSTEM:cpuUsed) + (GPMApp APP_CDN_TIME_MANAGER: cpuUsed);
 			Utilization-Constraint UC2 [ROM]: (CCR CCR_R2: romProvided) > (GPMApp APP_FIDO:romUsed) + (GPMApp APP_FUEL_SYSTEM_CONTROL: romUsed) + (GPMApp APP_HEALTH_MANAGER: romUsed) + (GPMApp APP_FILE_SYSTEM:romUsed) + (GPMApp APP_CDN_TIME_MANAGER: romUsed);
 			Utilization-Constraint UC3 [RAM]: (CCR CCR_R2: ramProvided) > (GPMApp APP_FIDO:ramUsed) + (GPMApp APP_FUEL_SYSTEM_CONTROL: ramUsed) + (GPMApp APP_HEALTH_MANAGER: ramUsed) + (GPMApp APP_FILE_SYSTEM:ramUsed) + (GPMApp APP_CDN_TIME_MANAGER: ramUsed);
-			Utilization-Constraint UC4 [CPU]: (GPMApp APP_FIDO: cpuUsed) > (GPMApp APP_FILE_SYSTEM: cpuUsed);
+			Utilization-Constraint UC4 [CPU]: (GPMApp APP_FIDO: cpuUsed) > (GPMApp APP_FILE_SYSTEM: cpuUsed) + (GPMApp APP_HEALTH_MANAGER: cpuUsed);
 		    Utilization-Constraint UC5 [ROM]: (GPMApp APP_FIDO: romUsed) > (GPMApp APP_FILE_SYSTEM: romUsed) + (GPMApp APP_HEALTH_MANAGER: ramUsed);
 		    Utilization-Constraint UC6 [RAM]: (GPMApp APP_FIDO: ramUsed) > (GPMApp APP_FILE_SYSTEM: ramUsed) + (GPMApp APP_HEALTH_MANAGER: ramUsed);
 			
