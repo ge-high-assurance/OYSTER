@@ -1,0 +1,56 @@
+property set OYSTER_properties is
+ --- componentType is a property used to determine whether the system is subject to attacks targeting software, hardware, humans, or hybrid (software and hardware). 
+ componentType: enumeration (Cabinet, Common_Compute_Resource, General_Processing_Module, 
+ 	Actuator, Avionics_Cabinet_Switch, Integrated_Modular_Avionics, CPU,
+ 	Switch_Application, Remote_Data_Concentrator,
+ 	Remote_Gateway, RDC_Application, A653_Application, Application, Sensor,
+ 	VirtualLink, Global_Memory_Space, Read_Only_Global_Memory_Space, ACS_Application, Hosted_Function) 
+ =>  Common_Compute_Resource applies to (system); 
+ id: aadlinteger applies to (system);
+ cpuProvided: aadlinteger applies to (system);
+ cpuUsed: aadlinteger applies to (system);
+ ramProvided: aadlinteger applies to (system);
+ ramUsed: aadlinteger applies to (system);
+ romProvided: aadlinteger applies to (system);
+ romUsed: aadlinteger applies to (system);
+ memProvided: aadlinteger applies to (system);
+ memUsed: aadlinteger applies to (system);
+ buffers: aadlinteger applies to (system);
+ send_bandwidth: aadlinteger applies to (system);
+ receive_bandwidth: aadlinteger applies to (system);
+ out_bandwidth: aadlinteger applies to (system);
+ in_bandwidth: aadlinteger applies to (system);
+ total_number: aadlinteger applies to (system);
+  
+ -------------------------------------------------------------
+ bandwidth: aadlinteger applies to (connection);
+ ttp: aadlreal applies to (connection);
+ tto: aadlreal applies to (connection);
+ mtu: aadlinteger applies to (flow);
+ bagLimit: aadlreal applies to (connection);
+ bag: aadlinteger applies to (flow);
+ minFrameSize: aadlreal applies to (connection);
+ maxFrameSize: aadlreal applies to (connection);
+ maxMsgPeriod: aadlreal applies to (connection);
+ srcPortBufferSize: aadlreal applies to (connection);
+ dstPortBufferSize: aadlreal applies to (connection);
+ 
+ -------------------------------------------------------------
+ totalBandwidth: aadlinteger applies to (system);
+ maxBandwidthPercentage: aadlinteger applies to (system);
+ networkBandwidth: aadlinteger applies to (system);
+ -------------------------------------------------------------
+ rate: aadlinteger applies to (system);
+ period: aadlinteger applies to (system);
+ duration: aadlinteger applies to (system);
+ start_time: aadlinteger applies to (system);
+ priority: aadlinteger applies to (system);
+ -------------------------------------------------------------
+ slots_per_cycle: aadlinteger applies to (system);
+ processor_name: aadlstring applies to (system);
+ -------------------------------------------------------------
+ tsn_sched_start_time: aadlinteger applies to (flow);
+ tsn_sched_arrival_limit: aadlinteger applies to (flow);
+ tsn_sched_threshold : aadlinteger applies to (flow);
+ 		
+end OYSTER_properties;

@@ -42,12 +42,7 @@ import com.ge.research.osate.oyster.dsl.oyster.Statement;
 import com.ge.research.osate.oyster.dsl.oyster.Statements;
 import com.ge.research.osate.oyster.dsl.oyster.UCConstraint;
 import com.ge.research.osate.oyster.dsl.oyster.VLConstraint;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -60,6 +55,13 @@ import org.osate.aadl2.Subcomponent;
 import org.osate.aadl2.SystemImplementation;
 import org.osate.aadl2.SystemSubcomponent;
 import org.osate.aadl2.SystemType;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * This class contains custom validation rules.
@@ -287,9 +289,9 @@ public class OysterValidator extends AbstractOysterValidator {
         checkDuplicates(items2);
 
         // ensure different types
-        checkNotEqualType(itemsType1, itemsType2);
-        checkNotEqualType(itemsType1, locationType);
-        checkNotEqualType(itemsType2, locationType);
+        // checkNotEqualType(itemsType1, itemsType2);
+        // checkNotEqualType(itemsType1, locationType);
+        // checkNotEqualType(itemsType2, locationType);
 
         // check Constraint name if used before
         checkConName(clc.getConName());
@@ -378,7 +380,7 @@ public class OysterValidator extends AbstractOysterValidator {
 
         // check if Utilization properties are consistent
         otherSinkProps.add(sinkProp);
-        checkUCpropMapping(resType, srcProp, otherSinkProps);
+        // checkUCpropMapping(resType, srcProp, otherSinkProps);
     }
 
     // creates a one-to-one mapping of an item to a location

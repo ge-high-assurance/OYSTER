@@ -1,0 +1,3269 @@
+<?xml version="1.0" encoding="ASCII"?>
+<diagram:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:diagram="http://osate.org/diagram" formatVersion="7">
+  <element uuid="edc53e6b-6a14-4cb7-b353-0941c606e100" manual="true">
+    <element uuid="0890807c-518d-4442-abd9-7dd47b2ef48b" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c11</seg>
+      </bo>
+    </element>
+    <element uuid="4d2b8425-ff82-4173-bc05-19968374d761" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c13</seg>
+      </bo>
+      <bendpoints>
+        <point x="52.0" y="1705.0"/>
+        <point x="52.0" y="1216.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="77358c69-a0dc-4dcf-aecc-3d40b0fb2ea9" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c14</seg>
+      </bo>
+      <bendpoints>
+        <point x="389.0924377441406" y="1455.0"/>
+        <point x="389.0924377441406" y="1296.0"/>
+        <point x="722.1223754882812" y="1296.0"/>
+        <point x="722.1223754882812" y="966.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="1e978496-d6eb-463d-a074-e31847cb8edc" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c15</seg>
+      </bo>
+      <bendpoints>
+        <point x="369.0924377441406" y="1915.0"/>
+        <point x="369.0924377441406" y="1505.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="2ebb46eb-e913-4dab-88a0-15c418ff434b" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c17</seg>
+      </bo>
+      <bendpoints>
+        <point x="732.1223754882812" y="574.0"/>
+        <point x="732.1223754882812" y="906.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="69c12534-95a4-4feb-941d-7ac80083a9e6" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c19</seg>
+      </bo>
+    </element>
+    <element uuid="5c7698eb-fe8b-4dc9-8f75-a57182063a8d" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c20</seg>
+      </bo>
+      <bendpoints>
+        <point x="389.0924377441406" y="1975.0"/>
+        <point x="389.0924377441406" y="2545.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="b74c8c8f-766c-44a6-9958-0baf87ddac06" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c21</seg>
+      </bo>
+      <bendpoints>
+        <point x="369.0924377441406" y="2095.0"/>
+        <point x="369.0924377441406" y="2885.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="a3146ffe-b22f-45c6-9f41-5bddc41775ec" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c22</seg>
+      </bo>
+      <bendpoints>
+        <point x="379.0924377441406" y="2035.0"/>
+        <point x="379.0924377441406" y="2715.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="8d27e825-0ac9-4ae5-98f4-d7c545b66649" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c23</seg>
+      </bo>
+    </element>
+    <element uuid="85d8d241-b6f0-429a-b287-a17ca0c1752e" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c24</seg>
+      </bo>
+      <bendpoints>
+        <point x="712.1223754882812" y="634.0"/>
+        <point x="712.1223754882812" y="686.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="2478e6fa-bda1-487f-bcff-82598106b534" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c25</seg>
+      </bo>
+      <bendpoints>
+        <point x="712.1223754882812" y="754.0"/>
+        <point x="712.1223754882812" y="1284.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="61492511-a323-41f7-9bf1-6cb32899dbf9" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c26</seg>
+      </bo>
+      <bendpoints>
+        <point x="722.1223754882812" y="694.0"/>
+        <point x="722.1223754882812" y="796.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="7fe800b9-5caf-4f7d-b1c7-b0ca6297606e" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c28</seg>
+      </bo>
+    </element>
+    <element uuid="379501aa-6ae7-41d3-8941-dd1f28fc8d45" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c31</seg>
+      </bo>
+      <bendpoints>
+        <point x="762.1223754882812" y="1166.0"/>
+        <point x="762.1223754882812" y="1196.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="68293e26-895f-4087-8460-c876d8064b8c" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c34</seg>
+      </bo>
+      <bendpoints>
+        <point x="1079.21484375" y="1505.0"/>
+        <point x="1079.21484375" y="1146.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="25beebca-649d-41e8-8cc9-c68719ab0ead" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c36</seg>
+      </bo>
+      <bendpoints>
+        <point x="712.1223754882812" y="2077.0"/>
+        <point x="712.1223754882812" y="1505.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="4fe40663-a70e-4f57-b5c6-4873d1272550" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c38</seg>
+      </bo>
+      <bendpoints>
+        <point x="1129.21484375" y="106.0"/>
+        <point x="1129.21484375" y="1096.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="0874fa03-99a5-4f62-a879-95d2999ccfbe" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c40</seg>
+      </bo>
+      <bendpoints>
+        <point x="762.1223754882812" y="2127.0"/>
+        <point x="762.1223754882812" y="2189.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="fb76d5c1-a697-46e1-bcb0-20f9bdf9b1a6" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c41</seg>
+      </bo>
+      <bendpoints>
+        <point x="752.1223754882812" y="2187.0"/>
+        <point x="752.1223754882812" y="2299.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="b881dade-2b2c-4afa-874c-7045058f9300" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c42</seg>
+      </bo>
+      <bendpoints>
+        <point x="712.1223754882812" y="2427.0"/>
+        <point x="712.1223754882812" y="2859.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="05fac460-3743-4fbb-8dc9-8f2fe8eeefd9" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c43</seg>
+      </bo>
+      <bendpoints>
+        <point x="722.1223754882812" y="2367.0"/>
+        <point x="722.1223754882812" y="2749.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="8689441a-1d09-4ef0-9482-70c0b3d18180" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c44</seg>
+      </bo>
+      <bendpoints>
+        <point x="732.1223754882812" y="2307.0"/>
+        <point x="732.1223754882812" y="2587.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="63aee83b-30fc-4b49-8dae-53654af5e34b" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c45</seg>
+      </bo>
+      <bendpoints>
+        <point x="742.1223754882812" y="2247.0"/>
+        <point x="742.1223754882812" y="2417.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="4edb1571-05ba-419a-b87d-b78f020616ee" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c46</seg>
+      </bo>
+    </element>
+    <element uuid="de9a8e9b-f297-487c-af31-46a80e5bf467" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c47</seg>
+      </bo>
+    </element>
+    <element uuid="c56acb45-149f-4492-9b8d-b1b7e5db7e89" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c48</seg>
+      </bo>
+      <bendpoints>
+        <point x="1119.21484375" y="166.0"/>
+        <point x="1119.21484375" y="226.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="bb48bc98-fd17-4f36-9c6f-560acb5a489f" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c49</seg>
+      </bo>
+      <bendpoints>
+        <point x="1079.21484375" y="406.0"/>
+        <point x="1079.21484375" y="718.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="e3da1229-a651-423c-84c0-38bdb17ca4f2" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c5</seg>
+      </bo>
+    </element>
+    <element uuid="44984c9c-1737-4d7d-8a00-7f12f25deeac" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c50</seg>
+      </bo>
+      <bendpoints>
+        <point x="1089.21484375" y="346.0"/>
+        <point x="1089.21484375" y="608.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="650b8fc3-169f-47b0-be0e-3031518a7b43" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c51</seg>
+      </bo>
+      <bendpoints>
+        <point x="1099.21484375" y="286.0"/>
+        <point x="1099.21484375" y="498.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="bb06949c-0c51-4917-9ee3-0cf7bc18662b" manual="true">
+      <bo>
+        <seg>connection</seg>
+        <seg>c52</seg>
+      </bo>
+      <bendpoints>
+        <point x="1109.21484375" y="226.0"/>
+        <point x="1109.21484375" y="388.0"/>
+      </bendpoints>
+    </element>
+    <element uuid="54ca30d8-1160-4f11-abc8-0d385935c4d1" manual="true">
+      <element uuid="e05426ba-9334-4c3f-902f-ad246d53bbba" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="46.0"/>
+      </element>
+      <element uuid="68e00324-1b0a-43d5-bff4-d33ff6ebee3a" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="78.0"/>
+      </element>
+      <element uuid="90be8c5c-1b78-4100-9c0a-526152932254" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="58.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2544.999999999999"/>
+          <point x="538.9113159179685" y="2524.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="a2322295-55ed-4bba-9042-75a597358328" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="38.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2544.999999999999"/>
+          <point x="538.9113159179685" y="2504.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="8e271fbc-b461-4e4c-90dc-412046ae7681" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="118.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2544.999999999999"/>
+          <point x="538.9113159179685" y="2584.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="6c9b3862-f803-43da-847e-ea1ef65cbc89" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="138.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2544.999999999999"/>
+          <point x="538.9113159179685" y="2604.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="b724f893-f6f8-44c3-99f7-c74db965ce4f" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="98.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2544.999999999999"/>
+          <point x="538.9113159179685" y="2564.999999999999"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>APU_SO_Valve</seg>
+      </bo>
+      <position x="359.0924377441406" y="2527.0"/>
+      <size width="236.83333587646484" height="150.0"/>
+    </element>
+    <element uuid="6a5802ae-3708-47a9-b64e-424cdfce0fdd" manual="true">
+      <element uuid="a956d728-2ceb-4c2d-9cdd-7e25cf5780c9" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port10</seg>
+        </bo>
+        <position y="147.0"/>
+      </element>
+      <element uuid="5a76ff35-e9dc-4528-a34e-8288b55a108e" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port22</seg>
+        </bo>
+        <position y="47.0"/>
+      </element>
+      <element uuid="54bd8884-33da-45fa-904a-5cb0e2c1880c" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>portA</seg>
+        </bo>
+        <position x="253.22394180297852" y="97.0"/>
+      </element>
+      <element uuid="096c85e8-e001-481f-b2c4-30a0fc6e0cac" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portB</seg>
+        </bo>
+        <position y="197.0"/>
+      </element>
+      <element uuid="8f15d50c-16d0-4958-9d88-5f5a8afc990e" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portC</seg>
+        </bo>
+        <position y="247.0"/>
+      </element>
+      <element uuid="e019c715-15ac-498b-be17-ca7579028785" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portD</seg>
+        </bo>
+        <position y="97.0"/>
+      </element>
+      <element uuid="98ddf447-ecdb-4156-8724-07c9bed34e3b" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="223.41796875" y="1705.0"/>
+          <point x="223.41796875" y="1755.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="a11107e7-27a7-4339-a88d-a91b7ae9b045" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="189.0"/>
+        <bendpoints>
+          <point x="223.4179649353027" y="1705.0"/>
+          <point x="223.4179649353027" y="1665.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="b3540ae5-e829-4262-859e-5f5c80178224" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="259.0"/>
+        <bendpoints>
+          <point x="223.4179649353027" y="1755.0"/>
+          <point x="223.4179649353027" y="1735.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="0f81b0d2-9f14-4d8b-9fb1-3df77f8313fd" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="223.41796875" y="1705.0"/>
+          <point x="223.41796875" y="1655.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="5eada029-2220-4685-8886-b0255de1d3f6" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccre2e_CCR_L3</seg>
+        </bo>
+        <bendpoints>
+          <point x="223.41796875" y="1655.0"/>
+          <point x="223.41796875" y="1605.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="bda9b104-be61-4943-a684-b995ef92b0d7" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="209.0"/>
+        <bendpoints>
+          <point x="223.4179649353027" y="1705.0"/>
+          <point x="223.4179649353027" y="1685.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="76652989-6e48-4858-8ca9-bbc8b9e4cc9e" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="223.41796875" y="1555.0"/>
+          <point x="223.41796875" y="1605.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="3e092d6e-8187-47c5-b0fa-1f0055426d85" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="58.0"/>
+        <bendpoints>
+          <point x="223.4179649353027" y="1555.0"/>
+          <point x="223.4179649353027" y="1534.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="9de39736-f076-486f-8e66-9f2370033ace" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="223.41796875" y="1605.0"/>
+          <point x="223.41796875" y="1555.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="9725af1a-94c9-4b82-8d5c-d0f9744aa5c0" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="38.0"/>
+        <bendpoints>
+          <point x="223.4179649353027" y="1555.0"/>
+          <point x="223.4179649353027" y="1514.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="0cad7950-33a5-40dd-a865-4a1078fcb839" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="279.0"/>
+      </element>
+      <element uuid="20649286-2d06-41c1-aa1b-c555b46383cc" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="223.41796875" y="1755.0"/>
+          <point x="223.41796875" y="1705.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="9b737817-4645-4679-ad0d-957e4fad388c" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="229.0"/>
+      </element>
+      <element uuid="beccbbdf-57cc-4f97-8f43-098f69879628" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccre2e_CCR_L3</seg>
+        </bo>
+      </element>
+      <element uuid="e822c37a-cee3-43d3-8cc9-6491e522aa63" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="243.41796875" y="1605.0"/>
+          <point x="243.41796875" y="1544.0"/>
+          <point x="223.41796875" y="1544.0"/>
+          <point x="223.41796875" y="1555.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="b96891b1-d676-4471-b708-a0ed18d148eb" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="79.0"/>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CCR_L1</seg>
+      </bo>
+      <position x="22.0" y="1536.0"/>
+      <size width="297.0924301147461" height="299.0"/>
+    </element>
+    <element uuid="07c4b74f-56f2-4c2c-b6c0-75546d735c93" manual="true">
+      <element uuid="64cfbd9e-5dd8-4efe-ab8a-ddf18f4cc95f" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port10</seg>
+        </bo>
+        <position x="253.22394180297852" y="157.0"/>
+      </element>
+      <element uuid="0e225fe6-e780-4a0c-ade4-9d795d129ff3" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port22</seg>
+        </bo>
+        <position y="257.0"/>
+      </element>
+      <element uuid="5ba51329-44b6-49d7-9827-04d62c96c25f" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portA</seg>
+        </bo>
+        <position y="207.0"/>
+      </element>
+      <element uuid="2d20e669-58a5-49e2-9491-a2dfb6ea04e2" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portB</seg>
+        </bo>
+        <position y="57.0"/>
+      </element>
+      <element uuid="3dbdb7bf-8071-4020-8790-ec9271f1940a" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portC</seg>
+        </bo>
+        <position y="107.0"/>
+      </element>
+      <element uuid="ac5f31d8-bfc7-4d1e-9ae3-d2fab2f2c82d" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portD</seg>
+        </bo>
+        <position y="157.0"/>
+      </element>
+      <element uuid="7fbbb3e4-9e4b-4f02-889f-9fb0731aac62" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="560.5104370117188" y="1455.0"/>
+          <point x="560.5104370117188" y="1505.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="e57b84e9-17fb-4ba0-ae1c-bdd80624646a" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="89.0"/>
+      </element>
+      <element uuid="b9f06d7f-c675-484c-b125-a7df61518b92" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="119.0"/>
+        <bendpoints>
+          <point x="561.1574058532713" y="1505.0"/>
+          <point x="561.1574058532713" y="1485.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="25733b7b-8afc-4c81-8576-0385ee2bd38f" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="560.5104370117188" y="1455.0"/>
+          <point x="560.5104370117188" y="1404.0"/>
+          <point x="580.5104370117188" y="1404.0"/>
+          <point x="580.5104370117188" y="1555.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="be6a2b6b-109b-4ab2-8b6d-eae9468adf85" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccre2e_CCR_L3</seg>
+        </bo>
+      </element>
+      <element uuid="b9372aed-5e0d-44b3-a066-f3856d00ab7b" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="69.0"/>
+        <bendpoints>
+          <point x="561.1574058532713" y="1455.0"/>
+          <point x="561.1574058532713" y="1435.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="fc5d046e-0667-4232-aa3b-73a645411360" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="560.5104370117188" y="1655.0"/>
+          <point x="560.5104370117188" y="1555.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="f25c653b-1fbe-4522-8a42-1046dcbe37f5" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="269.0"/>
+        <bendpoints>
+          <point x="561.1574058532713" y="1655.0"/>
+          <point x="561.1574058532713" y="1635.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="8a672103-bbc0-4078-932c-d328f67dc3a7" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="560.5104370117188" y="1555.0"/>
+          <point x="560.5104370117188" y="1655.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="782d2dc5-64e4-4e07-8879-09ab81021586" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="289.0"/>
+      </element>
+      <element uuid="aad482bf-3392-405f-9520-3df6c6e01bf4" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="139.0"/>
+      </element>
+      <element uuid="cb58867b-14a7-44fe-ab27-e20ac626b422" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="560.5104370117188" y="1505.0"/>
+          <point x="560.5104370117188" y="1455.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="1ec0217e-7215-4683-8210-b2bd89383950" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="49.0"/>
+        <bendpoints>
+          <point x="561.1574058532713" y="1455.0"/>
+          <point x="561.1574058532713" y="1415.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="1126d42f-0233-4136-8f8b-ca8c115265c0" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccre2e_CCR_L3</seg>
+        </bo>
+        <bendpoints>
+          <point x="560.5104370117188" y="1555.0"/>
+          <point x="560.5104370117188" y="1605.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="e9bf4016-cd22-43c6-80a3-d088990a9632" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="560.5104370117188" y="1605.0"/>
+          <point x="560.5104370117188" y="1655.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="0252a1c9-2689-4f9f-b6bd-ead341e559d5" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="249.0"/>
+        <bendpoints>
+          <point x="561.1574058532713" y="1655.0"/>
+          <point x="561.1574058532713" y="1615.0"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CCR_L2</seg>
+      </bo>
+      <position x="359.0924377441406" y="1426.0"/>
+      <size width="303.0299301147461" height="309.0"/>
+    </element>
+    <element uuid="e8f11433-1f0b-4da0-a597-f13c8360f43b" manual="true">
+      <element uuid="ef77c336-8a99-492b-ab77-ec73f5146466" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port10</seg>
+        </bo>
+        <position y="147.0"/>
+      </element>
+      <element uuid="574ed8ac-a604-403c-ad19-49028445af69" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port22</seg>
+        </bo>
+        <position y="47.0"/>
+      </element>
+      <element uuid="e73c86f1-aa9a-4149-89b0-1c7d5fea2272" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>portA</seg>
+        </bo>
+        <position x="253.22394180297852" y="97.0"/>
+      </element>
+      <element uuid="55ec74bd-d3d7-44e3-bcfc-c69a01f6d13b" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portB</seg>
+        </bo>
+        <position y="197.0"/>
+      </element>
+      <element uuid="afc63b4d-b629-4d78-a677-ea0bc3a157ba" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portC</seg>
+        </bo>
+        <position y="247.0"/>
+      </element>
+      <element uuid="9dfd7666-2e13-43a5-b68a-6dffdd450864" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portD</seg>
+        </bo>
+        <position y="97.0"/>
+      </element>
+      <element uuid="afefc9b6-8ef8-4f8b-b4a6-35b4ea3b8d2a" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="933.5403442382812" y="1605.0"/>
+          <point x="933.5403442382812" y="1655.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="215dd7dd-98bf-4908-af50-df3d15514a26" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="189.0"/>
+        <bendpoints>
+          <point x="934.3971519470211" y="1605.0"/>
+          <point x="934.3971519470211" y="1565.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="ca9e4e56-9b88-4c9d-a118-1bb4d2360853" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="259.0"/>
+        <bendpoints>
+          <point x="934.3971519470211" y="1655.0"/>
+          <point x="934.3971519470211" y="1635.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="bed7ee24-a5bf-4997-b135-9b67e25a6524" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="933.5403442382812" y="1605.0"/>
+          <point x="933.5403442382812" y="1555.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="4601eba0-7dca-4b7e-b53e-2b35f54e41ff" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccre2e_CCR_L3</seg>
+        </bo>
+        <bendpoints>
+          <point x="933.5403442382812" y="1555.0"/>
+          <point x="933.5403442382812" y="1505.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="077f5af5-a403-4dd9-8943-ae961f93df8d" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="209.0"/>
+        <bendpoints>
+          <point x="934.3971519470211" y="1605.0"/>
+          <point x="934.3971519470211" y="1585.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="60ad11c1-8128-465d-b3d9-9f273034d973" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="933.5403442382812" y="1455.0"/>
+          <point x="933.5403442382812" y="1505.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="68f1aec8-e09b-405d-977a-027374e8a492" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="58.0"/>
+        <bendpoints>
+          <point x="934.3971519470211" y="1455.0"/>
+          <point x="934.3971519470211" y="1434.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="8fd91d93-63ea-4840-aae0-972ac69aff65" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="933.5403442382812" y="1505.0"/>
+          <point x="933.5403442382812" y="1455.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="b52b4c70-d8a3-4b6b-91b9-78cfd9d832f2" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="38.0"/>
+        <bendpoints>
+          <point x="934.3971519470211" y="1455.0"/>
+          <point x="934.3971519470211" y="1414.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="ff771bd0-21c6-431a-8a76-5bfeed00897a" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="279.0"/>
+      </element>
+      <element uuid="c6b24230-1f51-4025-a098-dc593f7a71ae" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="933.5403442382812" y="1655.0"/>
+          <point x="933.5403442382812" y="1605.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="d7586d5e-76f9-4a8e-bd10-4ee33d12df3c" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="229.0"/>
+      </element>
+      <element uuid="63db64be-1583-4f45-aa25-abee61e085ed" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccre2e_CCR_L3</seg>
+        </bo>
+      </element>
+      <element uuid="acd4c198-3fa0-49f4-a048-18da85ca77bc" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="953.5403442382812" y="1505.0"/>
+          <point x="953.5403442382812" y="1444.0"/>
+          <point x="933.5403442382812" y="1444.0"/>
+          <point x="933.5403442382812" y="1455.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="fc137303-3abd-4f24-bd71-0dc444558f1c" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="79.0"/>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CCR_L3</seg>
+      </bo>
+      <position x="732.1223754882812" y="1436.0"/>
+      <size width="297.0924301147461" height="299.0"/>
+    </element>
+    <element uuid="2ac4b977-1aa0-4699-97c2-ecee0d84921f" manual="true">
+      <element uuid="e9108a09-7a89-4895-b165-d7fe1a839170" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port10</seg>
+        </bo>
+        <position y="147.0"/>
+      </element>
+      <element uuid="c5407698-a08d-48b7-9753-638b0ccf9533" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port22</seg>
+        </bo>
+        <position y="47.0"/>
+      </element>
+      <element uuid="dd46dfaf-c4a4-441d-aa0c-e3fb2fe576c9" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>portA</seg>
+        </bo>
+        <position x="253.22394180297852" y="97.0"/>
+      </element>
+      <element uuid="3155c553-28b9-45e5-ab4d-3863406bd9fa" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portB</seg>
+        </bo>
+        <position y="197.0"/>
+      </element>
+      <element uuid="1bbf0219-fb5f-4942-8f7f-55514a3c8fa8" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portC</seg>
+        </bo>
+        <position y="247.0"/>
+      </element>
+      <element uuid="1f4ea1a8-76cf-4b57-859e-4eaca9bfb2e7" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portD</seg>
+        </bo>
+        <position y="97.0"/>
+      </element>
+      <element uuid="facdd443-3644-4ee1-a097-53a7e692eddc" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.4791870117188" y="1216.0"/>
+          <point x="563.4791870117188" y="1266.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="9fc91801-bba3-41dc-aaff-3ec3735da618" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="189.0"/>
+        <bendpoints>
+          <point x="563.9071617126463" y="1216.0"/>
+          <point x="563.9071617126463" y="1176.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="1af6ef4b-efd1-495a-87b3-450ad1c31db5" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="259.0"/>
+        <bendpoints>
+          <point x="563.9071617126463" y="1266.0"/>
+          <point x="563.9071617126463" y="1246.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="754be67b-6e00-41bd-ae0b-19535ee7f197" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.4791870117188" y="1216.0"/>
+          <point x="563.4791870117188" y="1166.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="e26de704-c66f-4b34-9ccf-8337a3129c6d" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccre2e_CCR_L3</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.4791870117188" y="1166.0"/>
+          <point x="563.4791870117188" y="1116.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="f15a7f55-c7f6-4abe-a763-cdf209a05cac" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="209.0"/>
+        <bendpoints>
+          <point x="563.9071617126463" y="1216.0"/>
+          <point x="563.9071617126463" y="1196.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="6ed4ede3-72eb-4df1-9caa-8823f21a8047" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.4791870117188" y="1066.0"/>
+          <point x="563.4791870117188" y="1116.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="0841245c-1d43-4a32-84a8-2b9839d15a46" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="58.0"/>
+        <bendpoints>
+          <point x="563.9071617126463" y="1066.0"/>
+          <point x="563.9071617126463" y="1045.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="118f25b8-a7dd-4b37-afba-8e2ba159f6d3" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.4791870117188" y="1116.0"/>
+          <point x="563.4791870117188" y="1066.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="fe9b8a20-4e32-4889-b5e1-909ed77a009c" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="38.0"/>
+        <bendpoints>
+          <point x="563.9071617126463" y="1066.0"/>
+          <point x="563.9071617126463" y="1025.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="f7e95581-1513-4f21-ba76-47db4abaafbd" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="279.0"/>
+      </element>
+      <element uuid="cc10f0bb-7929-4e2f-b64d-651581359dde" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.4791870117188" y="1266.0"/>
+          <point x="563.4791870117188" y="1216.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="9459fd2a-185d-42f2-902b-60c568881bf1" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="229.0"/>
+      </element>
+      <element uuid="21f3b809-c164-44ea-841c-f1c5d7a99502" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccre2e_CCR_L3</seg>
+        </bo>
+      </element>
+      <element uuid="8510125f-c721-4509-b8d3-6933050496e0" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="583.4791870117188" y="1116.0"/>
+          <point x="583.4791870117188" y="1055.0"/>
+          <point x="563.4791870117188" y="1055.0"/>
+          <point x="563.4791870117188" y="1066.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="f57b1c1b-2800-47ec-a6a1-84047bbaf91e" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="79.0"/>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CCR_R1</seg>
+      </bo>
+      <position x="362.0611877441406" y="1047.0"/>
+      <size width="297.0924301147461" height="299.0"/>
+    </element>
+    <element uuid="d70c1559-bad4-41bf-989d-85a1df836d03" manual="true">
+      <element uuid="4cce7530-6587-410e-a776-941a7efbb819" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port10</seg>
+        </bo>
+        <position y="148.0"/>
+      </element>
+      <element uuid="7fb4c856-c731-4a18-bf25-a75a1394f342" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port22</seg>
+        </bo>
+        <position y="298.0"/>
+      </element>
+      <element uuid="91ef3fc5-a923-4cc8-a75f-fb83f4888c1a" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portA</seg>
+        </bo>
+        <position y="248.0"/>
+      </element>
+      <element uuid="622b15e9-7ba8-411f-9807-8f0e8eec0020" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portB</seg>
+        </bo>
+        <position y="98.0"/>
+      </element>
+      <element uuid="e385c239-b951-467f-9184-c717d2c34561" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portC</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="f5c53e93-00c4-425c-9917-5a9da1baf7fd" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portD</seg>
+        </bo>
+        <position y="198.0"/>
+      </element>
+      <element uuid="b21a992b-800b-49e0-bb41-032148458efe" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="949.5075073242188" y="966.0"/>
+          <point x="949.5075073242188" y="906.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="7526f3a9-c0f3-4c3b-8cdd-7356f4cf986d" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="130.0"/>
+      </element>
+      <element uuid="326e1207-4781-4dd0-a393-79d9ef6d4ae1" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="70.0"/>
+      </element>
+      <element uuid="ec7efd10-7065-4034-9913-6bfb662e2b85" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="949.5075073242188" y="966.0"/>
+          <point x="949.5075073242188" y="1016.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="1765b98a-f581-4fe3-8c38-1feddf3d5ab8" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccre2e_CCR_L3</seg>
+        </bo>
+        <bendpoints>
+          <point x="949.5075073242188" y="1016.0"/>
+          <point x="949.5075073242188" y="1066.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="9a599c9a-651b-4af7-ac50-91c227e09e40" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="110.0"/>
+        <bendpoints>
+          <point x="950.1337261199948" y="965.9999999999998"/>
+          <point x="950.1337261199948" y="945.9999999999998"/>
+        </bendpoints>
+      </element>
+      <element uuid="d8959ad4-219b-49ae-a5bf-0d2c82e62c47" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="949.5075073242188" y="1166.0"/>
+          <point x="949.5075073242188" y="1066.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="8aeaa441-eae8-43da-9cbb-c89a73ba11f2" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="310.0"/>
+        <bendpoints>
+          <point x="950.1337261199948" y="1166.0"/>
+          <point x="950.1337261199948" y="1146.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="36ad035a-5d5d-4598-b502-70d6cf76930a" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="949.5075073242188" y="1066.0"/>
+          <point x="949.5075073242188" y="1166.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="323a3826-3b94-433d-acc8-ac0ba63bf330" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="330.0"/>
+      </element>
+      <element uuid="b0ee13f5-c273-44b5-a75f-b9972cc9613b" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="50.0"/>
+        <bendpoints>
+          <point x="950.1337261199948" y="905.9999999999998"/>
+          <point x="950.1337261199948" y="885.9999999999998"/>
+        </bendpoints>
+      </element>
+      <element uuid="49561b89-0869-461e-880a-9ce99fd4feee" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="949.5075073242188" y="906.0"/>
+          <point x="949.5075073242188" y="966.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="ce14ac16-7f33-4634-9d79-8dee80b54a43" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="90.0"/>
+        <bendpoints>
+          <point x="950.1337261199948" y="965.9999999999998"/>
+          <point x="950.1337261199948" y="925.9999999999998"/>
+        </bendpoints>
+      </element>
+      <element uuid="2a059281-2d21-4191-be28-46c8fc175551" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccre2e_CCR_L3</seg>
+        </bo>
+        <bendpoints>
+          <point x="949.5075073242188" y="1066.0"/>
+          <point x="949.5075073242188" y="1116.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="e65ea487-d4d9-4e8e-9961-81afabe03378" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="949.5075073242188" y="1116.0"/>
+          <point x="949.5075073242188" y="1166.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="b10aa179-f998-49d9-a2f8-b25f30038ff7" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="290.0"/>
+        <bendpoints>
+          <point x="950.1337261199948" y="1166.0"/>
+          <point x="950.1337261199948" y="1126.0"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CCR_R2</seg>
+      </bo>
+      <position x="748.0894947052002" y="896.0"/>
+      <size width="233.2239532470703" height="350.0"/>
+    </element>
+    <element uuid="cfc8eafc-e2f3-4448-8aa7-1419a43f3f45" manual="true">
+      <element uuid="b188892d-f69d-4ab7-86a7-11695fd3835e" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port10</seg>
+        </bo>
+        <position y="148.0"/>
+      </element>
+      <element uuid="ac448301-60d2-4861-9ad7-484a8f33ecdc" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port22</seg>
+        </bo>
+        <position y="298.0"/>
+      </element>
+      <element uuid="b4c65554-059a-4ce8-818b-d2ba311fcbd7" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portA</seg>
+        </bo>
+        <position y="248.0"/>
+      </element>
+      <element uuid="17b72f12-fc2e-4655-b326-6e7e9e4c9f90" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portB</seg>
+        </bo>
+        <position y="98.0"/>
+      </element>
+      <element uuid="ef778131-3a87-4dab-b875-2c9d4bef78b9" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portC</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="76b42490-b99c-499f-acdb-dc3ce4ff4c8f" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>portD</seg>
+        </bo>
+        <position y="198.0"/>
+      </element>
+      <element uuid="4064dcd4-e9b0-41bc-bdc3-b431fc432318" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="1300.6328125" y="996.0"/>
+          <point x="1300.6328125" y="936.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="bcff51e4-fd0f-4482-b81e-8556fb798482" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="130.0"/>
+      </element>
+      <element uuid="e882850f-966e-417e-8e3b-0040a6d7f703" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="70.0"/>
+      </element>
+      <element uuid="dddd280f-57eb-4c82-9228-26d1e776553e" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="1300.6328125" y="996.0"/>
+          <point x="1300.6328125" y="1046.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="3b8f4237-6d35-4e77-8c1a-b9298956b3c5" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccre2e_CCR_L3</seg>
+        </bo>
+        <bendpoints>
+          <point x="1300.6328125" y="1046.0"/>
+          <point x="1300.6328125" y="1096.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="75307bdf-ac6f-460c-977b-9315fc9c1c9e" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="110.0"/>
+        <bendpoints>
+          <point x="1302.1367149353027" y="995.9999999999998"/>
+          <point x="1302.1367149353027" y="975.9999999999998"/>
+        </bendpoints>
+      </element>
+      <element uuid="8d9d58ce-27c3-48fd-822f-f16f060a70f1" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="1300.6328125" y="1196.0"/>
+          <point x="1300.6328125" y="1096.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="baccf96a-64b8-4fb7-bcfe-705c35c4d78a" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_ccrsource_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="310.0"/>
+        <bendpoints>
+          <point x="1302.1367149353027" y="1196.0"/>
+          <point x="1302.1367149353027" y="1176.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="665caa43-1cb5-4d07-a312-80a789f4f784" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="1300.6328125" y="1096.0"/>
+          <point x="1300.6328125" y="1196.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="a8cf2e52-ce7e-453f-94c4-380bc3d8a948" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="330.0"/>
+      </element>
+      <element uuid="88fb5904-b779-408f-bd80-fa390f53a67b" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="50.0"/>
+        <bendpoints>
+          <point x="1302.1367149353027" y="935.9999999999998"/>
+          <point x="1302.1367149353027" y="915.9999999999998"/>
+        </bendpoints>
+      </element>
+      <element uuid="aa3ce25f-406e-4248-b8be-9cc589e50447" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_ccre2e_CCR_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="1300.6328125" y="936.0"/>
+          <point x="1300.6328125" y="996.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="31bfacb2-a8cd-497b-964a-89ee22a8fa48" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="90.0"/>
+        <bendpoints>
+          <point x="1302.1367149353027" y="995.9999999999998"/>
+          <point x="1302.1367149353027" y="955.9999999999998"/>
+        </bendpoints>
+      </element>
+      <element uuid="200c0f65-72c8-4f4d-8e98-9ecbee1b0e20" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccre2e_CCR_L3</seg>
+        </bo>
+        <bendpoints>
+          <point x="1300.6328125" y="1096.0"/>
+          <point x="1300.6328125" y="1146.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="e20a3f91-799c-4c5f-976c-2d94446666f2" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccre2e_CCR_R3</seg>
+        </bo>
+        <bendpoints>
+          <point x="1300.6328125" y="1146.0"/>
+          <point x="1300.6328125" y="1196.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="7ec6e99a-6601-46a1-95e8-390487f71171" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_ccrsink_CCR_R2</seg>
+        </bo>
+        <position x="171.41796493530273" y="290.0"/>
+        <bendpoints>
+          <point x="1302.1367149353027" y="1196.0"/>
+          <point x="1302.1367149353027" y="1156.0"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CCR_R3</seg>
+      </bo>
+      <position x="1099.21484375" y="926.0"/>
+      <size width="233.2239532470703" height="350.0"/>
+    </element>
+    <element uuid="930dfd41-fc98-4b75-acd6-647bacb4a078" manual="true">
+      <element uuid="fed7b1ac-690d-44c4-ad69-e25f52f88421" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="e8046846-dc61-4bc7-bddc-93d4cf7ac006" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="70.0"/>
+      </element>
+      <element uuid="3c79faf5-fd55-4269-ad02-da085872451c" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="50.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="796.9999999999998"/>
+          <point x="912.1510620117184" y="776.9999999999998"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CTR_Fuel_Qty</seg>
+      </bo>
+      <position x="732.1223754882812" y="786.0"/>
+      <size width="230.8828125" height="90.0"/>
+    </element>
+    <element uuid="2f013d54-6adb-499d-9db8-1a50416a4304" manual="true">
+      <element uuid="a87671ad-7377-4a5d-a84f-498252c579c3" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="b5e0fab6-4e08-4099-8310-64954bbe9325" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="70.0"/>
+      </element>
+      <element uuid="7b433ec2-fd90-46eb-9fbb-2d21d4d19e45" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="50.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="686.9999999999998"/>
+          <point x="912.1510620117184" y="666.9999999999998"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CTR_Fuel_Temp</seg>
+      </bo>
+      <position x="732.1223754882812" y="676.0"/>
+      <size width="244.22266387939453" height="90.0"/>
+    </element>
+    <element uuid="e6c30031-524f-4bb3-9a4a-303340f476c9" manual="true">
+      <element uuid="ea712216-14d9-4a50-85e3-c1d3665f1a66" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="46.0"/>
+      </element>
+      <element uuid="6ed503e4-17d1-42ef-ab00-c5231a081de6" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="78.0"/>
+      </element>
+      <element uuid="922810d8-ed3e-42bf-bf75-1daa7b3d3f3a" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="58.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2586.999999999999"/>
+          <point x="912.1510620117184" y="2566.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="772151da-4043-4bdc-acac-a4c6e5e15799" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="38.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2586.999999999999"/>
+          <point x="912.1510620117184" y="2546.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="48d7a36c-b3fe-4062-9731-5ca8e0d90778" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="118.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2586.999999999999"/>
+          <point x="912.1510620117184" y="2626.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="8291e34c-f97d-4222-9dc8-0016cf60c3a0" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="138.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2586.999999999999"/>
+          <point x="912.1510620117184" y="2646.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="829dc795-e470-434c-b3e9-5e1615084fc8" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="98.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2586.999999999999"/>
+          <point x="912.1510620117184" y="2606.999999999999"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>Fuel_CF_Valve</seg>
+      </bo>
+      <position x="732.1223754882812" y="2569.0"/>
+      <size width="233.86458587646484" height="150.0"/>
+    </element>
+    <element uuid="a0386ade-80b8-46fb-bca4-8bc4a8a2ec47" manual="true">
+      <element uuid="136a9074-c7c7-4222-86bb-a1ba99201282" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="11293723-1c12-4364-a728-c1446878f761" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="70.0"/>
+      </element>
+      <element uuid="e4867512-8e17-4075-90a0-f0987603adc3" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="50.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2858.999999999999"/>
+          <point x="912.1510620117184" y="2838.999999999999"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>L_Eng_Press</seg>
+      </bo>
+      <position x="732.1223754882812" y="2849.0"/>
+      <size width="222.02212524414062" height="90.0"/>
+    </element>
+    <element uuid="ea68cf3c-3060-4409-bfa0-04e25f9e1942" manual="true">
+      <element uuid="0f0dd93d-c075-49a1-b227-8176bd11d556" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="46.0"/>
+      </element>
+      <element uuid="3509f328-8369-44a5-b666-6f14cdd19ef9" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="78.0"/>
+      </element>
+      <element uuid="51faf50b-3fe8-4473-99b8-18cefb7aa78f" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="58.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="1865.0"/>
+          <point x="538.9113159179685" y="1845.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="781a0f37-6100-42f2-801b-a635c616b450" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="38.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="1865.0"/>
+          <point x="538.9113159179685" y="1825.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="85c792a1-bbdb-49a7-9aec-8a46790678c9" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="118.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="1865.0"/>
+          <point x="538.9113159179685" y="1905.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="a28c527f-1e81-42f6-9621-fd43e2c4f24e" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="138.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="1865.0"/>
+          <point x="538.9113159179685" y="1925.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="065c33a7-bba5-4524-8a08-be88bd60ee2e" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="98.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="1865.0"/>
+          <point x="538.9113159179685" y="1885.0"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>L_Eng_SO_Valve</seg>
+      </bo>
+      <position x="359.0924377441406" y="1847.0"/>
+      <size width="247.97265625" height="150.0"/>
+    </element>
+    <element uuid="eb30a8ba-158f-4108-9faf-54d2b998c8ef" manual="true">
+      <element uuid="fcb65aae-e899-4de8-a90e-35a0924c0614" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="88026050-3f76-43bb-b6d5-73519d6e5323" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="70.0"/>
+      </element>
+      <element uuid="7a0fd365-9e7e-47e9-a97d-1315636d99a6" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="50.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2748.999999999999"/>
+          <point x="912.1510620117184" y="2728.999999999999"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>L_XFER_Press</seg>
+      </bo>
+      <position x="732.1223754882812" y="2739.0"/>
+      <size width="233.85807037353516" height="90.0"/>
+    </element>
+    <element uuid="001da39f-93f4-4018-861d-d2d863713adb" manual="true">
+      <element uuid="dcd6a54d-0e01-4471-a32b-10f4b4fc8eaf" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="46.0"/>
+      </element>
+      <element uuid="767696ba-4889-44f6-ad2e-c1476dda0297" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="78.0"/>
+      </element>
+      <element uuid="54270bd9-9cfc-42d5-ba05-6c2335ce8718" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="58.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2884.999999999999"/>
+          <point x="538.9113159179685" y="2864.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="b33463fd-f458-4b76-9d94-62a70c57ee51" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="38.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2884.999999999999"/>
+          <point x="538.9113159179685" y="2844.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="6cd89c95-6dc2-46dc-b49b-5221dca5e2dd" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="118.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2884.999999999999"/>
+          <point x="538.9113159179685" y="2924.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="30eb9288-2aa8-44f4-9e84-de484d590a3a" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="138.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2884.999999999999"/>
+          <point x="538.9113159179685" y="2944.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="38180a05-d1bd-44e2-bae6-066cbb88f1c2" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="98.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2884.999999999999"/>
+          <point x="538.9113159179685" y="2904.999999999999"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>L_XFER_Pump</seg>
+      </bo>
+      <position x="359.0924377441406" y="2867.0"/>
+      <size width="234.60678100585938" height="150.0"/>
+    </element>
+    <element uuid="b6545674-adfa-4fad-a38f-cac64543d1cb" manual="true">
+      <element uuid="8e440fe6-cdc1-4601-b54f-202786a139f0" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="46.0"/>
+      </element>
+      <element uuid="9273246b-93e4-42d9-a831-768e78127909" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="78.0"/>
+      </element>
+      <element uuid="ce2cc34e-ca50-4cb8-a629-e55634b0c499" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="58.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2714.999999999999"/>
+          <point x="538.9113159179685" y="2694.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="6a896a32-ec2d-48d1-b18c-60a0a2de80af" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="38.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2714.999999999999"/>
+          <point x="538.9113159179685" y="2674.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="fadf11f0-78fa-491b-997b-ce0e2283106d" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="118.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2714.999999999999"/>
+          <point x="538.9113159179685" y="2754.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="978245e1-fd22-4544-b1a0-c8fd4ecac647" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="138.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2714.999999999999"/>
+          <point x="538.9113159179685" y="2774.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="e776924a-3ac9-4c69-b082-218ca7fd7a45" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="98.0"/>
+        <bendpoints>
+          <point x="538.9113159179685" y="2714.999999999999"/>
+          <point x="538.9113159179685" y="2734.999999999999"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>LR_XFER_Valve</seg>
+      </bo>
+      <position x="359.0924377441406" y="2697.0"/>
+      <size width="242.7578125" height="150.0"/>
+    </element>
+    <element uuid="2124284b-bf09-43d3-9de4-737192393f29" manual="true">
+      <element uuid="917197d4-14e7-4b0c-b306-3d3826d80f7c" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="c161cec4-66c8-4e01-a628-1aefc89c98f6" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="70.0"/>
+      </element>
+      <element uuid="d565fc22-10b2-4b72-bcf7-0dde5299d66f" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="50.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2188.999999999999"/>
+          <point x="912.1510620117184" y="2168.999999999999"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>LW_Fuel_Qty</seg>
+      </bo>
+      <position x="732.1223754882812" y="2179.0"/>
+      <size width="223.48046112060547" height="90.0"/>
+    </element>
+    <element uuid="56a488bf-36cc-4b8b-863f-6aaed5d7a1c0" manual="true">
+      <element uuid="9a91f1cb-f3b6-4748-b653-eb43108268a4" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="bbe33958-d97b-457a-bac6-5804875fe2f9" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="70.0"/>
+      </element>
+      <element uuid="40514616-3789-4aa5-8872-79359e3c0292" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="50.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2298.999999999999"/>
+          <point x="912.1510620117184" y="2278.999999999999"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>LW_Fuel_Temp</seg>
+      </bo>
+      <position x="732.1223754882812" y="2289.0"/>
+      <size width="236.8203125" height="90.0"/>
+    </element>
+    <element uuid="56d8305d-efcf-4d6f-babe-337ff49ba9ac" manual="true">
+      <element uuid="f1cb4d45-7055-44a0-bdda-e64d82a85676" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="46.0"/>
+      </element>
+      <element uuid="c3792a62-d43c-4687-a6ce-5e2521d5249e" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="78.0"/>
+      </element>
+      <element uuid="16eee924-76b2-448e-9509-d047945730fe" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="58.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2416.999999999999"/>
+          <point x="912.1510620117184" y="2396.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="cb6a53ea-1563-4083-8cfc-795526b6df5f" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="38.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2416.999999999999"/>
+          <point x="912.1510620117184" y="2376.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="d4446f4b-4351-40af-bb7b-3a70dbea17a6" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="118.0"/>
+        <bendpoints>
+          <point x="912.2734374999997" y="2416.999999999999"/>
+          <point x="912.2734374999997" y="2456.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="770e6367-e799-4ea6-aede-d153331d38e0" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="138.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2416.999999999999"/>
+          <point x="912.1510620117184" y="2476.999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="634e5cb9-cbad-4274-95bd-0c1797dae7a9" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="98.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2416.999999999999"/>
+          <point x="912.1510620117184" y="2436.999999999999"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>LW_Pmp_Mn</seg>
+      </bo>
+      <position x="732.1223754882812" y="2399.0"/>
+      <size width="222.73828125" height="150.0"/>
+    </element>
+    <element uuid="7a1b961c-e737-46ec-9fd7-1ad4a38df22e" manual="true">
+      <element uuid="37d7b5c0-e600-49a1-bc25-645265909f1e" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="46.0"/>
+      </element>
+      <element uuid="03c4cfbe-cf3d-4c1f-89e3-0129449cd9d8" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="78.0"/>
+      </element>
+      <element uuid="8a8d7444-a70d-4a1e-b20f-efaef551cd08" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="58.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2027.0"/>
+          <point x="912.1510620117184" y="2007.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="ae44e418-d491-4ede-9f09-f54c27e62b97" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="38.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2027.0"/>
+          <point x="912.1510620117184" y="1987.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="b2b84183-a3a8-4d24-94f1-fb425243f171" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="118.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2026.9999999999995"/>
+          <point x="912.1510620117184" y="2066.9999999999995"/>
+        </bendpoints>
+      </element>
+      <element uuid="c197a4a5-948b-4550-bfbe-b87b11d1c400" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="138.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2026.9999999999995"/>
+          <point x="912.1510620117184" y="2086.9999999999995"/>
+        </bendpoints>
+      </element>
+      <element uuid="1a3de1f9-00fc-4b9f-b531-bf9a20e99a8a" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="98.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="2026.9999999999998"/>
+          <point x="912.1510620117184" y="2046.9999999999998"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>LW_Pmp_STBY</seg>
+      </bo>
+      <position x="732.1223754882812" y="2009.0"/>
+      <size width="239.0403594970703" height="150.0"/>
+    </element>
+    <element uuid="b4060d60-8c5f-468a-801c-2be8ee6ffe3c" manual="true">
+      <element uuid="9ee33112-08f7-4f93-a18e-4f97845b3d19" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="268b77df-1c07-4b1c-9b6c-576aa7a0c871" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="70.0"/>
+      </element>
+      <element uuid="51fca7b2-f2a7-4e8d-9bc6-5912d33736fa" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="50.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="498.99999999999994"/>
+          <point x="1279.890625" y="478.99999999999994"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>R_Eng_Press</seg>
+      </bo>
+      <position x="1099.21484375" y="488.0"/>
+      <size width="224.2356719970703" height="90.0"/>
+    </element>
+    <element uuid="9d64b55a-e146-4c9b-8675-28d54519f34e" manual="true">
+      <element uuid="05e3dafe-98ff-4214-8623-b7b712884521" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="46.0"/>
+      </element>
+      <element uuid="7a4242d6-d686-472d-bdf5-823aebb5e3d8" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="78.0"/>
+      </element>
+      <element uuid="d95fb491-5b53-4a1b-bb11-71cb6913de97" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="58.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="525.0"/>
+          <point x="912.1510620117184" y="504.99999999999994"/>
+        </bendpoints>
+      </element>
+      <element uuid="46fcfa87-3326-4bbf-881e-ab89fcfaa50d" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="38.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="525.0"/>
+          <point x="912.1510620117184" y="484.99999999999994"/>
+        </bendpoints>
+      </element>
+      <element uuid="67bde6e9-d21f-4add-aba5-847c0dc8fb8b" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="118.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="524.9999999999999"/>
+          <point x="912.1510620117184" y="564.9999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="7bd5fc0e-8a05-4e4c-b9b0-0a4b4726140f" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="138.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="524.9999999999999"/>
+          <point x="912.1510620117184" y="584.9999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="12444dd9-e005-4665-b722-b504331537a6" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="98.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="524.9999999999999"/>
+          <point x="912.1510620117184" y="544.9999999999999"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>R_Eng_SO_Valve</seg>
+      </bo>
+      <position x="732.1223754882812" y="506.0"/>
+      <size width="250.1862030029297" height="150.0"/>
+    </element>
+    <element uuid="845671b7-6d97-4567-addc-5751b3a1db30" manual="true">
+      <element uuid="c1b11d3b-12c9-4af0-9f37-ed4d4ca1f885" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="18f1529e-0091-4504-a20f-063d52cde164" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="70.0"/>
+      </element>
+      <element uuid="e2e6868b-67c4-493f-8bf3-c2b8afbdc5e0" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="50.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="389.0"/>
+          <point x="1279.890625" y="369.0"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>R_XFER_Press</seg>
+      </bo>
+      <position x="1099.21484375" y="378.0"/>
+      <size width="236.0716094970703" height="90.0"/>
+    </element>
+    <element uuid="9c6d1cac-11dd-4086-be3d-2a75b0d8106a" manual="true">
+      <element uuid="18c8bb99-ebe3-451d-b6a3-0eba1959daa6" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="46.0"/>
+      </element>
+      <element uuid="93e5c96f-cdf5-4232-bfd7-06c07d898cc4" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="78.0"/>
+      </element>
+      <element uuid="e27c1272-8356-4e67-81d9-a465569ae01f" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="58.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="1284.0"/>
+          <point x="912.1510620117184" y="1264.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="a2dceb99-0fae-40ec-8b20-7fb9e3f1b2ca" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="38.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="1284.0"/>
+          <point x="912.1510620117184" y="1244.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="87a631d7-b921-4bb6-b83e-9daacfc99022" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="118.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="1284.0"/>
+          <point x="912.1510620117184" y="1324.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="544875c6-e6fe-415e-aec0-28ea3bda95cc" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="138.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="1284.0"/>
+          <point x="912.1510620117184" y="1344.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="b389ae32-0ac2-4882-af0a-4a3ceb7582f0" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="98.0"/>
+        <bendpoints>
+          <point x="912.1510620117184" y="1284.0"/>
+          <point x="912.1510620117184" y="1304.0"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>R_XFER_Pump</seg>
+      </bo>
+      <position x="732.1223754882812" y="1266.0"/>
+      <size width="236.82032012939453" height="150.0"/>
+    </element>
+    <element uuid="76ba9955-f8e7-4c79-9413-4feb21d7658e" manual="true">
+      <element uuid="2d5d93fa-b0db-44c6-a373-feaa6d6ed83c" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position x="203.5625" y="38.0"/>
+      </element>
+      <element uuid="a4169dd3-8c94-491a-91c0-20f2851b23dd" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port2</seg>
+        </bo>
+        <position x="203.5625" y="148.0"/>
+      </element>
+      <element uuid="84e95343-97b0-4647-8914-9c9c5f55f55d" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port3</seg>
+        </bo>
+        <position x="203.5625" y="268.0"/>
+      </element>
+      <element uuid="a553c001-fac2-42f5-ac60-2cba7f5e1620" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port4</seg>
+        </bo>
+        <position x="203.5625" y="208.0"/>
+      </element>
+      <element uuid="be0c255a-dd54-452d-a3f3-1b77b09d3618" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port5</seg>
+        </bo>
+        <position y="208.0"/>
+      </element>
+      <element uuid="78a21e4f-0661-47aa-9aea-0aaf3c07957e" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port6</seg>
+        </bo>
+        <position y="148.0"/>
+      </element>
+      <element uuid="7b46f0d3-9805-4cf2-8aa7-9662d804aeb4" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port7</seg>
+        </bo>
+        <position x="203.5625" y="88.0"/>
+      </element>
+      <element uuid="e710874b-2b38-472e-905e-b2a64beb1a20" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port8</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="11a76d6c-b56a-4a03-a5d5-d56ac56b7804" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_RDC_L1</seg>
+        </bo>
+        <bendpoints>
+          <point x="252.3112030029297" y="1915.0"/>
+          <point x="252.3112030029297" y="1865.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="f8398558-df75-41d7-a122-dd735672e80d" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_RDC_R1</seg>
+        </bo>
+        <bendpoints>
+          <point x="252.3112030029297" y="1915.0"/>
+          <point x="252.3112030029297" y="1865.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="14075034-7886-4886-aecc-5a45ba167878" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_RDC_L2</seg>
+        </bo>
+      </element>
+      <element uuid="d57d38a8-7a82-4855-bc38-d1ccf40cebbd" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RDC_R2</seg>
+        </bo>
+        <bendpoints>
+          <point x="252.3112030029297" y="1915.0"/>
+          <point x="252.3112030029297" y="1865.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="3f0b2315-a303-4b86-82d0-cf3807b0aa7e" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RDC_R2</seg>
+        </bo>
+        <bendpoints>
+          <point x="252.3112030029297" y="1865.0"/>
+          <point x="252.3112030029297" y="1915.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="b0e1570e-3005-4594-988b-f569514a85ed" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_RDC_R1</seg>
+        </bo>
+        <bendpoints>
+          <point x="252.3112030029297" y="1865.0"/>
+          <point x="252.3112030029297" y="1915.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="884f269e-1785-48e2-b57b-7852b510b9c5" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_RDC_L1</seg>
+        </bo>
+        <bendpoints>
+          <point x="252.3112030029297" y="1865.0"/>
+          <point x="252.3112030029297" y="1915.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="5deb7c3b-1a9a-4fc7-a9b6-66f3eb3d296b" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_RDC_L2</seg>
+        </bo>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RDC_L1</seg>
+      </bo>
+      <position x="73.1393051147461" y="1855.0"/>
+      <size width="245.953125" height="320.0"/>
+    </element>
+    <element uuid="a8cdcf5d-35a7-4eed-bf45-7b6e4d23f658" manual="true">
+      <element uuid="363c2068-e625-47b0-8448-4699821b28b9" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position x="150.7122344970703" y="138.0"/>
+      </element>
+      <element uuid="6ffbc682-5953-48c9-8fcc-7ac30bf6dd97" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port2</seg>
+        </bo>
+        <position x="150.7122344970703" y="198.0"/>
+      </element>
+      <element uuid="10012cf5-7577-42af-a603-1a9a7eb01b21" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port3</seg>
+        </bo>
+        <position x="150.7122344970703" y="438.0"/>
+      </element>
+      <element uuid="6fef35ae-9af6-4c16-b62f-f7c293680b2e" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port4</seg>
+        </bo>
+        <position x="150.7122344970703" y="378.0"/>
+      </element>
+      <element uuid="942d6190-a836-4c6a-98a5-44a69df5cbbf" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port5</seg>
+        </bo>
+        <position x="150.7122344970703" y="318.0"/>
+      </element>
+      <element uuid="66f3bc2c-013e-4be9-bc3f-b2c0fb188399" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port6</seg>
+        </bo>
+        <position x="150.7122344970703" y="258.0"/>
+      </element>
+      <element uuid="d9b89df3-8b47-4ca9-bfe1-adaa9b8244aa" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port7</seg>
+        </bo>
+        <position x="150.7122344970703" y="38.0"/>
+      </element>
+      <element uuid="7994cbe7-1588-4458-aa61-42a35052f87c" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port8</seg>
+        </bo>
+        <position x="150.7122344970703" y="88.0"/>
+      </element>
+      <element uuid="7e72797c-db8a-4b1d-8f6a-41268f796954" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_RDC_L1</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.41015625" y="2027.0"/>
+          <point x="563.41015625" y="2127.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="27bdbf8a-e7f6-4589-90d8-24e220b7e2a5" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_RDC_R1</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.41015625" y="2027.0"/>
+          <point x="563.41015625" y="2127.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="52010bf0-b547-4ab1-ae9a-63504cf08a6e" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_RDC_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.41015625" y="2077.0"/>
+          <point x="563.41015625" y="2127.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="02b45813-67c0-465a-ad95-23b9b63ac12c" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RDC_R2</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.41015625" y="2027.0"/>
+          <point x="563.41015625" y="2127.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="1bd06f40-f982-45c9-8052-6811390831c3" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RDC_R2</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.41015625" y="2127.0"/>
+          <point x="563.41015625" y="2027.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="a35c1d76-46c5-42d1-9658-b6a0bd397fa9" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_RDC_R1</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.41015625" y="2127.0"/>
+          <point x="563.41015625" y="2027.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="b605bb51-4328-4de4-a848-4d918acc03b2" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_RDC_L1</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.41015625" y="2127.0"/>
+          <point x="563.41015625" y="2027.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="de144c88-d1fc-412c-83d3-acd5c6f69465" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_RDC_L2</seg>
+        </bo>
+        <bendpoints>
+          <point x="563.41015625" y="2127.0"/>
+          <point x="563.41015625" y="2077.0"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RDC_L2</seg>
+      </bo>
+      <position x="469.0195083618164" y="2017.0"/>
+      <size width="193.1028594970703" height="490.0"/>
+    </element>
+    <element uuid="85bc003a-0c1a-4dd5-80e1-620bd824e538" manual="true">
+      <element uuid="0a2a8582-e0e3-42f9-827d-59536d77a49c" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position x="203.5625" y="38.0"/>
+      </element>
+      <element uuid="525315b9-632f-4757-a592-8edae5ca551d" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port2</seg>
+        </bo>
+        <position x="203.5625" y="148.0"/>
+      </element>
+      <element uuid="dfeaf916-14e8-4afb-9f87-051cdc412be9" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port3</seg>
+        </bo>
+        <position x="203.5625" y="268.0"/>
+      </element>
+      <element uuid="dd2d7a32-80bc-4f73-bd78-b984f7ebf76a" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port4</seg>
+        </bo>
+        <position x="203.5625" y="208.0"/>
+      </element>
+      <element uuid="12e5de6b-2a09-4d13-9c88-3c592509cea0" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port5</seg>
+        </bo>
+        <position y="208.0"/>
+      </element>
+      <element uuid="8e9d2ea0-998f-48e4-92ea-84fbebb914bf" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port6</seg>
+        </bo>
+        <position y="148.0"/>
+      </element>
+      <element uuid="c01617ab-faa7-45c8-9cdf-36437290c90d" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port7</seg>
+        </bo>
+        <position x="203.5625" y="88.0"/>
+      </element>
+      <element uuid="47cd26a1-2836-40b7-8329-e0dec21b8117" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port8</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="f2ada547-673c-4a7e-8035-f764a1abf435" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_RDC_L1</seg>
+        </bo>
+        <bendpoints>
+          <point x="595.3411254882812" y="574.0"/>
+          <point x="595.3411254882812" y="524.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="5508cc9f-4b33-42ec-8555-9e494a00270c" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_RDC_R1</seg>
+        </bo>
+        <bendpoints>
+          <point x="595.3411254882812" y="574.0"/>
+          <point x="595.3411254882812" y="524.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="4e59a761-5ad3-4629-b848-28a40e31088e" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_RDC_L2</seg>
+        </bo>
+      </element>
+      <element uuid="d73077fb-fc59-40a8-bde8-1c32f7262a51" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RDC_R2</seg>
+        </bo>
+        <bendpoints>
+          <point x="595.3411254882812" y="574.0"/>
+          <point x="595.3411254882812" y="524.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="6dd104a4-97bd-4cc7-bb0c-0fb9426cf7e8" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RDC_R2</seg>
+        </bo>
+        <bendpoints>
+          <point x="595.3411254882812" y="524.0"/>
+          <point x="595.3411254882812" y="574.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="caea8fcc-a059-4755-950c-99b0066e1169" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_RDC_R1</seg>
+        </bo>
+        <bendpoints>
+          <point x="595.3411254882812" y="524.0"/>
+          <point x="595.3411254882812" y="574.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="89cf2f82-2261-415d-9bb0-e0455d5fc483" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_RDC_L1</seg>
+        </bo>
+        <bendpoints>
+          <point x="595.3411254882812" y="524.0"/>
+          <point x="595.3411254882812" y="574.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="7b453202-a103-49e2-8c96-8fac61ed7541" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_RDC_L2</seg>
+        </bo>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RDC_R1</seg>
+      </bo>
+      <position x="416.1692428588867" y="514.0"/>
+      <size width="245.953125" height="320.0"/>
+    </element>
+    <element uuid="ef97d739-4841-4be7-8415-3b4146f33bd5" manual="true">
+      <element uuid="87557bf0-f67f-4c75-8009-0ff879459c7e" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position x="203.5625" y="38.0"/>
+      </element>
+      <element uuid="c0e03344-7ef2-4b95-87f3-462b2c8de650" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port2</seg>
+        </bo>
+        <position x="203.5625" y="148.0"/>
+      </element>
+      <element uuid="74e5e507-a5ca-47c9-a1fe-ba5ea93fa395" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port3</seg>
+        </bo>
+        <position x="203.5625" y="388.0"/>
+      </element>
+      <element uuid="9df8d78f-4039-4d77-a385-7e47e2e90d6f" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port4</seg>
+        </bo>
+        <position x="203.5625" y="328.0"/>
+      </element>
+      <element uuid="e1c54cda-9d21-4552-b3fb-a806d2096197" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port5</seg>
+        </bo>
+        <position x="203.5625" y="268.0"/>
+      </element>
+      <element uuid="969f4153-de66-404a-9a11-2cc5902caa2b" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port6</seg>
+        </bo>
+        <position x="203.5625" y="208.0"/>
+      </element>
+      <element uuid="e2d3bebe-59fd-4355-97d5-aa9ec3376f18" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>port7</seg>
+        </bo>
+        <position x="203.5625" y="88.0"/>
+      </element>
+      <element uuid="15fd4e6e-abac-4155-a466-945e1c1d8ea2" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port8</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="392035a6-0f49-44e9-a4df-66080aa4351e" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_RDC_L1</seg>
+        </bo>
+        <bendpoints>
+          <point x="962.4335327148438" y="106.0"/>
+          <point x="962.4335327148438" y="56.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="73c83ff7-8dd6-4640-be3b-ef1945da7218" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_RDC_R1</seg>
+        </bo>
+        <bendpoints>
+          <point x="962.4335327148438" y="106.0"/>
+          <point x="962.4335327148438" y="56.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="00504e0d-7409-4b2c-818c-7c4a2159df15" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_RDC_L2</seg>
+        </bo>
+      </element>
+      <element uuid="6cfc925e-b92b-4a8a-b5d0-f695fe6ff83a" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RDC_R2</seg>
+        </bo>
+        <bendpoints>
+          <point x="962.4335327148438" y="106.0"/>
+          <point x="962.4335327148438" y="56.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="7322df33-6d22-44a5-a827-a50a883d9b32" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RDC_R2</seg>
+        </bo>
+        <bendpoints>
+          <point x="962.4335327148438" y="56.0"/>
+          <point x="962.4335327148438" y="106.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="797a794c-b20d-430c-90b4-7796024de748" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_RDC_R1</seg>
+        </bo>
+        <bendpoints>
+          <point x="962.4335327148438" y="56.0"/>
+          <point x="962.4335327148438" y="106.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="a90c525a-3a55-4836-85e5-c83735edb47a" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_RDC_L1</seg>
+        </bo>
+        <bendpoints>
+          <point x="962.4335327148438" y="56.0"/>
+          <point x="962.4335327148438" y="106.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="2197c7ed-b755-4ca2-a517-82c033af2073" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_RDC_L2</seg>
+        </bo>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RDC_R2</seg>
+      </bo>
+      <position x="783.2616806030273" y="46.0"/>
+      <size width="245.953125" height="440.0"/>
+    </element>
+    <element uuid="1ece1b28-957d-4356-8099-6d724a4498a6" manual="true">
+      <element uuid="01998077-232d-4c4d-a84f-25324f544ba8" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="467442b3-e065-456a-9b3b-d8e74a670f4c" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="70.0"/>
+      </element>
+      <element uuid="d6aa36d1-e0bb-41ea-b525-644a7bed9dad" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="50.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="718.9999999999998"/>
+          <point x="1279.890625" y="698.9999999999998"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RW_Fuel_Qty</seg>
+      </bo>
+      <position x="1099.21484375" y="708.0"/>
+      <size width="225.69400787353516" height="90.0"/>
+    </element>
+    <element uuid="8c8d57db-e196-43f7-97e1-272e8cb7c049" manual="true">
+      <element uuid="4a6c6999-513b-4f97-89b0-f99f5d8b47e4" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="38.0"/>
+      </element>
+      <element uuid="5f88e055-662a-46ac-b03b-212cc08d925b" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow2_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="70.0"/>
+      </element>
+      <element uuid="17985428-a3d0-4aac-ab77-770210608a26" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32783_flow0_LW_Fuel_Qty</seg>
+        </bo>
+        <position x="149.171875" y="50.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="608.9999999999998"/>
+          <point x="1279.890625" y="588.9999999999998"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RW_Fuel_Temp</seg>
+      </bo>
+      <position x="1099.21484375" y="598.0"/>
+      <size width="239.0338592529297" height="90.0"/>
+    </element>
+    <element uuid="25d96717-727e-4f8e-9dd9-cadb78226eda" manual="true">
+      <element uuid="f59dc2d7-6607-4a8d-991c-9272877eb589" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="46.0"/>
+      </element>
+      <element uuid="4607b390-8906-4df4-b5c0-cdd1bb30ff76" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="78.0"/>
+      </element>
+      <element uuid="0c8bb81d-2550-4340-a41c-f85bd6afeb39" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="58.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="55.99999999999999"/>
+          <point x="1279.890625" y="35.99999999999999"/>
+        </bendpoints>
+      </element>
+      <element uuid="67189e85-1cdf-47fa-b1b3-3cf442b937e3" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="38.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="55.99999999999999"/>
+          <point x="1279.890625" y="15.999999999999993"/>
+        </bendpoints>
+      </element>
+      <element uuid="5cdb7729-a483-45ac-963f-59a578aec1b0" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="118.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="55.99999999999997"/>
+          <point x="1279.890625" y="95.99999999999997"/>
+        </bendpoints>
+      </element>
+      <element uuid="74ab8458-7071-41a1-8c29-cbefad79f0be" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="138.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="55.99999999999997"/>
+          <point x="1279.890625" y="115.99999999999997"/>
+        </bendpoints>
+      </element>
+      <element uuid="17968bbe-2c6b-4224-b621-8201fcb25571" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="98.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="56.0"/>
+          <point x="1279.890625" y="76.0"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RW_Pmp_Mn</seg>
+      </bo>
+      <position x="1099.21484375" y="38.0"/>
+      <size width="224.9518280029297" height="150.0"/>
+    </element>
+    <element uuid="0eb7aaf2-f72a-4837-93a8-cd974a013718" manual="true">
+      <element uuid="a46debfe-fef9-4e77-9f1d-76e69f16a278" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>port1</seg>
+        </bo>
+        <position y="46.0"/>
+      </element>
+      <element uuid="1bdeb8c7-f107-487b-9226-0acbb28cc8e6" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="78.0"/>
+      </element>
+      <element uuid="d32d8910-247d-40e8-a4ae-c360a16dee05" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow1_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="58.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="225.99999999999994"/>
+          <point x="1279.890625" y="205.99999999999994"/>
+        </bendpoints>
+      </element>
+      <element uuid="122599e0-b5d9-49df-9106-f3dcc3b3141f" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL01025_flow3_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="38.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="225.99999999999994"/>
+          <point x="1279.890625" y="185.99999999999994"/>
+        </bendpoints>
+      </element>
+      <element uuid="1c080be1-0ebc-4c00-a09f-ffbd08735642" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32780_flow0_RW_Pmp_Mn</seg>
+        </bo>
+        <position x="149.171875" y="118.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="226.0"/>
+          <point x="1279.890625" y="266.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="7271345f-5511-4c55-9063-80418135978b" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32781_flow0_R_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="138.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="226.0"/>
+          <point x="1279.890625" y="286.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="46bb2aa2-fb97-4a63-9e5a-02354c577b5f" manual="true">
+        <bo>
+          <seg>flow_specification</seg>
+          <seg>VL32782_flow0_L_Eng_SO_Valve</seg>
+        </bo>
+        <position x="149.171875" y="98.0"/>
+        <bendpoints>
+          <point x="1279.890625" y="225.99999999999991"/>
+          <point x="1279.890625" y="245.99999999999991"/>
+        </bendpoints>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RW_Pmp_STBY</seg>
+      </bo>
+      <position x="1099.21484375" y="208.0"/>
+      <size width="241.25389862060547" height="150.0"/>
+    </element>
+    <bo>
+      <seg>classifier</seg>
+      <seg>IMA.Synthesis</seg>
+    </bo>
+    <position x="40.00000000000003" y="-60.0"/>
+    <size width="1352.46875" height="3029.0"/>
+  </element>
+  <config type="structure" connectionPrimaryLabelsVisible="false">
+    <enabledAadlProperties/>
+    <context>
+      <seg>classifier</seg>
+      <seg>IMASystem_synthesized::IMA.Synthesis</seg>
+    </context>
+  </config>
+</diagram:Diagram>

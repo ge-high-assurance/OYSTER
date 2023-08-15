@@ -86,8 +86,28 @@ public class PortConnection {
         return (sourceEntityName);
     }
 
+    public String getConnectionName() {
+        return name;
+    }
+
+    public String getSource() {
+        return sourceEntityName.split("\\.")[0];
+    }
+
     public String generateDestInfo() {
         return (destEntityName);
+    }
+
+    public String getSourcePortMode() {
+        return sourceEntityPortMode;
+    }
+
+    public String getSourcePort() {
+        return sourceEntityPort;
+    }
+
+    public String getDestinatonPort() {
+        return destEntityPort;
     }
 
     public String generateSourcePortInfo() {
@@ -96,6 +116,14 @@ public class PortConnection {
 
     public String generateDestPortInfo() {
         return (destEntityPort + "_" + destEntityPortMode + "_" + destEntityPortDataType);
+    }
+
+    public int getBandwidth() {
+        return bandwidth;
+    }
+
+    public String getSourceEntityType() {
+        return sourceEntityPortDataType;
     }
 
     public String generateConnectionInfo() {

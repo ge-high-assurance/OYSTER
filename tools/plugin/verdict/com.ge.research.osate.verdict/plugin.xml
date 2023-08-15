@@ -110,6 +110,10 @@
       commandId="com.ge.research.osate.verdict.commands.proofValidationSettings">
     </handler>
     <handler
+      class="com.ge.research.osate.verdict.handlers.TSNSchedValidationSettingsHandler"
+      commandId="com.ge.research.osate.verdict.commands.TSNSchedValidationSettings">
+    </handler>
+    <handler
       class="com.ge.research.osate.verdict.handlers.AssuranceCaseSettingsHandler"
       commandId="com.ge.research.osate.verdict.commands.assuranceCaseSettings">
       <enabledWhen>
@@ -121,6 +125,15 @@
     <handler
       class="com.ge.research.osate.verdict.handlers.GSNHandler"
       commandId="com.ge.research.osate.verdict.commands.runGsn">
+      <enabledWhen>
+        <reference
+          definitionId="com.ge.research.osate.verdict.expressions.eObjectSelected">
+        </reference>
+      </enabledWhen>
+    </handler>
+    <handler
+      class="com.ge.research.osate.verdict.handlers.ValidateTSNScheduleHandler"
+      commandId="com.ge.research.osate.verdict.commands.validateTSNSchedule">
       <enabledWhen>
         <reference
           definitionId="com.ge.research.osate.verdict.expressions.eObjectSelected">
@@ -183,7 +196,18 @@
           label="&amp;Proof Validation Settings" style="push"
           tooltip="Click to change Proof Validation Settings">
         </command>
-
+        <separator name="separator4" visible="true">
+        </separator>
+        <command
+          commandId="com.ge.research.osate.verdict.commands.TSNSchedValidationSettings"
+          label="&amp;TSN Schedule Proof Validation Settings" style="push"
+          tooltip="Click to change TSN Proof Validation Settings">
+        </command>
+        <command
+          commandId="com.ge.research.osate.verdict.commands.validateTSNSchedule"
+          label="&amp;Validate TSN Schedule" style="push"
+          tooltip="Validate TSN schedules for TSN streams">
+        </command>
       </menu>
     </menuContribution>
     <!--<menuContribution allPopups="false" locationURI="popup:org.eclipse.ui.popup.any?after=additions">
@@ -227,7 +251,10 @@
       id="com.ge.research.osate.verdict.commands.proofValidationSettings"
       name="Proof Validation Settings">
     </command>
-
+    <command categoryId="com.ge.research.osate.verdict.commands"
+      id="com.ge.research.osate.verdict.commands.TSNSchedValidationSettings"
+      name="TSN Sched Proof Validation Settings">
+    </command>
     <command categoryId="com.ge.research.osate.verdict.commands"
       id="com.ge.research.osate.verdict.commands.runKpg" name="Run KPG">
     </command>
@@ -263,6 +290,10 @@
     <command categoryId="com.ge.research.osate.verdict.commands"
       id="com.ge.research.osate.verdict.commands.assuranceCaseSettings"
       name="Assurance Case Settings">
+    </command>
+    <command categoryId="com.ge.research.osate.verdict.commands"
+      id="com.ge.research.osate.verdict.commands.validateTSNSchedule"
+      name="Validate TSN Schedules">
     </command>
   </extension>
 
@@ -372,6 +403,14 @@
       name="PRA Result"
       class="com.ge.research.osate.verdict.gui.PRAResultsView"
       icon="icons/search.png" />
+    <view id="com.ge.research.osate.verdict.gui.tsnView"
+      name="TSN Validation"
+      class="com.ge.research.osate.verdict.gui.TSNView"
+      icon="icons/search.png" />
+     <view id="com.ge.research.osate.verdict.gui.unsatCoreView"
+      name="UNSAT Core"
+      class="com.ge.research.osate.verdict.gui.UnsatCoreView"
+      icon="icons/search.png" />  
   </extension>
 
   <extension point="org.eclipse.ui.preferencePages">

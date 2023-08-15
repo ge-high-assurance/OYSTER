@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="ASCII"?>
+<diagram:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:diagram="http://osate.org/diagram" formatVersion="7">
+  <element uuid="df7018e1-fa45-47b3-8e3f-95188b6074ea" manual="true">
+    <element uuid="97b802e5-739d-4684-9980-aa8afa7d5702" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>ACS_L1</seg>
+      </bo>
+      <position x="232.34764099121094" y="38.0"/>
+      <size width="106.85025405883789" height="35.0"/>
+    </element>
+    <element uuid="539f0606-6671-4f72-bada-2f9b92db80df" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>ACS_L2</seg>
+      </bo>
+      <position x="359.19789123535156" y="38.0"/>
+      <size width="106.85025405883789" height="35.0"/>
+    </element>
+    <element uuid="8e133059-258e-4f5f-bc40-2555c09cdd20" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>ACS_L3</seg>
+      </bo>
+      <position x="105.49739074707031" y="38.0"/>
+      <size width="106.85025405883789" height="35.0"/>
+    </element>
+    <element uuid="abce9d7e-5fea-40c7-ab47-97f8a9780e35" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>ACS_R1</seg>
+      </bo>
+      <position x="396.96482849121094" y="93.0"/>
+      <size width="109.06379699707031" height="35.0"/>
+    </element>
+    <element uuid="918549c2-4154-4f6a-bde8-a62e52bb632c" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>ACS_R2</seg>
+      </bo>
+      <position x="526.0286254882812" y="93.0"/>
+      <size width="109.06379699707031" height="35.0"/>
+    </element>
+    <element uuid="eaa7a9c0-8764-4680-8eec-5d12b16efb6f" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>ACS_R3</seg>
+      </bo>
+      <position x="655.0924224853516" y="93.0"/>
+      <size width="109.06379699707031" height="35.0"/>
+    </element>
+    <element uuid="bc9c292d-3d03-4ade-bd39-ed3bce25c998" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>APP_CDN_TIME_MANAGER</seg>
+      </bo>
+      <position x="470.21875" y="588.0"/>
+      <size width="234.26564025878906" height="35.0"/>
+    </element>
+    <element uuid="77c4bb46-e8a7-4bc1-a6c9-3983b250acec" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>APP_FIDO</seg>
+      </bo>
+      <position x="669.12890625" y="203.0"/>
+      <size width="123.1328125" height="35.0"/>
+    </element>
+    <element uuid="362c076e-b605-489f-8f40-266ea8f9ca24" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>APP_FILE_SYSTEM</seg>
+      </bo>
+      <position x="206.26564025878906" y="533.0"/>
+      <size width="181.6809844970703" height="35.0"/>
+    </element>
+    <element uuid="83f68b37-a6e9-41b6-9d13-c3eeeef94600" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>APP_FUEL_SYSTEM_CONTROL</seg>
+      </bo>
+      <position x="12.0" y="643.0"/>
+      <size width="260.20960998535156" height="35.0"/>
+    </element>
+    <element uuid="eae4e5c6-af10-46f5-aa62-152c6e6dc9c1" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>APP_HEALTH_MANAGER</seg>
+      </bo>
+      <position x="231.5" y="588.0"/>
+      <size width="218.71875" height="35.0"/>
+    </element>
+    <element uuid="4ee4cc33-1d61-4fce-b30c-6e01811f4fff" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>APP_L_Eng_SO_Valve</seg>
+      </bo>
+      <position x="624.4322967529297" y="533.0"/>
+      <size width="197.2864532470703" height="35.0"/>
+    </element>
+    <element uuid="143655e3-1478-49f2-b31e-df0cc5d65a41" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>APP_LW_Fuel_Qty</seg>
+      </bo>
+      <position x="560.0377655029297" y="478.0"/>
+      <size width="172.79427337646484" height="35.0"/>
+    </element>
+    <element uuid="d96e0e43-3ca0-4011-b741-5c19e94a4ab8" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>APP_R_Eng_SO_Valve</seg>
+      </bo>
+      <position x="12.0" y="588.0"/>
+      <size width="199.5" height="35.0"/>
+    </element>
+    <element uuid="fb2f95bc-f22c-4a7a-9746-9b52bfa8c95b" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>APP_RW_Pmp_Mn</seg>
+      </bo>
+      <position x="12.0" y="533.0"/>
+      <size width="174.26564025878906" height="35.0"/>
+    </element>
+    <element uuid="4961f966-ef36-4894-8d06-e90d08b242f2" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>APP_SUPPORT_MAIN</seg>
+      </bo>
+      <position x="407.9466247558594" y="533.0"/>
+      <size width="196.4856719970703" height="35.0"/>
+    </element>
+    <element uuid="e008df5c-0e8d-4ed4-8b77-c674a33d2899" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>APU_SO_Valve</seg>
+      </bo>
+      <position x="527.3684844970703" y="368.0"/>
+      <size width="152.05208587646484" height="35.0"/>
+    </element>
+    <element uuid="c881808a-1080-4e1a-9e97-e6446b92e45d" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CCR_L1</seg>
+      </bo>
+      <position x="12.0" y="93.0"/>
+      <size width="108.32160949707031" height="35.0"/>
+    </element>
+    <element uuid="bc236105-5a16-4112-8a67-bf849b1d4278" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CCR_L2</seg>
+      </bo>
+      <position x="268.6432189941406" y="93.0"/>
+      <size width="108.32160949707031" height="35.0"/>
+    </element>
+    <element uuid="b4f4d1bf-9081-4344-958d-4b042d18e09c" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CCR_L3</seg>
+      </bo>
+      <position x="140.3216094970703" y="93.0"/>
+      <size width="108.32160949707031" height="35.0"/>
+    </element>
+    <element uuid="fed279bc-6a88-4cad-b56a-453d91fd7de9" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CCR_R1</seg>
+      </bo>
+      <position x="401.41795349121094" y="148.0"/>
+      <size width="110.53515243530273" height="35.0"/>
+    </element>
+    <element uuid="27bd3949-02b7-429a-ad98-60b1f0966d77" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CCR_R2</seg>
+      </bo>
+      <position x="662.4882659912109" y="148.0"/>
+      <size width="110.53515243530273" height="35.0"/>
+    </element>
+    <element uuid="dcdaa4ec-f56a-466b-b7ad-09b675887bf4" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CCR_R3</seg>
+      </bo>
+      <position x="531.9531097412109" y="148.0"/>
+      <size width="110.53515243530273" height="35.0"/>
+    </element>
+    <element uuid="fd5e6536-a55f-42ea-b648-e668f21e4481" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CTR_Fuel_Qty</seg>
+      </bo>
+      <position x="172.91275024414062" y="313.0"/>
+      <size width="146.1015625" height="35.0"/>
+    </element>
+    <element uuid="a5742fd2-daf3-48aa-bf1d-9f1eb75fae02" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>CTR_Fuel_Temp</seg>
+      </bo>
+      <position x="12.0" y="478.0"/>
+      <size width="159.44141387939453" height="35.0"/>
+    </element>
+    <element uuid="48342726-02fa-46ce-a2a6-63b4a36c3721" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>Fuel_CF_Valve</seg>
+      </bo>
+      <position x="508.09112548828125" y="313.0"/>
+      <size width="149.08333587646484" height="35.0"/>
+    </element>
+    <element uuid="bae6982e-951a-424b-b4a4-e741b3c403c1" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>GPM_L1</seg>
+      </bo>
+      <position x="271.6119689941406" y="148.0"/>
+      <size width="109.80598449707031" height="35.0"/>
+    </element>
+    <element uuid="90fa9990-ce28-4329-b710-09604fdc65c1" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>GPM_L2</seg>
+      </bo>
+      <position x="141.8059844970703" y="148.0"/>
+      <size width="109.80598449707031" height="35.0"/>
+    </element>
+    <element uuid="c8161a36-daff-43ff-912b-6689476c24fa" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>GPM_L3</seg>
+      </bo>
+      <position x="12.0" y="148.0"/>
+      <size width="109.80598449707031" height="35.0"/>
+    </element>
+    <element uuid="1cd361a2-4e6c-420b-acd6-a725cc765a15" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>GPM_R1</seg>
+      </bo>
+      <position x="273.0703125" y="203.0"/>
+      <size width="112.01952743530273" height="35.0"/>
+    </element>
+    <element uuid="5010fb3d-7ebb-45e3-9c94-c51a49703426" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>GPM_R2</seg>
+      </bo>
+      <position x="537.109375" y="203.0"/>
+      <size width="112.01952743530273" height="35.0"/>
+    </element>
+    <element uuid="c16f2a01-2cfd-44cf-98ed-fb0a97c1ecc0" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>GPM_R3</seg>
+      </bo>
+      <position x="405.08984375" y="203.0"/>
+      <size width="112.01952743530273" height="35.0"/>
+    </element>
+    <element uuid="9157d288-e652-47c1-b994-69c81ace944f" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>L_Eng_Press</seg>
+      </bo>
+      <position x="12.0" y="258.0"/>
+      <size width="137.24087524414062" height="35.0"/>
+    </element>
+    <element uuid="ca1bd5e8-08df-4345-8968-b272628a65f0" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>L_Eng_SO_Valve</seg>
+      </bo>
+      <position x="191.44140625" y="478.0"/>
+      <size width="163.19140625" height="35.0"/>
+    </element>
+    <element uuid="38399f62-fa89-48fc-9e46-737292f0ae4a" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>L_XFER_Press</seg>
+      </bo>
+      <position x="339.0143127441406" y="313.0"/>
+      <size width="149.07682037353516" height="35.0"/>
+    </element>
+    <element uuid="b2d9b43c-5a71-47fe-a9b8-0788d7b452f7" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>L_XFER_Pump</seg>
+      </bo>
+      <position x="677.1744689941406" y="313.0"/>
+      <size width="149.82553100585938" height="35.0"/>
+    </element>
+    <element uuid="e57a6f45-8e27-4dbf-a5fc-6d74ed4f4a18" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>LR_XFER_Valve</seg>
+      </bo>
+      <position x="536.984375" y="423.0"/>
+      <size width="157.9765625" height="35.0"/>
+    </element>
+    <element uuid="14008338-f98d-43c3-9d6a-a1de3fb77c58" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>LW_Fuel_Qty</seg>
+      </bo>
+      <position x="327.1979064941406" y="258.0"/>
+      <size width="138.69921112060547" height="35.0"/>
+    </element>
+    <element uuid="115f046d-8b3e-451a-9d63-3179705c802d" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>LW_Fuel_Temp</seg>
+      </bo>
+      <position x="355.3294219970703" y="368.0"/>
+      <size width="152.0390625" height="35.0"/>
+    </element>
+    <element uuid="7fd1bdd6-0a62-44c8-9bfb-38dfe986a52a" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>LW_Pmp_Mn</seg>
+      </bo>
+      <position x="169.24087524414062" y="258.0"/>
+      <size width="137.95703125" height="35.0"/>
+    </element>
+    <element uuid="927c4287-519c-4428-81c7-3f58e82b5eff" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>LW_Pmp_STBY</seg>
+      </bo>
+      <position x="186.2526092529297" y="423.0"/>
+      <size width="154.2591094970703" height="35.0"/>
+    </element>
+    <element uuid="56e67549-d317-4e04-b23f-d60eee3a0583" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>P1</seg>
+      </bo>
+      <position x="12.0" y="38.0"/>
+      <size width="73.49739456176758" height="35.0"/>
+    </element>
+    <element uuid="2f4ebf03-4fc2-4061-840a-00722be949a9" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>R_Eng_Press</seg>
+      </bo>
+      <position x="485.8971252441406" y="258.0"/>
+      <size width="139.4544219970703" height="35.0"/>
+    </element>
+    <element uuid="3ef5be06-8cec-4298-9e67-3f7a30221fd4" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>R_Eng_SO_Valve</seg>
+      </bo>
+      <position x="374.6328125" y="478.0"/>
+      <size width="165.4049530029297" height="35.0"/>
+    </element>
+    <element uuid="d64ba545-5796-450a-884a-e08c80134369" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>R_XFER_Press</seg>
+      </bo>
+      <position x="12.0" y="368.0"/>
+      <size width="151.2903594970703" height="35.0"/>
+    </element>
+    <element uuid="c8c59b6f-3fd3-4f08-8abe-37adb155684a" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>R_XFER_Pump</seg>
+      </bo>
+      <position x="183.2903594970703" y="368.0"/>
+      <size width="152.03907012939453" height="35.0"/>
+    </element>
+    <element uuid="1c2a5303-8a9d-4b0d-b591-12247781e81a" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RDC_L1</seg>
+      </bo>
+      <position x="614.3697509765625" y="38.0"/>
+      <size width="108.32160949707031" height="35.0"/>
+    </element>
+    <element uuid="9764d4e4-1fc0-44ea-a8e5-ed5edfd4667d" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RDC_L2</seg>
+      </bo>
+      <position x="486.0481414794922" y="38.0"/>
+      <size width="108.32160949707031" height="35.0"/>
+    </element>
+    <element uuid="495bd4ba-4f3d-4165-85b6-0cb135039863" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RDC_R1</seg>
+      </bo>
+      <position x="142.53515625" y="203.0"/>
+      <size width="110.53515243530273" height="35.0"/>
+    </element>
+    <element uuid="13b0d804-b739-49f4-a412-4da5791578e7" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RDC_R2</seg>
+      </bo>
+      <position x="12.0" y="203.0"/>
+      <size width="110.53515243530273" height="35.0"/>
+    </element>
+    <element uuid="0ad20009-11f9-4260-a907-792667e21038" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RW_Fuel_Qty</seg>
+      </bo>
+      <position x="12.0" y="313.0"/>
+      <size width="140.91275787353516" height="35.0"/>
+    </element>
+    <element uuid="57cbc519-b573-4ba1-8393-419278dcd1bf" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RW_Fuel_Temp</seg>
+      </bo>
+      <position x="12.0" y="423.0"/>
+      <size width="154.2526092529297" height="35.0"/>
+    </element>
+    <element uuid="e1f5a838-8400-4697-b712-7c3f3cf6aaca" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RW_Pmp_Mn</seg>
+      </bo>
+      <position x="645.3515472412109" y="258.0"/>
+      <size width="140.1705780029297" height="35.0"/>
+    </element>
+    <element uuid="2fd0b8ef-0f14-42fc-980a-7c9c557bc917" manual="true">
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>RW_Pmp_STBY</seg>
+      </bo>
+      <position x="360.51171875" y="423.0"/>
+      <size width="156.47264862060547" height="35.0"/>
+    </element>
+    <bo>
+      <seg>classifier</seg>
+      <seg>IMA.Impl</seg>
+    </bo>
+    <position/>
+    <size width="839.0" height="690.0"/>
+  </element>
+  <config type="structure" connectionPrimaryLabelsVisible="false">
+    <enabledAadlProperties/>
+    <context>
+      <seg>classifier</seg>
+      <seg>IMASystem::IMA.Impl</seg>
+    </context>
+  </config>
+</diagram:Diagram>

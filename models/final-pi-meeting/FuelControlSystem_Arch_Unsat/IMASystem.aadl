@@ -47,7 +47,7 @@ end ActuatorApp;
 system IMA
 	properties
 		OYSTER_properties::componentType => Integrated_Modular_Avionics;
-		OYSTER_properties::totalBandwidth =>   6000000000; -- 10000;
+		OYSTER_properties::totalBandwidth => 10000 ; -- 6000000000
 		OYSTER_properties::maxBandwidthPercentage => 70;
 end IMA;
 
@@ -68,7 +68,7 @@ system implementation IMA.Impl
 		CCR_L2: system CCR;
 		CCR_L3 : system CCR;
 		CCR_R1: system CCR;
-		CCR_R2: system CCR {OYSTER_properties::cpuProvided => 1000; OYSTER_properties::romProvided => 700; OYSTER_properties::ramProvided => 700;};
+		CCR_R2: system CCR {OYSTER_properties::cpuProvided => 100;};
 		CCR_R3 : system CCR;
 		
 		
@@ -79,12 +79,13 @@ system implementation IMA.Impl
 		GPM_R2 : system GPM {OYSTER_properties::ramUsed => 128;};
 		GPM_R3 : system GPM {OYSTER_properties::ramUsed => 128;};
 		
-	    APP_FUEL_SYSTEM_CONTROL : system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 10; OYSTER_properties::priority => 0; OYSTER_properties::cpuUsed => 100; OYSTER_properties::romUsed => 100; OYSTER_properties::ramUsed => 100;};
-		APP_FIDO : system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 1; OYSTER_properties::priority => 0; OYSTER_properties::cpuUsed => 200; OYSTER_properties::romUsed => 200; OYSTER_properties::ramUsed => 200;};
-		APP_FILE_SYSTEM : system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 2; OYSTER_properties::priority => 0; OYSTER_properties::cpuUsed => 50; OYSTER_properties::romUsed => 50; OYSTER_properties::ramUsed => 50;};
-		APP_SUPPORT_MAIN : system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 2; OYSTER_properties::priority => 0; OYSTER_properties::cpuUsed => 100; OYSTER_properties::romUsed => 100; OYSTER_properties::ramUsed => 100;};
-		APP_CDN_TIME_MANAGER : system GPMApp {OYSTER_properties::rate => 5; OYSTER_properties::duration => 2; OYSTER_properties::priority => 0; OYSTER_properties::cpuUsed => 100; OYSTER_properties::romUsed => 100; OYSTER_properties::ramUsed => 100;};
-		APP_HEALTH_MANAGER : system GPMApp {OYSTER_properties::rate => 5; OYSTER_properties::duration => 6; OYSTER_properties::priority => 0; OYSTER_properties::cpuUsed => 100; OYSTER_properties::romUsed => 100; OYSTER_properties::ramUsed => 100;};	
+	    APP_FUEL_SYSTEM_CONTROL : system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 10; OYSTER_properties::priority => 0; OYSTER_properties::cpuUsed => 100;};
+		APP_FIDO : system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 1; OYSTER_properties::priority => 0; OYSTER_properties::cpuUsed => 100;};
+		APP_FILE_SYSTEM : system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 2; OYSTER_properties::priority => 0;};
+		APP_SUPPORT_MAIN : system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 2; OYSTER_properties::priority => 0;};
+		APP_CDN_TIME_MANAGER : system GPMApp {OYSTER_properties::rate => 5; OYSTER_properties::duration => 2; OYSTER_properties::priority => 0;};
+		APP_HEALTH_MANAGER : system GPMApp {OYSTER_properties::rate => 5; OYSTER_properties::duration => 6; OYSTER_properties::priority => 0;};	
+		
 		P1 : system ProcessorGPM {OYSTER_properties::slots_per_cycle => 500;};
 		
 		ACS_L1 : system ACS;
@@ -127,35 +128,10 @@ system implementation IMA.Impl
 		R_Eng_Press : system Sensor;
 		R_XFER_Press : system Sensor;
 		
-		
-		APP_L_Eng_SO_Valve : system ActuatorApp;
-		APP_APU_SO_Valve : system ActuatorApp;
-		APP_L_XFER_Pump : system ActuatorApp;
-		APP_LR_XFER_Valve : system ActuatorApp;
-		
-		APP_Fuel_CF_Valve : system ActuatorApp;
-		APP_LW_Pmp_Mn : system ActuatorApp;
-		APP_LW_Pmp_STBY : system ActuatorApp;
-			
-    	APP_LW_Fuel_Qty : system SensorApp;
-		APP_LW_Fuel_Temp : system SensorApp;
-		APP_L_Eng_Press : system SensorApp;
-		APP_L_XFER_Press : system SensorApp;
-		
-	
-		APP_R_Eng_SO_Valve : system ActuatorApp;
-		APP_R_XFER_Pump : system ActuatorApp;
 		APP_RW_Pmp_Mn : system ActuatorApp;
-		APP_RW_Pmp_STBY : system ActuatorApp;
-		
-		APP_CTR_Fuel_Temp : system SensorApp;
-		APP_CTR_Fuel_Qty : system SensorApp;
-		
-		APP_RW_Fuel_Qty : system SensorApp;
-		APP_RW_Fuel_Temp : system SensorApp;
-		APP_R_Eng_Press : system SensorApp;
-		APP_R_XFER_Press : system SensorApp;
-		
+		APP_R_Eng_SO_Valve : system ActuatorApp;
+		APP_L_Eng_SO_Valve : system ActuatorApp;
+		APP_LW_Fuel_Qty : system SensorApp;
 		
 		annex oyster {**
 		Constraints {		
@@ -175,6 +151,8 @@ system implementation IMA.Impl
 			Fixed-Location-Constraint FLC11: (ACS_L3 -> CCR_L3);
 			Fixed-Location-Constraint FLC12: (ACS_R3 -> CCR_R3);
 			
+			
+			--Fixed-Location-Constraint FLC18: (HF_R_Eng_SO_Valve -> R_Eng_SO_Valve);
 			Fixed-Location-Constraint FLC71: (APP_FUEL_SYSTEM_CONTROL -> GPM_R2);
 			Fixed-Location-Constraint FLC72: (APP_FIDO -> GPM_R2);
 			Fixed-Location-Constraint FLC73: (APP_FILE_SYSTEM -> GPM_R2);
@@ -183,39 +161,12 @@ system implementation IMA.Impl
 			Fixed-Location-Constraint FLC76: (APP_HEALTH_MANAGER -> GPM_R2);
 			
 			Fixed-Location-Constraint FLC105: (P1 -> GPM_R2);
+			--Fixed-Location-Constraint FLC102: (APP_RW_Pmlinp_Mn -> GPM_R2);
 			
 		    Fixed-Location-Constraint FLC14: (APP_RW_Pmp_Mn -> RW_Pmp_Mn);
 			Fixed-Location-Constraint FLC15: (APP_R_Eng_SO_Valve -> R_Eng_SO_Valve);
 			Fixed-Location-Constraint FLC16: (APP_L_Eng_SO_Valve -> L_Eng_SO_Valve);
 			Fixed-Location-Constraint FLC17 : (APP_LW_Fuel_Qty -> LW_Fuel_Qty);
-			Fixed-Location-Constraint FLC18 : (APP_RW_Fuel_Qty -> RW_Fuel_Qty);
-			
-			Fixed-Location-Constraint FLC20: (APP_APU_SO_Valve -> APU_SO_Valve);
-			Fixed-Location-Constraint FLC21: (APP_L_XFER_Pump -> L_XFER_Pump);
-			Fixed-Location-Constraint FLC22: (APP_LR_XFER_Valve -> LR_XFER_Valve);
-		
-			Fixed-Location-Constraint FLC23: (APP_Fuel_CF_Valve -> Fuel_CF_Valve);
-			Fixed-Location-Constraint FLC24: (APP_LW_Pmp_Mn -> LW_Pmp_Mn);
-			Fixed-Location-Constraint FLC25: (APP_LW_Pmp_STBY -> LW_Pmp_STBY);
-			
-    		Fixed-Location-Constraint FLC26: (APP_LW_Fuel_Qty -> LW_Fuel_Qty);
-			Fixed-Location-Constraint FLC27: (APP_LW_Fuel_Temp -> LW_Fuel_Temp);
-			Fixed-Location-Constraint FLC28: (APP_L_Eng_Press -> L_Eng_Press);
-			Fixed-Location-Constraint FLC29: (APP_L_XFER_Press -> L_XFER_Press);
-		
-	
-			Fixed-Location-Constraint FLC30: (APP_R_Eng_SO_Valve -> R_Eng_SO_Valve);
-			Fixed-Location-Constraint FLC31: (APP_R_XFER_Pump -> R_XFER_Pump);
-			Fixed-Location-Constraint FLC32: (APP_RW_Pmp_STBY -> RW_Pmp_STBY);
-		
-			Fixed-Location-Constraint FLC33: (APP_CTR_Fuel_Temp -> CTR_Fuel_Temp);
-			Fixed-Location-Constraint FLC34: (APP_CTR_Fuel_Qty -> CTR_Fuel_Qty);
-		
-			Fixed-Location-Constraint FLC35: (APP_RW_Fuel_Qty -> RW_Fuel_Qty);
-			Fixed-Location-Constraint FLC36:  (APP_RW_Fuel_Temp -> RW_Fuel_Temp);
-			Fixed-Location-Constraint FLC37: (APP_R_Eng_Press -> R_Eng_Press);
-			Fixed-Location-Constraint FLC38: (APP_R_XFER_Press -> R_XFER_Press);
-		
 		
 			--- GPM <=> ACS connections bandwidth unit = byte 
 			Port-Connection-Constraint c1: (GPM_L1.portA <-> ACS_L1.port1) 1000000000; -- 1G
@@ -295,38 +246,13 @@ system implementation IMA.Impl
 			Port-Connection-Constraint c55 : (ACS_L2.port22 <-> CCR_L2.portB) 1000000000;
 			Port-Connection-Constraint c56 : (ACS_R2.port24 <-> CCR_R2.portB) 1000000000;
 			
-		    Virtual-Link-Constraint VL01025: (APP_FUEL_SYSTEM_CONTROL ~> APP_L_Eng_SO_Valve, APP_R_Eng_SO_Valve, APP_LW_Fuel_Qty, APP_RW_Pmp_Mn) 
-				{12@1000, 12@1000, 12@1000, 12@1000} # {12@1000, 12@1000, 12@1000} # {12@1000, 12@1000} # {12@1000, 12@1000};
-			 Virtual-Link-Constraint VL32780: (APP_RW_Pmp_Mn ~> APP_FUEL_SYSTEM_CONTROL) {20@80};
-			 Virtual-Link-Constraint VL32781: (APP_R_Eng_SO_Valve ~> APP_FUEL_SYSTEM_CONTROL) {20@80};
-			 Virtual-Link-Constraint VL32782: (APP_L_Eng_SO_Valve ~> APP_FUEL_SYSTEM_CONTROL) {20@80};
-			 Virtual-Link-Constraint VL32783: (APP_LW_Fuel_Qty ~> APP_FUEL_SYSTEM_CONTROL) {20@80};
+		    Virtual-Link-Constraint VL32782: (APP_L_Eng_SO_Valve ~> APP_FUEL_SYSTEM_CONTROL) {20@80};
+			Virtual-Link-Constraint VL32783: (APP_LW_Fuel_Qty ~> APP_FUEL_SYSTEM_CONTROL) {20@80};
 			
-			Utilization-Constraint UC1 [CPU]: (CCR CCR_R2: cpuProvided) > (GPMApp APP_FIDO:cpuUsed) + (GPMApp APP_FUEL_SYSTEM_CONTROL: cpuUsed) + (GPMApp APP_HEALTH_MANAGER: cpuUsed) + (GPMApp APP_FILE_SYSTEM:cpuUsed) + (GPMApp APP_CDN_TIME_MANAGER: cpuUsed);
-			Utilization-Constraint UC2 [ROM]: (CCR CCR_R2: romProvided) > (GPMApp APP_FIDO:romUsed) + (GPMApp APP_FUEL_SYSTEM_CONTROL: romUsed) + (GPMApp APP_HEALTH_MANAGER: romUsed) + (GPMApp APP_FILE_SYSTEM:romUsed) + (GPMApp APP_CDN_TIME_MANAGER: romUsed);
-			Utilization-Constraint UC3 [RAM]: (CCR CCR_R2: ramProvided) > (GPMApp APP_FIDO:ramUsed) + (GPMApp APP_FUEL_SYSTEM_CONTROL: ramUsed) + (GPMApp APP_HEALTH_MANAGER: ramUsed) + (GPMApp APP_FILE_SYSTEM:ramUsed) + (GPMApp APP_CDN_TIME_MANAGER: ramUsed);
-			Utilization-Constraint UC4 [CPU]: (GPMApp APP_FIDO: cpuUsed) > (GPMApp APP_FILE_SYSTEM: cpuUsed) + (GPMApp APP_HEALTH_MANAGER: cpuUsed);
-		    Utilization-Constraint UC5 [ROM]: (GPMApp APP_FIDO: romUsed) > (GPMApp APP_FILE_SYSTEM: romUsed) + (GPMApp APP_HEALTH_MANAGER: ramUsed);
-		    Utilization-Constraint UC6 [RAM]: (GPMApp APP_FIDO: ramUsed) > (GPMApp APP_FILE_SYSTEM: ramUsed) + (GPMApp APP_HEALTH_MANAGER: ramUsed);
+			-- Utilization-Constraint UC2 [CPU]: (CCR CCR_R2: cpuProvided) > (GPMApp APP_FIDO:cpuUsed) + (GPMApp APP_FIDO: cpuUsed);
+			Separation-Constraint SC1: (GPMApp APP_FUEL_SYSTEM_CONTROL, APP_FIDO, APP_FILE_SYSTEM) -> distinct GPM;
+			Co-Location-Constraint CLC1: (GPMApp APP_FUEL_SYSTEM_CONTROL, APP_FIDO) and (ActuatorApp APP_RW_Pmp_Mn) -> GPM;
 			
-			
-			Co-Location-Constraint CLC1: (ActuatorApp APP_RW_Pmp_Mn) and (SensorApp APP_RW_Fuel_Qty) -> RDC;
-			Co-Location-Constraint CLC2: (GPMApp APP_CDN_TIME_MANAGER) and (GPMApp APP_SUPPORT_MAIN) -> GPM;
-			Co-Location-Constraint CLC3: (GPMApp APP_FILE_SYSTEM, APP_HEALTH_MANAGER) and (ActuatorApp APP_RW_Pmp_Mn) -> GPM;
-			
-			Co-Location-Constraint CLC4: (ActuatorApp APP_L_Eng_SO_Valve, APP_APU_SO_Valve) and (ActuatorApp APP_L_XFER_Pump, APP_LR_XFER_Valve) -> RDC;
-			Co-Location-Constraint CLC5: (ActuatorApp APP_Fuel_CF_Valve, APP_LW_Pmp_Mn) and (ActuatorApp APP_LW_Pmp_STBY) -> RDC;
-			Co-location-Constraint CLC6: (ActuatorApp APP_R_Eng_SO_Valve) and (ActuatorApp APP_R_XFER_Pump) -> RDC;
-			Co-location-Constraint CLC7: (ActuatorApp APP_RW_Pmp_Mn) and (ActuatorApp APP_RW_Pmp_STBY) -> RDC;
-			
-			Co-location-Constraint CLC8: (SensorApp APP_LW_Fuel_Qty, APP_LW_Fuel_Temp, APP_L_Eng_Press) and (SensorApp APP_L_XFER_Press) -> RDC;
-			Co-location-Constraint CLC9: (SensorApp APP_CTR_Fuel_Temp) and (SensorApp APP_CTR_Fuel_Qty) -> RDC;
-			Co-location-Constraint CLC10: (SensorApp APP_RW_Fuel_Qty, APP_RW_Fuel_Temp, APP_R_Eng_Press) and (SensorApp APP_R_XFER_Press) -> RDC;
-			
-			Separation-Constraint SC1: (ActuatorApp APP_RW_Pmp_Mn, APP_R_Eng_SO_Valve) -> distinct RDC;
-			Separation-Constraint SC2: (SensorApp APP_LW_Fuel_Qty, APP_RW_Fuel_Qty) -> distinct RDC; 
-	        Separation-Constraint SC3: (ActuatorApp APP_L_Eng_SO_Valve, APP_Fuel_CF_Valve, APP_R_Eng_SO_Valve, APP_RW_Pmp_Mn) -> distinct RDC; 
-			Separation-Constraint SC4: (SensorApp APP_LW_Fuel_Qty, APP_CTR_Fuel_Temp, APP_RW_Fuel_Qty) -> distinct RDC;
 		}			
 	**};
 

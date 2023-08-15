@@ -42,11 +42,7 @@ import io.micrometer.core.instrument.Metrics;
 import io.micrometer.core.instrument.Timer;
 import io.micrometer.core.instrument.simple.SimpleConfig;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
-import java.io.File;
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
+
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -58,100 +54,144 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.intro.IIntroPart;
+import org.zeroturnaround.exec.InvalidExitValueException;
+
+import java.io.File;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 public class ArchitectureSynthesisHandler extends AbstractHandler {
 
-	private static void printMetrics() {
-		Function<Timer, Integer> visitTimer = timer -> {
-			System.out.println(timer.getId().getName() + " for " + timer.getId().getTag("model") + ": "
-					+ timer.totalTime(TimeUnit.SECONDS) + " secs");
-			return 0;
-		};
-		Metrics.globalRegistry
-				.forEachMeter(meter -> meter.match(null, null, visitTimer, null, null, null, null, null, null));
-		Metrics.globalRegistry.clear();
-	}
+    private static void printMetrics() {
+        Function<Timer, Integer> visitTimer =
+                timer -> {
+                    System.out.println(
+                            timer.getId().getName()
+                                    + " for "
+                                    + timer.getId().getTag("model")
+                                    + ": "
+                                    + timer.totalTime(TimeUnit.SECONDS)
+                                    + " secs");
+                    return 0;
+                };
+        Metrics.globalRegistry.forEachMeter(
+                meter -> meter.match(null, null, visitTimer, null, null, null, null, null, null));
+        Metrics.globalRegistry.clear();
+    }
 
-	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Metrics.addRegistry(new SimpleMeterRegistry(SimpleConfig.DEFAULT, Clock.SYSTEM));
-		if (VerdictHandlersUtils.startRun()) {
-			// Print on console
-			IIntroPart introPart = PlatformUI.getWorkbench().getIntroManager().getIntro();
-			PlatformUI.getWorkbench().getIntroManager().closeIntro(introPart);
-			final IWorkbenchWindow iWindow = HandlerUtil.getActiveWorkbenchWindow(event);
-			VerdictHandlersUtils.setPrintOnConsole("\n\n Info: Architecture Synthesis Output");
-			final Display mainThreadDisplay = Display.getCurrent();
-			Timer.Sample sample = Timer.start(Metrics.globalRegistry);
-			Thread praAnalysisThread = new Thread() {
-				@Override
-				public void run() {
-					try {
+    @Override
+    public Object execute(ExecutionEvent event) throws ExecutionException {
+        Metrics.addRegistry(new SimpleMeterRegistry(SimpleConfig.DEFAULT, Clock.SYSTEM));
+        if (VerdictHandlersUtils.startRun()) {
+            // Print on console
+            IIntroPart introPart = PlatformUI.getWorkbench().getIntroManager().getIntro();
+            PlatformUI.getWorkbench().getIntroManager().closeIntro(introPart);
+            final IWorkbenchWindow iWindow = HandlerUtil.getActiveWorkbenchWindow(event);
+            VerdictHandlersUtils.setPrintOnConsole("\n\n Info: Architecture Synthesis Output");
+            final Display mainThreadDisplay = Display.getCurrent();
+            Timer.Sample sample = Timer.start(Metrics.globalRegistry);
+            Thread praAnalysisThread =
+                    new Thread() {
+                        @Override
+                        public void run() {
+                            try {
 
-						VerdictHandlersUtils.printGreeting();
-						Odm2Z3.vlEndsAtGPM.clear();
-						Odm2Z3.vlStartsFromGPM.clear();
-						Odm2Z3.ghostConnectionEndPoints.clear();
-						Odm2Z3.ghostCount = 0;
-						Odm2Z3.maxPorts = 0;
-						Odm2Z3.PortConnectionMap.clear();
-						Timer.Sample sample = Timer.start(Metrics.globalRegistry);
-						List<String> selection = VerdictHandlersUtils.getCurrentSelection(event);
-						File projectDir = new File(selection.get(0));
+                                VerdictHandlersUtils.printGreeting();
+                                Odm2Z3.vlEndsAtGPM.clear();
+                                Odm2Z3.vlStartsFromGPM.clear();
+                                Odm2Z3.PortConnectionMap.clear();
+                                Odm2Z3.PortConnectionMapForZ3.clear();
+                                Timer.Sample sample = Timer.start(Metrics.globalRegistry);
+                                List<String> selection =
+                                        VerdictHandlersUtils.getCurrentSelection(event);
+                                File projectDir = new File(selection.get(0));
 
-						IProject project = VerdictHandlersUtils.getCurrentIProject(event);
-						Aadl2Odm a2o = new Aadl2Odm();
-						ImmutablePair<oyster.odm.odm_model.Model, List<EObject>> AADL2OdmRes = a2o.execute(projectDir);
-						Odm2Z3 o = new Odm2Z3();
-						
-						Odm2Z3Result result = o.execute(AADL2OdmRes.left, AADL2OdmRes.right, true, false);
+                                IProject project = VerdictHandlersUtils.getCurrentIProject(event);
+                                Aadl2Odm a2o = new Aadl2Odm();
+                                ImmutablePair<oyster.odm.odm_model.Model, List<EObject>>
+                                        AADL2OdmRes = a2o.execute(projectDir);
+                                Odm2Z3 o = new Odm2Z3();
 
-						if (result == null && !IMASynthesisSettingsPanel.unsatCoreYes) {
-							return;
-						}
+                                Odm2Z3Result result =
+                                        o.execute(AADL2OdmRes.left, AADL2OdmRes.right, true, false);
 
-						if (result == null && IMASynthesisSettingsPanel.unsatCoreYes) {
-							// re-run Non-VL constraints and report the unsat core;
-							(new Odm2Z3()).execute(AADL2OdmRes.left, AADL2OdmRes.right, true, true);
-							return;
-						}
+                                if (result == null && !IMASynthesisSettingsPanel.unsatCoreYes) {
+                                    return;
+                                }
 
-						if (!Objects.isNull(result)) {
+                                if (result == null && IMASynthesisSettingsPanel.unsatCoreYes) {
+                                    // re-run Non-VL constraints and report the unsat core;
+                                    (new Odm2Z3())
+                                            .execute(
+                                                    AADL2OdmRes.left,
+                                                    AADL2OdmRes.right,
+                                                    true,
+                                                    true);
+                                    return;
+                                }
 
-							Odm2Z3 o2 = new Odm2Z3();
-							Odm2Z3Result result2 = o2.execute(AADL2OdmRes.left, AADL2OdmRes.right, false, false);
-							if (result2 == null && !IMASynthesisSettingsPanel.unsatCoreYes) {
-								return;
-							}
+                                if (!Objects.isNull(result)) {
 
-							if (result2 == null && IMASynthesisSettingsPanel.unsatCoreYes) {
-								// re-run Non-VL constraints and report the unsat core;
-								(new Odm2Z3()).execute(AADL2OdmRes.left, AADL2OdmRes.right, false, true);
-								return;
-							}
-							System.out.println("Info: A feasible solution found by the SMT Solver");
-							VerdictLogger.info("Writing the synthesized AADL architecture to file...");
-							Z32AADL z = new Z32AADL();
+                                    Odm2Z3 o2 = new Odm2Z3();
+                                    Odm2Z3Result result2 =
+                                            o2.execute(
+                                                    AADL2OdmRes.left,
+                                                    AADL2OdmRes.right,
+                                                    false,
+                                                    false);
+                                    if (result2 == null
+                                            && !IMASynthesisSettingsPanel.unsatCoreYes) {
+                                        return;
+                                    }
 
-							List<EObject> synAadlObjects = z.execute(result.getModel(), result.getCtx(),
-									result2.getModel(), result2.getCtx(), project,
-									result.getFlowNamesToSrcDestInstance(), result.getInstanceBoundTohostCompName(),
-									AADL2OdmRes.right);
-							result.getCtx().close();
-							result2.getCtx().close();
+                                    if (result2 == null && IMASynthesisSettingsPanel.unsatCoreYes) {
+                                        // re-run Non-VL constraints and report the unsat core;
+                                        (new Odm2Z3())
+                                                .execute(
+                                                        AADL2OdmRes.left,
+                                                        AADL2OdmRes.right,
+                                                        false,
+                                                        true);
+                                        return;
+                                    }
+                                    System.out.println(
+                                            "Info: A feasible solution found by the SMT Solver");
+                                    VerdictLogger.info(
+                                            "Writing the synthesized AADL architecture to file...");
+                                    Z32AADL z = new Z32AADL();
 
-							sample.stop(Metrics.timer("Timer.imasynth", "model", "IMA Synthesis"));
-							VerdictLogger.info("Finished writing to an AADL file");
-							printMetrics();
-						}
-					} finally {
-						VerdictHandlersUtils.finishRun();
-					}
-				}
-			};
+                                    List<EObject> synAadlObjects =
+                                            z.execute(
+                                                    result.getModel(),
+                                                    result.getCtx(),
+                                                    result2.getModel(),
+                                                    result2.getCtx(),
+                                                    project,
+                                                    result.getFlowNamesToSrcDestInstance(),
+                                                    result.getInstanceBoundTohostCompName(),
+                                                    AADL2OdmRes.right);
+                                    result.getCtx().close();
+                                    result2.getCtx().close();
 
-			praAnalysisThread.start();
-		}
-		return null;
-	}
+                                    sample.stop(
+                                            Metrics.timer(
+                                                    "Timer.imasynth", "model", "IMA Synthesis"));
+                                    VerdictLogger.info("Finished writing to an AADL file");
+                                    printMetrics();
+                                }
+                            } catch (InvalidExitValueException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            } finally {
+                                VerdictHandlersUtils.finishRun();
+                            }
+                        }
+                    };
+
+            praAnalysisThread.start();
+        }
+        return null;
+    }
 }

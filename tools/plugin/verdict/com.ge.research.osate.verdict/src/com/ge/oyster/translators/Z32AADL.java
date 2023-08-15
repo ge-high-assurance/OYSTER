@@ -35,23 +35,7 @@ import com.ge.research.osate.verdict.gui.IMASynthesisSettingsPanel;
 import com.ge.research.osate.verdict.handlers.VerdictHandlersUtils;
 import com.google.inject.Injector;
 import com.microsoft.z3.FuncDecl;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 import org.apache.commons.math3.util.Pair;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -95,6 +79,24 @@ import org.osate.aadl2.impl.SubcomponentImpl;
 import org.osate.xtext.aadl2.Aadl2StandaloneSetup;
 import org.osate.xtext.aadl2.ui.internal.Aadl2Activator;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Z32AADL {
     String topLevelComponentType = null;
 
@@ -102,7 +104,7 @@ public class Z32AADL {
     boolean fsbAppScheduleYes = IMASynthesisSettingsPanel.fsbAppScheduleYes;
     static HashMap<String, String> ccrBoundaryPort = new HashMap<>();
     static HashMap<String, String> ccrFlowPathPort = new HashMap<>();
-    static Map<String, List<String>> vlflowconMap = new HashMap<>();
+    public static Map<String, List<String>> vlflowconMap = new HashMap<>();
     static Map<String, List<String>> subCompsFromModel = new HashMap<>();
     static HashMap<String, Pair<String, Boolean>> ccrSource = new HashMap<>();
     static HashMap<String, Pair<String, Boolean>> ccrSink = new HashMap<>();
@@ -369,51 +371,82 @@ public class Z32AADL {
                                             if (obj instanceof org.osate.aadl2.SystemType) {
                                                 org.osate.aadl2.SystemType s =
                                                         (org.osate.aadl2.SystemType) obj;
-                                                for (FuncDecl<?> func : z3Model.getConstDecls()) {
+                                                for (String key :
+                                                        Odm2Z3.PortConnectionMap.keySet()) {
                                                     // handle ports in system types
-                                                    if (func.getRange().toString().equals("Port")
-                                                            && func.getName()
-                                                                    .toString()
-                                                                    .contains(".")) {
-                                                        String insName =
-                                                                func.getName()
-                                                                        .toString()
-                                                                        .split("\\.")[0];
-                                                        String portName =
-                                                                func.getName()
-                                                                        .toString()
-                                                                        .split("\\.")[1];
-                                                        String typeName = null;
+                                                    String sourceInfo =
+                                                            Odm2Z3.PortConnectionMap.get(key)
+                                                                    .generateSourceInfo();
+                                                    String insName = sourceInfo.split("\\.")[0];
+                                                    String portName = sourceInfo.split("\\.")[1];
+                                                    String typeName = null;
 
-                                                        for (FuncDecl<?> func1 :
-                                                                z3Model.getConstDecls()) {
-                                                            if (func1.getName()
-                                                                    .toString()
-                                                                    .equals(insName)) {
-                                                                typeName =
-                                                                        func1.getRange().toString();
+                                                    for (FuncDecl<?> func1 :
+                                                            z3Model.getConstDecls()) {
+                                                        if (func1.getName()
+                                                                .toString()
+                                                                .equals(insName)) {
+                                                            typeName = func1.getRange().toString();
+                                                            break;
+                                                        }
+                                                    }
+
+                                                    if ((typeName != null)
+                                                            && typeName.equals(s.getName())) {
+                                                        boolean found = false;
+                                                        for (DataPort dp : s.getOwnedDataPorts()) {
+                                                            if (dp.getName().equals(portName)) {
+                                                                found = true;
                                                                 break;
                                                             }
                                                         }
 
-                                                        if ((typeName != null)
-                                                                && typeName.equals(s.getName())) {
-                                                            boolean found = false;
-                                                            for (DataPort dp :
-                                                                    s.getOwnedDataPorts()) {
-                                                                if (dp.getName().equals(portName)) {
-                                                                    found = true;
-                                                                    break;
-                                                                }
-                                                            }
+                                                        if (found == false) {
+                                                            DataPort dataPort =
+                                                                    s.createOwnedDataPort();
+                                                            dataPort.setName(portName);
+                                                            dataPort.setDirection(
+                                                                    DirectionType.IN_OUT);
+                                                        }
+                                                    }
+                                                }
 
-                                                            if (found == false) {
-                                                                DataPort dataPort =
-                                                                        s.createOwnedDataPort();
-                                                                dataPort.setName(portName);
-                                                                dataPort.setDirection(
-                                                                        DirectionType.IN_OUT);
+                                                for (String key :
+                                                        Odm2Z3.PortConnectionMap.keySet()) {
+                                                    // handle ports in system types
+                                                    String destInfo =
+                                                            Odm2Z3.PortConnectionMap.get(key)
+                                                                    .generateDestInfo();
+                                                    String insName = destInfo.split("\\.")[0];
+                                                    String portName = destInfo.split("\\.")[1];
+                                                    String typeName = null;
+
+                                                    for (FuncDecl<?> func1 :
+                                                            z3Model.getConstDecls()) {
+                                                        if (func1.getName()
+                                                                .toString()
+                                                                .equals(insName)) {
+                                                            typeName = func1.getRange().toString();
+                                                            break;
+                                                        }
+                                                    }
+
+                                                    if ((typeName != null)
+                                                            && typeName.equals(s.getName())) {
+                                                        boolean found = false;
+                                                        for (DataPort dp : s.getOwnedDataPorts()) {
+                                                            if (dp.getName().equals(portName)) {
+                                                                found = true;
+                                                                break;
                                                             }
+                                                        }
+
+                                                        if (found == false) {
+                                                            DataPort dataPort =
+                                                                    s.createOwnedDataPort();
+                                                            dataPort.setName(portName);
+                                                            dataPort.setDirection(
+                                                                    DirectionType.IN_OUT);
                                                         }
                                                     }
                                                 }
@@ -616,25 +649,26 @@ public class Z32AADL {
 
                                                 // find cross component connections
                                                 if (!s.getName().equals(synthName)) {
-                                                    for (java.util.Map.Entry<
-                                                                    Pair<String, String>, String>
-                                                            entry : connMap.entrySet()) {
+
+                                                    for (String key :
+                                                            Odm2Z3.PortConnectionMap.keySet()) {
                                                         // handle connections in top-level system
                                                         // implementations
+                                                        PortConnection pc =
+                                                                Odm2Z3.PortConnectionMap.get(key);
                                                         String src =
-                                                                entry.getKey()
-                                                                        .getFirst()
+                                                                pc.generateSourceInfo()
                                                                         .split("\\.")[0];
                                                         String srcPort =
-                                                                entry.getKey()
-                                                                        .getFirst()
+                                                                pc.generateSourceInfo()
                                                                         .split("\\.")[1];
                                                         String dest =
-                                                                entry.getValue().split("\\.")[0];
+                                                                pc.generateDestInfo()
+                                                                        .split("\\.")[0];
                                                         String destPort =
-                                                                entry.getValue().split("\\.")[1];
-                                                        String connName =
-                                                                entry.getKey().getSecond();
+                                                                pc.generateDestInfo()
+                                                                        .split("\\.")[1];
+                                                        String connName = pc.getConnectionName();
 
                                                         Feature srcEndPort = null;
 
@@ -835,25 +869,25 @@ public class Z32AADL {
                                                     }
                                                 } else {
 
-                                                    for (java.util.Map.Entry<
-                                                                    Pair<String, String>, String>
-                                                            entry : connMap.entrySet()) {
+                                                    for (String key :
+                                                            Odm2Z3.PortConnectionMap.keySet()) {
                                                         // handle connections in top-level system
                                                         // implementations
+                                                        PortConnection pc =
+                                                                Odm2Z3.PortConnectionMap.get(key);
                                                         String src =
-                                                                entry.getKey()
-                                                                        .getFirst()
+                                                                pc.generateSourceInfo()
                                                                         .split("\\.")[0];
                                                         String srcPort =
-                                                                entry.getKey()
-                                                                        .getFirst()
+                                                                pc.generateSourceInfo()
                                                                         .split("\\.")[1];
                                                         String dest =
-                                                                entry.getValue().split("\\.")[0];
+                                                                pc.generateDestInfo()
+                                                                        .split("\\.")[0];
                                                         String destPort =
-                                                                entry.getValue().split("\\.")[1];
-                                                        String connName =
-                                                                entry.getKey().getSecond();
+                                                                pc.generateDestInfo()
+                                                                        .split("\\.")[1];
+                                                        String connName = pc.getConnectionName();
 
                                                         Feature srcEndPort = null;
                                                         Feature destEndPort = null;
@@ -3196,22 +3230,22 @@ public class Z32AADL {
         resource.getAllContents().forEachRemaining(objects::add);
         return objects;
     }
-    
+
     private boolean isCCRType(SystemType sysType) {
-					for (PropertyAssociation pa : sysType.getAllPropertyAssociations()) {
-						if (pa.getProperty().getName().equals("componentType")) {
-							PropertyExpression pexp = pa.getProperty().getDefaultValue();
-							if (pexp instanceof NamedValueImpl) {
-								AbstractNamedValue value = ((NamedValueImpl) pexp).getNamedValue();
-								if (value instanceof EnumerationLiteralImpl) {
-									String componentyType = ((EnumerationLiteralImpl) value).getFullName();
-									if (componentyType.equals("Common_Compute_Resource")) {
-										return true;
-									}
-								}
-							}
-						}
-		}
-		return false;
-	}
+        for (PropertyAssociation pa : sysType.getAllPropertyAssociations()) {
+            if (pa.getProperty().getName().equals("componentType")) {
+                PropertyExpression pexp = pa.getProperty().getDefaultValue();
+                if (pexp instanceof NamedValueImpl) {
+                    AbstractNamedValue value = ((NamedValueImpl) pexp).getNamedValue();
+                    if (value instanceof EnumerationLiteralImpl) {
+                        String componentyType = ((EnumerationLiteralImpl) value).getFullName();
+                        if (componentyType.equals("Common_Compute_Resource")) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }

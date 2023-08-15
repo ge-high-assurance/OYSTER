@@ -1,0 +1,81 @@
+property set OYSTER_properties is
+ 
+ -- componentType designates the type of component in an IMA setting.  
+ componentType: enumeration (Cabinet, Common_Compute_Resource, General_Processing_Module, 
+ 	Actuator, Avionics_Cabinet_Switch, Integrated_Modular_Avionics, CPU,
+ 	Switch_Application, Remote_Data_Concentrator,
+ 	Remote_Gateway, RDC_Application, A653_Application, Application, Sensor,
+ 	VirtualLink, Global_Memory_Space, Read_Only_Global_Memory_Space, ACS_Application, Hosted_Function) 
+ => Cabinet applies to (system);
+ 
+ -- id represents the identifier of a component.
+ id: aadlinteger applies to (system);
+ 
+ -- cpuProvided designates the CPU processing capability provided by a component.
+ cpuProvided: aadlinteger applies to (system);
+ 
+ -- cpuProvided represents the CPU processing capability used by a component.
+ cpuUsed: aadlinteger applies to (system);
+ 
+ -- ramProvided represents random access memory provided by a component.
+ ramProvided: aadlinteger applies to (system);
+ 
+ -- ramUsed represents the random access memory used by a component.
+ ramUsed: aadlinteger applies to (system);
+
+ -- ramProvided represents the general memory provided by a component.
+ memProvided: aadlinteger applies to (system);
+ 
+ -- ramUsed represents the general memory used by a component.
+ memUsed: aadlinteger applies to (system);
+ 
+ -- buffer represents a memory provided a component  
+ buffers: aadlinteger applies to (system);
+
+ -------------------------------------------------------------
+ -- bandwidth represents a measurement indicating the maximum capacity of a 
+ -- communication link to transmit data over a network connection in a given amount of time.
+ bandwidth: aadlinteger applies to (connection);
+
+ -- Maximum Transfer Unit (MTU) represents the
+ -- largest Ethernet frame that can be transmitted on the virtual link.
+ mtu: aadlinteger applies to (flow);
+ 
+ -- Bandwidth Allocation Gap (BAG) represents the minimum
+ -- interval between frames on the virtual link.
+ bag: aadlinteger applies to (flow);
+
+ -------------------------------------------------------------
+ -- totalBandwidth designates the total bandwidth provided by the entire IMA network.
+ totalBandwidth: aadlinteger applies to (system);
+ 
+ -- maxBandwidthPercentage designates the percentage of the total bandwidth. 
+ -- allowed to be consumed by the virtual links
+ maxBandwidthPercentage: aadlinteger applies to (system);
+ name: aadlstring applies to (system);
+ 
+ -- Below are properties applied to applications in an IMA.
+ -- rate represents the time between two consecutive execution of the application.
+ -- This property will be used to compute period for multi-core scheduling problem 
+ rate: aadlinteger applies to (system);
+ 
+ -- period represents the time between two consecutive execution of the application.
+ period: aadlinteger applies to (system);
+ 
+ -- duration represents how long to execute an application.
+ duration: aadlinteger applies to (system);
+ 
+ -- start_time represents when to begin the execution of an application.
+ start_time: aadlinteger applies to (system);
+ 
+ -- priority indicates the order to execute an application.
+ -- 0 represents no priority. 1 represents the highest priority. 
+ -- 60 represents the lowest priority.
+ priority: aadlinteger 0 .. 60 applies to (system);
+ 
+ -- priorityGroup indicates the group number for applications.
+ priorityGroup: aadlinteger 1 .. 30 applies to (system);
+
+ -- slots_per_cycle represents the number of slots per cycle/second 
+ slots_per_cycle: aadlinteger applies to (system);
+end OYSTER_properties;
