@@ -1,0 +1,378 @@
+<Stream-Level-ICD>
+  <Application Name="TSNApp1">
+    <DeployedDevice DeviceName="Sensor1"/>
+    <Port Name="eth0">
+      <Stream Name="Stream1-1" ID="1" FramesPerPeriod="1" MaxFrameSize="69" RefreshPeriod="10">
+        <DP Name="DP0" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP1" ParameterSize="1" transmissionIntervalMinimum="20"/>
+        <DP Name="DP2" ParameterSize="8" transmissionIntervalMinimum="20"/>
+        <DP Name="DP3" ParameterSize="4" transmissionIntervalMinimum="10"/>
+        <DP Name="DP4" ParameterSize="2" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream1-2" ID="2" FramesPerPeriod="1" MaxFrameSize="83" RefreshPeriod="10">
+        <DP Name="DP5" ParameterSize="8" transmissionIntervalMinimum="20"/>
+        <DP Name="DP6" ParameterSize="4" transmissionIntervalMinimum="10"/>
+        <DP Name="DP7" ParameterSize="1" transmissionIntervalMinimum="10"/>
+        <DP Name="DP8" ParameterSize="4" transmissionIntervalMinimum="40"/>
+        <DP Name="DP9" ParameterSize="16" transmissionIntervalMinimum="30"/>
+      </Stream>
+      <Stream Name="Stream1-3" ID="2" FramesPerPeriod="1" MaxFrameSize="83" RefreshPeriod="10">
+        <DP Name="DP10" ParameterSize="4" transmissionIntervalMinimum="10"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp2">
+    <DeployedDevice DeviceName="Sensor2"/>
+    <Port Name="eth0">
+      <Stream Name="Stream2-1" ID="2" FramesPerPeriod="1" MaxFrameSize="86" RefreshPeriod="10">
+        <DP Name="DP11" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP12" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP13" ParameterSize="16" transmissionIntervalMinimum="20"/>
+        <DP Name="DP14" ParameterSize="8" transmissionIntervalMinimum="10"/>
+        <DP Name="DP15" ParameterSize="4" transmissionIntervalMinimum="50"/>
+      </Stream>
+      <Stream Name="Stream2-2" ID="3" FramesPerPeriod="1" MaxFrameSize="55" RefreshPeriod="10">
+        <DP Name="DP16" ParameterSize="4" transmissionIntervalMinimum="50"/>
+        <DP Name="DP17" ParameterSize="1" transmissionIntervalMinimum="10"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp3">
+    <DeployedDevice DeviceName="Sensor1"/>
+    <Port Name="eth0">
+      <Stream Name="Stream3-1" ID="3" FramesPerPeriod="1" MaxFrameSize="62" RefreshPeriod="10">
+        <DP Name="DP18" ParameterSize="1" transmissionIntervalMinimum="10"/>
+        <DP Name="DP19" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP20" ParameterSize="2" transmissionIntervalMinimum="10"/>
+        <DP Name="DP21" ParameterSize="1" transmissionIntervalMinimum="20"/>
+        <DP Name="DP22" ParameterSize="4" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream3-2" ID="4" FramesPerPeriod="1" MaxFrameSize="74" RefreshPeriod="10">
+        <DP Name="DP23" ParameterSize="8" transmissionIntervalMinimum="20"/>
+        <DP Name="DP24" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP25" ParameterSize="2" transmissionIntervalMinimum="40"/>
+        <DP Name="DP26" ParameterSize="8" transmissionIntervalMinimum="40"/>
+        <DP Name="DP27" ParameterSize="2" transmissionIntervalMinimum="30"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp4">
+    <DeployedDevice DeviceName="Sensor2"/>
+    <Port Name="eth0">
+      <Stream Name="Stream4-1" ID="4" FramesPerPeriod="1" MaxFrameSize="65" RefreshPeriod="10">
+        <DP Name="DP28" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP29" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP30" ParameterSize="1" transmissionIntervalMinimum="30"/>
+        <DP Name="DP31" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP32" ParameterSize="4" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream4-2" ID="5" FramesPerPeriod="1" MaxFrameSize="59" RefreshPeriod="10">
+        <DP Name="DP33" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP34" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP35" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP36" ParameterSize="1" transmissionIntervalMinimum="40"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp5">
+    <DeployedDevice DeviceName="Sensor1"/>
+    <Port Name="eth0">
+      <Stream Name="Stream5-1" ID="5" FramesPerPeriod="1" MaxFrameSize="64" RefreshPeriod="10">
+        <DP Name="DP37" ParameterSize="4" transmissionIntervalMinimum="10"/>
+        <DP Name="DP38" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP39" ParameterSize="1" transmissionIntervalMinimum="30"/>
+        <DP Name="DP40" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP41" ParameterSize="1" transmissionIntervalMinimum="40"/>
+      </Stream>
+      <Stream Name="Stream5-2" ID="6" FramesPerPeriod="1" MaxFrameSize="57" RefreshPeriod="10">
+        <DP Name="DP42" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP43" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP44" ParameterSize="1" transmissionIntervalMinimum="30"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp6">
+    <DeployedDevice DeviceName="Sensor2"/>
+    <Port Name="eth0">
+      <Stream Name="Stream6-1" ID="6" FramesPerPeriod="1" MaxFrameSize="62" RefreshPeriod="10">
+        <DP Name="DP45" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP46" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP47" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP48" ParameterSize="2" transmissionIntervalMinimum="10"/>
+        <DP Name="DP49" ParameterSize="2" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream6-2" ID="7" FramesPerPeriod="1" MaxFrameSize="84" RefreshPeriod="10">
+        <DP Name="DP50" ParameterSize="16" transmissionIntervalMinimum="10"/>
+        <DP Name="DP51" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP52" ParameterSize="8" transmissionIntervalMinimum="30"/>
+        <DP Name="DP53" ParameterSize="8" transmissionIntervalMinimum="20"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp7">
+    <DeployedDevice DeviceName="Sensor1"/>
+    <Port Name="eth0">
+      <Stream Name="Stream7-1" ID="7" FramesPerPeriod="1" MaxFrameSize="87" RefreshPeriod="10">
+        <DP Name="DP54" ParameterSize="16" transmissionIntervalMinimum="40"/>
+        <DP Name="DP55" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP56" ParameterSize="1" transmissionIntervalMinimum="10"/>
+        <DP Name="DP57" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP58" ParameterSize="16" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream7-2" ID="8" FramesPerPeriod="1" MaxFrameSize="79" RefreshPeriod="10">
+        <DP Name="DP59" ParameterSize="1" transmissionIntervalMinimum="20"/>
+        <DP Name="DP60" ParameterSize="8" transmissionIntervalMinimum="40"/>
+        <DP Name="DP61" ParameterSize="8" transmissionIntervalMinimum="30"/>
+        <DP Name="DP62" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP63" ParameterSize="8" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream7-3" ID="8" FramesPerPeriod="1" MaxFrameSize="79" RefreshPeriod="10">
+        <DP Name="DP64" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP65" ParameterSize="2" transmissionIntervalMinimum="40"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp8">
+    <DeployedDevice DeviceName="Sensor2"/>
+    <Port Name="eth0">
+      <Stream Name="Stream8-1" ID="8" FramesPerPeriod="1" MaxFrameSize="70" RefreshPeriod="10">
+        <DP Name="DP66" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP67" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP68" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP69" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP70" ParameterSize="4" transmissionIntervalMinimum="30"/>
+      </Stream>
+      <Stream Name="Stream8-2" ID="9" FramesPerPeriod="1" MaxFrameSize="71" RefreshPeriod="10">
+        <DP Name="DP71" ParameterSize="8" transmissionIntervalMinimum="50"/>
+        <DP Name="DP72" ParameterSize="8" transmissionIntervalMinimum="40"/>
+        <DP Name="DP73" ParameterSize="1" transmissionIntervalMinimum="20"/>
+        <DP Name="DP74" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP75" ParameterSize="2" transmissionIntervalMinimum="30"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp9">
+    <DeployedDevice DeviceName="Sensor1"/>
+    <Port Name="eth0">
+      <Stream Name="Stream9-1" ID="9" FramesPerPeriod="1" MaxFrameSize="70" RefreshPeriod="10">
+        <DP Name="DP76" ParameterSize="4" transmissionIntervalMinimum="10"/>
+        <DP Name="DP77" ParameterSize="4" transmissionIntervalMinimum="10"/>
+        <DP Name="DP78" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP79" ParameterSize="4" transmissionIntervalMinimum="10"/>
+        <DP Name="DP80" ParameterSize="4" transmissionIntervalMinimum="30"/>
+      </Stream>
+      <Stream Name="Stream9-2" ID="10" FramesPerPeriod="1" MaxFrameSize="63" RefreshPeriod="10">
+        <DP Name="DP81" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP82" ParameterSize="4" transmissionIntervalMinimum="40"/>
+        <DP Name="DP83" ParameterSize="1" transmissionIntervalMinimum="20"/>
+        <DP Name="DP84" ParameterSize="4" transmissionIntervalMinimum="20"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp10">
+    <DeployedDevice DeviceName="Sensor2"/>
+    <Port Name="eth0">
+      <Stream Name="Stream10-1" ID="10" FramesPerPeriod="1" MaxFrameSize="61" RefreshPeriod="10">
+        <DP Name="DP85" ParameterSize="4" transmissionIntervalMinimum="10"/>
+        <DP Name="DP86" ParameterSize="2" transmissionIntervalMinimum="50"/>
+        <DP Name="DP87" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP88" ParameterSize="1" transmissionIntervalMinimum="20"/>
+        <DP Name="DP89" ParameterSize="2" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream10-2" ID="11" FramesPerPeriod="1" MaxFrameSize="58" RefreshPeriod="10">
+        <DP Name="DP90" ParameterSize="4" transmissionIntervalMinimum="40"/>
+        <DP Name="DP91" ParameterSize="4" transmissionIntervalMinimum="40"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp11">
+    <DeployedDevice DeviceName="Sensor1"/>
+    <Port Name="eth0">
+      <Stream Name="Stream11-1" ID="11" FramesPerPeriod="1" MaxFrameSize="65" RefreshPeriod="10">
+        <DP Name="DP92" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP93" ParameterSize="4" transmissionIntervalMinimum="10"/>
+        <DP Name="DP94" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP95" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP96" ParameterSize="1" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream11-2" ID="12" FramesPerPeriod="1" MaxFrameSize="76" RefreshPeriod="10">
+        <DP Name="DP97" ParameterSize="8" transmissionIntervalMinimum="50"/>
+        <DP Name="DP98" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP99" ParameterSize="4" transmissionIntervalMinimum="10"/>
+        <DP Name="DP100" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP101" ParameterSize="8" transmissionIntervalMinimum="10"/>
+      </Stream>
+      <Stream Name="Stream11-3" ID="12" FramesPerPeriod="1" MaxFrameSize="76" RefreshPeriod="10">
+        <DP Name="DP102" ParameterSize="8" transmissionIntervalMinimum="40"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp12">
+    <DeployedDevice DeviceName="Sensor2"/>
+    <Port Name="eth0">
+      <Stream Name="Stream12-1" ID="12" FramesPerPeriod="1" MaxFrameSize="74" RefreshPeriod="10">
+        <DP Name="DP103" ParameterSize="2" transmissionIntervalMinimum="40"/>
+        <DP Name="DP104" ParameterSize="4" transmissionIntervalMinimum="40"/>
+        <DP Name="DP105" ParameterSize="8" transmissionIntervalMinimum="20"/>
+        <DP Name="DP106" ParameterSize="8" transmissionIntervalMinimum="30"/>
+        <DP Name="DP107" ParameterSize="2" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream12-2" ID="13" FramesPerPeriod="1" MaxFrameSize="64" RefreshPeriod="10">
+        <DP Name="DP108" ParameterSize="4" transmissionIntervalMinimum="10"/>
+        <DP Name="DP109" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP110" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP111" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP112" ParameterSize="4" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream12-3" ID="13" FramesPerPeriod="1" MaxFrameSize="64" RefreshPeriod="10">
+        <DP Name="DP113" ParameterSize="2" transmissionIntervalMinimum="30"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp13">
+    <DeployedDevice DeviceName="Sensor1"/>
+    <Port Name="eth0">
+      <Stream Name="Stream13-1" ID="13" FramesPerPeriod="1" MaxFrameSize="82" RefreshPeriod="10">
+        <DP Name="DP114" ParameterSize="16" transmissionIntervalMinimum="40"/>
+        <DP Name="DP115" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP116" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP117" ParameterSize="8" transmissionIntervalMinimum="40"/>
+        <DP Name="DP118" ParameterSize="2" transmissionIntervalMinimum="10"/>
+      </Stream>
+      <Stream Name="Stream13-2" ID="14" FramesPerPeriod="1" MaxFrameSize="52" RefreshPeriod="10">
+        <DP Name="DP119" ParameterSize="2" transmissionIntervalMinimum="10"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp14">
+    <DeployedDevice DeviceName="Sensor2"/>
+    <Port Name="eth0">
+      <Stream Name="Stream14-1" ID="14" FramesPerPeriod="1" MaxFrameSize="79" RefreshPeriod="10">
+        <DP Name="DP120" ParameterSize="2" transmissionIntervalMinimum="10"/>
+        <DP Name="DP121" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP122" ParameterSize="1" transmissionIntervalMinimum="40"/>
+        <DP Name="DP123" ParameterSize="8" transmissionIntervalMinimum="40"/>
+        <DP Name="DP124" ParameterSize="16" transmissionIntervalMinimum="40"/>
+      </Stream>
+      <Stream Name="Stream14-2" ID="15" FramesPerPeriod="1" MaxFrameSize="62" RefreshPeriod="10">
+        <DP Name="DP125" ParameterSize="8" transmissionIntervalMinimum="40"/>
+        <DP Name="DP126" ParameterSize="4" transmissionIntervalMinimum="10"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp15">
+    <DeployedDevice DeviceName="Sensor1"/>
+    <Port Name="eth0">
+      <Stream Name="Stream15-1" ID="15" FramesPerPeriod="1" MaxFrameSize="66" RefreshPeriod="10">
+        <DP Name="DP127" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP128" ParameterSize="4" transmissionIntervalMinimum="40"/>
+        <DP Name="DP129" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP130" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP131" ParameterSize="4" transmissionIntervalMinimum="30"/>
+      </Stream>
+      <Stream Name="Stream15-2" ID="16" FramesPerPeriod="1" MaxFrameSize="58" RefreshPeriod="10">
+        <DP Name="DP132" ParameterSize="1" transmissionIntervalMinimum="20"/>
+        <DP Name="DP133" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP134" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP135" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP136" ParameterSize="1" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream15-3" ID="16" FramesPerPeriod="1" MaxFrameSize="58" RefreshPeriod="10">
+        <DP Name="DP137" ParameterSize="8" transmissionIntervalMinimum="40"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp16">
+    <DeployedDevice DeviceName="Sensor2"/>
+    <Port Name="eth0">
+      <Stream Name="Stream16-1" ID="16" FramesPerPeriod="1" MaxFrameSize="66" RefreshPeriod="10">
+        <DP Name="DP138" ParameterSize="8" transmissionIntervalMinimum="10"/>
+        <DP Name="DP139" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP140" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP141" ParameterSize="1" transmissionIntervalMinimum="20"/>
+        <DP Name="DP142" ParameterSize="1" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream16-2" ID="17" FramesPerPeriod="1" MaxFrameSize="70" RefreshPeriod="10">
+        <DP Name="DP143" ParameterSize="8" transmissionIntervalMinimum="20"/>
+        <DP Name="DP144" ParameterSize="2" transmissionIntervalMinimum="10"/>
+        <DP Name="DP145" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP146" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP147" ParameterSize="4" transmissionIntervalMinimum="40"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp17">
+    <DeployedDevice DeviceName="Sensor1"/>
+    <Port Name="eth0">
+      <Stream Name="Stream17-1" ID="17" FramesPerPeriod="1" MaxFrameSize="70" RefreshPeriod="10">
+        <DP Name="DP148" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP149" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP150" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP151" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP152" ParameterSize="8" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream17-2" ID="18" FramesPerPeriod="1" MaxFrameSize="54" RefreshPeriod="10">
+        <DP Name="DP153" ParameterSize="4" transmissionIntervalMinimum="20"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp18">
+    <DeployedDevice DeviceName="Sensor2"/>
+    <Port Name="eth0">
+      <Stream Name="Stream18-1" ID="18" FramesPerPeriod="1" MaxFrameSize="69" RefreshPeriod="10">
+        <DP Name="DP154" ParameterSize="8" transmissionIntervalMinimum="30"/>
+        <DP Name="DP155" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP156" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP157" ParameterSize="1" transmissionIntervalMinimum="10"/>
+        <DP Name="DP158" ParameterSize="4" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream18-2" ID="19" FramesPerPeriod="1" MaxFrameSize="64" RefreshPeriod="10">
+        <DP Name="DP159" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP160" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP161" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP162" ParameterSize="4" transmissionIntervalMinimum="30"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp19">
+    <DeployedDevice DeviceName="Sensor1"/>
+    <Port Name="eth0">
+      <Stream Name="Stream19-1" ID="19" FramesPerPeriod="1" MaxFrameSize="60" RefreshPeriod="10">
+        <DP Name="DP163" ParameterSize="1" transmissionIntervalMinimum="10"/>
+        <DP Name="DP164" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP165" ParameterSize="2" transmissionIntervalMinimum="20"/>
+        <DP Name="DP166" ParameterSize="1" transmissionIntervalMinimum="30"/>
+        <DP Name="DP167" ParameterSize="4" transmissionIntervalMinimum="30"/>
+      </Stream>
+      <Stream Name="Stream19-2" ID="20" FramesPerPeriod="1" MaxFrameSize="62" RefreshPeriod="10">
+        <DP Name="DP168" ParameterSize="1" transmissionIntervalMinimum="30"/>
+        <DP Name="DP169" ParameterSize="1" transmissionIntervalMinimum="50"/>
+        <DP Name="DP170" ParameterSize="8" transmissionIntervalMinimum="20"/>
+        <DP Name="DP171" ParameterSize="1" transmissionIntervalMinimum="40"/>
+        <DP Name="DP172" ParameterSize="1" transmissionIntervalMinimum="30"/>
+      </Stream>
+      <Stream Name="Stream19-3" ID="20" FramesPerPeriod="1" MaxFrameSize="62" RefreshPeriod="10">
+        <DP Name="DP173" ParameterSize="2" transmissionIntervalMinimum="40"/>
+      </Stream>
+    </Port>
+  </Application>
+  <Application Name="TSNApp20">
+    <DeployedDevice DeviceName="Sensor2"/>
+    <Port Name="eth0">
+      <Stream Name="Stream20-1" ID="20" FramesPerPeriod="1" MaxFrameSize="65" RefreshPeriod="10">
+        <DP Name="DP174" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP175" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP176" ParameterSize="4" transmissionIntervalMinimum="30"/>
+        <DP Name="DP177" ParameterSize="1" transmissionIntervalMinimum="30"/>
+        <DP Name="DP178" ParameterSize="2" transmissionIntervalMinimum="20"/>
+      </Stream>
+      <Stream Name="Stream20-2" ID="21" FramesPerPeriod="1" MaxFrameSize="63" RefreshPeriod="10">
+        <DP Name="DP179" ParameterSize="4" transmissionIntervalMinimum="40"/>
+        <DP Name="DP180" ParameterSize="4" transmissionIntervalMinimum="20"/>
+        <DP Name="DP181" ParameterSize="1" transmissionIntervalMinimum="10"/>
+        <DP Name="DP182" ParameterSize="2" transmissionIntervalMinimum="30"/>
+        <DP Name="DP183" ParameterSize="2" transmissionIntervalMinimum="40"/>
+      </Stream>
+    </Port>
+  </Application>
+</Stream-Level-ICD>
