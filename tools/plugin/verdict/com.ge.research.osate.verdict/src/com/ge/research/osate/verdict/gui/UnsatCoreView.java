@@ -40,6 +40,8 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.part.ViewPart;
 
+import oyster.odm.odm_model.Constraint;
+
 import oyster.odm.odm_model.ConstraintType;
 
 import java.util.ArrayList;
@@ -55,7 +57,7 @@ public class UnsatCoreView extends ViewPart {
     private Composite composite;
     private Table table;
     public static List<String> unsatCore = new ArrayList<>();
-    public static Map<String, ConstraintType> constraintType = new HashMap<>();
+    public static Map<String, Constraint> constraintMap = new HashMap<>();
 
     @Override
     public void setFocus() {
@@ -98,13 +100,13 @@ public class UnsatCoreView extends ViewPart {
         // populate the data
 
         for (String constraint : unsatCore) {
-        	if(skipConstraint(constraint)) {
-        		continue;
-        	}
+            if (skipConstraint(constraint)) {
+                continue;
+            }
             TableItem item = new TableItem(table, SWT.CENTER);
             item.setText(0, formatConstraintName(constraint));
-            item.setText(1, formatConstraintType(constraint, constraintType));
-            item.setText(2, formatConstraintComments(constraint, constraintType));
+            item.setText(1, formatConstraintType(constraint, constraintMap));
+            item.setText(2, formatConstraintComments(constraint, constraintMap));
         }
 
         table.pack();
@@ -112,13 +114,13 @@ public class UnsatCoreView extends ViewPart {
     }
 
     private static String formatConstraintType(
-            String constraint, Map<String, ConstraintType> constraintType) {
-        ConstraintType type = constraintType.get(constraint);
+            String constraint, Map<String, Constraint> constraintMap) {
+        ConstraintType type = constraintMap.get(constraint).getType();
         if (type == null && constraint.contains("sched")) {
             return "Scheduling Constraint";
         }
-        if(type == null && constraint.contains("jitter") || constraint.contains("bandwidth")) {
-        	return "Virtual Link Constraint";
+        if (type == null && constraint.contains("jitter") || constraint.contains("bandwidth")) {
+            return "Virtual Link Constraint";
         }
 
         if (type != null) {
@@ -144,56 +146,83 @@ public class UnsatCoreView extends ViewPart {
 
         return "";
     }
-    private static String formatConstraintComments(String constraint, Map<String, ConstraintType> constraintType) {
-    	if(constraint.contains("sched_")){
-    		 if(constraint.contains("_isschedulable") || constraint.contains("hasstarttimescheduled")) {
-    			 return "Application cannot be scheduled, please check the schedule parameters";
-    		 }
-    		 if(constraint.contains("_and_")) {
-    			 return "Check the schedule parameters for the pair of conflicting applications";
-    		 }
-    		 
-    	}
-    	 ConstraintType type = constraintType.get(constraint);
-    	 if(type != null && (type.equals(ConstraintType.FIXED_LOCATION_CONSTRAINT)
-    	    || type.equals(ConstraintType.SEPARATION_CONSTRAINT)
-    	    || type.equals(ConstraintType.CO_LOCATION_CONSTRAINT))) {
-    		 return "Check consistency with other Fixed-Location, Separation and Co-location constraints specified";
-    	 }
-    	if(constraint.contains("upper_limit_for_bandwidth")) {
-    		return "Check maximum bandwidth or the number of virtual links to be allocated";
-    	}
-    	return "";
+
+    private static String formatConstraintComments(
+            String constraint, Map<String, Constraint> oysterConstraint) {
+        if (constraint.contains("sched_")) {
+            if (constraint.contains("_isschedulable")
+                    || constraint.contains("hasstarttimescheduled")) {
+                return "Application cannot be scheduled, please check the schedule parameters";
+            }
+            if (constraint.contains("_and_")) {
+                return "Check the schedule parameters for the pair of conflicting applications";
+            }
+        }
+        ConstraintType type = constraintMap.get(constraint).getType();
+        if (type != null
+                && (type.equals(ConstraintType.FIXED_LOCATION_CONSTRAINT)
+                        || type.equals(ConstraintType.SEPARATION_CONSTRAINT)
+                        || type.equals(ConstraintType.CO_LOCATION_CONSTRAINT))) {
+            return "Check consistency with other Fixed-Location, Separation and Co-location constraints specified";
+        }
+        if (constraint.contains("upper_limit_for_bandwidth")) {
+            return "Check maximum bandwidth or the number of virtual links to be allocated";
+        }
+        
+        if(type != null && type.equals(ConstraintType.UTILIZATION_CONSTRAINT)) {
+        	String resourceType =  constraintMap.get(constraint).getSpecification().getCharacteristicProperty();
+        	switch(resourceType) {
+        	case "CPU":
+        		return "Check cpuUsed and cpuProvided for components that are part of the utilization constraint";
+        	case "ROM":
+        		return "Check romUsed and ramProvided for components that are part of the utilization constraint";
+        	case "RAM":
+        		return "Check ramUsed and ramProvided for components that are part of the utilization constraint";
+        	case "MEM":
+        		return "Check memUsed and memProvided for components that are part of the utilization constraint";
+        		
+        	}
+        }
+        
+        
+        return "";
     }
-    
+
     private static String formatConstraintName(String constraint) {
-    	if(constraint.contains("sched_")){
-    		  String transform = constraint.replaceAll("sched_", "");
-    		  if(transform.contains("_and_")) {
-    			  String [] split = transform.split("_and_");
-    			  return "Schedulability conflict for " + split[0] + " and " + split[1];
-    			  
-    		  }
-    		  if(transform.contains("_isschedulable") || constraint.contains("_hasstarttimescheduled")) {
-    			  String app = transform.replaceAll("_isschedulable","").replaceAll("_hasstarttimescheduled","");
-    			  return "Application " + app + " cannot be schedule";
-    		  }
-    		  
-    		return "";
-    	}
-    	
-    	if(constraint.contains("upper_limit_for_bandwidth")) {
-    		 return "Virtual links exceed max bandwidth";
-    	}
-    	return constraint;
+        if (constraint.contains("sched_")) {
+            String transform = constraint.replaceAll("sched_", "");
+            if (transform.contains("_and_")) {
+                String[] split = transform.split("_and_");
+                return "Schedulability conflict for " + split[0] + " and " + split[1];
+            }
+            if (transform.contains("_isschedulable")
+                    || constraint.contains("_hasstarttimescheduled")) {
+                String app =
+                        transform
+                                .replaceAll("_isschedulable", "")
+                                .replaceAll("_hasstarttimescheduled", "");
+                return "Application " + app + " cannot be schedule";
+            }
+
+            return "";
+        }
+
+        if (constraint.contains("upper_limit_for_bandwidth")) {
+            return "Virtual links exceed max bandwidth";
+        }
+        return constraint;
     }
+
     private static boolean skipConstraint(String constraint) {
-    	Set<String> blackList = new HashSet<>(Arrays.asList("in_unique_core", "application_", "range_of_", "vl_constraint_2"));
-    	for(String entry : blackList) {
-    		if(constraint.contains(entry)) {
-    			return true;
-    		}
-    	}
-    	return false;
+        Set<String> blackList =
+                new HashSet<>(
+                        Arrays.asList(
+                                "in_unique_core", "application_", "range_of_", "vl_constraint_2"));
+        for (String entry : blackList) {
+            if (constraint.contains(entry)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -112,8 +112,9 @@ public class Odm2Z3 {
     Map<String, Integer> proc_slots = new HashMap<String, Integer>();
     List<String> proc_ids = new ArrayList<String>();
 
-    private static Map<String, ConstraintType> constraintType = new HashMap<>();
     private static List<String> unsatCore = new ArrayList<>();
+    private static Map<String, Constraint> unsatConstraint = new HashMap<>();
+    private static Map<String, Constraint> constraintMap = new HashMap<>();
 
     boolean optBandwidthYes = IMASynthesisSettingsPanel.optBandwidthYes;
     boolean opte2eFlowYes = IMASynthesisSettingsPanel.opte2eFlowYes;
@@ -135,7 +136,9 @@ public class Odm2Z3 {
 
         Set<String> systemTypes = new HashSet<String>();
         Map<String, List<String>> typeToInstances = new HashMap<String, List<String>>();
-
+        
+        
+        constraintMap.clear();
         this.odm = odm;
         this.useUnsatCore = useUnsatCore;
         this.aadlObjects = aadlObjects;
@@ -264,10 +267,9 @@ public class Odm2Z3 {
         // translates Oyster constraints to smtlib
         for (ComponentImpl odmImpl : odm.getComponentImpl()) {
             for (Constraint ci : odmImpl.getOysterConstraint()) {
-
-                ConstraintType constType = ci.getType();
+            	ConstraintType constType = ci.getType();
                 String constraintName = ci.getSpecification().getConstraintName();
-                constraintType.put(constraintName, constType);
+                constraintMap.put(constraintName, ci);
                 if (constType.equals(
                         oyster.odm.odm_model.ConstraintType.FIXED_LOCATION_CONSTRAINT)) {
                     sol = handleFLC(sol, ctx, ci);
@@ -388,6 +390,7 @@ public class Odm2Z3 {
             VerdictLogger.info("The input architecture model is UNSAT!");
             if (useUnsatCore) {
                 unsatCore.clear();
+                unsatConstraint.clear();
                 VerdictLogger.info("UNSAT CORE:");
                 BoolExpr[] assertions = sol.getAssertions();
                 for (Expr c : sol.getUnsatCore()) {
@@ -407,7 +410,7 @@ public class Odm2Z3 {
                         .asyncExec(
                                 () -> {
                                     UnsatCoreView.unsatCore = unsatCore;
-                                    UnsatCoreView.constraintType = constraintType;
+                                    UnsatCoreView.constraintMap = constraintMap;
                                     org.apache.commons.lang3.tuple.Pair<IWorkbenchPage, IViewPart>
                                             pair =
                                                     ViewUtils.getPageAndViewByViewId(
