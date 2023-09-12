@@ -1,0 +1,261 @@
+package IMASystem
+public
+with OYSTER_Properties;
+
+system CCR
+	properties
+		OYSTER_properties::componentType => Common_Compute_Resource;
+end CCR;
+
+system ACS
+	properties
+		OYSTER_properties::componentType => Avionics_Cabinet_Switch;
+end ACS;
+
+system GPM
+	properties
+		OYSTER_properties::componentType => General_Processing_Module;
+end GPM;
+
+
+system GPMApp
+	properties
+		OYSTER_properties::componentType => A653_Application;
+end GPMApp;
+
+system Actuator
+	properties
+		OYSTER_properties::componentType => Actuator;
+end Actuator;
+
+system Sensor
+	properties
+		OYSTER_properties::componentType => Sensor;
+end Sensor;
+
+system SensorApp
+	properties
+		OYSTER_properties::componentType => Sensor;
+end SensorApp;
+
+system ActuatorApp
+	properties
+		OYSTER_properties::componentType => Hosted_Function;
+end ActuatorApp;
+
+
+system IMA
+	properties
+		OYSTER_properties::componentType => Integrated_Modular_Avionics;
+		OYSTER_properties::totalBandwidth => 10000 ; -- 6000000000
+		OYSTER_properties::maxBandwidthPercentage => 70;
+end IMA;
+
+system RDC
+	properties
+		OYSTER_properties::componentType => Remote_Data_Concentrator;
+end RDC;
+
+system ProcessorGPM
+	properties
+		OYSTER_properties::componentType => CPU;
+end ProcessorGPM;
+
+
+system implementation IMA.Impl
+	subcomponents
+		CCR_L1: system CCR;
+		CCR_L2: system CCR;
+		CCR_L3 : system CCR;
+		CCR_R1: system CCR;
+		CCR_R2: system CCR {OYSTER_properties::cpuProvided => 100;};
+		CCR_R3 : system CCR;
+		
+		
+		GPM_L1 : system GPM {OYSTER_properties::ramUsed => 128;};
+		GPM_L2 : system GPM {OYSTER_properties::ramUsed => 128;};
+		GPM_L3 : system GPM {OYSTER_properties::ramUsed => 128;};
+		GPM_R1 : system GPM {OYSTER_properties::ramUsed => 128;};
+		GPM_R2 : system GPM {OYSTER_properties::ramUsed => 128;};
+		GPM_R3 : system GPM {OYSTER_properties::ramUsed => 128;};
+		
+	    APP_FUEL_SYSTEM_CONTROL : system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 10; OYSTER_properties::priority => 0; OYSTER_properties::cpuUsed => 100;};
+		APP_FIDO : system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 1; OYSTER_properties::priority => 0; OYSTER_properties::cpuUsed => 100;};
+		APP_FILE_SYSTEM : system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 2; OYSTER_properties::priority => 0;};
+		APP_SUPPORT_MAIN : system GPMApp {OYSTER_properties::rate => 10; OYSTER_properties::duration => 2; OYSTER_properties::priority => 0;};
+		APP_CDN_TIME_MANAGER : system GPMApp {OYSTER_properties::rate => 5; OYSTER_properties::duration => 2; OYSTER_properties::priority => 0;};
+		APP_HEALTH_MANAGER : system GPMApp {OYSTER_properties::rate => 5; OYSTER_properties::duration => 6; OYSTER_properties::priority => 0;};	
+		
+		P1 : system ProcessorGPM {OYSTER_properties::slots_per_cycle => 500;};
+		
+		ACS_L1 : system ACS;
+		ACS_L2 : system ACS;
+		ACS_L3 : system ACS;
+		
+		ACS_R1 : system ACS;
+		ACS_R2 : system ACS;
+		ACS_R3 : system ACS;
+		
+		
+		RDC_L1 : system RDC;
+		RDC_R1 : system RDC;
+		RDC_L2 : system RDC;
+		RDC_R2 : system RDC;
+			
+		L_Eng_SO_Valve : system Actuator;
+		APU_SO_Valve : system Actuator;
+		L_XFER_Pump : system Actuator;
+		LR_XFER_Valve : system Actuator;
+		
+		R_Eng_SO_Valve : system Actuator;
+		CTR_Fuel_Temp : system Sensor;
+		R_XFER_Pump : system Actuator;
+		CTR_Fuel_Qty : system Sensor;
+		
+		LW_Fuel_Qty : system Sensor;
+		LW_Fuel_Temp : system Sensor;
+		L_Eng_Press : system Sensor;
+		L_XFER_Press : system Sensor;
+		Fuel_CF_Valve : system Actuator;
+		LW_Pmp_Mn : system Actuator;
+		LW_Pmp_STBY : system Actuator;
+		
+		
+		RW_Pmp_Mn : system Actuator;
+		RW_Pmp_STBY : system Actuator;
+		RW_Fuel_Qty : system Sensor;
+		RW_Fuel_Temp : system Sensor;
+		R_Eng_Press : system Sensor;
+		R_XFER_Press : system Sensor;
+		
+		APP_RW_Pmp_Mn : system ActuatorApp;
+		APP_R_Eng_SO_Valve : system ActuatorApp;
+		APP_L_Eng_SO_Valve : system ActuatorApp;
+		APP_LW_Fuel_Qty : system SensorApp;
+		
+		annex oyster {**
+		Constraints {		
+			Fixed-Location-Constraint FLC1: (GPM_L1 -> CCR_L1);
+			Fixed-Location-Constraint FLC2: (GPM_L2 -> CCR_L2);
+			Fixed-Location-Constraint FLC3: (ACS_L1 -> CCR_L1);
+			Fixed-Location-Constraint FLC4: (ACS_L2 -> CCR_L2);
+			
+			Fixed-Location-Constraint FLC5: (GPM_R1 -> CCR_R1);
+			Fixed-Location-Constraint FLC6: (GPM_R2 -> CCR_R2);
+			Fixed-Location-Constraint FLC7: (ACS_R1 -> CCR_R1);
+			Fixed-Location-Constraint FLC8: (ACS_R2 -> CCR_R2);
+			
+			
+			Fixed-Location-Constraint FLC9: (GPM_L3 -> CCR_L3);
+			Fixed-Location-Constraint FLC10: (GPM_R3 -> CCR_R3);
+			Fixed-Location-Constraint FLC11: (ACS_L3 -> CCR_L3);
+			Fixed-Location-Constraint FLC12: (ACS_R3 -> CCR_R3);
+			
+			
+			--Fixed-Location-Constraint FLC18: (HF_R_Eng_SO_Valve -> R_Eng_SO_Valve);
+			Fixed-Location-Constraint FLC71: (APP_FUEL_SYSTEM_CONTROL -> GPM_R2);
+			Fixed-Location-Constraint FLC72: (APP_FIDO -> GPM_R2);
+			Fixed-Location-Constraint FLC73: (APP_FILE_SYSTEM -> GPM_R2);
+			Fixed-Location-Constraint FLC74: (APP_SUPPORT_MAIN -> GPM_R2);
+			Fixed-Location-Constraint FLC75: (APP_CDN_TIME_MANAGER -> GPM_R2);
+			Fixed-Location-Constraint FLC76: (APP_HEALTH_MANAGER -> GPM_R2);
+			
+			Fixed-Location-Constraint FLC105: (P1 -> GPM_R2);
+			--Fixed-Location-Constraint FLC102: (APP_RW_Pmlinp_Mn -> GPM_R2);
+			
+		    Fixed-Location-Constraint FLC14: (APP_RW_Pmp_Mn -> RW_Pmp_Mn);
+			Fixed-Location-Constraint FLC15: (APP_R_Eng_SO_Valve -> R_Eng_SO_Valve);
+			Fixed-Location-Constraint FLC16: (APP_L_Eng_SO_Valve -> L_Eng_SO_Valve);
+			Fixed-Location-Constraint FLC17 : (APP_LW_Fuel_Qty -> LW_Fuel_Qty);
+		
+			--- GPM <=> ACS connections bandwidth unit = byte 
+			Port-Connection-Constraint c1: (GPM_L1.portA <-> ACS_L1.port1) 1000000000; -- 1G
+			Port-Connection-Constraint c2: (GPM_L2.portA <-> ACS_L2.port1) 1000000000;
+			Port-Connection-Constraint c3: (GPM_L3.portA <-> ACS_L3.port1) 1000000000;
+				
+			Port-Connection-Constraint c4: (ACS_L1.port24 <-> CCR_L1.portA) 1000000000; 
+			Port-Connection-Constraint c5: (CCR_L1.portA <-> CCR_L2.portA) 1000000000; 
+			Port-Connection-Constraint c6: (ACS_L2.port24 <-> CCR_L2.portA) 1000000000; 
+			
+			Port-Connection-Constraint c7: (GPM_R1.portA <-> ACS_R1.port1) 1000000000; -- 1G
+			Port-Connection-Constraint c8: (GPM_R2.portA <-> ACS_R2.port1) 1000000000;
+			Port-Connection-Constraint c9: (GPM_R3.portA <-> ACS_R3.port1) 1000000000;
+			
+				
+			Port-Connection-Constraint c10: (ACS_R1.port24 <-> CCR_R1.portA) 1000000000; 
+			Port-Connection-Constraint c11: (CCR_R1.portA <-> CCR_R2.portA) 1000000000; 
+			Port-Connection-Constraint c12: (CCR_R2.portA <-> ACS_R2.port24) 1000000000; 
+			
+			Port-Connection-Constraint c13: (CCR_L1.portB <-> CCR_R1.portB) 1000000000; 
+			Port-Connection-Constraint c14: (CCR_L2.portB <-> CCR_R2.portB) 1000000000; 
+			
+			
+			Port-Connection-Constraint c15: (RDC_L1.port7 <-> CCR_L2.portC) 1000000000;
+			Port-Connection-Constraint c16: (ACS_L2.port9 <-> CCR_L2.portC) 1000000000;
+			
+			Port-Connection-Constraint c17: (RDC_R1.port7 <-> CCR_R2.portC) 1000000000;
+			Port-Connection-Constraint c18: (ACS_R2.port9 <-> CCR_R2.portC) 1000000000;
+			
+			Port-Connection-Constraint c19: (RDC_L1.port1 <-> L_Eng_SO_Valve.port1) 1000000000;
+  			Port-Connection-Constraint c20: (RDC_L1.port2 <->  APU_SO_Valve.port1) 1000000000;
+		    Port-Connection-Constraint c21: (RDC_L1.port3 <-> L_XFER_Pump.port1) 1000000000;
+			Port-Connection-Constraint c22: (RDC_L1.port4 <-> LR_XFER_Valve.port1) 1000000000;
+			
+			Port-Connection-Constraint c23: (RDC_R1.port1 <-> R_Eng_SO_Valve.port1) 1000000000;
+  			Port-Connection-Constraint c24: (RDC_R1.port2 <->  CTR_Fuel_Temp.port1) 1000000000;
+		    Port-Connection-Constraint c25: (RDC_R1.port3 <-> R_XFER_Pump.port1) 1000000000;
+			Port-Connection-Constraint c26: (RDC_R1.port4 <-> CTR_Fuel_Qty.port1) 1000000000;
+		
+			
+			Port-Connection-Constraint c27 : (ACS_L2.port10 <-> CCR_L2.port10) 1000000000;
+			Port-Connection-Constraint c28 : (CCR_L2.port10 <-> CCR_L3.port10) 1000000000;
+			Port-Connection-Constraint c29 : (CCR_L3.port10 <-> ACS_L3.port10) 1000000000;
+						
+			Port-Connection-Constraint c30 : (ACS_R2.port22 <-> CCR_R2.port22) 1000000000;
+			Port-Connection-Constraint c31 : (CCR_R2.port22 <-> CCR_R3.port22) 1000000000;
+			Port-Connection-Constraint c32 : (CCR_R3.port22 <-> ACS_R3.port22) 1000000000;
+							
+			Port-Connection-Constraint c33 : (ACS_L3.port24 <-> CCR_L3.portA) 1000000000;
+			Port-Connection-Constraint c34 : (CCR_L3.portA <-> CCR_R3.portA) 1000000000;
+			Port-Connection-Constraint c35 : (CCR_R3.portA <-> ACS_R3.port24) 1000000000;
+				
+			Port-Connection-Constraint c36: (RDC_L2.port8 <-> CCR_L3.portD) 1000000000;
+			Port-Connection-Constraint c37: (ACS_L3.port9 <-> CCR_L3.portD) 1000000000;
+					
+			Port-Connection-Constraint c38: (RDC_R2.port7 <-> CCR_R3.portD) 1000000000;
+			Port-Connection-Constraint c39: (ACS_R3.port9 <-> CCR_R3.portD) 1000000000;
+			
+		
+			Port-Connection-Constraint c40: (RDC_L2.port1 <-> LW_Fuel_Qty.port1) 1000000000;
+			Port-Connection-Constraint c41: (RDC_L2.port2 <-> LW_Fuel_Temp.port1) 1000000000;
+			Port-Connection-Constraint c42: (RDC_L2.port3 <-> L_Eng_Press.port1) 1000000000;
+			Port-Connection-Constraint c43: (RDC_L2.port4 <-> L_XFER_Press.port1) 1000000000;
+			Port-Connection-Constraint c44: (RDC_L2.port5 <->Fuel_CF_Valve.port1) 1000000000;
+			Port-Connection-Constraint c45: (RDC_L2.port6 <-> LW_Pmp_Mn.port1) 1000000000;
+			Port-Connection-Constraint c46: (RDC_L2.port7 <-> LW_Pmp_STBY.port1) 1000000000;
+			
+			Port-Connection-Constraint c47: (RDC_R2.port1 <-> RW_Pmp_Mn.port1) 1000000000;
+			Port-Connection-Constraint c48: (RDC_R2.port2 <-> RW_Pmp_STBY.port1) 1000000000;
+			Port-Connection-Constraint c49: (RDC_R2.port3 <-> RW_Fuel_Qty.port1) 1000000000;
+			Port-Connection-Constraint c50: (RDC_R2.port4 <-> RW_Fuel_Temp.port1) 1000000000;
+			Port-Connection-Constraint c51: (RDC_R2.port5 <-> R_Eng_Press.port1) 1000000000;
+			Port-Connection-Constraint c52: (RDC_R2.port6 <-> R_XFER_Press.port1) 1000000000;
+				
+			Port-Connection-Constraint c53 : (ACS_R1.port22 <-> CCR_R1.portB) 1000000000;
+			Port-Connection-Constraint c54 : (ACS_L1.port22 <-> CCR_L1.portB) 1000000000;
+			Port-Connection-Constraint c55 : (ACS_L2.port22 <-> CCR_L2.portB) 1000000000;
+			Port-Connection-Constraint c56 : (ACS_R2.port24 <-> CCR_R2.portB) 1000000000;
+			
+		    Virtual-Link-Constraint VL32782: (APP_L_Eng_SO_Valve ~> APP_FUEL_SYSTEM_CONTROL) {20@80};
+			Virtual-Link-Constraint VL32783: (APP_LW_Fuel_Qty ~> APP_FUEL_SYSTEM_CONTROL) {20@80};
+			
+			-- Utilization-Constraint UC2 [CPU]: (CCR CCR_R2: cpuProvided) > (GPMApp APP_FIDO:cpuUsed) + (GPMApp APP_FIDO: cpuUsed);
+			-- Separation-Constraint SC1: (GPMApp APP_FUEL_SYSTEM_CONTROL, APP_FIDO, APP_FILE_SYSTEM) -> distinct GPM;
+			-- Co-Location-Constraint CLC1: (GPMApp APP_FUEL_SYSTEM_CONTROL, APP_FIDO) and (ActuatorApp APP_RW_Pmp_Mn) -> GPM;
+			
+		}			
+	**};
+
+end IMA.Impl;
+
+end IMASystem;
