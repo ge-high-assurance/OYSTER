@@ -1,0 +1,56 @@
+
+; WARNING: adding trust step for MACRO_RESOLUTION_TRUST
+(define cvc.latency (var 0 Int))
+(define cvc.RDC_R1_tas_jitter (var 1 Int))
+(define cvc.RDC_R1_propagation_delay (var 2 Int))
+(define cvc.RDC_R1_link_delay (var 3 Int))
+(define cvc.ACS_R2_egress_delay (var 4 Int))
+(define cvc.R_Eng_SO_Valve_link_delay (var 5 Int))
+(define cvc.GPM_R2_tas_jitter (var 6 Int))
+(define cvc.start_time (var 7 Int))
+(define cvc.GPM_R2_propagation_delay (var 8 Int))
+(define cvc.ACS_R2_fabric_delay (var 9 Int))
+(define cvc.R_Eng_SO_Valve_propagation_delay (var 10 Int))
+(define cvc.arrival_time (var 11 Int))
+(define cvc.ACS_R2_ingress_delay (var 12 Int))
+(define cvc.R_Eng_SO_Valve_tas_jitter (var 13 Int))
+(define cvc.arrival_limit (var 14 Int))
+(define cvc.ACS_R2_tas_jitter (var 15 Int))
+(define cvc.GPM_R2_link_delay (var 16 Int))
+(define cvc.threshold (var 17 Int))
+(check
+(@ t1 (int 200)
+(@ t2 (int 0)
+(@ t3 (int 8)
+(@ t4 (int 10)
+(@ t5 (int 9)
+(# a0 (holds (= cvc.start_time (int 5500000)))
+(# a1 (holds (= cvc.threshold t1))
+(# a2 (holds (= cvc.arrival_limit (int 6000000)))
+(# a3 (holds (a.>= cvc.arrival_time (a.+ cvc.arrival_limit (a.+ cvc.threshold t2))))
+(# a4 (holds (= cvc.GPM_R2_link_delay t3))
+(# a5 (holds (= cvc.GPM_R2_propagation_delay t4))
+(# a6 (holds (= cvc.GPM_R2_tas_jitter t1))
+(# a7 (holds (= cvc.ACS_R2_egress_delay t5))
+(# a8 (holds (= cvc.ACS_R2_fabric_delay (int 1008)))
+(# a9 (holds (= cvc.ACS_R2_ingress_delay t5))
+(# a10 (holds (= cvc.ACS_R2_tas_jitter (int 100)))
+(# a11 (holds (= cvc.RDC_R1_link_delay t3))
+(# a12 (holds (= cvc.RDC_R1_propagation_delay t4))
+(# a13 (holds (= cvc.RDC_R1_tas_jitter t1))
+(# a14 (holds (= cvc.R_Eng_SO_Valve_link_delay t3))
+(# a15 (holds (= cvc.R_Eng_SO_Valve_propagation_delay t4))
+(# a16 (holds (= cvc.R_Eng_SO_Valve_tas_jitter t1))
+(# a17 (holds (= cvc.latency (a.+ cvc.GPM_R2_link_delay (a.+ cvc.GPM_R2_propagation_delay (a.+ cvc.GPM_R2_tas_jitter (a.+ cvc.ACS_R2_egress_delay (a.+ cvc.ACS_R2_fabric_delay (a.+ cvc.ACS_R2_ingress_delay (a.+ cvc.ACS_R2_tas_jitter (a.+ cvc.RDC_R1_link_delay (a.+ cvc.RDC_R1_propagation_delay (a.+ cvc.RDC_R1_tas_jitter (a.+ cvc.R_Eng_SO_Valve_link_delay (a.+ cvc.R_Eng_SO_Valve_propagation_delay (a.+ cvc.R_Eng_SO_Valve_tas_jitter t2)))))))))))))))
+(# a18 (holds (= cvc.arrival_time (a.+ cvc.start_time (a.+ cvc.latency t2))))
+(: (holds false)
+
+(plet _  _ 
+
+(refl f_or)
+(\ p1
+
+
+(trust false) ; from MACRO_RESOLUTION_TRUST
+))))))))))))))))))))))))))))
+
